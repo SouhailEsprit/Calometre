@@ -9,6 +9,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+
+    {% block Styles %}
+    {% endblock %}
     <link href="{{ asset('back-office/assets/css/vendor.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('back-office/assets/css/app.min.css') }}" rel="stylesheet" />
 
@@ -636,7 +639,11 @@
         </div>
     </div>
     </div>
-<script src="{{ asset('back-office/assets/js/jquery-3.6.0.min.js') }}" type="application/javascript"/>
+
+
+{% block Scripts %}
+{% endblock %}
+<script src="{{ asset('back-office/assets/js/jquery-3.6.0.min.js') }}" type="application/javascript"></script>
 
 
     <script data-cfasync="false" src="{{ asset('back-office/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script><script src="{{ asset('back-office/assets/js/vendor.min.js') }}" type="2d84e2308647906e156143e6-text/javascript"></script>
