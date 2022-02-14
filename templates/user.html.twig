@@ -11,7 +11,7 @@
                         <div class="col-xl-9 col-lg-12">
                             <ul class="nav" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab"
+                                    <button class="nav-link" id="dashboard-tab" data-bs-toggle="tab"
                                         data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
                                         aria-selected="true">dashboard</button>
                                 </li>
@@ -46,7 +46,7 @@
                                         aria-controls="transactions" aria-selected="false">transactions</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="setting-tab" data-bs-toggle="tab"
+                                    <button class="nav-link active" id="setting-tab" data-bs-toggle="tab"
                                         data-bs-target="#setting" type="button" role="tab" aria-controls="setting"
                                         aria-selected="false">setting</button>
                                 </li>
@@ -62,11 +62,11 @@
                             <div class="single-item">
                                 <img src="{{ asset('uploads/profilePicture/' ~ app.user.ProfilePicture) }}" alt="images">
                                 <h5> {{ app.user.firstname }} {{ app.user.lastname }}</h5>
-                                <p>ID: 32315145</p>
+                                <p>ID: {{app.user.Id}}</p>
                             </div>
-                            <div class="balance">
+                            {# <div class="balance">
                                 <div class="single-item">
-                                    <img src="assets/images/icon/dashboard-sidebar-icon-1.png" alt="images">
+                                    <img src="{{ asset('front-office/assets/images/icon/dashboard-sidebar-icon-1.png')}}" alt="images">
                                     <h5>$5135.00</h5>
                                     <p>Available Balance</p>
                                 </div>
@@ -74,25 +74,25 @@
                                     <a href="javascript:void(0)" class="mdr withdraw-btn">Withdraw</a>
                                     <a href="javascript:void(0)" class="mdr deposit-btn">Deposit</a>
                                 </div>
-                            </div>
-                            <div class="single-item">
-                                <img src="assets/images/icon/dashboard-sidebar-icon-2.png" alt="images">
+                            </div> #}
+                            {# <div class="single-item">
+                                <img src="{{ asset('front-office/assets/images/icon/dashboard-sidebar-icon-2.png')}}" alt="images">
                                 <h5>Need Help?</h5>
                                 <p class="mdr">Have questions? Our experts are here to help!.</p>
                                 <span class="btn-border">
                                     <a href="contact.html" class="cmn-btn">Get Start Now</a>
                                 </span>
-                            </div>
+                            </div> #}
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-8">
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
+                            <div class="tab-pane fade" id="dashboard" role="tabpanel"
                                 aria-labelledby="dashboard-tab">
                                 <div class="row">
                                     <div class="col-xl-4 col-lg-6">
                                         <div class="single-info">
-                                            <img src="assets/images/icon/user-info-icon-1.png" alt="icon">
+                                            <img src="{{ asset('front-office/assets/icon/user-info-icon-1.png')}}" alt="icon">
                                             <div class="text-area">
                                                 <h4>678</h4>
                                                 <p class="mdr">Total Match</p>
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-6">
                                         <div class="single-info">
-                                            <img src="assets/images/icon/user-info-icon-2.png" alt="icon">
+                                            <img src="{{ asset('front-office/assets/images/icon/user-info-icon-2.png')}}" alt="icon">
                                             <div class="text-area">
                                                 <h4>91%</h4>
                                                 <p class="mdr">Win Ratio</p>
@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-6">
                                         <div class="single-info">
-                                            <img src="assets/images/icon/user-info-icon-3.png" alt="icon">
+                                            <img src="{{ asset('front-office/assets/images/icon/user-info-icon-3.png')}}" alt="icon">
                                             <div class="text-area">
                                                 <h4>22</h4>
                                                 <p class="mdr">Achievements</p>
@@ -799,19 +799,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="setting" role="tabpanel" aria-labelledby="setting-tab">
+                            <div class="tab-pane fade show active" id="setting" role="tabpanel" aria-labelledby="setting-tab">
                                 <div class="setting-tab">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="single-area">
                                                 <h5>Settings</h5>
                                             </div>
-                                            <div class="single-area">
+                                            <div class="single-area" display:flex>
                                                 <div class="file-upload">
-                                                    <div class="img-area">
-                                                        <img src="assets/images/demo-profile.png" alt="icon">
+                                                    <div class="img-area"style="width:15%" >
+                                                        <img src= "{{ asset('uploads/profilePicture/' ~ app.user.ProfilePicture) }}" alt="icon">
                                                     </div>
-                                                    <div class="right-area">
+                                                    <div class="right-area" >
                                                         <p class="title">Upload profile photo via:</p>
                                                         <label class="file">
                                                             <input type="file">
@@ -825,15 +825,15 @@
                                             </div>
                                             <div class="single-area">
                                                 <div class="icon-area">
-                                                    <img src="assets/images/icon/message-icon.png" alt="icon">
+                                                    <img src="{{ asset('front-office/assets/images/icon/message-icon.png')}}" alt="icon">
                                                 </div>
                                                 <p class="mdr"><a ]</a></p>
-                                                 <p>Email : {{ app.user.email }} <p>
-                                                <a href="personal-details-setting.html" class="mdr">{% if app.user.isVerified == '0' %}
-                                                Unverified Account
+                                                 <p>Email : {{ app.user.email }} {% if app.user.isVerified == '0' %}
+                                                <p style="color:red;">Unverfied.</p>
                                                 {% else %}
-                                                Verified
-                                                {% endif %}</a>
+                                               <p style="color:green;">Verfied.</p>
+                                                {% endif %}</a> <p>
+                                                
                                             </div>
                                             <div class="single-area">
                                             
@@ -844,14 +844,14 @@
                                                 </div>
                                             <div class="single-area">
                                                 <div class="icon-area">
-                                                    <img src="assets/images/icon/security-icon.png" alt="icon">
+                                                    <img src="{{ asset('front-office/assets/images/icon/security-icon.png')}}" alt="icon">
                                                 </div>
                                                 <a href="{{ path('edit_user') }}" class="cmn-btn">Change Password</a>
                                                 
                                         </div>
                                          <div class="single-area">
                                                 <div class="icon-area">
-                                                    <img src="assets/images/icon/security-icon.png" alt="icon">
+                                                    <img src="{{ asset('front-office/assets/images/icon/security-icon.png')}}" alt="icon">
                                                 </div>
                                                 <a href="{{ path('delete_account') }}" class="cmn-btn">Delete Account</a>
                                                 
