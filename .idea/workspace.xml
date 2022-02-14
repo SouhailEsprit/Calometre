@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daaf3122-ebcd-4fc5-bed0-9f027be29bb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20220211185230.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Event.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/EventRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/event/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/event/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/event/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/event/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/event/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/event/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/PostType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base-back-office.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base-back-office.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,15 +180,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/back-office/assets/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\src\Entity" />
+      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\templates" />
+      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\src\Controller" />
+      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\src\Form" />
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\public\back-office\assets\js" />
-      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\public\back-office" />
-      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\public\front-office" />
@@ -216,7 +212,9 @@
       <updated>1644530088951</updated>
       <workItem from="1644530094583" duration="2848000" />
       <workItem from="1644536008430" duration="2373000" />
-      <workItem from="1644617877695" duration="3916000" />
+      <workItem from="1644617877695" duration="4232000" />
+      <workItem from="1644775629672" duration="3148000" />
+      <workItem from="1644881483874" duration="733000" />
     </task>
     <servers />
   </component>

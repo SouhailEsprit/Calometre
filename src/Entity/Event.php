@@ -54,6 +54,11 @@ class Event
      */
     private $lieu;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="event",cascade={"remove"})
+     */
+    private $posts;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -130,4 +135,5 @@ class Event
 
         return $this;
     }
+
 }
