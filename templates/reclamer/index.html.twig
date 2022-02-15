@@ -1,0 +1,37 @@
+{% extends 'base-front-office.html.twig' %}
+   {% block mainContent %}
+    <h3 style="color:red;">Reclamation</h3>
+
+    <table class="table" style="color:white;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idreclamation</th>
+                <th>Type</th>
+                <th>Message</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamer in reclamers %}
+            <tr>
+                <td>{{ reclamer.id }}</td>
+                <td>{{ reclamer.idreclamation }}</td>
+                <td>{{ reclamer.type }}</td>
+                <td>{{ reclamer.message }}</td>
+                <td>
+                    <a href="{{ path('reclamer_show', {'id': reclamer.id}) }}">lire liste</a>
+                    <a href="{{ path('reclamer_edit', {'id': reclamer.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamer_new') }}" style="color:orange;">ajouter</a>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base-front-office.html.twig' %}
+   {% block mainContent %}
+    <h1 style="color:white;">ajouter</h1>
+
+    {{ include('reclamer/_form.html.twig') }}
+
+    <a href="{{ path('reclamer_index') }}"style="color:orange;">Retour</a>
+
+{% endblock %}

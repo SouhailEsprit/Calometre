@@ -1,0 +1,28 @@
+{% extends 'base-back-office.html.twig' %}
+   {% block mainContent %}
+    <h1>Reponse</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reponse.id }}</td>
+            </tr>
+            <tr>
+                <th>Idreponse</th>
+                <td>{{ reponse.idreponse }}</td>
+            </tr>
+            <tr>
+                <th>Reponse</th>
+                <td>{{ reponse.reponse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reponse_index') }}"style="color:white;"">Retour=</a>
+
+    <a href="{{ path('reponse_edit', {'id': reponse.id}) }}">modifier</a>
+
+    {{ include('reponse/_delete_form.html.twig') }}
+
+{% endblock %}

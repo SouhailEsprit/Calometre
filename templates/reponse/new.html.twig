@@ -1,0 +1,9 @@
+{% extends 'base-back-office.html.twig' %}
+   {% block mainContent %}
+    <h1 style="color:Orange;">ajouter une réponse</h1>
+
+    {{ include('reponse/_form.html.twig') }}
+
+    <a href="{{ path('reponse_index') }}"style="color:orange;">retour</a>
+
+{% endblock %}

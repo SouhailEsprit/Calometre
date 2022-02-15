@@ -1,0 +1,35 @@
+{% extends 'base-back-office.html.twig' %}
+   {% block mainContent %}
+    <h1 style="color:orange;">liste des reponses </h1>
+
+    <table class="table" style="color:white;">
+        <thead>
+            <tr>
+                <th style="color:yellow;">Id</th>
+                <th>Idreponse</th>
+                <th>Reponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+            <tr>
+                <td>{{ reponse.id }}</td>
+                <td>{{ reponse.idreponse }}</td>
+                <td>{{ reponse.reponse }}</td>
+                <td>
+                    <a href="{{ path('reponse_show', {'id': reponse.id}) }}">voir liste</a>
+                    <a href="{{ path('reponse_edit', {'id': reponse.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reponse_new') }}"style="color:orange;">ajouter</a>
+
+{% endblock %}
