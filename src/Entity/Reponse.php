@@ -18,28 +18,67 @@ class Reponse
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date")
      */
-    private $idreponse;
+    private $date;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Reclamation::class, cascade={"persist", "remove"})
+     */
+    private $repondre;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $reponse;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Reclamation::class, cascade={"persist", "remove"})
+     */
+    private $Id;
+
+    // /**
+    //  * @ORM\OneToOne(targetEntity=reclamation::class, inversedBy="rec_reponse", cascade={"persist", "remove"})
+    //  */
+    // private $reponse;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdreponse(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->idreponse;
+        return $this->date;
     }
 
-    public function setIdreponse(string $idreponse): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->idreponse = $idreponse;
+        $this->date = $date;
+
+        return $this;
+    }
+
+    // public function getReponse(): ?reclamation
+    // {
+    //     return $this->reponse;
+    // }
+
+    // public function setReponse(?reclamation $reponse): self
+    // {
+    //     $this->reponse = $reponse;
+
+    //     return $this;
+    // }
+
+    public function getRepondre(): ?Reclamation
+    {
+        return $this->repondre;
+    }
+
+    public function setRepondre(?Reclamation $repondre): self
+    {
+        $this->repondre = $repondre;
 
         return $this;
     }
@@ -52,6 +91,13 @@ class Reponse
     public function setReponse(string $reponse): self
     {
         $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function setId(?Reclamation $Id): self
+    {
+        $this->Id = $Id;
 
         return $this;
     }

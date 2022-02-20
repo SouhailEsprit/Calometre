@@ -12,7 +12,7 @@ class ReponseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('idreponse')
+            ->add('date')
             ->add('reponse')
         ;
     }

@@ -1,13 +1,12 @@
-{% extends 'base-back-office.html.twig' %}
-   {% block mainContent %}
-    <h1 style="color:orange;">liste des reponses </h1>
 
-    <table class="table" style="color:white;">
+    <h1 style="color:red;">liste des reponses </h1>
+
+    <table class="table"style="color:noir;">
         <thead>
+        
             <tr>
-                <th style="color:yellow;">Id</th>
-                <th>Idreponse</th>
-                <th>Reponse</th>
+                <th>Id</th>
+                <th>Date</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -15,21 +14,20 @@
         {% for reponse in reponses %}
             <tr>
                 <td>{{ reponse.id }}</td>
-                <td>{{ reponse.idreponse }}</td>
-                <td>{{ reponse.reponse }}</td>
+                <td>{{ reponse.date ? reponse.date|date('Y-m-d') : '' }}</td>
+                 <td>{{ reponse.reponse }}</td>
                 <td>
-                    <a href="{{ path('reponse_show', {'id': reponse.id}) }}">voir liste</a>
-                    <a href="{{ path('reponse_edit', {'id': reponse.id}) }}">modifier</a>
+                    <a href="{{ path('reponse_show', {'id': reponse.id}) }}">show</a>
+                    <a href="{{ path('reponse_edit', {'id': reponse.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('reponse_new') }}"style="color:orange;">ajouter</a>
+    <a href="{{ path('reponse_new') }}">Create new</a>
 
-{% endblock %}

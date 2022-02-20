@@ -1,11 +1,13 @@
-{% extends 'base-back-office.html.twig' %}
-   {% block mainContent %}
-    <h1>modifier</h1>
+{% extends 'base.html.twig' %}
 
-    {{ include('reponse/_form.html.twig', {'button_label': 'modifier'}) }}
+{% block title %}Edit Reponse{% endblock %}
 
-    <a href="{{ path('reponse_index') }}">Retour</a>
+{% block body %}
+    <h1>Edit Reponse</h1>
+
+    {{ include('reponse/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('reponse_index') }}">back to list</a>
 
     {{ include('reponse/_delete_form.html.twig') }}
-
 {% endblock %}

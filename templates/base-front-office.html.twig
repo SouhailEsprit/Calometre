@@ -34,6 +34,7 @@
 <!-- Scroll To Top End -->
 
 <!-- header-section start -->
+{% block header %}
 <header class="header-section">
     <div class="overlay">
         <div class="container">
@@ -132,6 +133,7 @@
     </div>
 </header>
 <!-- header-section end -->
+{% endblock %}
 
 <!-- Login Registration start -->
 <div class="log-reg">
@@ -316,14 +318,10 @@
 
 
 <!-- Main content start -->
-<section class="blog-section ovf-unset">
-    <div class="overlay pt-120">
-        <div class="container">
+
         {% block mainContent %}
         {% endblock %}
-    </div>
-    </div>
-</section>
+
 <!-- Main content end -->
 
 <!-- Footer Area Start -->
@@ -366,6 +364,7 @@
 <!-- Footer Area End -->
 
 <!--==================================================================-->
+{% block scripts %}
 <script src="{{ asset('front-office/assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('front-office/assets/js/jquery-ui.js') }}"></script>
 <script src="{{ asset('front-office/assets/js/bootstrap.min.js') }}"></script>
@@ -379,7 +378,6 @@
 <script src="{{ asset('front-office/assets/js/plugin/wow.min.js') }}"></script>
 <script src="{{ asset('front-office/assets/js/plugin/plugin.js') }}"></script>
 <script src="{{ asset('front-office/assets/js/main.js') }}"></script>
-{% block scripts %}
 {% endblock %}
 </body>
 
