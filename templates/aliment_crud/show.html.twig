@@ -1,0 +1,38 @@
+{% extends 'base-back-office.html.twig' %}
+
+{% block title %}Aliment{% endblock %}
+
+{% block mainContent %}
+    <h1>Aliment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ aliment.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ aliment.name }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ aliment.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Calories</th>
+                <td>{{ aliment.calories }}</td>
+           # </tr>
+          #  <tr>
+            #   <th>Liste Recette</th>
+              #
+          #  </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('aliment_crud_index') }}">back to list</a>
+
+    <a href="{{ path('aliment_crud_edit', {'id': aliment.id}) }}">edit</a>
+
+    {{ include('aliment_crud/_delete_form.html.twig') }}
+{% endblock %}
