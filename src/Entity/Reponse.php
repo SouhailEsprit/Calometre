@@ -37,6 +37,11 @@ class Reponse
      */
     private $Id;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Reclamation::class, mappedBy="reponse", cascade={"persist", "remove"})
+     */
+    private $reclamation;
+
     // /**
     //  * @ORM\OneToOne(targetEntity=reclamation::class, inversedBy="rec_reponse", cascade={"persist", "remove"})
     //  */
@@ -46,6 +51,8 @@ class Reponse
     {
         return $this->id;
     }
+
+    
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -58,18 +65,6 @@ class Reponse
 
         return $this;
     }
-
-    // public function getReponse(): ?reclamation
-    // {
-    //     return $this->reponse;
-    // }
-
-    // public function setReponse(?reclamation $reponse): self
-    // {
-    //     $this->reponse = $reponse;
-
-    //     return $this;
-    // }
 
     public function getRepondre(): ?Reclamation
     {
@@ -98,6 +93,28 @@ class Reponse
     public function setId(?Reclamation $Id): self
     {
         $this->Id = $Id;
+
+        return $this;
+    }
+
+    public function getReclamation(): ?Reclamation
+    {
+        return $this->reclamation;
+    }
+
+    public function setReclamation(?Reclamation $reclamation): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($reclamation === null && $this->reclamation !== null) {
+            $this->reclamation->setReponse(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($reclamation !== null && $reclamation->getReponse() !== $this) {
+            $reclamation->setReponse($this);
+        }
+
+        $this->reclamation = $reclamation;
 
         return $this;
     }

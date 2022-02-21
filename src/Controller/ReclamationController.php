@@ -36,6 +36,7 @@ class ReclamationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reclamation->setDate(new \DateTime);
             $entityManager->persist($reclamation);
             $entityManager->flush();
 
@@ -63,10 +64,11 @@ class ReclamationController extends AbstractController
      */
     public function edit(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(Reclamation2Type::class, $reclamation);
+        $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reclamation->setDate(new \DateTime);
             $entityManager->flush();
 
             return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);

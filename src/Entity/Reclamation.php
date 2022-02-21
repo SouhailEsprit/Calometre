@@ -28,14 +28,14 @@ class Reclamation
      */
     private $type;
 
+    // @Assert\Length(
+    //     *    min = 10s,
+    //     *    max = 50,
+    //     *    minMessage = "Your first name must be at least {{ limit }} characters long",
+    //     *    maxMessage = "Your first name cannot be longer than {{ limit }} characters")
+
     /**
      * @ORM\Column(type="string", length=255)
-     *   @Assert\Length(
-     *      min = 10s,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
-     * )
      */
     private $message;
 
@@ -43,6 +43,11 @@ class Reclamation
      * @ORM\OneToOne(targetEntity=Reclamation::class, cascade={"persist", "remove"})
      */
     private $Id;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Reponse::class, inversedBy="reclamation", cascade={"persist", "remove"})
+     */
+    private $reponse;
 
     // /**
     //  * @ORM\OneToOne(targetEntity=Reponse::class, mappedBy="reponse", cascade={"persist", "remove"})
@@ -57,6 +62,10 @@ class Reclamation
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
+    }
+
+    public function __toString() {
+        return (string)$this->id;
     }
 
     public function setDate(\DateTimeInterface $date): self
@@ -90,31 +99,21 @@ class Reclamation
         return $this;
     }
 
-    // public function getRecReponse(): ?Reponse
-    // {
-    //     return $this->rec_reponse;
-    // }
-
-    // public function setRecReponse(?Reponse $rec_reponse): self
-    // {
-    //     // unset the owning side of the relation if necessary
-    //     if ($rec_reponse === null && $this->rec_reponse !== null) {
-    //         $this->rec_reponse->setReponse(null);
-    //     }
-
-    //     // set the owning side of the relation if necessary
-    //     if ($rec_reponse !== null && $rec_reponse->getReponse() !== $this) {
-    //         $rec_reponse->setReponse($this);
-    //     }
-
-    //     $this->rec_reponse = $rec_reponse;
-
-    //     return $this;
-    // }
-
     public function setId(?self $Id): self
     {
         $this->Id = $Id;
+
+        return $this;
+    }
+
+    public function getReponse(): ?Reponse
+    {
+        return $this->reponse;
+    }
+
+    public function setReponse(?Reponse $reponse): self
+    {
+        $this->reponse = $reponse;
 
         return $this;
     }

@@ -1,24 +1,44 @@
+{% extends 'base-back-office.html.twig' %}
 
+{% block mainContent %}
     <h1 style="color:red;">liste des reponses </h1>
 
-    <table class="table"style="color:noir;">
+    <table class="table" style="color:noir;">
         <thead>
-        
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
+
+        <tr>
+            <th>type reclamation</th>
+            <th>message de reclamation</th>
+            <th>Date reclamation</th>
+            <th>reponse</th>
+            <th>repondre</th>
+            <th>Supprimer</th>
+        </tr>
         </thead>
         <tbody>
         {% for reponse in reponses %}
             <tr>
-                <td>{{ reponse.id }}</td>
+                <td>{{ reponse.type }}</td>
+                <td>{{ reponse.message }}</td>
                 <td>{{ reponse.date ? reponse.date|date('Y-m-d') : '' }}</td>
-                 <td>{{ reponse.reponse }}</td>
+                <td>{{ reponse.reponse }}</td>
                 <td>
-                    <a href="{{ path('reponse_show', {'id': reponse.id}) }}">show</a>
-                    <a href="{{ path('reponse_edit', {'id': reponse.id}) }}">edit</a>
+                    {% if reponse.reponse == null %}
+                        <a href="{{ path('reponse_new', {'id': reponse.recId}) }}">repondre</a>
+                    {% else %}
+                        <a href="{{ path('reponse_edit', {'id': reponse.recId}) }}">modifier</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if reponse.repp == null %}
+                        Pas de réponse
+                    {% else %}
+                        <form method="post" action="{{ path('reponse_delete', {'id': reponse.repp}) }}"
+                              onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.repp) }}">
+                            <button class="btn">Delete</button>
+                        </form>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -28,6 +48,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('reponse_new') }}">Create new</a>
+{% endblock %}
 

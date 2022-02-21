@@ -13,13 +13,12 @@ class ReclamationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date')
             ->add('type',ChoiceType::class, [
                 'choices' => [
-                    'aliment' => true,
-                    'exercice' => false,
-                    'coach ' => false,
-                    'autre' => false,
+                        'aliment' => 'aliment',
+                    'exercice' => 'exercice',
+                    'coach ' => 'coach',
+                    'autre' => 'autre',
                 ],])
             ->add('message')
         ;
