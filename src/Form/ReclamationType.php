@@ -20,7 +20,7 @@ class ReclamationType extends AbstractType
                     'coach ' => 'coach',
                     'autre' => 'autre',
                 ],])
-            ->add('message')
+            ->add('message' )
         ;
     }
 
