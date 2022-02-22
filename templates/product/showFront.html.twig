@@ -1,0 +1,116 @@
+{% extends 'base-front-office.html.twig' %}
+
+
+
+{% block mainContent %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+	<h1>Product</h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th style="color:white">Name</th>
+                <th style="color:white">Price</th>
+                <th style="color:white">Description</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+       
+            <tr>
+               
+                <td style="color:white">{{ product.name }}</td>
+                <td style="color:white">{{ product.price }}</td>
+                <td style="color:white">{{ product.description }}</td>
+                
+                <td>
+                    
+                    
+                    <a href="{{ path('product_front_index') }}",  button class="btn btn-light" >Back to list</a>
+                </td>
+            </tr>
+        
+            
+        
+	{# <table class="table">
+    
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ product.id }}</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ product.name }}</td>
+			</tr>
+			<tr>
+				<th>Price</th>
+				<td>{{ product.price }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ product.description }}</td>
+			</tr>
+			<tr>
+				<th>Quantity</th>
+				<td>{{ product.quantity }}</td>
+			</tr>
+			 #}
+
+		
+	</table>
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="
+			    width: 300px;
+			    margin-left: auto;
+			    margin-right: auto;">
+		<div class="carousel-indicators">
+			{% for image in product.images %}
+				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index -1 }} " class="{{ (loop.first) ? 'active' : '' }}" aria-current="true" aria-label="Slide 1"></button>
+				{# <div>
+																			<img src="" alt="Image" width="150">
+																			<a href="{{ path('product_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Delete</a>
+																		</div> #}
+
+			{% endfor %}
+		</div>
+		<div class="carousel-inner">
+			{% for image in product.images %}
+				<div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
+					<img src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="...">
+				</div>
+				{# <div>
+																			<img src="" alt="Image" width="150">
+																			<a href="{{ path('product_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Delete</a>
+																		</div> #}
+
+			{% endfor %}
+
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+
+
+    
+    
+{# <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    <a href="{{ path('product_index') }}", button class="btn btn-outline-default" >Back to products</a> #}
+
+	
+{% endblock %}

@@ -1,8 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Product index{% endblock %}
 
-{% block body %}
+{% block mainContent %}
     <h1>Product index</h1>
 
     <table class="table">
@@ -11,8 +10,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Categorie</th>
-                <th>Quantite</th>
+                <th>Description</th>
+                <th>Quantity</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,11 +21,11 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.categorie }}</td>
-                <td>{{ product.quantite }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.quantity }}</td>
                 <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                    <a href="{{ path('product_show', {'id': product.id}) }}", button class="btn btn-primary">show</a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}", button class="btn btn-warning">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +36,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('product_new') }}">Create new</a>
+    <a href="{{ path('product_new') }}" , button class="btn btn-success">Create new</a>
 {% endblock %}
