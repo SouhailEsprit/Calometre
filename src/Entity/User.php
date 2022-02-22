@@ -6,6 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotBlankValidator;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -13,6 +20,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('firstname', new NotBlank());
+        $metadata->addPropertyConstraint('lastname', new NotBlank());
+        $metadata->addPropertyConstraint('phonenumber', new Assert\GreaterThan(8));
+        $metadata->addPropertyConstraint('phonenumber', new NotBlank());
+        $metadata->addPropertyConstraint('phonenumber', new Assert\Positive());
+        
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -37,9 +53,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
-    private $lastname;
+    private $isVerified = false;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -47,19 +63,24 @@ class User implements UserInterface
     private $firstname;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $phonenumber;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isVerified = false;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $profile_picture;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isbanned=false;
 
     public function getId(): ?int
     {
@@ -94,8 +115,6 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -142,14 +161,14 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLastname(): ?string
+    public function isVerified(): bool
     {
-        return $this->lastname;
+        return $this->isVerified;
     }
 
-    public function setLastname(string $lastname): self
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->lastname = $lastname;
+        $this->isVerified = $isVerified;
 
         return $this;
     }
@@ -166,6 +185,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
     public function getPhonenumber(): ?int
     {
         return $this->phonenumber;
@@ -178,18 +209,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
-
     public function getProfilePicture(): ?string
     {
         return $this->profile_picture;
@@ -198,6 +217,18 @@ class User implements UserInterface
     public function setProfilePicture(?string $profile_picture): self
     {
         $this->profile_picture = $profile_picture;
+
+        return $this;
+    }
+
+    public function getIsbanned(): ?bool
+    {
+        return $this->isbanned;
+    }
+
+    public function setIsbanned(bool $isbanned): self
+    {
+        $this->isbanned = $isbanned;
 
         return $this;
     }

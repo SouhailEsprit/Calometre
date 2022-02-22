@@ -118,13 +118,24 @@
                             </li>
                         </ul>
                         <div class="right-area header-action d-flex align-items-center max-un">
-                            <a href="{{ path('app_logout') }}" class="cmn-btn">Logout</a>
-                            
+                        {% if app.user %}
+                                                <a href="{{path('user')}}" type="button" >
+                                {{app.user.firstname}}
+                            </a>
+                            <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg" > 
+                                Logout 
+                            </a>
+                                                {% else %}
+                                               
+                                        
+                            <button  type="button" class="login" data-bs-toggle="modal" data-bs-target="#loginMod">
+                                Login
                             </button>
                             <button type="button" class="cmn-btn reg" data-bs-toggle="modal"
                                     data-bs-target="#loginMod">
                                 Sign Up
                             </button>
+                            {% endif %}
                         </div>
                     </div>
                 </nav>
@@ -321,8 +332,9 @@
 
         {% block mainContent %}
         {% endblock %}
-    
+
 <!-- Main content end -->
+{% block footer %}
 
 <!-- Footer Area Start -->
 <footer class="footer-section">
@@ -362,6 +374,7 @@
     </div>
 </footer>
 <!-- Footer Area End -->
+{% endblock %}
 
 <!--==================================================================-->
 {% block scripts %}

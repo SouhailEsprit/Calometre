@@ -11,11 +11,9 @@ class ChangePasswordType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // $builder
-        //     ->add('password')
-        //     ->add('lastname')
-        //     ->add('firstname')
-        // ;
+        $builder
+            
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
