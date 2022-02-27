@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="epNW0fY" resname="ajouter avec succe">
+        <source>ajouter avec succe</source>
+        <target>add</target>
+      </trans-unit>
+      <trans-unit id="QAZ68z_" resname="ajouter">
+        <source>ajouter</source>
+        <target>add</target>
+      </trans-unit>
+      <trans-unit id="APnFM0V" resname="Ajouter">
+        <source>Ajouter</source>
+        <target>add</target>
+      </trans-unit>
+      <trans-unit id="EhVukhv" resname="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="EwPAaws" resname="type">
+        <source>type</source>
+        <target>type</target>
+      </trans-unit>
+      <trans-unit id="q1MKE_R" resname="message">
+        <source>message</source>
+        <target>message</target>
+      </trans-unit>
+      <trans-unit id="DodjLNR" resname="date">
+        <source>date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="xwYQJiS" resname="modifier">
+        <source>modifier</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="g0KJ6ww" resname="supprimer">
+        <source>supprimer</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="wDlObZa" resname="créer votre réclamation">
+        <source>créer votre réclamation</source>
+        <target>create your clame</target>
+      </trans-unit>
+      <trans-unit id="n_MzBeZ" resname="envoyer la réclamation">
+        <source>envoyer la réclamation</source>
+        <target>send the complaint</target>
+      </trans-unit>
+      <trans-unit id="UzFhc1Y" resname="Accueil">
+        <source>Accueil</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="Eov7DC0" resname="produits">
+        <source>produits</source>
+        <target>product</target>
+      </trans-unit>
+      <trans-unit id="eo6Guh8" resname="evenements">
+        <source>evenements</source>
+        <target>events</target>
+      </trans-unit>
+      <trans-unit id="pl0X_vI" resname="reclamations">
+        <source>reclamations</source>
+        <target>complaints</target>
+      </trans-unit>
+      <trans-unit id="CT59X9u" resname="contact">
+        <source>contact</source>
+        <target>contact</target>
+      </trans-unit>
+      <trans-unit id="tUKhz_F" resname="connexion">
+        <source>connexion</source>
+        <target>login</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

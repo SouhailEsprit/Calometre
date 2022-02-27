@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/arafat-font.css') }}">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/style.css') }}">
+
     {% block styles %}
     {% endblock %}
 </head>
@@ -50,13 +51,13 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link" aria-current="page" href="index.html">{%trans%} Accueil {% endtrans %}</a>
                             </li>
                             <li class="nav-item dropdown main-navbar">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">produits</a>
+                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">{%trans%} produits {% endtrans %}</a>
                                 <ul class="dropdown-menu main-menu shadow">
-                                    <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                                    <li><a class="nav-link" href="dashboard.html">tableau de bord</a></li>
                                     <li class="dropend sub-navbar">
                                         <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
                                            data-bs-auto-close="outside">Setting</a>
@@ -69,7 +70,7 @@
                             </li>
                             <li class="nav-item dropdown main-navbar">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">evenements</a>
+                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">{%trans%} evenements {% endtrans %}</a>
                                 <ul class="dropdown-menu main-menu shadow">
                                     <li><a class="nav-link" href="soccer-bets-2.html">Tennis</a></li>
                                     <li><a class="nav-link" href="soccer-bets-1.html">Soccer</a></li>
@@ -84,11 +85,12 @@
                                     <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>
                                     <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>
                                     <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>
+
                                 </ul>
                             </li>
                             <li class="nav-item dropdown main-navbar">
                                 <a class="nav-link dropdown-toggle active" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">Reclamations</a>
+                                   data-bs-toggle="dropdown" data-bs-auto-close="outside"> {%trans%} reclamations {% endtrans %} </a>
                                 <ul class="dropdown-menu main-menu shadow">
                                     <li class="dropend sub-navbar">
                                         <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
@@ -114,12 +116,12 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="contact.html">{%trans%} contact {% endtrans %}</a>
                             </li>
                         </ul>
                         <div class="right-area header-action d-flex align-items-center max-un">
                             <button type="button" class="login" data-bs-toggle="modal" data-bs-target="#loginMod">
-                                Login
+                                {%trans%} connexion {% endtrans %}
                             </button>
                             <button type="button" class="cmn-btn reg" data-bs-toggle="modal"
                                     data-bs-target="#loginMod">
@@ -131,6 +133,7 @@
             </div>
         </div>
     </div>
+
 </header>
 <!-- header-section end -->
 {% endblock %}

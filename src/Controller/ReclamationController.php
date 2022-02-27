@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/reclamation")
@@ -29,7 +30,7 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/new", name="reclamation_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager ,TranslatorInterface $translator): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
@@ -39,6 +40,8 @@ class ReclamationController extends AbstractController
             $reclamation->setDate(new \DateTime);
             $entityManager->persist($reclamation);
             $entityManager->flush();
+            $message=$translator->trans('ajouter avec succe');
+            $this->addFlash('message',$message);
 
             return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
