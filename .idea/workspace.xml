@@ -2,23 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daaf3122-ebcd-4fc5-bed0-9f027be29bb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/PostType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/post/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/post/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/post/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/post/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/post/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/post/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/129615772_727133794576065_7246005914489750399_o-621422b0522ac.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/129815341_727133594576085_4746743622881004592_o-62140b6004762.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/129815341_727133594576085_4746743622881004592_o-621413f502ffc.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/129889307_727133484576096_5158829625708395503_o-6214228dc2350.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/130464531_727133764576068_7614262300675478745_o-62142267273d7.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/70214045_2381815325418285_1922649523167952896_n-6213bc96436ef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/82081020_1489305381229569_7583137766112755712_n-6214a270d80a9.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/92360083_2552740678313236_5175207378592727040_n-621028d794e07.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/a8c73c782f2678c1fde6debef171a2c7-6214277c36932.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/affilliate-image-621d37c77c183.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/affilliate-image-621d3a207d78a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/affilliate-image-621d3a5776bdd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/affilliate-image-621d3b159da7d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/affilliate-image-621d3b3e255b8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-3-621d399c91442.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-6219331ba9232.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-6219332a58133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-62193343662cc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-6219334dcb702.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-62193358e352b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-6219336a5bab5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-62193373f35ed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-4-621933ed47e40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-5-621930dbb6000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/Event_images/blog-img-5-621d39f02fef3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CommentType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CommentRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/event_front/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/event_front/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/post/postAjax.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Calometre.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Calometre.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220211185230.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220211185510.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220211225217.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220214233907.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220214234446.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20220221221925.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20220214234658.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20220225210812.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EventType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PostRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base-back-office.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base-back-office.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base-front-office.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base-front-office.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" notifyAboutMissingVendor="false" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -180,17 +224,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/event_front" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\templates\event_front" />
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\src\Entity" />
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\templates" />
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\src\Controller" />
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\src\Form" />
-      <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\public\back-office\assets\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wassim\Desktop\Pidev3A\Calometre\public\front-office" />
@@ -214,7 +259,14 @@
       <workItem from="1644536008430" duration="2373000" />
       <workItem from="1644617877695" duration="4232000" />
       <workItem from="1644775629672" duration="3148000" />
-      <workItem from="1644881483874" duration="733000" />
+      <workItem from="1644881483874" duration="5252000" />
+      <workItem from="1645222394354" duration="8178000" />
+      <workItem from="1645460212209" duration="1585000" />
+      <workItem from="1645461889957" duration="104000" />
+      <workItem from="1645476370938" duration="13471000" />
+      <workItem from="1645783734726" duration="871000" />
+      <workItem from="1645811567082" duration="13511000" />
+      <workItem from="1646040120754" duration="11831000" />
     </task>
     <servers />
   </component>

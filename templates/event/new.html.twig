@@ -5,6 +5,10 @@
 
 {% block mainContent %}
 
+
+
+
+
     <h1>Create new Event</h1>
     <div class="card">
     <div class="card-body pb-2">
@@ -17,16 +21,24 @@
     <script src="{{ asset('back-office/assets/js/jquery-3.6.0.min.js') }}" type="application/javascript"></script>
     <script src="{{ asset('back-office/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     <!-- script -->
+
+
     <script>
-        $('#datepicker').datepicker({
-            autoclose: true
-        });
+
+
+
+
+            $('#endDate').datepicker({
+                autoclose: true
+            });
+            $('#startDate').datepicker({
+                autoclose: true
+            });
+
+
     </script>
-    <script>
-        $('#datepicker1').datepicker({
-            autoclose: true
-        });
-    </script>
+
+
 {% endblock %}
 
 {% endblock %}

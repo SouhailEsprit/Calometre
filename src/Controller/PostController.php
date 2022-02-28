@@ -23,8 +23,7 @@ class PostController extends AbstractController
             'posts' => $postRepository->findAll(),
         ]);
     }
-
-    /**
+   /**
      * @Route("/new", name="post_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -90,5 +89,19 @@ class PostController extends AbstractController
         }
 
         return $this->redirectToRoute('post_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+
+    /**
+     * @Route("//admin/display/searchajax ", name="ajaxsearchpost")
+     */
+    public function search(Request $request,PostRepository $pr)
+    {
+        $requestString = $request->get('searchValue');
+        $posts = $pr->searchPost($requestString);
+        return $this->render('post/postAjax.html.twig', [
+            "posts" => $posts
+        ]);
     }
 }

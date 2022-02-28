@@ -19,7 +19,7 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=24)
+     * @ORM\Column(type="string", length=50)
      */
     private $login;
 
@@ -27,6 +27,29 @@ class User
      * @ORM\Column(type="string", length=24)
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany (targetEntity=Comment::class, mappedBy="user")
+     */
+    private $usercomments;
+
+    /**
+     * @return mixed
+     */
+    public function getUsercomments()
+    {
+        return $this->usercomments;
+    }
+
+    /**
+     * @param mixed $usercomments
+     */
+    public function setUsercomments($usercomments): void
+    {
+        $this->usercomments = $usercomments;
+    }
+
+
 
     public function getId(): ?int
     {

@@ -33,6 +33,9 @@
             <tr>
                 <th>Lieu</th>
                 <td>{{ event.lieu }}</td>
+                <td>
+                    <img src="{{ asset('uploads/Event_images/' ~ event.image) }}"/>
+                </td>
             </tr>
         </tbody>
     </table>
