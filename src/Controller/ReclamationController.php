@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Historique;
 use App\Entity\Reclamation;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
@@ -42,7 +43,12 @@ class ReclamationController extends AbstractController
             $entityManager->flush();
             $message=$translator->trans('ajouter avec succe');
             $this->addFlash('message',$message);
-
+            $historique = new Historique();
+            $historique->setAction("add reclamation");
+            $historique->setModel("Reclamation");
+            $entityManager->persist($historique);
+            $historique->setDate(new \DateTime());
+            $entityManager->flush();
             return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -73,7 +79,12 @@ class ReclamationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $reclamation->setDate(new \DateTime);
             $entityManager->flush();
-
+            $historique = new Historique();
+            $historique->setAction("Edit reclamation");
+            $historique->setModel("Reclamation");
+            $historique->setDate(new \DateTime());
+            $entityManager->persist($historique);
+            $entityManager->flush();
             return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -90,6 +101,12 @@ class ReclamationController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$reclamation->getId(), $request->request->get('_token'))) {
             $entityManager->remove($reclamation);
+            $entityManager->flush();
+            $historique = new Historique();
+            $historique->setAction("Delete reclamation");
+            $historique->setModel("Reclamation");
+            $historique->setDate(new \DateTime());
+            $entityManager->persist($historique);
             $entityManager->flush();
         }
 
