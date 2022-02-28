@@ -18,7 +18,7 @@ class ProductRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Product::class);
     }
-
+  
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
@@ -47,4 +47,14 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findEntitiesByString($str)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p
+            FROM App:Product p
+        WHERE p.name LIKE :str'
+
+            )->setParameter('str', '%'.$str.'%')->getResult();
+    }
+
 }

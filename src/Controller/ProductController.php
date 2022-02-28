@@ -14,18 +14,47 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
+
+
 /**
  * @Route("/product")
  */
 class ProductController extends AbstractController
 {
+    /**
+     * @Route("/recherche_product", name="ajaxsearch")
+     */
+    public function searchAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $requestString = $request->get('q');
+        $product = $em->getRepository(Product::class)->findEntitiesByString($requestString);
+        if(!$product)
+        {
+            $result['product']['error']="product introuvable :( ";
+
+        }else{
+            $result['product']=$this->getRealEntities($product);
+            
+            
+        }
+        return new Response(json_encode($result));
+
+    }
+    public function getRealEntities($product){
+        foreach ($product as $product){
+            $realEntities[$product->getId()] = [$product->getName(), $product->getPrice(), $product->getDescription(), $product->getCategory(), $product->getQuantity(), $product->getImages()];
+        }
+        return $realEntities;
+    }
+
      
     /**
      * @Route("/", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/indextest.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }
@@ -72,7 +101,7 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
+     
     /**
      * @Route("/{id}", name="product_show", methods={"GET"})
      */
@@ -124,6 +153,7 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
     
 
     /**
@@ -184,6 +214,7 @@ class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
+  
     
 }
 
