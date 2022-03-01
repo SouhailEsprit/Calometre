@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerZfi3n3m/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerITZJQx8/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -57,13 +57,13 @@ $classes[] = 'Symfony\Component\Mailer\Transport';
 $classes[] = 'App\Controller\ReponseController';
 $classes[] = 'App\Controller\SecurityController';
 $classes[] = 'App\Controller\TypeExerciceController';
-$classes[] = 'App\Form\Aliment1Type';
+$classes[] = 'App\Form\AlimentType';
 $classes[] = 'App\Form\CategoriesType';
 $classes[] = 'App\Form\EventType';
 $classes[] = 'App\Form\ExerciceType';
 $classes[] = 'App\Form\PostType';
 $classes[] = 'App\Form\ProductType';
-$classes[] = 'App\Form\Recette1Type';
+$classes[] = 'App\Form\RecetteType';
 $classes[] = 'App\Form\ReclamationType';
 $classes[] = 'App\Form\RegistrationFormType';
 $classes[] = 'App\Form\ReponseType';
