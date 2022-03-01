@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2102d5cc614171eba2bc0eeb075fb7dae9db8f77',
+        'reference' => 'e93913b92ec4007c26d248a527fa2c0cf8b003f4',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2102d5cc614171eba2bc0eeb075fb7dae9db8f77',
+            'reference' => 'e93913b92ec4007c26d248a527fa2c0cf8b003f4',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -1254,6 +1254,15 @@
             'install_path' => __DIR__ . '/../symfony/yaml',
             'aliases' => array(),
             'reference' => 'd7f637cc0f0cc14beb0984f2bb50da560b271311',
+            'dev_requirement' => false,
+        ),
+        'symfonycasts/verify-email-bundle' => array(
+            'pretty_version' => 'v1.9.0',
+            'version' => '1.9.0.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfonycasts/verify-email-bundle',
+            'aliases' => array(),
+            'reference' => '1b843f75398f2ab44b1d282945988d635b87f561',
             'dev_requirement' => false,
         ),
         'theseer/tokenizer' => array(

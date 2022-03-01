@@ -1472,6 +1472,6 @@ class __TwigTemplate_37c3d35e7dd15a61a098f99cf61afc60efb8cc57e9c947dfc103e08abc5
 
 <!-- Mirrored from seantheme.com/hud/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 23:19:15 GMT -->
 </html>
-", "base-back-office.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\base-back-office.html.twig");
+", "base-back-office.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\base-back-office.html.twig");
     }
 }

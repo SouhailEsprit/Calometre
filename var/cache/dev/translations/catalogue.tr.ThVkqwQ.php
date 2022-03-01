@@ -102,6 +102,9 @@ $catalogue = new MessageCatalogue('tr', array (
     'Each element of this collection should satisfy its own set of constraints.' => 'Bu gruptaki her öğe kendi kısıtlamalarını karşılamalıdır.',
     'This value is not a valid International Securities Identification Number (ISIN).' => 'Bu değer geçerli bir Uluslararası Menkul Kıymetler Kimlik Numarası değil (ISIN).',
     'This value should be a valid expression.' => 'Bu değer geçerli bir ifade olmalıdır.',
+    'This value is not a valid CSS color.' => 'Bu değer geçerli bir CSS rengi değil.',
+    'This value is not a valid CIDR notation.' => 'Bu değer geçerli bir CIDR yazımı değil.',
+    'The value of the netmask should be between {{ min }} and {{ max }}.' => 'Netmask\'in değeri {{ min }} ve {{ max }} arasında olmaldır.',
     'This form should not contain extra fields.' => 'Form ekstra alanlar içeremez.',
     'The uploaded file was too large. Please try to upload a smaller file.' => 'Yüklenen dosya boyutu çok yüksek. Lütfen daha küçük bir dosya yüklemeyi deneyin.',
     'The CSRF token is invalid. Please try to resubmit the form.' => 'CSRF fişi geçersiz. Formu tekrar göndermeyi deneyin.',
@@ -334,6 +337,9 @@ $catalogueEn = new MessageCatalogue('en', array (
     '%count% day|%count% days' => '%count% day|%count% days',
     '%count% hour|%count% hours' => '%count% hour|%count% hours',
     '%count% minute|%count% minutes' => '%count% minute|%count% minutes',
+    'The link to verify your email has expired. Please request a new link.' => 'The link to verify your email has expired. Please request a new link.',
+    'The link to verify your email is invalid. Please request a new link.' => 'The link to verify your email is invalid. Please request a new link.',
+    'The link to verify your email appears to be for a different account or email. Please request a new link.' => 'The link to verify your email appears to be for a different account or email. Please request a new link.',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueEn);

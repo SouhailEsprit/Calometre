@@ -26,14 +26,14 @@ class __TwigTemplate_7f7af80accdd4a113625799e6e5261940ba5f4aae0b5ebf27befe9c85f7
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'mainContent' => [$this, 'block_mainContent'],
+            'body' => [$this, 'block_body'],
         ];
     }
 
     protected function doGetParent(array $context)
     {
         // line 1
-        return "base-back-office.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_7f7af80accdd4a113625799e6e5261940ba5f4aae0b5ebf27befe9c85f7
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "aliment/edit.html.twig"));
 
-        $this->parent = $this->loadTemplate("base-back-office.html.twig", "aliment/edit.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "aliment/edit.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -75,14 +75,14 @@ class __TwigTemplate_7f7af80accdd4a113625799e6e5261940ba5f4aae0b5ebf27befe9c85f7
     }
 
     // line 5
-    public function block_mainContent($context, array $blocks = [])
+    public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "mainContent"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "mainContent"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "    <h1>Edit Aliment</h1>
@@ -127,11 +127,11 @@ class __TwigTemplate_7f7af80accdd4a113625799e6e5261940ba5f4aae0b5ebf27befe9c85f7
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base-back-office.html.twig' %}
+        return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}Edit Aliment{% endblock %}
 
-{% block mainContent %}
+{% block body %}
     <h1>Edit Aliment</h1>
 
     {{ include('aliment/_form.html.twig', {'button_label': 'Update'}) }}

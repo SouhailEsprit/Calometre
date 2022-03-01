@@ -214,6 +214,6 @@ class __TwigTemplate_7f8b53ff385596873193c6d8455faa3f6c3f07cb63daa94fab3c64dd384
 
     <a href=\"{{ path('recette_crud_new') }}\">Create new</a>
 {% endblock %}
-", "recette_crud/index.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\recette_crud\\index.html.twig");
+", "recette_crud/index.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\recette_crud\\index.html.twig");
     }
 }

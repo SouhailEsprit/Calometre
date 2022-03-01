@@ -26,14 +26,14 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
 
         $this->blocks = [
             'title' => [$this, 'block_title'],
-            'mainContent' => [$this, 'block_mainContent'],
+            'body' => [$this, 'block_body'],
         ];
     }
 
     protected function doGetParent(array $context)
     {
         // line 1
-        return "base-back-office.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "recette/show.html.twig"));
 
-        $this->parent = $this->loadTemplate("base-back-office.html.twig", "recette/show.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "recette/show.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -75,14 +75,14 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
     }
 
     // line 5
-    public function block_mainContent($context, array $blocks = [])
+    public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "mainContent"));
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "mainContent"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "    <h1>Recette</h1>
@@ -97,40 +97,41 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
         echo "</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>";
-        // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 16, $this->source); })()), "name", [], "any", false, false, false, 16), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
                 <th>Categorie</th>
                 <td>";
-        // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 20, $this->source); })()), "categorie", [], "any", false, false, false, 20), "html", null, true);
+        // line 16
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 16, $this->source); })()), "categorie", [], "any", false, false, false, 16), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>La liste des aliments</th>
-
+                <th>Regime</th>
+                <td>";
+        // line 20
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 20, $this->source); })()), "regime", [], "any", false, false, false, 20), "html", null, true);
+        echo "</td>
             </tr>
-
-
+            <tr>
+                <th>Listaliment</th>
+                <td>";
+        // line 24
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 24, $this->source); })()), "listaliment", [], "any", false, false, false, 24), "html", null, true);
+        echo "</td>
+            </tr>
         </tbody>
     </table>
 
     <a href=\"";
-        // line 31
+        // line 29
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_index");
         echo "\">back to list</a>
 
     <a href=\"";
-        // line 33
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 33, $this->source); })()), "id", [], "any", false, false, false, 33)]), "html", null, true);
+        // line 31
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 31, $this->source); })()), "id", [], "any", false, false, false, 31)]), "html", null, true);
         echo "\">edit</a>
 
     ";
-        // line 35
+        // line 33
         echo twig_include($this->env, $context, "recette/_delete_form.html.twig");
         echo "
 ";
@@ -154,16 +155,16 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
 
     public function getDebugInfo()
     {
-        return array (  134 => 35,  129 => 33,  124 => 31,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  135 => 33,  130 => 31,  125 => 29,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base-back-office.html.twig' %}
+        return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}Recette{% endblock %}
 
-{% block mainContent %}
+{% block body %}
     <h1>Recette</h1>
 
     <table class=\"table\">
@@ -173,19 +174,17 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
                 <td>{{ recette.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>{{ recette.name }}</td>
-            </tr>
-            <tr>
                 <th>Categorie</th>
                 <td>{{ recette.categorie }}</td>
             </tr>
             <tr>
-                <th>La liste des aliments</th>
-
+                <th>Regime</th>
+                <td>{{ recette.regime }}</td>
             </tr>
-
-
+            <tr>
+                <th>Listaliment</th>
+                <td>{{ recette.listaliment }}</td>
+            </tr>
         </tbody>
     </table>
 

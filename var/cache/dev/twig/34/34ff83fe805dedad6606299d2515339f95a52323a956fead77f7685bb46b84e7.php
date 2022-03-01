@@ -140,6 +140,6 @@ class __TwigTemplate_d378310632358b27e65eb268222be9146feb601f02d040a81008e741a45
 
     {{ include('aliment_crud/_delete_form.html.twig') }}
 {% endblock %}
-", "aliment_crud/edit.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\aliment_crud\\edit.html.twig");
+", "aliment_crud/edit.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\aliment_crud\\edit.html.twig");
     }
 }

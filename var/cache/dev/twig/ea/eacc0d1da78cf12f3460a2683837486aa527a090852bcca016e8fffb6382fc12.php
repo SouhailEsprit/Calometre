@@ -84,6 +84,6 @@ class __TwigTemplate_09667189a03974bee26021aebab0a70e334430cea46f2b307c85846c4f2
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "recette_crud/_form.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\recette_crud\\_form.html.twig");
+", "recette_crud/_form.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\recette_crud\\_form.html.twig");
     }
 }

@@ -161,6 +161,14 @@ $catalogue = new MessageCatalogue('sk', array (
     'Too many failed login attempts, please try again in %minutes% minute.' => 'Príliš veľa neúspešných pokusov o prihlásenie. Skúste to znova o %minutes% minútu.',
     'Too many failed login attempts, please try again in %minutes% minutes.' => 'Príliš veľa neúspešných pokusov o prihlásenie. Skúste to znova o %minutes% minút.',
   ),
+  'VerifyEmailBundle' => 
+  array (
+    '%count% year|%count% years' => '%count% rok|%count% roky|%count% rokov',
+    '%count% month|%count% months' => '%count% mesiac|%count% mesiace|%count% mesiacov',
+    '%count% day|%count% days' => '%count% den|%count% dni|%count% dní',
+    '%count% hour|%count% hours' => '%count% hodina|%count% hodiny|%count% hodín',
+    '%count% minute|%count% minutes' => '%count% minúta|%count% minúty|%count% minút',
+  ),
 ));
 
 $catalogueEn = new MessageCatalogue('en', array (
@@ -329,6 +337,9 @@ $catalogueEn = new MessageCatalogue('en', array (
     '%count% day|%count% days' => '%count% day|%count% days',
     '%count% hour|%count% hours' => '%count% hour|%count% hours',
     '%count% minute|%count% minutes' => '%count% minute|%count% minutes',
+    'The link to verify your email has expired. Please request a new link.' => 'The link to verify your email has expired. Please request a new link.',
+    'The link to verify your email is invalid. Please request a new link.' => 'The link to verify your email is invalid. Please request a new link.',
+    'The link to verify your email appears to be for a different account or email. Please request a new link.' => 'The link to verify your email appears to be for a different account or email. Please request a new link.',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueEn);

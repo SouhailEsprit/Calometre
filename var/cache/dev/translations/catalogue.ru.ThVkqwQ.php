@@ -168,6 +168,9 @@ $catalogue = new MessageCatalogue('ru', array (
     '%count% day|%count% days' => '%count% день|%count% дня|%count% дней',
     '%count% hour|%count% hours' => '%count% час|%count% часа|%count% часов',
     '%count% minute|%count% minutes' => '%count% минута|%count% минуты|%count% минут',
+    'The link to verify your email has expired. Please request a new link.' => 'Срок действия ссылки для проверки вашей электронной почты истек. Пожалуйста, запросите новую ссылку.',
+    'The link to verify your email is invalid. Please request a new link.' => 'Ссылка для проверки вашей электронной почты недействительна. Пожалуйста, запросите новую ссылку.',
+    'The link to verify your email appears to be for a different account or email. Please request a new link.' => 'Ссылка для проверки вашей электронной почты, по-видимому, предназначена для другой учетной записи или электронной почты. Пожалуйста, запросите новую ссылку.',
   ),
 ));
 
@@ -337,6 +340,9 @@ $catalogueEn = new MessageCatalogue('en', array (
     '%count% day|%count% days' => '%count% day|%count% days',
     '%count% hour|%count% hours' => '%count% hour|%count% hours',
     '%count% minute|%count% minutes' => '%count% minute|%count% minutes',
+    'The link to verify your email has expired. Please request a new link.' => 'The link to verify your email has expired. Please request a new link.',
+    'The link to verify your email is invalid. Please request a new link.' => 'The link to verify your email is invalid. Please request a new link.',
+    'The link to verify your email appears to be for a different account or email. Please request a new link.' => 'The link to verify your email appears to be for a different account or email. Please request a new link.',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueEn);

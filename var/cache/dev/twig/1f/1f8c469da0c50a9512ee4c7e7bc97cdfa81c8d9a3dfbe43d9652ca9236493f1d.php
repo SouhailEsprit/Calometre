@@ -119,7 +119,7 @@ class __TwigTemplate_0627dece5d47b5aebb80a4f3a5273ba8da9adc94cdd20c85db3d235a21d
            # </tr>
           #  <tr>
             #   <th>Liste Recette</th>
-              #  
+              #
           #  </tr>
         </tbody>
     </table>
@@ -191,7 +191,7 @@ class __TwigTemplate_0627dece5d47b5aebb80a4f3a5273ba8da9adc94cdd20c85db3d235a21d
            # </tr>
           #  <tr>
             #   <th>Liste Recette</th>
-              #  
+              #
           #  </tr>
         </tbody>
     </table>
@@ -202,6 +202,6 @@ class __TwigTemplate_0627dece5d47b5aebb80a4f3a5273ba8da9adc94cdd20c85db3d235a21d
 
     {{ include('aliment_crud/_delete_form.html.twig') }}
 {% endblock %}
-", "aliment_crud/show.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\aliment_crud\\show.html.twig");
+", "aliment_crud/show.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\aliment_crud\\show.html.twig");
     }
 }

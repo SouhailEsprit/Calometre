@@ -68,10 +68,6 @@ class __TwigTemplate_cda83c5407a46ae522d5bddc40dfa27095cf35d421eb8646c5d7fb2e7c0
         echo "
 <h1>Home</h1>
 
-
-
-
-
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -104,12 +100,8 @@ class __TwigTemplate_cda83c5407a46ae522d5bddc40dfa27095cf35d421eb8646c5d7fb2e7c0
 
 <h1>Home</h1>
 
-
-
-
-
 {% endblock %}
 
-", "home/index.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\home\\index.html.twig");
+", "home/index.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\home\\index.html.twig");
     }
 }

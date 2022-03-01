@@ -79,6 +79,6 @@ class __TwigTemplate_96cc9d6ccbbe2f337e5456ae6ae43b85aacb4a0d49e27b20d6f1aa1ba6a
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ recette.id) }}\">
     <button class=\"btn\">Delete</button>
 </form>
-", "recette_crud/_delete_form.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\recette_crud\\_delete_form.html.twig");
+", "recette_crud/_delete_form.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\recette_crud\\_delete_form.html.twig");
     }
 }

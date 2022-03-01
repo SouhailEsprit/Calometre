@@ -140,6 +140,6 @@ class __TwigTemplate_aa675183e8744b7e7e362ce3ecfc04dd85b98f99eb919272f10782f96df
 
     {{ include('recette_crud/_delete_form.html.twig') }}
 {% endblock %}
-", "recette_crud/edit.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\recette_crud\\edit.html.twig");
+", "recette_crud/edit.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\recette_crud\\edit.html.twig");
     }
 }

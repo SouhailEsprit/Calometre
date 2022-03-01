@@ -133,6 +133,6 @@ class __TwigTemplate_4c70c50a9452d1b3c58dcd8fa40515afc35e32d085da48710ed4e30f37f
 
     <a href=\"{{ path('aliment_crud_index') }}\">back to list</a>
 {% endblock %}
-", "aliment_crud/new.html.twig", "C:\\Users\\Ahmed Mahjoub\\Workspace\\Calometre\\templates\\aliment_crud\\new.html.twig");
+", "aliment_crud/new.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\aliment_crud\\new.html.twig");
     }
 }
