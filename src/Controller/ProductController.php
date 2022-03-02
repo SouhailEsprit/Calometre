@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Images;
 use App\Entity\Product;
 use App\Form\Product1Type;
@@ -26,37 +27,39 @@ class ProductController extends AbstractController
      */
     public function searchAction(Request $request)
     {
-        $em=$this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $requestString = $request->get('q');
         $product = $em->getRepository(Product::class)->findEntitiesByString($requestString);
-        if(!$product)
-        {
-            $result['product']['error']="product introuvable :( ";
-
-        }else{
-            $result['product']=$this->getRealEntities($product);
-            
-            
+        if (!$product) {
+            $result['product']['error'] = "product introuvable :( ";
+        } else {
+            $result['product'] = $this->getRealEntities($product);
         }
         return new Response(json_encode($result));
-
     }
-    public function getRealEntities($product){
-        foreach ($product as $product){
-            $realEntities[$product->getId()] = [$product->getName(), $product->getPrice(), $product->getDescription(), $product->getCategory(), $product->getQuantity(), $product->getImages()];
+    public function getRealEntities($product)
+    {
+        foreach ($product as $product) {
+            $realEntities[$product->getId()] = [$product->getName(), $product->getPrice(), $product->getDescription(), $product->getCategory(), $product->getQuantity(), $product->getImage()];
         }
         return $realEntities;
     }
 
-     
+
     /**
      * @Route("/", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('product/indextest.html.twig', [
-            'products' => $productRepository->findAll(),
-        ]);
+        if (isset($_GET["q"])) {
+            return $this->render('product/indextest.html.twig', [
+                'products' => $productRepository->findEntitiesByString($_GET["q"]),
+            ]);
+        } else {
+            return $this->render('product/indextest.html.twig', [
+                'products' => $productRepository->findAll(),
+            ]);
+        }
     }
 
     /**
@@ -69,25 +72,24 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $images = $form->get('images')->getData();
 
-            
-            foreach($images as $image){
-                
+
+            foreach ($images as $image) {
+
                 $fichier = md5(uniqid()) . '.' . $image->guessExtension();
 
-                
+
                 $image->move(
                     $this->getParameter('images_directory'),
                     $fichier
                 );
 
-                
+
                 $img = new Images();
                 $img->setName($fichier);
                 $product->addImage($img);
-
             }
 
             $entityManager->persist($product);
@@ -101,7 +103,7 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-     
+
     /**
      * @Route("/{id}", name="product_show", methods={"GET"})
      */
@@ -121,88 +123,88 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            
-             $images = $form->get('images')->getData();
 
-            
-             foreach($images as $image){
-                
-                 $fichier = md5(uniqid()) . '.' . $image->guessExtension();
- 
-                
-                 $image->move(
-                     $this->getParameter('images_directory'),
-                     $fichier
-                 );
- 
-                 
-                 $img = new Images();
-                 $img->setName($fichier);
-                 $product->addImage($img);
-             }
- 
-             $this->getDoctrine()->getManager()->flush();
- 
-             return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+
+            $images = $form->get('images')->getData();
+
+
+            foreach ($images as $image) {
+
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+
+
+                $img = new Images();
+                $img->setName($fichier);
+                $product->addImage($img);
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
         }
-            
+
 
         return $this->render('product/edit.html.twig', [
             'product' => $product,
             'form' => $form->createView(),
         ]);
     }
-    
-    
+
+
 
     /**
      * @Route("/{id}", name="product_delete", methods={"POST"})
      */
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $entityManager->remove($product);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
-    
-   /**
+
+    /**
      * @Route("/delete/image/{id}", name="product_delete_image", methods={"DELETE"})
      */
-    public function deleteImage(Images $image, Request $request ){
-        
+    public function deleteImage(Images $image, Request $request)
+    {
+
         $data = json_decode($request->getContent(), true);
 
-      
-        if($this->isCsrfTokenValid('delete'.$image->getId(), $data['_token'])){
-            
-            $nom = $image->getName();
-            
-            unlink($this->getParameter('images_directory').'/'.$nom);
 
-            
+        if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
+
+            $nom = $image->getName();
+
+            unlink($this->getParameter('images_directory') . '/' . $nom);
+
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($image);
             $em->flush();
 
-            
+
             return new JsonResponse(['success' => 1]);
-        }else{
+        } else {
             return new JsonResponse(['error' => 'Token Invalide'], 400);
-            
         }
     }
-   /**
+    /**
      * @Route("/front/products", name="product_front_index", methods={"GET"})
      */
     public function indexFront(ProductRepository $productRepository): Response
     {
-        return $this->render('product/indexFront.html.twig', [
+        return $this->render('product/indexFrontTest.html.twig', [
             'products' => $productRepository->findAll(),
-            
+
         ]);
     }
     /**
@@ -214,8 +216,4 @@ class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
-  
-    
 }
-
-

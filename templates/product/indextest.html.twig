@@ -15,12 +15,15 @@
 
 </head>
 <body class='pace-top'>
-<form class="w-search">
+<form class="w-search" method="get">
         <div class="sidebar-search">
 
             <div class="input-group custom-search-form">
 
-                <input type="text" id="search" class="form-control pl-3" placeholder="Search here">
+                <input type="text" id="search" name="q" class="form-control pl-3" placeholder="Search here">
+                
+                 
+
             </div>
             <!-- /input-group -->
         </div>
@@ -35,6 +38,7 @@
 
 
     </form>
+
 <div id="app" class="app app-content-full-height app-without-sidebar app-without-header">
 
 <div id="content" class="app-content p-1 ps-xl-4 pe-xl-4 pt-xl-3 pb-xl-3">
@@ -219,47 +223,5 @@
     
   
 </body>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        var searchRequest = null;
-        $("#search").keyup(function() {
-            var minlength = 1;
-            var that = this;
-            var value = $(this).val();
-            var entitySelector = $("#entitiesNav").html('');
-            if (value.length >= minlength ) {
-                if (searchRequest != null)
-                    searchRequest.abort();
-                searchRequest = $.ajax({
-                    type: "GET",
-                    url: "{{ path('ajaxsearch') }}",
-                    data: {
-                        'q' : value
-                    },
-                    dataType: "text",
-                    success: function(msg){
-                        //we need to check if the value is the same
-                        if (value==$(that).val()) {
-                            var result = JSON.parse(msg);
-                            $.each(result, function(key, arr) {
-                                $.each(arr, function(id, value) {
-                                    if (key == 'product') {
-                                        if (id != 'error') {
-                                            entitySelector.append('<li>' +
-                                                    '<a href="https://127.0.0.1:8000/product/'+id+'">' + '<h5><b>  '+value+  '</b></h5></a>'+'<a href="https://127.0.0.1:8000/product/'+id+'"><img src="https://127.0.0.1:8000/uploads/products/'+value[3]+'" height="90" width="90">  </a> </li>');
-                                        } else {
-                                            entitySelector.append('<li class="errorLi">'+value+'</li>');
-                                        }
-                                    }
-                                });
-                            });
-                        }
-                     }
-                });
-            }
-        });
-    });
-</script>
 {% endblock %}

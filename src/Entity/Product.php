@@ -150,6 +150,9 @@ class Product
         return $this->images;
     }
 
+    public function getImage(): string{
+        return $this->images[0]->getName();
+    }
     public function addImage(Images $image): self
     {
         if (!$this->images->contains($image)) {
@@ -171,5 +174,9 @@ class Product
 
         return $this;
     }
+    public function __toString()
+{
+    return (string) $this->getCategory();
+}
     
 }
