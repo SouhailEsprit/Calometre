@@ -7,6 +7,7 @@ use App\Entity\Reclamation;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,10 +22,14 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/", name="reclamation_index", methods={"GET"})
      */
-    public function index(ReclamationRepository $reclamationRepository): Response
-    {
+    public function index(Request $request,PaginatorInterface $paginator): Response
+    {$reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->findBy([]);
+        $reclamation=$paginator->paginate($reclamation,
+        $request->query->getInt('page',1),
+        10);
         return $this->render('reclamation/index.html.twig', [
-            'reclamations' => $reclamationRepository->findAll(),
+            'reclamation'=>$reclamation
+
         ]);
     }
 
@@ -43,11 +48,8 @@ class ReclamationController extends AbstractController
             $entityManager->flush();
             $message=$translator->trans('ajouter avec succe');
             $this->addFlash('message',$message);
-            $historique = new Historique();
-            $historique->setAction("add reclamation");
-            $historique->setModel("Reclamation");
-            $entityManager->persist($historique);
-            $historique->setDate(new \DateTime());
+
+
             $entityManager->flush();
             return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);
         }

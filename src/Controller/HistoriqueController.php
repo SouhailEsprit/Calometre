@@ -19,7 +19,7 @@ class HistoriqueController extends AbstractController
     /**
      * @Route("/", name="historique_index", methods={"GET"})
      */
-    public function index(HistoriqueRepository $historiqueRepository): Response
+    public function index(HistoriqueRepository $historiqueRepository ): Response
     {
         return $this->render('historique/index.html.twig', [
             'historiques' => $historiqueRepository->findAll(),
