@@ -9,9 +9,10 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>nom</th>
                 <th>Categorie</th>
                 <th>Regime</th>
-                <th>Listaliment</th>
+                <th>Liste des aliments</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,16 +20,16 @@
         {% for recette in recettes %}
             <tr>
                 <td>{{ recette.id }}</td>
+                <td>{{ recette.name }}</td>
                 <td>{{ recette.categorie }}</td>
                 <td>{{ recette.regime }}</td>
                 <td> {% for aliment in recette.aliments %}
-                {{ aliment.name}}<
+                {{ aliment.name}}
                 {% endfor %}</td>
 
                 <td>
                     <a href="{{ path('recette_show', {'id': recette.id}) }}">show</a>
                     <a href="{{ path('recette_edit', {'id': recette.id}) }}">edit</a>
-                    <a href="{{ path('recette_delete', {'id': recette.id}) }}">delete</a>
                 </td>
             </tr>
         {% else %}

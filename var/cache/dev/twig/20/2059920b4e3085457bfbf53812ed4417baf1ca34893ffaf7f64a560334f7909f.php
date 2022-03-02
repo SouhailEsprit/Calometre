@@ -91,70 +91,71 @@ class __TwigTemplate_afa083d235e9eeef34bb80575c0343171edcd5468f06a6ad44827d7f0d2
         <thead>
             <tr>
                 <th>Id</th>
+                <th>nom</th>
                 <th>Categorie</th>
                 <th>Regime</th>
-                <th>Listaliment</th>
+                <th>Liste des aliments</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 19
+        // line 20
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["recettes"]) || array_key_exists("recettes", $context) ? $context["recettes"] : (function () { throw new RuntimeError('Variable "recettes" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["recettes"]) || array_key_exists("recettes", $context) ? $context["recettes"] : (function () { throw new RuntimeError('Variable "recettes" does not exist.', 20, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["recette"]) {
-            // line 20
+            // line 21
             echo "            <tr>
                 <td>";
-            // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 21), "html", null, true);
-            echo "</td>
-                <td>";
             // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "categorie", [], "any", false, false, false, 22), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 22), "html", null, true);
             echo "</td>
                 <td>";
             // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "regime", [], "any", false, false, false, 23), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "name", [], "any", false, false, false, 23), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "categorie", [], "any", false, false, false, 24), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "regime", [], "any", false, false, false, 25), "html", null, true);
             echo "</td>
                 <td> ";
-            // line 24
+            // line 26
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["recette"], "aliments", [], "any", false, false, false, 24));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["recette"], "aliments", [], "any", false, false, false, 26));
             foreach ($context['_seq'] as $context["_key"] => $context["aliment"]) {
-                // line 25
+                // line 27
                 echo "                ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "name", [], "any", false, false, false, 25), "html", null, true);
-                echo "<
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "name", [], "any", false, false, false, 27), "html", null, true);
+                echo "
                 ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['aliment'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 26
+            // line 28
             echo "</td>
 
                 <td>
                     <a href=\"";
-            // line 29
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_show", ["id" => twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 29)]), "html", null, true);
+            // line 31
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_show", ["id" => twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 31)]), "html", null, true);
             echo "\">show</a>
                     <a href=\"";
-            // line 30
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+            // line 32
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 32)]), "html", null, true);
             echo "\">edit</a>
-                    <a href=\"";
-            // line 31
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["recette"], "id", [], "any", false, false, false, 31)]), "html", null, true);
-            echo "\">delete</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 35
+            // line 36
             echo "            <tr>
                 <td colspan=\"5\">no records found</td>
             </tr>
@@ -163,12 +164,12 @@ class __TwigTemplate_afa083d235e9eeef34bb80575c0343171edcd5468f06a6ad44827d7f0d2
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recette'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 40
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 42
+        // line 43
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_new");
         echo "\">Create new</a>
 ";
@@ -192,7 +193,7 @@ class __TwigTemplate_afa083d235e9eeef34bb80575c0343171edcd5468f06a6ad44827d7f0d2
 
     public function getDebugInfo()
     {
-        return array (  172 => 42,  167 => 39,  158 => 35,  149 => 31,  145 => 30,  141 => 29,  136 => 26,  127 => 25,  123 => 24,  119 => 23,  115 => 22,  111 => 21,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  173 => 43,  168 => 40,  159 => 36,  150 => 32,  146 => 31,  141 => 28,  132 => 27,  128 => 26,  124 => 25,  120 => 24,  116 => 23,  112 => 22,  109 => 21,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -208,9 +209,10 @@ class __TwigTemplate_afa083d235e9eeef34bb80575c0343171edcd5468f06a6ad44827d7f0d2
         <thead>
             <tr>
                 <th>Id</th>
+                <th>nom</th>
                 <th>Categorie</th>
                 <th>Regime</th>
-                <th>Listaliment</th>
+                <th>Liste des aliments</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -218,16 +220,16 @@ class __TwigTemplate_afa083d235e9eeef34bb80575c0343171edcd5468f06a6ad44827d7f0d2
         {% for recette in recettes %}
             <tr>
                 <td>{{ recette.id }}</td>
+                <td>{{ recette.name }}</td>
                 <td>{{ recette.categorie }}</td>
                 <td>{{ recette.regime }}</td>
                 <td> {% for aliment in recette.aliments %}
-                {{ aliment.name}}<
+                {{ aliment.name}}
                 {% endfor %}</td>
 
                 <td>
                     <a href=\"{{ path('recette_show', {'id': recette.id}) }}\">show</a>
                     <a href=\"{{ path('recette_edit', {'id': recette.id}) }}\">edit</a>
-                    <a href=\"{{ path('recette_delete', {'id': recette.id}) }}\">delete</a>
                 </td>
             </tr>
         {% else %}

@@ -6,6 +6,7 @@ use App\Repository\RecetteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RecetteRepository::class)
@@ -21,6 +22,8 @@ class Recette
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez renseinger ce champ")
+     * @Assert\Length(min=2,minMessage="Le nom de la comporte au moins 2 caractére",max=25,maxMessage="Le nom de la recette comporte au plus 25 caractére")
      */
     private $Name;
 

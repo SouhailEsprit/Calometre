@@ -8,13 +8,6 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-
-
-
-
-
-
-
     <h1>Liste des aliments</h1>
 
     <table class="table">
@@ -24,6 +17,7 @@
                 <th>Name</th>
                 <th>Catégorie</th>
                 <th>Calories</th>
+                <th>Listes des régimes</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -34,6 +28,8 @@
                 <td>{{ aliment.name}}</td>
                 <td>{{ aliment.categorie }}</td>
                 <td>{{ aliment.calories }}</td>
+                <td> {% for recette in aliment.Listerecette %}
+                    {{ aliment.name}}</td>{% endfor %}
                 <td>
                     <a href="{{ path('aliment_show', {'id': aliment.id}) }}">show</a>
                     <a href="{{ path('aliment_edit', {'id': aliment.id}) }}">edit</a>
