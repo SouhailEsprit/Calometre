@@ -15,8 +15,20 @@ class RecetteType extends AbstractType
         $builder
 
             ->add('name')
+            ->add('regime', ChoiceType::class,
+                [ 'choices'=> [
+
+                    'Hyperprotéiné'=>'Hyperprotéiné','Protéiné'=>'Protéiné','Dissocié'=>'Dissocié','Hypocalorique'=>'Hypocalorique','Végétarien'=>'Végétarien','Anticellulite.'=>'Anticellulite.',
+                    'Sans sel'=>'Sans sel','Hypoglucidique'=>'Hypoglucidique'
+                ],])
+
             ->add('aliments')
-            ->add('categorie')
+            ->add('categorie', ChoiceType::class,
+                [ 'choices'=> [
+
+                    'Sucrée'=>'Sucrée','Acide'=>'Acide','Salé'=>'Salé','Amer'=>'Amer','Umami'=>'Umami'
+
+                ],])
         ;
     }
 

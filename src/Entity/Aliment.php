@@ -30,7 +30,9 @@ class Aliment
     private $calories;
 
     /**
+     * @var \Doctrine\Common\Collections
      * @ORM\ManyToMany(targetEntity=Recette::class, inversedBy="aliments")
+     * @ORM\JoinTable(name="aliment_recette")
      */
     private $Listerecette;
 

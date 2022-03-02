@@ -21,7 +21,9 @@
             </tr>
             <tr>
                 <th>Listaliment</th>
-                <td>{{ recette.listaliment }}</td>
+                {% for aliment in recette.aliments %}
+                    <td>{{ aliment.name}}</td>
+                {% endfor %}
             </tr>
         </tbody>
     </table>

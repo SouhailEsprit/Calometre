@@ -25,7 +25,6 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
             'mainContent' => [$this, 'block_mainContent'],
         ];
     }
@@ -55,25 +54,6 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
 
     }
 
-    // line 3
-    public function block_title($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo "Hello AlimentController!";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
     // line 5
     public function block_mainContent($context, array $blocks = [])
     {
@@ -90,67 +70,58 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class=\"example-wrapper\">
-
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"";
-        // line 16
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("C:/Users/Ahmed Mahjoub/Workspace/Calometre/src/Controller/AlimentController.php", 0), "html", null, true);
-        echo "\">src/Controller/AlimentController.php</a></code></li>
-        <li>Your template at <code><a href=\"";
-        // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("C:/Users/Ahmed Mahjoub/Workspace/Calometre/templates/aliment/index.html.twig", 0), "html", null, true);
-        echo "\">templates/aliment/index.html.twig</a></code></li>
-    </ul>
-</div>
 
 
 
 
 
 
-    <h1>Aliment index</h1>
+
+    <h1>Liste des aliments</h1>
 
     <table class=\"table\">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Categorie</th>
+                <th>Name</th>
+                <th>Catégorie</th>
                 <th>Calories</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 38
+        // line 31
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["aliments"]) || array_key_exists("aliments", $context) ? $context["aliments"] : (function () { throw new RuntimeError('Variable "aliments" does not exist.', 38, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["aliments"]) || array_key_exists("aliments", $context) ? $context["aliments"] : (function () { throw new RuntimeError('Variable "aliments" does not exist.', 31, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["aliment"]) {
-            // line 39
+            // line 32
             echo "            <tr>
                 <td>";
-            // line 40
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 40), "html", null, true);
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 33), "html", null, true);
             echo "</td>
                 <td>";
-            // line 41
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "categorie", [], "any", false, false, false, 41), "html", null, true);
+            // line 34
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "name", [], "any", false, false, false, 34), "html", null, true);
             echo "</td>
                 <td>";
-            // line 42
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "calories", [], "any", false, false, false, 42), "html", null, true);
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "categorie", [], "any", false, false, false, 35), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "calories", [], "any", false, false, false, 36), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 44
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_show", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 44)]), "html", null, true);
+            // line 38
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_show", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 38)]), "html", null, true);
             echo "\">show</a>
                     <a href=\"";
-            // line 45
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 45)]), "html", null, true);
+            // line 39
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 39)]), "html", null, true);
             echo "\">edit</a>
                 </td>
             </tr>
@@ -158,7 +129,7 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 49
+            // line 43
             echo "            <tr>
                 <td colspan=\"4\">no records found</td>
             </tr>
@@ -167,12 +138,12 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['aliment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 53
+        // line 47
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 56
+        // line 50
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_new");
         echo "\">Create new</a>
 ";
@@ -196,14 +167,14 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
 
     public function getDebugInfo()
     {
-        return array (  176 => 56,  171 => 53,  162 => 49,  153 => 45,  149 => 44,  144 => 42,  140 => 41,  136 => 40,  133 => 39,  128 => 38,  104 => 17,  100 => 16,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  147 => 50,  142 => 47,  133 => 43,  124 => 39,  120 => 38,  115 => 36,  111 => 35,  107 => 34,  103 => 33,  100 => 32,  95 => 31,  68 => 6,  58 => 5,  35 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Hello AlimentController!{% endblock %}
+
 
 {% block mainContent %}
 <style>
@@ -211,28 +182,21 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class=\"example-wrapper\">
-
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"{{ 'C:/Users/Ahmed Mahjoub/Workspace/Calometre/src/Controller/AlimentController.php'|file_link(0) }}\">src/Controller/AlimentController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ 'C:/Users/Ahmed Mahjoub/Workspace/Calometre/templates/aliment/index.html.twig'|file_link(0) }}\">templates/aliment/index.html.twig</a></code></li>
-    </ul>
-</div>
 
 
 
 
 
 
-    <h1>Aliment index</h1>
+
+    <h1>Liste des aliments</h1>
 
     <table class=\"table\">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Categorie</th>
+                <th>Name</th>
+                <th>Catégorie</th>
                 <th>Calories</th>
                 <th>actions</th>
             </tr>
@@ -241,6 +205,7 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
         {% for aliment in aliments %}
             <tr>
                 <td>{{ aliment.id }}</td>
+                <td>{{ aliment.name}}</td>
                 <td>{{ aliment.categorie }}</td>
                 <td>{{ aliment.calories }}</td>
                 <td>

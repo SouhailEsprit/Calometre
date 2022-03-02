@@ -112,26 +112,37 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
             </tr>
             <tr>
                 <th>Listaliment</th>
-                <td>";
+                ";
         // line 24
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 24, $this->source); })()), "listaliment", [], "any", false, false, false, 24), "html", null, true);
-        echo "</td>
-            </tr>
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 24, $this->source); })()), "aliments", [], "any", false, false, false, 24));
+        foreach ($context['_seq'] as $context["_key"] => $context["aliment"]) {
+            // line 25
+            echo "                    <td>";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "name", [], "any", false, false, false, 25), "html", null, true);
+            echo "</td>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['aliment'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 27
+        echo "            </tr>
         </tbody>
     </table>
 
     <a href=\"";
-        // line 29
+        // line 31
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_index");
         echo "\">back to list</a>
 
     <a href=\"";
-        // line 31
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 31, $this->source); })()), "id", [], "any", false, false, false, 31)]), "html", null, true);
+        // line 33
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("recette_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["recette"]) || array_key_exists("recette", $context) ? $context["recette"] : (function () { throw new RuntimeError('Variable "recette" does not exist.', 33, $this->source); })()), "id", [], "any", false, false, false, 33)]), "html", null, true);
         echo "\">edit</a>
 
     ";
-        // line 33
+        // line 35
         echo twig_include($this->env, $context, "recette/_delete_form.html.twig");
         echo "
 ";
@@ -155,7 +166,7 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
 
     public function getDebugInfo()
     {
-        return array (  135 => 33,  130 => 31,  125 => 29,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  146 => 35,  141 => 33,  136 => 31,  130 => 27,  121 => 25,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -183,7 +194,9 @@ class __TwigTemplate_67de5bb6701e24d200f364b62380100f1b456af62a9531692b6d9223d15
             </tr>
             <tr>
                 <th>Listaliment</th>
-                <td>{{ recette.listaliment }}</td>
+                {% for aliment in recette.aliments %}
+                    <td>{{ aliment.name}}</td>
+                {% endfor %}
             </tr>
         </tbody>
     </table>

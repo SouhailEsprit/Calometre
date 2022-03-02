@@ -1,6 +1,6 @@
 {% extends 'base-back-office.html.twig' %}
 
-{% block title %}Hello AlimentController!{% endblock %}
+
 
 {% block mainContent %}
 <style>
@@ -8,28 +8,21 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Ahmed Mahjoub/Workspace/Calometre/src/Controller/AlimentController.php'|file_link(0) }}">src/Controller/AlimentController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Ahmed Mahjoub/Workspace/Calometre/templates/aliment/index.html.twig'|file_link(0) }}">templates/aliment/index.html.twig</a></code></li>
-    </ul>
-</div>
 
 
 
 
 
 
-    <h1>Aliment index</h1>
+
+    <h1>Liste des aliments</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Categorie</th>
+                <th>Name</th>
+                <th>Catégorie</th>
                 <th>Calories</th>
                 <th>actions</th>
             </tr>
@@ -38,6 +31,7 @@
         {% for aliment in aliments %}
             <tr>
                 <td>{{ aliment.id }}</td>
+                <td>{{ aliment.name}}</td>
                 <td>{{ aliment.categorie }}</td>
                 <td>{{ aliment.calories }}</td>
                 <td>

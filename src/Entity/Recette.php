@@ -27,6 +27,7 @@ class Recette
 
 
     /**
+     * @var \Doctrine\Common\Collections
      * @ORM\ManyToMany(targetEntity=Aliment::class, mappedBy="Listerecette")
      */
     private $aliments;
@@ -35,6 +36,11 @@ class Recette
      * @ORM\Column(type="string", length=255)
      */
     private $categorie;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $regime;
 
     public function __construct()
     {
@@ -98,6 +104,18 @@ class Recette
     public function setName(string $Name): self
     {
         $this->Name = $Name;
+
+        return $this;
+    }
+
+    public function getRegime(): ?string
+    {
+        return $this->regime;
+    }
+
+    public function setRegime(string $regime): self
+    {
+        $this->regime = $regime;
 
         return $this;
     }
