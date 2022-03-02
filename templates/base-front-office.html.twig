@@ -50,7 +50,7 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                             </li>
                             <li class="nav-item dropdown main-navbar">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)"
@@ -87,7 +87,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown main-navbar">
-                                <a class="nav-link dropdown-toggle active" href="javascript:void(0)"
+                                <a class="nav-link dropdown-toggle " href="javascript:void(0)"
                                    data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
                                 <ul class="dropdown-menu main-menu shadow">
                                     <li class="dropend sub-navbar">
@@ -122,7 +122,7 @@
                                                 <a href="{{path('user')}}" type="button" >
                                 {{app.user.firstname}}
                             </a>
-                            <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg" > 
+                            <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg" >
                                 Logout 
                             </a>
                                                 {% else %}
@@ -147,11 +147,13 @@
 {% endblock %}
 
 <!-- Login Registration start -->
+
 <div class="log-reg">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="modal fade" id="loginMod">
+
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header justify-content-center">
@@ -191,21 +193,29 @@
                                                                 class="fab fa-instagram"></i></a>
                                                 </div>
                                             </div>
+                                            {% if app.user == null %}
                                             <div class="form-area">
-                                                <form action="#">
+                                                <form method="post">
+
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="single-input">
+
                                                                 <label for="logemail">Email</label>
-                                                                <input type="text" id="logemail"
+                                                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail"  autocomplete="email" required autofocus
                                                                        placeholder="Email Address">
                                                             </div>
                                                             <div class="single-input">
                                                                 <label for="logpassword">Password</label>
-                                                                <input type="text" id="logpassword"
+                                                                <input type="password" name="password" id="inputPassword"  autocomplete="current-password" required
                                                                        placeholder="Email Password">
+                                                                <input type="hidden" name="_csrf_token"
+                                                                       value="{{ csrf_token('authenticate') }}">
+                                                                {% endif %}
                                                             </div>
                                                         </div>
+
+
                                                         <div class="col-12">
                                                             <div class="remember-me">
                                                                 <label
@@ -231,12 +241,16 @@
                                                     </div>
                                                 </form>
                                                 <div class="bottom-area text-center">
-                                                    <p>Not a member ? <a href="javascript:void(0)" class="reg-btn">Register</a></p>
+                                                    <p>Not a member ? <a href="{{ path('app_register') }}" class="reg-btn">Register</a></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+
                                 </div>
+
                                 <div class="tab-pane fade" id="regArea" role="tabpanel"
                                      aria-labelledby="regArea-tab">
                                     <div class="login-reg-content regMode">
@@ -253,10 +267,22 @@
                                                                 class="fab fa-instagram"></i></a>
                                                 </div>
                                             </div>
+
                                             <div class="form-area">
-                                                <form action="#">
+                                                {#{% if app.user ==false %}
+                                                {{ form_start(registrationForm )}}
                                                     <div class="row">
                                                         <div class="col-12">
+                                                            <div class="single-input">
+                                                                <label>First name</label>
+                                                                <input type="text"
+                                                                       placeholder="First name">
+                                                            </div>
+                                                            <div class="single-input">
+                                                                <label>Last name</label>
+                                                                <input type="text"
+                                                                       placeholder="Last name">
+                                                            </div>
                                                             <div class="single-input">
                                                                 <label for="regemail">Email</label>
                                                                 <input type="text" id="regemail"
@@ -264,15 +290,25 @@
                                                             </div>
                                                             <div class="single-input">
                                                                 <label for="regpassword">Password</label>
-                                                                <input type="text" id="regpassword"
-                                                                       placeholder="Email Password">
+                                                                <input type="text"
+                                                                       placeholder=" Password">
                                                             </div>
                                                             <div class="single-input">
-                                                                <label>Country</label>
+                                                                <label for="regpassword">Confirm Password</label>
+                                                                <input type="text"
+                                                                       placeholder="Confirm Password">
+                                                            </div>
+                                                            <div class="single-input">
+                                                                <label for="regpassword">Phone number</label>
+                                                                <input type="number"
+                                                                       placeholder="Phone number">
+                                                            </div>
+                                                            <div class="single-input">
+                                                                <label>Role</label>
                                                                 <select>
-                                                                    <option value="1">United States</option>
-                                                                    <option value="2">United Kingdom</option>
-                                                                    <option value="3">Canada</option>
+                                                                    <option value="1">Coach</option>
+                                                                    <option value="2">Client</option>
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -283,36 +319,39 @@
                                                             </div>
                                                         </div>
                                                         <span class="btn-border w-100">
-                                                                <button class="cmn-btn w-100">SIGN UP</button>
+                                                                <button type="submit" class="cmn-btn w-100">SIGN UP</button>
                                                             </span>
                                                     </div>
-                                                </form>
+                                                {{ form_end(registrationForm) }}
+                                                {% endif %}#}
+
+
                                                 <div class="bottom-area text-center">
-                                                    <p>Already have an member ? <a href="javascript:void(0)"
+                                                    <p>Already a member ? <a href=href="{{ path('app_login') }}"
                                                                                    class="log-btn">Login</a></p>
                                                 </div>
-                                                <div class="counter-area">
-                                                    <div class="single">
-                                                        <div class="icon-area">
-                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}"
-                                                                 alt="icon">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <p>25,179k</p>
-                                                            <p class="mdr">Bets</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single">
-                                                        <div class="icon-area">
-                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}"
-                                                                 alt="icon">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <p>6.65 BTC</p>
-                                                            <p class="mdr">Total Won</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+{#                                                <div class="counter-area">#}
+{#                                                    <div class="single">#}
+{#                                                        <div class="icon-area">#}
+{#                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}"#}
+{#                                                                 alt="icon">#}
+{#                                                        </div>#}
+{#                                                        <div class="text-area">#}
+{#                                                            <p>25,179k</p>#}
+{#                                                            <p class="mdr">Bets</p>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="single">#}
+{#                                                        <div class="icon-area">#}
+{#                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}"#}
+{#                                                                 alt="icon">#}
+{#                                                        </div>#}
+{#                                                        <div class="text-area">#}
+{#                                                            <p>6.65 BTC</p>#}
+{#                                                            <p class="mdr">Total Won</p>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
                                             </div>
                                         </div>
                                     </div>
@@ -325,6 +364,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- Login Registration end -->
 
 

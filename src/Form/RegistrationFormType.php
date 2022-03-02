@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -25,6 +26,9 @@ class RegistrationFormType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('phonenumber')
+            ->add(
+                'countryCode'
+            )
             ->add('profile_picture', FileType::class, [
                 'label' => 'Profile picture',
                 'mapped' => false,
@@ -63,7 +67,24 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ]);
+            ])->add('roles', ChoiceType::class, array(
+                'label' => false,
+                'multiple' => false,
+                'expanded' => false,
+                'choices' => array(
+                    'Client' => 'ROLE_CLIENT',
+                    'Coach' => 'ROLE_COACH'
+                )
+            ))
+            ->get('roles')->addModelTransformer(new CallbackTransformer(
+                function ($rolesAsArray){
+                    return count($rolesAsArray) ? $rolesAsArray[0] : null ;
+                },
+                function($rolesAsString){
+                    return [$rolesAsString];
+                }
+            ))
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

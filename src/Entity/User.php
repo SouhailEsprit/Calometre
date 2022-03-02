@@ -82,6 +82,13 @@ class User implements UserInterface
      */
     private $isbanned=false;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $CountryCode;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -232,4 +239,19 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getCountryCode(): ?string
+    {
+        return $this->CountryCode;
+    }
+
+    public function setCountryCode(string $CountryCode): self
+    {
+        $this->CountryCode = $CountryCode;
+
+        return $this;
+    }
+
+
+
 }

@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\ChangePasswordType;
+use App\Form\AdminRegistrationType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -35,7 +38,8 @@ class UserController extends AbstractController
     {
         $this->emailVerifier = $emailVerifier;
     }
-    
+
+
     /**
      * @Route("/user", name="user")
      */
@@ -43,6 +47,15 @@ class UserController extends AbstractController
     {
         return $this->render('user/user.html.twig', [
             'controller_name' => 'UserController',
+        ]);
+    }
+    /**
+     * @Route("/error", name="error")
+     */
+    public function error(): Response
+    {
+        return $this->render('error.html.twig', [
+            'controller_name' => 'ErrorController',
         ]);
     }
 
@@ -54,7 +67,6 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ChangePasswordType::class, $user)
-            
             ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'old password']])
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -72,11 +84,10 @@ class UserController extends AbstractController
                         'placeholder' => '...',
                     ]
                 ]
-            ])
-           ;
+            ]);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $old_password = $form->get('old_password')->getData();
             if ($encoder->isPasswordValid($user, $old_password)) {
                 $new_password = $form->get('new_password')->getData();
@@ -90,6 +101,7 @@ class UserController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
     /**
      * @Route("/delete", name="delete_account")
      */
@@ -105,28 +117,33 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_logout');
     }
+
     /**
      * @Route("/admin", name="admin")
      */
-    public function back (): Response
+    public function back(): Response
     {
         return $this->render('user/admin.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
+
     /**
      * @Route("/admin/register", name="register_account")
      */
 
-    public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function registerAdmin(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('users_list');
+        }
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-            // ->add('Firstname', TextType::class,  ['disabled' => true])
-            // ->add('Lastname', TextType::class,  ['disabled' => true])
-            // ->add('email', TextType::class,  ['disabled' => true])
-            // ->add('Phonenumber', NumberType::class, ['disabled' => true]);
-            // ->add('change', SubmitType::class);
+        $form = $this->createForm(AdminRegistrationType::class, $user);
+        // ->add('Firstname', TextType::class,  ['disabled' => true])
+        // ->add('Lastname', TextType::class,  ['disabled' => true])
+        // ->add('email', TextType::class,  ['disabled' => true])
+        // ->add('Phonenumber', NumberType::class, ['disabled' => true]);
+        // ->add('change', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -159,6 +176,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation(
                 'app_verify_email',
@@ -171,7 +189,7 @@ class UserController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-        
+
             // do anything else you need here, like send an email
 
             return $guardHandler->authenticateUserAndHandleSuccess(
@@ -182,10 +200,21 @@ class UserController extends AbstractController
             );
         }
 
+
         return $this->render('registration/adminregister.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+
     }
+
+    /**
+     *
+     */
+    public function register()
+    {
+
+    }
+
     /**
      * @Route("/admin/edit", name="edit_admin")
      */
@@ -194,9 +223,9 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ChangePasswordType::class, $user)
-            ->add('Firstname', TextType::class,  ['disabled' => true])
-            ->add('Lastname', TextType::class,  ['disabled' => true])
-            ->add('email', TextType::class,  ['disabled' => true])
+            ->add('Firstname', TextType::class, ['disabled' => true])
+            ->add('Lastname', TextType::class, ['disabled' => true])
+            ->add('email', TextType::class, ['disabled' => true])
             // ->add('profilePicture', FileType::class, [
             //     'label' => 'Profile picture',
             //     'mapped' => false,
@@ -212,7 +241,11 @@ class UserController extends AbstractController
             //     ]
             // ])
             ->add('Phonenumber', NumberType::class, ['disabled' => true])
-            ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'old password']])
+            ->add('old_password', PasswordType::class, [
+                'mapped' => false,
+                'label' => false,
+                'attr' => ['placeholder' => 'old password']
+            ])
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
@@ -260,21 +293,40 @@ class UserController extends AbstractController
                 return $this->redirectToRoute('user');
             }
         }
-        return $this->render('registration/adminchange_password.html.twig', [
+        return $this->render('user/admin.profile.html.twig', [
             'form' => $form->createView()
         ]);
     }
+
     /**
-     * @Route("/listusers", name="users_list", methods={"GET"})
+     * @Route("/listusers/{page<\d+>}", name="users_list", methods={"GET"})
      */
-    public function list_users()
+    public function list_users(UserRepository $repo, int $page = 1)
     {
-        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $user = $this->getUser();
+        if( $user == null ){
+            return $this->redirectToRoute('app_login');
+        }
+        if( $user->getRoles() == ["ROLE_ADMIN"] ){
+        $qb = $repo->createQueryBuilder('user')->select('user');
+
+        $pagerfanta = new Pagerfanta(
+            new QueryAdapter($qb)
+        );
+        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setCurrentPage($page);
 
         return $this->render('user/listusers.html.twig', [
-            "users" => $users,
+            "users" => $pagerfanta,
         ]);
+
+        }else{
+            //TODO: generte a 404 page.
+            return $this->redirectToRoute('error');
+        }
+
     }
+
     /**
      * @Route("/user/editmail", name="edit_mail")
      */
@@ -284,13 +336,11 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ChangePasswordType::class, $user)
             ->add('email', EmailType::class)
-            
             ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'old password']])
-            
             ->add('change', SubmitType::class);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $password = $form->get('old_password')->getData();
             if ($encoder->isPasswordValid($user, $password)) {
                 $em->flush();
@@ -301,6 +351,7 @@ class UserController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
     /**
      * @Route("/admin/ban/{id}",name="ban_user")
      */
