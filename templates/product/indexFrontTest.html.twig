@@ -4,15 +4,7 @@
 
 {% block mainContent %}
 
-<head>
 
-<style>
-img {
-  border: 5px solid #555;
-}
-</style>
-
-</head>
 <body>
     <section class="banner-section inner-banner tournaments">
         <div class="overlay">
@@ -89,7 +81,7 @@ img {
                                         <div class="logo-item">
                                         {% for image in product.images %}
                                             <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
-			                            <img src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
+			                            <img style= "border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
 	                                    </div>
                                         {% endfor %}
                                         </div>
@@ -152,7 +144,7 @@ img {
                                         <div class="logo-item">
                                             {% for image in product.images %}
                                             <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
-			                            <img src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
+			                            <img style= "border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
 	                                    </div>
                                         {% endfor %}
                                         </div>
@@ -209,13 +201,13 @@ img {
                         <div class="row">
                             <div class="col-12">
                                 {% for product in products %} 
-                         {% if product.category == "Brand   " %}
+                         {% if product.category == "Brands" %}
                                 <div class="single-item">
                                     <div class="left-item">
                                         <div class="logo-item">
                                             {% for image in product.images %}
                                             <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
-			                            <img src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
+			                            <img style= "border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
 	                                    </div>
                                         {% endfor %}
                                         </div>
@@ -271,7 +263,7 @@ img {
             </div>
         </div>
     </section>
-    </body>
+    
     <!-- product section end -->
 
    
@@ -291,7 +283,5 @@ img {
 </body>
 
 
-<!-- Mirrored from pixner.net/bitbetio/main/tournaments.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 21:37:02 GMT -->
-</html>
 
 {% endblock %}
