@@ -43,6 +43,11 @@ class Recette
      */
     private $aliments;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Image;
+
     public function __construct()
     {
         $this->aliments = new ArrayCollection();
@@ -114,6 +119,18 @@ class Recette
     public function removeAliment(Aliment $aliment): self
     {
         $this->aliments->removeElement($aliment);
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(string $Image): self
+    {
+        $this->Image = $Image;
 
         return $this;
     }

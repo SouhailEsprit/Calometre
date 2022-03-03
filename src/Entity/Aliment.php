@@ -40,6 +40,21 @@ class Aliment
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Recette::class)
+     */
+    private $recettes;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Image;
+
+    public function __construct()
+    {
+        $this->recettes = new ArrayCollection();
+    }
+
     public function __toString()
     {
         return $this->name;
@@ -82,6 +97,42 @@ class Aliment
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes(): Collection
+    {
+        return $this->recettes;
+    }
+
+    public function addRecette(Recette $recette): self
+    {
+        if (!$this->recettes->contains($recette)) {
+            $this->recettes[] = $recette;
+        }
+
+        return $this;
+    }
+
+    public function removeRecette(Recette $recette): self
+    {
+        $this->recettes->removeElement($recette);
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(string $Image): self
+    {
+        $this->Image = $Image;
 
         return $this;
     }
