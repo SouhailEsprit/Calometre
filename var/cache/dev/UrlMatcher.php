@@ -15,6 +15,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, false, false, null]],
         '/admin/home' => [[['_route' => 'admin_home', '_controller' => 'App\\Controller\\AdminHomeController::index'], null, null, null, false, false, null]],
+        '/alim/front' => [[['_route' => 'app_alim_front', '_controller' => 'App\\Controller\\AlimFrontController::index'], null, null, null, false, false, null]],
         '/aliment' => [[['_route' => 'aliment_index', '_controller' => 'App\\Controller\\AlimentController::index'], null, ['GET' => 0], null, true, false, null]],
         '/aliment/new' => [[['_route' => 'aliment_new', '_controller' => 'App\\Controller\\AlimentController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/categories' => [[['_route' => 'categories_index', '_controller' => 'App\\Controller\\CategoriesController::index'], null, ['GET' => 0], null, true, false, null]],

@@ -28,13 +28,6 @@ class Recette
     private $Name;
 
 
-
-    /**
-     * @var \Doctrine\Common\Collections
-     * @ORM\ManyToMany(targetEntity=Aliment::class, mappedBy="Listerecette")
-     */
-    private $aliments;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -45,10 +38,16 @@ class Recette
      */
     private $regime;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Aliment::class)
+     */
+    private $aliments;
+
     public function __construct()
     {
         $this->aliments = new ArrayCollection();
     }
+
     public function __toString()
     {
         return $this->Name;
@@ -67,34 +66,6 @@ class Recette
     public function setCategorie(string $categorie): self
     {
         $this->categorie = $categorie;
-
-        return $this;
-    }
-
-
-    /**
-     * @return Collection|Aliment[]
-     */
-    public function getAliments(): Collection
-    {
-        return $this->aliments;
-    }
-
-    public function addAliment(Aliment $aliment): self
-    {
-        if (!$this->aliments->contains($aliment)) {
-            $this->aliments[] = $aliment;
-            $aliment->addListerecette($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAliment(Aliment $aliment): self
-    {
-        if ($this->aliments->removeElement($aliment)) {
-            $aliment->removeListerecette($this);
-        }
 
         return $this;
     }
@@ -119,6 +90,30 @@ class Recette
     public function setRegime(string $regime): self
     {
         $this->regime = $regime;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Aliment>
+     */
+    public function getAliments(): Collection
+    {
+        return $this->aliments;
+    }
+
+    public function addAliment(Aliment $aliment): self
+    {
+        if (!$this->aliments->contains($aliment)) {
+            $this->aliments[] = $aliment;
+        }
+
+        return $this;
+    }
+
+    public function removeAliment(Aliment $aliment): self
+    {
+        $this->aliments->removeElement($aliment);
 
         return $this;
     }

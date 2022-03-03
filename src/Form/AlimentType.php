@@ -22,8 +22,8 @@ class AlimentType extends AbstractType
          ],])
 
 
-            ->add('calories')
-            ->add('Listerecette');
+            ->add('calories');
+
 
 
     }

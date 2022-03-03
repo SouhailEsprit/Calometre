@@ -17,6 +17,7 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\AdminController::index'], [], [['text', '/admin']], [], []],
     'admin_home' => [[], ['_controller' => 'App\\Controller\\AdminHomeController::index'], [], [['text', '/admin/home']], [], []],
+    'app_alim_front' => [[], ['_controller' => 'App\\Controller\\AlimFrontController::index'], [], [['text', '/alim/front']], [], []],
     'aliment_index' => [[], ['_controller' => 'App\\Controller\\AlimentController::index'], [], [['text', '/aliment/']], [], []],
     'aliment_new' => [[], ['_controller' => 'App\\Controller\\AlimentController::new'], [], [['text', '/aliment/new']], [], []],
     'aliment_show' => [['id'], ['_controller' => 'App\\Controller\\AlimentController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/aliment']], [], []],

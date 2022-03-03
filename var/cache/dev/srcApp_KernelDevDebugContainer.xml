@@ -358,6 +358,13 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\AdminHomeController"/>
       </call>
     </service>
+    <service id="App\Controller\AlimFrontController" class="App\Controller\AlimFrontController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\AlimFrontController"/>
+      </call>
+    </service>
     <service id="App\Controller\AlimentController" class="App\Controller\AlimentController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5196,6 +5203,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminHomeController" class="App\Controller\AdminHomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminHomeController" class="App\Controller\AdminHomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminHomeController" class="App\Controller\AdminHomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AlimFrontController" class="App\Controller\AlimFrontController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AlimFrontController" class="App\Controller\AlimFrontController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AlimFrontController" class="App\Controller\AlimFrontController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AlimentController" class="App\Controller\AlimentController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AlimentController" class="App\Controller\AlimentController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AlimentController" class="App\Controller\AlimentController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5771,9 +5781,10 @@
         <argument key="typeExercice" type="service_closure" id=".errored..service_locator.uwm_ekw.App\Entity\TypeExercice"/>
       </argument>
     </service>
-    <service id=".service_locator.sGIocxa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.5JRImwI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\AlimFrontController::index" type="service_closure" id=".service_locator.aJYiily"/>
         <argument key="App\Controller\AlimentController::delete" type="service_closure" id=".service_locator.jAfrFpW"/>
         <argument key="App\Controller\AlimentController::edit" type="service_closure" id=".service_locator.jAfrFpW"/>
         <argument key="App\Controller\AlimentController::index" type="service_closure" id=".service_locator.aJYiily"/>
@@ -5826,6 +5837,7 @@
         <argument key="App\Controller\TypeExerciceController::index" type="service_closure" id=".service_locator.Dh50B95"/>
         <argument key="App\Controller\TypeExerciceController::new" type="service_closure" id=".service_locator.x8FmIZ0"/>
         <argument key="App\Controller\TypeExerciceController::show" type="service_closure" id=".service_locator.CpcY3Jz"/>
+        <argument key="App\Controller\AlimFrontController:index" type="service_closure" id=".service_locator.aJYiily"/>
         <argument key="App\Controller\AlimentController:delete" type="service_closure" id=".service_locator.jAfrFpW"/>
         <argument key="App\Controller\AlimentController:edit" type="service_closure" id=".service_locator.jAfrFpW"/>
         <argument key="App\Controller\AlimentController:index" type="service_closure" id=".service_locator.aJYiily"/>
@@ -6203,6 +6215,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\AlimFrontController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\AlimFrontController"/>
+      <argument>App\Controller\AlimFrontController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\AlimentController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\AlimentController"/>
       <argument>App\Controller\AlimentController</argument>
@@ -6427,12 +6445,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.sGIocxa"/>
+      <argument type="service" id=".service_locator.5JRImwI"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.sGIocxa"/>
+      <argument type="service" id=".service_locator.5JRImwI"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6853,7 +6871,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.sGIocxa"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.5JRImwI"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
