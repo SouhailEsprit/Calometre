@@ -2,7 +2,13 @@
 
 namespace App\Controller;
 
-use App\{Entity\Comment, Entity\Event, Entity\User, Form\CommentType, Form\EventType, Repository\EventRepository};
+use App\{Entity\Comment,
+    Entity\Event,
+    Entity\User,
+    Form\CommentType,
+    Form\EventType,
+    Repository\EventRepository,
+    Repository\PostRepository};
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -17,6 +23,31 @@ use function PHPUnit\Framework\equalTo;
  */
 class EventController extends AbstractController
 {
+
+
+    /**
+     * @Route("/applyajax", name="participer_event")
+     */
+    public function applyToEvent(Request $request,EntityManagerInterface $entityManager)
+    {
+        $idEvent = $request->get('eventId');
+        $event = $this->getDoctrine()->getRepository(Event::class)->findOneById($idEvent);
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneById(1);
+        $event->addUser($user);
+        $user->addEvent($event);
+
+        $event->setNombreParticipants($event->getNombreParticipants() - 1);
+        $nouveaNombreParticipants = $event->getNombreParticipants();
+
+
+        $entityManager->flush();
+
+        return $this->render('event_front/numberParticipantsAjax.html.twig', [
+            "nouveaNombreParticipants" => $nouveaNombreParticipants
+        ]);
+
+    }
+
     /**
      * @Route("/admin/display", name="event_index", methods={"GET"})
      */
@@ -126,10 +157,12 @@ class EventController extends AbstractController
 
         }
             $comments = $this->getDoctrine()->getRepository(Comment::class)->findByEvent($event->getId());
+
         return $this->render('event_front/show.html.twig', [
             'event' => $event,
             'comments'=>$comments,
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'alreadyApplied'=>$event->getUsers()->contains($user)
         ]);
     }
 
@@ -191,6 +224,7 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('event_index', [], Response::HTTP_SEE_OTHER);
     }
+
 
 
     public function checkEventUnicity(string $eventName){

@@ -72,10 +72,56 @@ class Event
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="events" )
+     */
+    private $users;
+
+    /**
+     * @return mixed
+     */
     public function __construct()
     {
+        $this->users = new ArrayCollection();
         $this->comments = new ArrayCollection();
+
     }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+        return $this;
+    }
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
+        return $this;
+    }
+
+
+
+    /**
+     * @param mixed $users
+     */
+    public function setUsers($users): void
+    {
+        $this->users = $users;
+    }
+
+
+
+
+
+
 
     public function getImage()
     {

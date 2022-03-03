@@ -94,7 +94,7 @@ class PostController extends AbstractController
 
 
     /**
-     * @Route("//admin/display/searchajax ", name="ajaxsearchpost")
+     * @Route("/admin/display/searchajax ", name="ajaxsearchpost",methods={"GET"})
      */
     public function search(Request $request,PostRepository $pr)
     {

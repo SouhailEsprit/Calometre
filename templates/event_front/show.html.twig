@@ -4,6 +4,7 @@
        <meta property="og:title"         content="Your Website Title" />
        <meta property="og:description"   content="Your description" />
        <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+       <link rel="stylesheet" href="{{ asset('front-office/assets/css/my.css') }}">
    {% endblock %}
 
 
@@ -17,14 +18,23 @@
                         <img src="{{ asset('front-office/assets/images/author-img.png') }}" class="author-img" alt="image">
                         <div class="author-bottom">
 
-                            <a href="javascript:void(0)" class="icon-area">
-                                <i class="fas fa-share-alt"></i>
-                                <p class="mdr">{{ event.nombreParticipants }}</p>
+                            <a href="javascript:void(0)" class="icon-area"id="nbParticipantsShowed">
+                                <i class="fas fa-user"></i>
+                                <p class="mdr" >{{ event.nombreParticipants }}</p>
                             </a>
                         </div>
                     </div>
                     <div class="author-content">
-                        <img src="{{ asset('uploads/Event_images/' ~ event.image) }}"/>
+                        {% if  event.nombreParticipants == 0%}
+                            <div class="img__wrapper">
+                                <img src="{{ asset('uploads/Event_images/' ~ event.image) }}"/>
+                                <a class="sold_out" >Sold out</a>
+                            </div>
+                            {% else %}
+                                <img src="{{ asset('uploads/Event_images/' ~ event.image) }}"/>
+                        {% endif %}
+
+
                         <h3 class="title">{{ event.nom }}</h3>
                         <p style="font-size: 15px">from : {{ event.dateDebut ? event.dateDebut|date('Y-m-d') : '' }} to :{{ event.dateFin ? event.dateFin|date('Y-m-d') : '' }} </p>
                         <div class="para-area">
@@ -43,10 +53,11 @@
                     <form action="#">
                         <div class="form-group">
                             <div class="social-link d-flex align-items-center">
-                                <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                                <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                                <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                                {% if alreadyApplied == false %}
+                                {% if  event.nombreParticipants > 0%}
+                                <button id="apply">Apply to event</button>
+                                {% endif %}
+                                {% endif %}
                             </div>
                         </div>
                     </form>
@@ -72,7 +83,7 @@
 
 
             <div class="leave-comments">
-                <h3 class="title">Leave a Comment<</h3>
+                <h3 class="title">Leave a Comment</h3>
                 {{ form_start(form) }}
                     <div class="row">
 
@@ -164,5 +175,41 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
+
+
+
+
+    <script>
+        var participerButton = document.getElementById('apply');
+        addOnClick(
+            participerButton,'{{ path('participer_event') }}'
+        );
+
+        function hideButton(button){
+                button.disabled = true;
+                button.style.display = 'none' ;
+
+
+        }
+        function addOnClick(button,path){
+
+            button.addEventListener('click',function(event){
+
+
+                hideButton(button);
+                $.ajax({
+                    url : "{{ path('participer_event') }}",
+                    type : 'GET',
+                    data: {
+                        'eventId' : {{ event.id }}
+                    },
+                    success : function(retour)
+                    {
+                        $('#nbParticipantsShowed').html(retour);
+                    },
+                });
+            });
+        }
+    </script>
 
 {% endblock %}

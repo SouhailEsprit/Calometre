@@ -6,19 +6,14 @@
 
 
 
-
-<script>
-    $('.toast').toast('show');
-</script>
-
-
-
 {{ form_start(form,{'attr': {'novalidate': 'novalidate' , 'class':'was-validated'}} ) }}
     {{ form_row(form.nom) }}
 
     {{ form_row(form.dateDebut, { 'id': 'startDate' }) }}
 
     {{ form_row(form.dateFin, { 'id': 'endDate' }) }}
+
+
 
     {{ form_row(form.description)}}
 
