@@ -8,6 +8,7 @@
 
         <tr>
             <th>type reclamation</th>
+            <th>Email</th>
             <th>message de reclamation</th>
             <th>Date reclamation</th>
             <th>reponse</th>
@@ -19,6 +20,7 @@
         {% for reponse in reponses %}
             <tr>
                 <td>{{ reponse.type }}</td>
+                <td>{{ reponse.email }}</td>
                 <td>{{ reponse.message }}</td>
                 <td>{{ reponse.date ? reponse.date|date('Y-m-d') : '' }}</td>
                 <td>{{ reponse.reponse }}</td>

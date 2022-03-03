@@ -56,6 +56,11 @@ class Reclamation
      */
     private $reponse;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
     // /**
     //  * @ORM\OneToOne(targetEntity=Reponse::class, mappedBy="reponse", cascade={"persist", "remove"})
     //  */
@@ -121,6 +126,18 @@ class Reclamation
     public function setReponse(?Reponse $reponse): self
     {
         $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

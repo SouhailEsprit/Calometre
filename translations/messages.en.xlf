@@ -73,6 +73,14 @@
         <source>connexion</source>
         <target>login</target>
       </trans-unit>
+      <trans-unit id="vZOMaI9" resname="action">
+        <source>action</source>
+        <target>__action</target>
+      </trans-unit>
+      <trans-unit id="k3LEcO6" resname="model">
+        <source>model</source>
+        <target>__model</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

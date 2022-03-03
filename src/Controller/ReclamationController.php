@@ -23,7 +23,7 @@ class ReclamationController extends AbstractController
      * @Route("/", name="reclamation_index", methods={"GET"})
      */
     public function index(Request $request,PaginatorInterface $paginator): Response
-    {$reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->findBy([]);
+    {$reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->findAll();
         $reclamation=$paginator->paginate($reclamation,
         $request->query->getInt('page',1),
         10);
