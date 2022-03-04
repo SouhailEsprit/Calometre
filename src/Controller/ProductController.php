@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
+use App\Entity\CartProds;
 use App\Entity\Images;
 use App\Entity\Product;
 use App\Form\Product1Type;
@@ -12,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Repository\CartRepository;
 
 
 
@@ -200,13 +202,16 @@ class ProductController extends AbstractController
     /**
      * @Route("/front/products", name="product_front_index", methods={"GET"})
      */
-    public function indexFront(ProductRepository $productRepository): Response
-    {
+    public function indexFront(EntityManagerInterface $em,ProductRepository $productRepository): Response
+    {   
+        $cart = (string)$em->getRepository(cart::class)->find('1');
         return $this->render('product/indexFrontTest.html.twig', [
             'products' => $productRepository->findAll(),
-
+            'cart' => $cart
+            
         ]);
     }
+     
     /**
      * @Route("/front/products/{id}", name="product_front_show", methods={"GET"})
      */
@@ -216,4 +221,5 @@ class ProductController extends AbstractController
             'product' => $product,
         ]);
     }
+    
 }

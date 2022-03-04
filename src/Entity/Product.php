@@ -70,9 +70,15 @@ class Product
      */
     private $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CartProds::class, mappedBy="idprod")
+     */
+    private $idcart;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->idcart = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -174,9 +180,42 @@ class Product
 
         return $this;
     }
+    
     public function __toString()
 {
+    
     return (string) $this->getCategory();
+
 }
+
+    /**
+     * @return Collection<int, CartProds>
+     */
+    public function getIdcart(): Collection
+    {
+        return $this->idcart;
+    }
+
+    public function addIdcart(CartProds $idcart): self
+    {
+        if (!$this->idcart->contains($idcart)) {
+            $this->idcart[] = $idcart;
+            $idcart->setIdprod($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdcart(CartProds $idcart): self
+    {
+        if ($this->idcart->removeElement($idcart)) {
+            // set the owning side to null (unless already changed)
+            if ($idcart->getIdprod() === $this) {
+                $idcart->setIdprod(null);
+            }
+        }
+
+        return $this;
+    }
     
 }
