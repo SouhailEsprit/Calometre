@@ -33,39 +33,47 @@
                                         <p class="text-center small">Enter your personal details to create account</p>
                                     </div>
 
-                                    {{ form_start(registrationForm) }}
+                                    {{ form_start(AdminRegistration) }}
                                         <div class="col-12">
 
-                                            {{ form_row(registrationForm.firstname,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_row(AdminRegistration.firstname,{'attr':{'class':'form-control'}},{label: 'Password'}) }}
                                             <div class="invalid-feedback">Please, enter your name!</div>
                                         </div>
                                     <div class="col-12">
 
-                                        {{ form_row(registrationForm.lastname,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_row(AdminRegistration.lastname,{'attr':{'class':'form-control'}}) }}
                                         <div class="invalid-feedback">Please, enter your name!</div>
                                     </div>
                                     <div class="col-12">
-                                        {{ form_row(registrationForm.email,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_row(AdminRegistration.email,{'attr':{'class':'form-control'}}) }}
                                         <div class="invalid-feedback">Please enter a valid Email address!</div>
                                     </div>
                                     <div class="col-12">
 
-                                        {{ form_row(registrationForm.plainPassword,{'attr':{'class':'form-control'}}, {label: 'Password'} ) }}
+                                        {{ form_row(AdminRegistration.plainPassword,{'attr':{'class':'form-control'}}, {label: 'Password'} ) }}
                                         <div class="invalid-feedback">Please, enter your name!</div>
                                     </div>
                                     <div class="col-12">
 
-                                        {{ form_row(registrationForm.phonenumber,{'attr':{'class':'form-control'}}) }}
+
+                                        {{ form_row(AdminRegistration.countryCode,{'attr':{'class':'form-control'}})}}
                                         <div class="invalid-feedback">Please, enter your name!</div>
                                     </div>
                                     <div class="col-12">
 
-                                        {{ form_row(registrationForm.profile_picture,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_row(AdminRegistration.phonenumber,{'attr':{'class':'form-control'}}) }}
+
+                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        {{ form_row(AdminRegistration.profile_picture,{'attr':{'class':'form-control'}}) }}
                                         <div class="invalid-feedback">Please, enter your name!</div>
                                     </div>
                                     <div class="col-12">
 
-                                        {{ form_row(registrationForm.agreeTerms) }}
+                                        {{ form_row(AdminRegistration.agreeTerms) }}
                                         <div class="invalid-feedback">Please, enter your name!</div>
 
 
@@ -73,17 +81,17 @@
 {#                                            <div class="form-check">#}
 {#                                                <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>#}
 {#                                                <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>#}
-{#                                                {{ form_row(registrationForm.agreeTerms,{'attr':{'class':'form-check-input'}}) }}#}
+{#                                                {{ form_row(AdminRegistration.agreeTerms,{'attr':{'class':'form-check-input'}}) }}#}
 {#                                                <div class="invalid-feedback">You must agree before submitting.</div>#}
 {#                                            </div>#}
 {#                                        </div>#}
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit"value="{{ path('users_list') }}">Create Account</button>
+                                            <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Already have an account? <a href="{{path('admin_login')}}">Log in</a></p>
                                         </div>
-                                    {{ form_end(registrationForm) }}
+                                    {{ form_end(AdminRegistration) }}
 
                                 </div>
                             </div>
@@ -110,19 +118,4 @@
     </body>
 {% endblock %}
 
-{#    {% for flash_error in app.flashes('verify_email_error') %}#}
-{#        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>#}
-{#    {% endfor %}#}
-
-{#    <h1>Register</h1>#}
-
-{#    {{ form_start(registrationForm) }}#}
-{#        {{ form_row(registrationForm.email) }}#}
-{#        {{ form_row(registrationForm.plainPassword, {#}
-{#            label: 'Password'#}
-{#        }) }}#}
-{#        {{ form_row(registrationForm.agreeTerms) }}#}
-
-{#        <button type="submit" class="btn">Register</button>#}
-{#    {{ form_end(registrationForm) }}#}
 

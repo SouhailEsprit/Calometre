@@ -26,7 +26,7 @@
 
 <body>
 <!-- start preloader -->
-<div class="preloader" id="preloader"></div>
+{#<div class="preloader" id="preloader"></div>#}
 <!-- end preloader -->
 
 <!-- Scroll To Top Start-->
@@ -128,9 +128,9 @@
                                 {% else %}
 
 
-                                    <button  type="button" class="login" data-bs-toggle="modal" data-bs-target="#loginMod">
+                                    <a href="{{ path('app_login')}}" type="button" class="login" >
                                         Login
-                                    </button>
+                                    </a>
                                     <button type="button" class="cmn-btn reg" data-bs-toggle="modal"
                                             data-bs-target="#loginMod">
                                         Sign Up
@@ -168,13 +168,13 @@
                                         SIGN UP
                                     </button>
                                 </li>
-                                <li class="bottom-area" role="presentation">
-                                    <button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab"
-                                            data-bs-target="#loginArea" type="button" role="tab"
-                                            aria-controls="loginArea" aria-selected="true">
-                                        LOGIN
-                                    </button>
-                                </li>
+{#                                <li class="bottom-area" role="presentation">#}
+{#                                    <button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab"#}
+{#                                            data-bs-target="#loginArea" type="button" role="tab"#}
+{#                                            aria-controls="loginArea" aria-selected="true">#}
+{#                                        LOGIN#}
+{#                                    </button>#}
+{#                                </li>#}
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="loginArea" role="tabpanel"
@@ -264,8 +264,14 @@
                                                             </div>
                                                             <div class="single-input">
 
+                                                                {{ form_row(registrationForm.captcha,{'attr':{'placeholder':'Please entre the code above!'}}) }}
+
+                                                            </div>
+                                                            <div class="single-input">
+
                                                                 {{ form_row(registrationForm.agreeTerms,{'attr':{'class':'checkmark'}}) }}
                                                             </div>
+
                                                         </div>
                                                         {#                                                        <div class="col-12">#}
                                                         {#                                                            <div class="remember-me">#}

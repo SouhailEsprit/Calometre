@@ -86,6 +86,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $CountryCode;
+    protected $captchaCode;
+
 
 
 
@@ -250,6 +252,15 @@ class User implements UserInterface
         $this->CountryCode = $CountryCode;
 
         return $this;
+    }
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
     }
 
 

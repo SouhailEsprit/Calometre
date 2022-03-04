@@ -15,7 +15,7 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                                <a class="nav-link " aria-current="page" href="{{path('home')}}">Home</a>
                             </li>
                             <li class="nav-item dropdown main-navbar">
                                 <a class="nav-link dropdown-toggle" href="javascript:void(0)"
@@ -79,12 +79,12 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="contact.html">Profile</a>
+                                <a class="nav-link " href="contact.html">Contact</a>
                             </li>
                         </ul>
                         <div class="right-area header-action d-flex align-items-center max-un">
                             {% if app.user %}
-                                <a href="{{path('user')}}" type="button" >
+                                <a href="{{path('user')}}" style=color:#fe8f9c type="button" >
                                     {{app.user.firstname}}
                                 </a>
                                 <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg" >
@@ -927,7 +927,7 @@
                                                             <input type="file">
                                                             <span class="file-custom"></span>
                                                         </label>
-                                                        <p class="mdr">Choose a photo from your personal computer. 3MB
+                                                        <p class="mdr">Choose a personal photo. 3MB
                                                             max.
                                                         </p>
                                                     </div>
@@ -948,7 +948,7 @@
                                             <div class="single-area">
                                             
                                             <div class="icon-area">
-                                                
+                                                <img src="{{ asset('front-office/assets/images/icon/phone-icon.png')}}" alt="icon">
                                                 </div>
                                                 <p>Phone number : {{ app.user.phonenumber }} <p>
                                                 </div>

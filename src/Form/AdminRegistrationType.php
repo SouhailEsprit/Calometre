@@ -26,6 +26,9 @@ class AdminRegistrationType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('phonenumber')
+            ->add(
+                'countryCode'
+            )
 
             ->add('profile_picture', FileType::class, [
                 'label' => 'Profile picture',
