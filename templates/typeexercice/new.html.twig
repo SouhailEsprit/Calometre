@@ -1,0 +1,38 @@
+
+
+{% extends 'base-back-office.html.twig' %}
+
+
+
+{% block mainContent %}
+    <h1>Create new type exercice</h1>
+
+    
+    <div class="card-body pb-2">
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+<div class="row">
+<div class="col-xl-6">
+<div class="form-group mb-3">
+
+
+{{ form_row(form.nom,{'attr':{'class':'form-control', 'placeholder': "Type Name"}}) }}
+
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="form-group mb-3">
+
+
+{{ form_end(form) }}
+</div>
+<div>
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    <a href="{{ path('typeexercice_index') }}", button class="btn btn-outline-default" >Back to list</a>
+    </div>
+{% endblock %}

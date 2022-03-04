@@ -1,0 +1,34 @@
+{% extends 'base-back-office.html.twig' %}
+
+{% block mainContent %}
+    <h1>Typeexercice index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeexercice in typeexercices %}
+            <tr>
+                <td>{{ typeexercice.id }}</td>
+                <td>{{ typeexercice.nom }}</td>
+                <td>
+                    <a href="{{ path('typeexercice_show', {'id': typeexercice.id}) }}"button class="btn btn-light">show</a>
+                    <a href="{{ path('typeexercice_edit', {'id': typeexercice.id}) }}"button class="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div>
+    <a href="{{ path('typeexercice_new') }}"button class="btn btn-light">Create new</a>
+    </div>
+{% endblock %}
