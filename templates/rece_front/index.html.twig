@@ -1,0 +1,62 @@
+{% extends 'base-front-office.html.twig' %}
+
+{% block mainContent %}
+    <section class="tournaments-section">
+        <div class="overlay pt-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="section-header text-center">
+                            <h5 class="sub-title">Grow your Muscles With calométre</h5>
+                            <h2 class="title">Recettes</h2>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="ongoing-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                {% for recette in recettes %}
+                                    <div class="single-item">
+                                        <div class="left-item">
+                                            <div class="logo-item">
+
+                                                <img src="{{ asset('uploads/recette/' ~ recette.image   ) }}" class="logo" alt="logo">
+                                            </div>
+                                            <div class="mid-area">
+                                                <h3>{{recette.name}}</h3>
+                                                <ul>
+                                                    <li>
+                                                        <p>{{recette.Categorie}}</p>
+
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div class="last-item">
+                                            <h6>nombre total de calories</h6>
+                                            <h4>{{ recette.nbrcal() }}</h4>
+                                            <span class="btn-border">
+                                            <a href="tournaments-details.html" class="cmn-btn">Voir  les aliments  composant {{recette.name}}</a>
+                                        </span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

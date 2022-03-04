@@ -49,6 +49,7 @@ return [
     'product_show' => [['id'], ['_controller' => 'App\\Controller\\ProductController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/product']], [], []],
     'product_edit' => [['id'], ['_controller' => 'App\\Controller\\ProductController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/product']], [], []],
     'product_delete' => [['id'], ['_controller' => 'App\\Controller\\ProductController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/product']], [], []],
+    'app_rece_front' => [[], ['_controller' => 'App\\Controller\\ReceFrontController::index'], [], [['text', '/rece/front']], [], []],
     'recette_index' => [[], ['_controller' => 'App\\Controller\\RecetteController::index'], [], [['text', '/recette/']], [], []],
     'recette_new' => [[], ['_controller' => 'App\\Controller\\RecetteController::new'], [], [['text', '/recette/new']], [], []],
     'recette_show' => [['id'], ['_controller' => 'App\\Controller\\RecetteController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/recette']], [], []],

@@ -6,6 +6,7 @@ use App\Repository\RecetteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Float_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -133,5 +134,13 @@ class Recette
         $this->Image = $Image;
 
         return $this;
+    }
+
+    public function nbrcal(): Float
+    {  $a=0 ;
+        foreach ($this->aliments as $cal) {
+            $a=$a+$cal->getCalories();
+        }
+        return $a ;
     }
 }

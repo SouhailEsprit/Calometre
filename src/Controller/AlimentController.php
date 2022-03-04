@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Aliment;
 use App\Form\AlimentType;
+use App\Form\SeachAlimentType;
 use App\Repository\AlimentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,12 +18,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class AlimentController extends AbstractController
 {
     /**
-     * @Route("/", name="aliment_index", methods={"GET"})
+     * @Route("/", name="aliment_index", methods={"GET", "POST"})
      */
-    public function index(AlimentRepository $alimentRepository): Response
+    public function index(Request $request, AlimentRepository $alimentRepository): Response
     {
+        $data = $request->request->get('seach_aliment');
+        if($data && $data['query']) {
+            $aliments = $alimentRepository->createQueryBuilder('a')
+                ->where('a.name LIKE :term')
+                ->setParameter('term', '%'.$data['query'].'%')
+                ->orderBy('a.calories', 'ASC')
+                ->getQuery()
+                ->getResult();
+        }else{
+            $aliments = $alimentRepository->findBy(array(),array('calories' => 'ASC'));
+        }
+
+        $search_form = $this->createForm(SeachAlimentType::class);
+
         return $this->render('aliment/index.html.twig', [
-            'aliments' => $alimentRepository->findAll(),
+            'aliments' => $aliments,
+            'search_form' => $search_form->createView(),
         ]);
     }
 
