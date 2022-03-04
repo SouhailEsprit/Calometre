@@ -496,6 +496,9 @@
     <service id="App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\SeachAliment2Type" class="App\Form\SeachAliment2Type" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\SeachAlimentType" class="App\Form\SeachAlimentType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -985,6 +988,7 @@
         <argument>App\Form\ReclamationType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Form\ReponseType</argument>
+        <argument>App\Form\SeachAliment2Type</argument>
         <argument>App\Form\SeachAlimentType</argument>
         <argument>App\Form\TypeExerciceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1320,7 +1324,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.6mxHMKx"/>
+      <argument type="service" id=".service_locator.awTI8KE"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -5281,6 +5285,8 @@
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ReponseType" class="App\Form\ReponseType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SeachAliment2Type" class="App\Form\SeachAliment2Type" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SeachAliment2Type" class="App\Form\SeachAliment2Type" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SeachAlimentType" class="App\Form\SeachAlimentType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\SeachAlimentType" class="App\Form\SeachAlimentType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TypeExerciceType" class="App\Form\TypeExerciceType" autowire="true" abstract="true"/>
@@ -5971,7 +5977,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.6mxHMKx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.awTI8KE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\AlimentType" type="service_closure" id="App\Form\AlimentType"/>
@@ -5984,6 +5990,7 @@
         <argument key="App\Form\ReclamationType" type="service_closure" id="App\Form\ReclamationType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="App\Form\ReponseType" type="service_closure" id="App\Form\ReponseType"/>
+        <argument key="App\Form\SeachAliment2Type" type="service_closure" id="App\Form\SeachAliment2Type"/>
         <argument key="App\Form\SeachAlimentType" type="service_closure" id="App\Form\SeachAlimentType"/>
         <argument key="App\Form\TypeExerciceType" type="service_closure" id="App\Form\TypeExerciceType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>

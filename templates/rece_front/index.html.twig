@@ -40,21 +40,50 @@
                                         <div class="last-item">
                                             <h6>nombre total de calories</h6>
                                             <h4>{{ recette.nbrcal() }}</h4>
-                                            <span class="btn-border">
-                                            <a href="tournaments-details.html" class="cmn-btn">Voir  les aliments  composant {{recette.name}}</a>
-                                        </span>
+                                            <a> Voir  les aliments  composant {{recette.name}}</a>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+
+                                                    <th>nom</th>
+                                                    <th>Categorie</th>
+                                                    <th>calories</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for aliment in recette.aliments %}
+                                                    <tr>
+                                                        <td>{{ aliment.name }}</td>
+                                                        <td>{{ aliment.categorie }}</td>
+                                                        <td>{{ aliment.calories }}</td>
+
+
+
+
+                                                    </tr>
+                                                {% else %}
+                                                    <tr>
+                                                        <td colspan="5">no records found</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+
+
                                         </div>
                                     </div>
                                 {% endfor %}
 
-                            </div>
-                        </div>
 
-                    </div>
 
 
                 </div>
             </div>
+        </div>
+                </div>
+            </div>
+
         </div>
     </section>
 {% endblock %}

@@ -76,6 +76,19 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
         // line 13
         echo twig_include($this->env, $context, "aliment/search.html.twig");
         echo "
+    ";
+        // line 14
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["search2_form"]) || array_key_exists("search2_form", $context) ? $context["search2_form"] : (function () { throw new RuntimeError('Variable "search2_form" does not exist.', 14, $this->source); })()), 'form_start');
+        echo "
+    ";
+        // line 15
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["search2_form"]) || array_key_exists("search2_form", $context) ? $context["search2_form"] : (function () { throw new RuntimeError('Variable "search2_form" does not exist.', 15, $this->source); })()), 'widget');
+        echo "
+    ";
+        // line 16
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["search2_form"]) || array_key_exists("search2_form", $context) ? $context["search2_form"] : (function () { throw new RuntimeError('Variable "search2_form" does not exist.', 16, $this->source); })()), 'form_end');
+        echo "
+
 
     <table class=\"table\">
         <thead>
@@ -91,55 +104,55 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
         </thead>
         <tbody>
         ";
-        // line 28
+        // line 32
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["aliments"]) || array_key_exists("aliments", $context) ? $context["aliments"] : (function () { throw new RuntimeError('Variable "aliments" does not exist.', 28, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["aliments"]) || array_key_exists("aliments", $context) ? $context["aliments"] : (function () { throw new RuntimeError('Variable "aliments" does not exist.', 32, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["aliment"]) {
-            // line 29
+            // line 33
             echo "            <tr>
                 <td>";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 30), "html", null, true);
+            // line 34
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 34), "html", null, true);
             echo "</td>
                 <td>";
-            // line 31
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "name", [], "any", false, false, false, 31), "html", null, true);
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "name", [], "any", false, false, false, 35), "html", null, true);
             echo "</td>
                 <td>";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "categorie", [], "any", false, false, false, 32), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "categorie", [], "any", false, false, false, 36), "html", null, true);
             echo "</td>
                 <td>";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "calories", [], "any", false, false, false, 33), "html", null, true);
+            // line 37
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "calories", [], "any", false, false, false, 37), "html", null, true);
             echo "</td>
                 <td> ";
-            // line 34
+            // line 38
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["aliment"], "recettes", [], "any", false, false, false, 34));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["aliment"], "recettes", [], "any", false, false, false, 38));
             foreach ($context['_seq'] as $context["_key"] => $context["recette"]) {
-                // line 35
+                // line 39
                 echo "                    ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "name", [], "any", false, false, false, 35), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["recette"], "name", [], "any", false, false, false, 39), "html", null, true);
                 echo "</td>
                 ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recette'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 37
+            // line 41
             echo "                <td>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "Image", [], "any", false, false, false, 37), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["aliment"], "Image", [], "any", false, false, false, 41), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 39
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_show", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 39)]), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_show", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 43)]), "html", null, true);
             echo "\">show</a>
                     <a href=\"";
-            // line 40
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 40)]), "html", null, true);
+            // line 44
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["aliment"], "id", [], "any", false, false, false, 44)]), "html", null, true);
             echo "\">edit</a>
                 </td>
             </tr>
@@ -147,7 +160,7 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 44
+            // line 48
             echo "            <tr>
                 <td colspan=\"4\">no records found</td>
             </tr>
@@ -156,14 +169,18 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['aliment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 48
+        // line 52
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 51
+        // line 55
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_new");
         echo "\">Create new</a>
+    <a href=\"";
+        // line 56
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("aliment_index");
+        echo "\">back to list</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -185,7 +202,7 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
 
     public function getDebugInfo()
     {
-        return array (  165 => 51,  160 => 48,  151 => 44,  142 => 40,  138 => 39,  132 => 37,  123 => 35,  119 => 34,  115 => 33,  111 => 32,  107 => 31,  103 => 30,  100 => 29,  95 => 28,  77 => 13,  68 => 6,  58 => 5,  35 => 1,);
+        return array (  182 => 56,  178 => 55,  173 => 52,  164 => 48,  155 => 44,  151 => 43,  145 => 41,  136 => 39,  132 => 38,  128 => 37,  124 => 36,  120 => 35,  116 => 34,  113 => 33,  108 => 32,  89 => 16,  85 => 15,  81 => 14,  77 => 13,  68 => 6,  58 => 5,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -203,6 +220,10 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
     <h1>Liste des aliments</h1>
 
     {{ include('aliment/search.html.twig') }}
+    {{ form_start(search2_form) }}
+    {{ form_widget(search2_form) }}
+    {{ form_end(search2_form) }}
+
 
     <table class=\"table\">
         <thead>
@@ -241,6 +262,7 @@ class __TwigTemplate_78de14ff15dec1906fc67b46c3bfe639ac2acde47a55e65c347a60e97af
     </table>
 
     <a href=\"{{ path('aliment_new') }}\">Create new</a>
+    <a href=\"{{ path('aliment_index') }}\">back to list</a>
 {% endblock %}
 ", "aliment/index.html.twig", "C:\\Users\\Ahmed Mahjoub\\Calometre\\templates\\aliment\\index.html.twig");
     }

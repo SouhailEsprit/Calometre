@@ -2,31 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="87787207-2f21-484e-8bbb-1311a6a6588d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/recette/62210254d9266.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ReceFrontController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/aliment/search.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/rece_front/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_02_03_2022_13_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/SeachAliment2Type.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AlimFrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AlimFrontController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AlimentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AlimentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Recette.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recette.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/SeachAlimentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SeachAlimentType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/alim_front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/alim_front/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/aliment/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aliment/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rece_front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rece_front/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/+/H/-XrVIBM2VCVDmQFi1fYA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/+/H/-XrVIBM2VCVDmQFi1fYA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/1/M/C7tpQyzVJbzYq0cl9yUA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/1/M/C7tpQyzVJbzYq0cl9yUA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/F/X/hpAnaFtOqXnqyF7j3uVA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/F/X/hpAnaFtOqXnqyF7j3uVA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/J/M/3GqHmKEy-iuHlLYjxCvQ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/J/M/3GqHmKEy-iuHlLYjxCvQ" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/L/O/yjJBSwcsID8GYVLM8dBg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/L/O/yjJBSwcsID8GYVLM8dBg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/Q/D/jqAJNga+kdf08HxzHLdA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/Q/D/jqAJNga+kdf08HxzHLdA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/R/G/f-4Udty9gCwU1IevaXqA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/R/G/f-4Udty9gCwU1IevaXqA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/T/E/q3V1VVg4rp8U5kE+dmHA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/T/E/q3V1VVg4rp8U5kE+dmHA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/U/S/8swRjHZZO763Fp3CCd0w" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/U/S/8swRjHZZO763Fp3CCd0w" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/Z/K/tu2OCULc1IaBtgawgwkw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/Z/K/tu2OCULc1IaBtgawgwkw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
@@ -35,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerDeprecations.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerDeprecations.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/28/288bbf02edd6dafc28b9a6178b78501e5b0192c92cf99a6f1907417238913838.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/28/288bbf02edd6dafc28b9a6178b78501e5b0192c92cf99a6f1907417238913838.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
@@ -43,17 +34,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpDebugGeneral" hide_empty_superglobals="false" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="127.0.0.1" id="3739e09e-3b60-4341-94d4-b9b437c815ba" name="127.0.0.1" port="8000" />
+      <server host="127.0.0.1" id="b64031ab-539f-4863-9caf-86633f6293e6" name="127.0.0.1 (1)" port="8002" />
+      <server host="127.0.0.1" id="406b5775-97f7-4cd5-8816-1bce92bb9ab0" name="127.0.0.1 (2)" port="8001" />
+      <server host="127.0.0.1" id="31d99dc9-9e01-4fdd-b501-146f932ce86e" name="127.0.0.1 (3)" port="8003" />
     </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4">
@@ -190,12 +184,16 @@
     </include_path>
   </component>
   <component name="ProjectId" id="25tKPyXvbLIwdDiI9XhVPWXlx2T" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -236,7 +234,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646340923731</updated>
-      <workItem from="1646340925358" duration="12949000" />
+      <workItem from="1646340925358" duration="13575000" />
+      <workItem from="1646389078451" duration="21413000" />
+      <workItem from="1646414814577" duration="3761000" />
     </task>
     <servers />
   </component>
@@ -253,5 +253,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

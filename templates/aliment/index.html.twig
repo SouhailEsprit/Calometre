@@ -11,6 +11,10 @@
     <h1>Liste des aliments</h1>
 
     {{ include('aliment/search.html.twig') }}
+    {{ form_start(search2_form) }}
+    {{ form_widget(search2_form) }}
+    {{ form_end(search2_form) }}
+
 
     <table class="table">
         <thead>
@@ -49,4 +53,5 @@
     </table>
 
     <a href="{{ path('aliment_new') }}">Create new</a>
+    <a href="{{ path('aliment_index') }}">back to list</a>
 {% endblock %}
