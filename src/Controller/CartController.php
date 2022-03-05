@@ -53,6 +53,7 @@ class CartController extends AbstractController
      */
     public function showFrontCart(ProductRepository $productRepository, CartProdsRepository $CartProdsRepository ,CartRepository $cart,$id): Response
     {
+        $cartprod = new CartProds();
         
         return $this->render('cart/index.html.twig', [
             'product'=>$productRepository->findAll(),

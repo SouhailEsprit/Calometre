@@ -171,7 +171,12 @@ hr{
  color: #202020;
 }
 </style>
-
+<div id="divCheckbox" style="display: none;">
+{% set nitems = 0 %}
+{{ nitems|number_format }}
+{% set total = 0 %}
+{{ total|number_format }}
+</div>
 <body>
     <div class="Cart-Container">
                         <div class="Header">
@@ -181,8 +186,6 @@ hr{
                         
 {# loop me here boyyy #}
 
-{% set total = 0 %}
-{{ total|number_format }}
 
 {% for product in product %}
 {% for cartprods in cartprod %}
@@ -203,13 +206,23 @@ hr{
                     <h1 class="title">{{product.name}}</h1>
                     <h3 class="subtitle">{{product.description}}</h3>
                     </div>
-                <div class="counter"></div>
-                <div class="prices"></div>
+                
 
-                <div class="counter">
-                <div class="btn">+</div>
-                <div class="count">2</div>
-                <div class="btn">-</div>
+                <div >
+              <form class="w-search" method="get">
+        <div class="sidebar-search">
+
+            <div class="input-group custom-search-form">
+Quantity:
+                <input type="text" id="search" name="q" class="form-control pl-3" placeholder="Add quantity here">
+                
+                 
+
+            </div>
+            <!-- /input-group -->
+        </div>
+       
+    </form>
                 </div>
             <div class="prices">
             <div class="amount">${{product.price}}</div>
@@ -218,6 +231,7 @@ hr{
             </div>
             {% set total = total + product.price %}
 </div>
+{% set nitems = nitems + 1 %}
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -231,7 +245,7 @@ hr{
  <div class="total">
  <div>
  <div class="Subtotal">Sub-Total</div>
- <div class="items">2 items</div>
+ <div class="items">{{nitems}} items</div>
  </div>
  <div class="total-amount">${{total}}</div>
  </div>
