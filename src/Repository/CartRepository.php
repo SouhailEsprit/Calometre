@@ -47,4 +47,12 @@ class CartRepository extends ServiceEntityRepository
         ;
     }
     */
+    // public function addqty($qty)
+    // {
+    //     return $this->getEntityManager()
+    //         ->createQuery('UPDATE  
+    //         TABLE CartProds 
+    //         SET (qty)'
+    //         )->setParameter('qty',$qty)->getResult();
+    // }
 }

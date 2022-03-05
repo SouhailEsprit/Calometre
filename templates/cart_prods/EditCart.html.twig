@@ -171,72 +171,21 @@ hr{
  color: #202020;
 }
 </style>
-<div id="divCheckbox" style="display: none;">
-{% set nitems = 0 %}
-{{ nitems|number_format }}
-{% set total = 0 %}
-{{ total|number_format }}
-</div>
+
 <body>
     <div class="Cart-Container">
                         <div class="Header">
-                        <h3 class="Heading">Shopping Cart</h3>
-                        <h5 class="Action">Remove all</h5>
+                        <h3 class="Heading">Edit Quantity</h3>
                         </div>
                         
-{# loop me here boyyy #}
-
-
-{% for product in product %}
-{% for cartprods in cartprod %}
-{% if cartprods.idprod == product.__toString %}
-{% if product.__toString == cartprods.idprod %}
-
-
-
-<div class="Cart-Items">
-
-                    <div class="image-box">
-                     {% for image in product.images %}
-                    <img style= "height: 120px;width: 150;"  src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
-                    {% endfor %}
-                    </div>
-
-                    <div class="about">
-                    <h1 class="title">{{product.name}}</h1>
-                    <h3 class="subtitle">{{product.description}}</h3>
-                    </div>
-                
-
-               
-            <div class="prices">
-            <div class="amount">${{product.price}}</div>
-            <div class="save"><u>Save for later</u></div>
-            <div class="remove"><u>Remove</u></div>
-            </div>
-            {% set total = total + product.price %}
-</div>
-{% set nitems = nitems + 1 %}
-{% endif %}
-{% endif %}
-{% endfor %}
-
-{% endfor %}
-
-
-{# loop me here boyyy #}
-<hr> 
- <div class="checkout">
- <div class="total">
- <div>
- <div class="Subtotal">Sub-Total</div>
- <div class="items">{{nitems}} items</div>
+            {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                        {{ form_row(form.qty,{'attr':{'class':'form-control' , 'placeholder': "Product Quantity"}}) }}
+                        <button type= "submit" class="btn btn-warning d-block mb-2">Edit</button>
+                            {{ form_end(form) }}
  </div>
- <div class="total-amount">${{total}}</div>
- </div>
- <button class="button">Checkout</button>
- </div>
-    </div>
+ 
+ 
 
      
 

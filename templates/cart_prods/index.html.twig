@@ -176,6 +176,8 @@ hr{
 {{ nitems|number_format }}
 {% set total = 0 %}
 {{ total|number_format }}
+{% set price = 0 %}
+{{ total|number_format }}
 </div>
 <body>
     <div class="Cart-Container">
@@ -187,11 +189,12 @@ hr{
 {# loop me here boyyy #}
 
 
+                     
 {% for product in product %}
 {% for cartprods in cartprod %}
 {% if cartprods.idprod == product.__toString %}
 {% if product.__toString == cartprods.idprod %}
-
+ {% set price = product.price * cartprods.qty %}
 
 
 <div class="Cart-Items">
@@ -206,15 +209,23 @@ hr{
                     <h1 class="title">{{product.name}}</h1>
                     <h3 class="subtitle">{{product.description}}</h3>
                     </div>
-                
+                    <div>
+                    {# {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                        {{ form_row(form.qty,{'attr':{'class':'form-control' , 'placeholder': "Product Quantity"}}) }}
+                        <button type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", class="btn btn-warning d-block mb-2">Edit</button>
+                            {{ form_end(form) }} #}
+                            <a type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", button class="btn btn-warning d-block mb-2">Edit</a>
+                        </div>
 
                
             <div class="prices">
-            <div class="amount">${{product.price}}</div>
+            <div class="amount">$ {{price}}</div>
             <div class="save"><u>Save for later</u></div>
             <div class="remove"><u>Remove</u></div>
             </div>
-            {% set total = total + product.price %}
+           
+            {% set total = total + price %}
 </div>
 {% set nitems = nitems + 1 %}
 {% endif %}
