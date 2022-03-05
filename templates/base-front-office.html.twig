@@ -37,10 +37,14 @@
 <!-- header-section start -->
 {% block header %}
 <header class="header-section">
+
     <div class="overlay">
+
         <div class="container">
             <div class="row d-flex header-area">
+
                 <nav class="navbar navbar-expand-lg navbar-light">
+
                     <a class="navbar-brand" href="index.html">
                         <img src="{{ asset('front-office/assets/images/logo.png') }}" class="logo" alt="logo">
                     </a>
@@ -48,6 +52,7 @@
                             data-bs-target="#navbar-content">
                         <i class="fas fa-bars"></i>
                     </button>
+
                     <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -119,6 +124,7 @@
                                 <a class="nav-link" href="contact.html">{%trans%} contact {% endtrans %}</a>
                             </li>
                         </ul>
+
                         <div class="right-area header-action d-flex align-items-center max-un">
                             <button type="button" class="login" data-bs-toggle="modal" data-bs-target="#loginMod">
                                 {%trans%} connexion {% endtrans %}
@@ -127,13 +133,33 @@
                                     data-bs-target="#loginMod">
                                 Sign Up
                             </button>
+
                         </div>
+
                     </div>
+
+                    <nav>
+                        <ul class="navbar-nav ml-auto">
+                            {% for locale in locales %}
+                                {% if locale!=app.request.locale %}
+                                    <li class="nav-item ">
+                                        <a class="nav-link"href="{{ path('change_locale',{'locale':locale}) }}"><img width="40px" height="40px" src="{{ asset('imgg/'~locale~'.png') }}"
+                                                                         alt="{{ locale }}"></a>
+
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </nav>
                 </nav>
 
+
             </div>
+
+
         </div>
     </div>
+
 
 </header>
 <!-- header-section end -->

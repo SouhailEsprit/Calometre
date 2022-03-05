@@ -19,33 +19,28 @@
                     <div class="table-responsive mt-60">
                         <table class="table">
                             <thead>
-                            <nav>
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link"href="#"><img width="70px" height="70px" src="{{ asset('imgg/fr.png') }}"
-                                                                     alt="en"></a>
 
-                                </li>
-                            </ul>
-                            </nav>
 
 
                             <tr>
-                                <th scope="col">{%trans%} Id{% endtrans %}</th>
-                                <th scope="col">{%trans%} type {% endtrans %}</th>
+<th scope="col">{%trans%} type{% endtrans %}</th>
                                 <th scope="col">{%trans%} message{% endtrans %}</th>
                                 <th scope="col">{%trans%} date {% endtrans %}</th>
                                 <th scope="col">{%trans%} modifier{% endtrans %}</th>
                                 <th scope="col">{%trans%} supprimer {% endtrans %}</th>
+                                <th scope="col">{%trans%} lire {% endtrans %}</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for reclamation in reclamation %}
                             <tr>
-                                <td>{{ reclamation.id }}</td>
                                 <td>{{ reclamation.type }}</td>
                                 <td>{{ reclamation.message }}</td>
                                 <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+
+                                <td>
+                                    <a class="btn btn-outline-warning" href="{{ path('reclamation_show', {'id': reclamation.id}) }}">{%trans%} show {% endtrans %}</a>
+                                </td>
                                 <td>
                                     <a class="btn btn-outline-warning" href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">{%trans%} modifier {% endtrans %}</a>
                                 </td>

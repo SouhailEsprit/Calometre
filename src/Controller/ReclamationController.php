@@ -22,16 +22,33 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/", name="reclamation_index", methods={"GET"})
      */
-    public function index(Request $request,PaginatorInterface $paginator): Response
-    {$reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->findAll();
-        $reclamation=$paginator->paginate($reclamation,
-        $request->query->getInt('page',1),
-        10);
+    public function index(Request $request, PaginatorInterface $paginator): Response
+    {
+        $reclamation = $this->getDoctrine()->getRepository(Reclamation::class)->findAll();
+        $reclamation = $paginator->paginate($reclamation,
+            $request->query->getInt('page', 1),
+            10);
         return $this->render('reclamation/index.html.twig', [
-            'reclamation'=>$reclamation
+            'reclamation' => $reclamation
 
         ]);
     }
+
+
+
+        /**
+         * @Route ("/change-locales/{locale}",name="change_locale")
+         */
+
+        public function changeLocale($locale, Request $request)
+
+        {
+
+            $request->getSession()->set('_locale', $locale);
+            return $this->redirect($request->headers->get('referer'));
+        }
+
+
 
     /**
      * @Route("/new", name="reclamation_new", methods={"GET", "POST"})
@@ -65,6 +82,12 @@ class ReclamationController extends AbstractController
      */
     public function show(Reclamation $reclamation): Response
     {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $value = $reclamation->getViews();
+        $value = $value + 1 ;
+        $reclamation->setViews($value);
+        $entityManager->flush();
         return $this->render('reclamation/show.html.twig', [
             'reclamation' => $reclamation,
         ]);
