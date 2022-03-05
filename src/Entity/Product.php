@@ -71,7 +71,8 @@ class Product
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity=CartProds::class, mappedBy="idprod")
+     * @ORM\JoinColumn(name="CartProds", referencedColumnName="idprod", onDelete="CASCADE")
+     * @ORM\OneToMany(targetEntity=CartProds::class, mappedBy="idprod",cascade={"remove"})
      */
     private $idcart;
 
@@ -184,7 +185,7 @@ class Product
     public function __toString()
 {
     
-    return (string) $this->getCategory();
+    return (string) $this->getId();
 
 }
 

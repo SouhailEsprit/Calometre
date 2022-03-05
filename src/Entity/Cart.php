@@ -25,12 +25,14 @@ class Cart
     private $total;
 
     /**
-     * @ORM\OneToMany(targetEntity=CartProds::class, mappedBy="idcart")
+     * @ORM\JoinColumn(name="CartProds", referencedColumnName="idcart", onDelete="CASCADE")
+     * @ORM\OneToMany(targetEntity=CartProds::class, mappedBy="idcart", cascade={"remove"})
      */
     private $cartProds;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * 
+     * @ORM\OneToOne(targetEntity=User::class)
      */
     private $userCart;
 

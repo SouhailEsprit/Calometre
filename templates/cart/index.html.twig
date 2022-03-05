@@ -178,24 +178,30 @@ hr{
                         <h3 class="Heading">Shopping Cart</h3>
                         <h5 class="Action">Remove all</h5>
                         </div>
-                        <div class="right-area header-action d-flex align-items-center max-un">
-                            <a href="{{ path('product_front_cart', {'id': cart.id}) }}" button class="btn btn-outline-danger" >
-                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg> 
-                            Cart
-                            </a>
-                        </div>
+                        
 {# loop me here boyyy #}
+
+{% set total = 0 %}
+{{ total|number_format }}
+
+{% for product in product %}
+{% for cartprods in cartprod %}
+{% if cartprods.idprod == product.__toString %}
+{% if product.__toString == cartprods.idprod %}
+
+
+
 <div class="Cart-Items">
 
                     <div class="image-box">
-                    <img src="images/apple.png" style= height="120px" />
+                     {% for image in product.images %}
+                    <img style= "height: 120px;width: 150;"  src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
+                    {% endfor %}
                     </div>
 
                     <div class="about">
-                    <h1 class="title">Apple Juice</h1>
-                    <h3 class="subtitle">250ml</h3>
-                    <img src="images/veg.png" style= height="30px" />
+                    <h1 class="title">{{product.name}}</h1>
+                    <h3 class="subtitle">{{product.description}}</h3>
                     </div>
                 <div class="counter"></div>
                 <div class="prices"></div>
@@ -206,13 +212,19 @@ hr{
                 <div class="btn">-</div>
                 </div>
             <div class="prices">
-            <div class="amount">$2.99</div>
+            <div class="amount">${{product.price}}</div>
             <div class="save"><u>Save for later</u></div>
             <div class="remove"><u>Remove</u></div>
             </div>
-            
-
+            {% set total = total + product.price %}
 </div>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+
 {# loop me here boyyy #}
 <hr> 
  <div class="checkout">
@@ -221,7 +233,7 @@ hr{
  <div class="Subtotal">Sub-Total</div>
  <div class="items">2 items</div>
  </div>
- <div class="total-amount">$6.18</div>
+ <div class="total-amount">${{total}}</div>
  </div>
  <button class="button">Checkout</button>
  </div>

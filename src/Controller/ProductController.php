@@ -204,11 +204,10 @@ class ProductController extends AbstractController
      */
     public function indexFront(EntityManagerInterface $em,ProductRepository $productRepository): Response
     {   
-        $cart = (string)$em->getRepository(cart::class)->find('1');
+        $cart = $em->getRepository(cart::class)->find('1');
         return $this->render('product/indexFrontTest.html.twig', [
             'products' => $productRepository->findAll(),
             'cart' => $cart
-            
         ]);
     }
      
