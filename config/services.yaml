@@ -5,6 +5,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     profile_picture_dir: '%kernel.project_dir%/public/uploads/profilePicture'
+    app.path.featured_images: /uploads/images/featured
+    app.locales: [ fr,en ]
+    locale: fr
+
 
 services:
     # default configuration for services in *this* file

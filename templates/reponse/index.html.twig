@@ -1,35 +1,156 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Reponse index{% endblock %}
+{#{% block mainContent %}#}
+{#    <h1 style="color:orange">liste des reponses </h1>#}
 
-{% block body %}
-    <h1>Reponse index</h1>
+{#    <table class="table" style="color:noir;">#}
+{#        <thead>#}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reponse in reponses %}
-            <tr>
-                <td>{{ reponse.id }}</td>
-                <td>{{ reponse.date ? reponse.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('reponse_show', {'id': reponse.id}) }}">show</a>
-                    <a href="{{ path('reponse_edit', {'id': reponse.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{#        <tr>#}
+{#            <th>type reclamation</th>#}
+{#            <th>Email</th>#}
+{#            <th>message de reclamation</th>#}
+{#            <th>Date reclamation</th>#}
+{#            <th>reponse</th>#}
+{#            <th>repondre</th>#}
+{#            <th>Supprimer</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for reponse in reponses %}#}
+{#            <tr>#}
+{#                <td>{{ reponse.type }}</td>#}
+{#                <td>{{ reponse.email }}</td>#}
+{#                <td>{{ reponse.message }}</td>#}
+{#                <td>{{ reponse.date ? reponse.date|date('Y-m-d') : '' }}</td>#}
+{#                <td>{{ reponse.reponse }}</td>#}
+{#                <td>#}
+{#                    {% if reponse.reponse == null %}#}
+{#                        <a href="{{ path('reponse_new', {'id': reponse.recId}) }}">repondre</a>#}
+{#                    {% else %}#}
+{#                        <a href="{{ path('reponse_edit', {'id': reponse.recId}) }}">modifier</a>#}
+{#                    {% endif %}#}
+{#                </td>#}
+{#                <td>#}
+{#                    {% if reponse.repp == null %}#}
+{#                        Pas de réponse#}
+{#                    {% else %}#}
+{#                        <form method="post" action="{{ path('reponse_delete', {'id': reponse.repp}) }}"#}
+{#                              onsubmit="return confirm('Are you sure you want to delete this item?');">#}
+{#                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.repp) }}">#}
+{#                            <button class="btn btn-warning">Delete</button>#}
+{#                        </form>#}
+{#                    {% endif %}#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="3">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#{% endblock %}#}
 
-    <a href="{{ path('reponse_new') }}">Create new</a>
+{#{% extends 'base-back-office.html.twig' %}#}
+{#{% block header %}#}
+{#{% endblock %}#}
+{#{% block sidebar %}#}
+{#{% endblock %}#}
+
+
+
+{% block mainContent %}
+
+
+
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>General Tables</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">General</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Table with hoverable rows</h5>
+
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>type reclamation</th>
+                                <th>Email</th>
+                                <th>message de reclamation</th>
+                                <th>Date reclamation</th>
+                                <th>reponse</th>
+                                <th>repondre</th>
+                                <th>Supprimer</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for reponse in reponses %}
+
+                            <tr>
+                                <td>{{ reponse.type }}</td>
+                                <td>{{ reponse.email }}</td>
+                                <td>{{ reponse.message }}</td>
+                                <td>{{ reponse.date ? reponse.date|date('Y-m-d') : '' }}</td>
+                                <td>{{ reponse.reponse }}</td>
+                                <td>
+                                    {% if reponse.reponse == null %}
+                                        <a href="{{ path('reponse_new', {'id': reponse.recId}) }}">repondre</a>
+                                    {% else %}
+                                        <a href="{{ path('reponse_edit', {'id': reponse.recId}) }}">modifier</a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if reponse.repp == null %}
+                                        Pas de réponse
+                                    {% else %}
+                                        <form method="post" action="{{ path('reponse_delete', {'id': reponse.repp}) }}"
+                                              onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reponse.repp) }}">
+                                            <button class="btn btn-warning">Delete</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+    </body>
 {% endblock %}
+
+

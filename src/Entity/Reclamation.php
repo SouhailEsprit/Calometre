@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ReclamationRepository::class)
  */
@@ -27,15 +27,47 @@ class Reclamation
      */
     private $type;
 
+    // @Assert\Length(
+    //     *    min = 10s,
+    //     *    max = 50,
+    //     *    minMessage = "Your first name must be at least {{ limit }} characters long",
+    //     *    maxMessage = "Your first name cannot be longer than {{ limit }} characters")
+
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $message;
 
     /**
-     * @ORM\OneToOne(targetEntity=Reponse::class, mappedBy="reponse", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Reclamation::class, cascade={"persist", "remove"})
      */
-    private $rec_reponse;
+    private $Id;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Reponse::class, inversedBy="reclamation", cascade={"persist", "remove"})
+     */
+    private $reponse;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $views;
+
+    // /**
+    //  * @ORM\OneToOne(targetEntity=Reponse::class, mappedBy="reponse", cascade={"persist", "remove"})
+    //  */
+    // private $rec_reponse;
 
     public function getId(): ?int
     {
@@ -45,6 +77,10 @@ class Reclamation
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
+    }
+
+    public function __toString() {
+        return (string)$this->id;
     }
 
     public function setDate(\DateTimeInterface $date): self
@@ -78,24 +114,45 @@ class Reclamation
         return $this;
     }
 
-    public function getRecReponse(): ?Reponse
+    public function setId(?self $Id): self
     {
-        return $this->rec_reponse;
+        $this->Id = $Id;
+
+        return $this;
     }
 
-    public function setRecReponse(?Reponse $rec_reponse): self
+    public function getReponse(): ?Reponse
     {
-        // unset the owning side of the relation if necessary
-        if ($rec_reponse === null && $this->rec_reponse !== null) {
-            $this->rec_reponse->setReponse(null);
-        }
+        return $this->reponse;
+    }
 
-        // set the owning side of the relation if necessary
-        if ($rec_reponse !== null && $rec_reponse->getReponse() !== $this) {
-            $rec_reponse->setReponse($this);
-        }
+    public function setReponse(?Reponse $reponse): self
+    {
+        $this->reponse = $reponse;
 
-        $this->rec_reponse = $rec_reponse;
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getViews(): ?int
+    {
+        return $this->views;
+    }
+
+    public function setViews(?int $views): self
+    {
+        $this->views = $views;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Reclamation;
 use App\Entity\Reponse;
 use App\Form\ReponseType;
 use App\Repository\ReponseRepository;
@@ -22,22 +23,35 @@ class ReponseController extends AbstractController
     public function index(ReponseRepository $reponseRepository): Response
     {
         return $this->render('reponse/index.html.twig', [
-            'reponses' => $reponseRepository->findAll(),
+            'reponses' => $reponseRepository->getAllAnswers(),
         ]);
     }
 
     /**
-     * @Route("/new", name="reponse_new", methods={"GET", "POST"})
+     * @Route("/new/{id}", name="reponse_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, Reclamation $rec, EntityManagerInterface $entityManager, \Swift_Mailer $mailer): Response
     {
         $reponse = new Reponse();
         $form = $this->createForm(ReponseType::class, $reponse);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reponse->setRepondre($rec);
+            $reponse->setDate(new \DateTime);
             $entityManager->persist($reponse);
             $entityManager->flush();
+
+            $answer = $reponse->getReponse();
+
+            $message = (new \Swift_Message('Reponse sur Votre réclamation'))
+                ->setFrom('calometre@gmail.com')
+                ->setTo($rec->getEmail())
+                ->setBody(
+                    $this->render('emails/reponse.html.twig',['answer' => $answer]),
+                    'text/html'
+                );
+            $mailer->send($message);
 
             return $this->redirectToRoute('reponse_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -67,6 +81,7 @@ class ReponseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reponse->setDate(new \DateTime);
             $entityManager->flush();
 
             return $this->redirectToRoute('reponse_index', [], Response::HTTP_SEE_OTHER);
