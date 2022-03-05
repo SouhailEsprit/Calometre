@@ -81,6 +81,13 @@
                             <li class="nav-item">
                                 <a class="nav-link " href="contact.html">Contact</a>
                             </li>
+                            {% if app.user != null %}
+                                {% if app.user.roles|join(', ') =="ROLE_ADMIN" %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('users_list') }}">Admin Dashboard</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
                         </ul>
                         <div class="right-area header-action d-flex align-items-center max-un">
                             {% if app.user %}

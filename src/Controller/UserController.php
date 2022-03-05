@@ -63,6 +63,13 @@ class UserController extends AbstractController
     {
         return $this->render('error.html.twig');
     }
+    /**
+     * @Route("/home", name="home")
+     */
+    public function home(): Response
+    {
+        return $this->render('home.html.twig');
+    }
 
     /**
      * @Route("/user/change_password", name="edit_user")
@@ -245,7 +252,7 @@ class UserController extends AbstractController
                     ]
                 ]
             ])
-            ;
+        ;
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
             // $profilePicture = $form->get('profilePicture')->getData();
@@ -290,17 +297,17 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         if( $user->getRoles() == ["ROLE_ADMIN"] ){
-        $qb = $repo->createQueryBuilder('user')->select('user');
+            $qb = $repo->createQueryBuilder('user')->select('user');
 
-        $pagerfanta = new Pagerfanta(
-            new QueryAdapter($qb)
-        );
-        $pagerfanta->setMaxPerPage(5);
-        $pagerfanta->setCurrentPage($page);
+            $pagerfanta = new Pagerfanta(
+                new QueryAdapter($qb)
+            );
+            $pagerfanta->setMaxPerPage(5);
+            $pagerfanta->setCurrentPage($page);
 
-        return $this->render('user/listusers.html.twig', [
-            "users" => $pagerfanta,
-        ]);
+            return $this->render('user/listusers.html.twig', [
+                "users" => $pagerfanta,
+            ]);
 
         }else{
             //TODO: generte a 404 page.

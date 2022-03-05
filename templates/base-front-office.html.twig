@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bitbetio - HTML Template</title>
+    <title>Calometre- HTML Template</title>
 
     <link rel="shortcut icon" href="{{ asset('front-office/assets/images/fav.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/bootstrap.min.css') }}">
@@ -41,7 +42,7 @@
                 <div class="row d-flex header-area">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="{{ asset('front-office/assets/images/logo.png') }}" class="logo" alt="logo">
+                            <img src="{{ asset('front-office/assets/images/calometre.png') }}" class="logo" alt="logo">
                         </a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbar-content">
@@ -174,13 +175,7 @@
                                         aria-label="Close"></button>
                             </div>
                             <ul class="nav log-reg-btn justify-content-around">
-{#                                <li class="bottom-area" role="presentation">#}
-{#                                    <button class="nav-link" id="regArea-tab" data-bs-toggle="tab"#}
-{#                                            data-bs-target="#regArea" type="button" role="tab" aria-controls="regArea"#}
-{#                                            aria-selected="false">#}
-{#                                        SIGN UP#}
-{#                                    </button>#}
-{#                                </li>#}
+
                                 <li class="bottom-area" role="presentation">
                                     <button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab"
                                             data-bs-target="#loginArea" type="button" role="tab"
@@ -251,7 +246,7 @@
                                                                             </span>
                                                                         </span>
                                                                 </label>
-                                                                <a href="javascript:void(0)">Forgot Password</a>
+                                                                <a href="{{ path ('app_forgot_password_request') }}">Forgot Password</a>
                                                             </div>
                                                         </div>
                                                         <span class="btn-border w-100">
@@ -288,62 +283,6 @@
                                             </div>
 
                                             <div class="form-area">
-                                                {# {% if app.user ==false %}
-                                                {{ form_start(registrationForm )}}
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="single-input">
-                                                                <label>First name</label>
-                                                                <input type="text"
-                                                                       placeholder="First name">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label>Last name</label>
-                                                                <input type="text"
-                                                                       placeholder="Last name">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="regemail">Email</label>
-                                                                <input type="text" id="regemail"
-                                                                       placeholder="Email Address">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="regpassword">Password</label>
-                                                                <input type="text"
-                                                                       placeholder=" Password">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="regpassword">Confirm Password</label>
-                                                                <input type="text"
-                                                                       placeholder="Confirm Password">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="regpassword">Phone number</label>
-                                                                <input type="number"
-                                                                       placeholder="Phone number">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label>Role</label>
-                                                                <select>
-                                                                    <option value="1">Coach</option>
-                                                                    <option value="2">Client</option>
-
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="remember-me">
-                                                                <a href="javascript:void(0)">Have a referral
-                                                                    code?</a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="btn-border w-100">
-                                                                <button type="submit" class="cmn-btn w-100">SIGN UP</button>
-                                                            </span>
-                                                    </div>
-                                                {{ form_end(registrationForm) }}
-                                                {% endif %} #}
-
 
                                                 <div class="bottom-area text-center">
                                                     <p>Already a member ? <a href=href="{{ path('app_login') }}"
@@ -405,7 +344,7 @@
                     <div class="col-xl-12">
                         <div class="menu-item">
                             <a href="index.html" class="logo">
-                                <img src="{{ asset('front-office/assets/images/logo.png') }}" alt="logo">
+                                <img src="{{ asset('front-office/assets/images/calometre.png') }}" alt="logo">
                             </a>
                             <ul class="footer-link">
                                 <li><a href="contact.html">Contact</a></li>
@@ -453,6 +392,7 @@
     <script src="{{ asset('front-office/assets/js/main.js') }}"></script>
 {% endblock %}
 </body>
+
 
 
 

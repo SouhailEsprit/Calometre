@@ -27,7 +27,7 @@ class User implements UserInterface
         $metadata->addPropertyConstraint('phonenumber', new Assert\GreaterThan(8));
         $metadata->addPropertyConstraint('phonenumber', new NotBlank());
         $metadata->addPropertyConstraint('phonenumber', new Assert\Positive());
-        
+
     }
     /**
      * @ORM\Id
@@ -86,10 +86,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $CountryCode;
-    protected $captchaCode;
-
-
-
 
     public function getId(): ?int
     {
@@ -252,15 +248,6 @@ class User implements UserInterface
         $this->CountryCode = $CountryCode;
 
         return $this;
-    }
-    public function getCaptchaCode()
-    {
-        return $this->captchaCode;
-    }
-
-    public function setCaptchaCode($captchaCode)
-    {
-        $this->captchaCode = $captchaCode;
     }
 
 
