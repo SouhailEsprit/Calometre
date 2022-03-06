@@ -20,10 +20,14 @@
             <td>{{ recette.regime }}</td>
         </tr>
         <tr>
-            <th>Listaliment</th>
+            <th>Liste des aliments</th>
             {% for aliment in recette.aliments %}
                 <td>{{ aliment.name}}</td>
             {% endfor %}
+        </tr>
+        <tr>
+            <th>Nombre totale de calories</th>
+            <td>{{ recette.nbrcal() }}</td>
         </tr>
         </tbody>
     </table>

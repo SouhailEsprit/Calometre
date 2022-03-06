@@ -32,7 +32,6 @@ class RecetteController extends AbstractController
             $recettes = $recetteRepository->createQueryBuilder('a')
                 ->where('a.Name LIKE :term')
                 ->setParameter('term', '%' . $data['query'] . '%')
-
                 ->getQuery()
                 ->getResult();
         }
@@ -41,7 +40,6 @@ class RecetteController extends AbstractController
             $recettes = $recetteRepository->createQueryBuilder('a')
             ->where('a.categorie = :term')
             ->setParameter('term',$data1['query'])
-
             ->getQuery()
             ->getResult();
         }
@@ -106,6 +104,7 @@ class RecetteController extends AbstractController
      */
     public function show(Recette $recette): Response
     {
+
         return $this->render('recette/show.html.twig', [
             'recette' => $recette,
         ]);

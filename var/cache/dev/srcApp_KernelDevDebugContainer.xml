@@ -430,13 +430,6 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RecetteController"/>
       </call>
     </service>
-    <service id="App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RecettePDFController"/>
-      </call>
-    </service>
     <service id="App\Controller\ReclamationController" class="App\Controller\ReclamationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5259,9 +5252,6 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RecetteController" class="App\Controller\RecetteController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RecetteController" class="App\Controller\RecetteController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RecetteController" class="App\Controller\RecetteController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6314,12 +6304,6 @@
     <service id=".service_locator.vdmMuyE.App\Controller\RecetteController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\RecetteController"/>
       <argument>App\Controller\RecetteController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.vdmMuyE" method="withContext"/>
-    </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\RecettePDFController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\RecettePDFController"/>
-      <argument>App\Controller\RecettePDFController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>

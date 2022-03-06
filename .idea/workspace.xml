@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="87787207-2f21-484e-8bbb-1311a6a6588d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/recette/6224ccdb9a2e0.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/RecettePDFController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/recette_pdf/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReceFrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReceFrontController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rece_front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rece_front/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RecettePDFController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recette_pdf/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette_pdf/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
@@ -241,7 +239,7 @@
       <workItem from="1646389078451" duration="21413000" />
       <workItem from="1646414814577" duration="11792000" />
       <workItem from="1646485732682" duration="4234000" />
-      <workItem from="1646573178522" duration="12594000" />
+      <workItem from="1646573178522" duration="16939000" />
     </task>
     <servers />
   </component>

@@ -53,7 +53,7 @@ class ReceFrontController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}", name="recette_pdf", methods={"GET"})
+     * @Route( name="recette_pdf", methods={"GET"})
      */
     public function getPDF(Recette $recette )
     {
