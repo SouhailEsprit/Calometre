@@ -69,12 +69,14 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit/test", name="edit_qty", methods={"GET", "POST"})
+     * @Route("/{id}/edit/", name="edit_qty", methods={"GET", "POST"})
      */
-    public function editCart( Request $request, CartProds $cartProd,ProductRepository $productRepository , CartProdsRepository $CartProdsRepository ,EntityManagerInterface $entityManager): Response
-    {   $cart = $entityManager->getRepository(cart::class)->find('1');
-        $form = $this->createForm(CartProdsType::class, $cartProd);
+    public function editCart( Request $request, CartProds $cartprod,ProductRepository $productRepository , CartProdsRepository $CartProdsRepository ,EntityManagerInterface $entityManager): Response
+    {   
+        $form = $this->createForm(CartProdsType::class, $cartprod);
         $form->handleRequest($request);
+        // id user cart
+        $cart = $entityManager->getRepository(cart::class)->find('1');
         $id = $cart->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -85,11 +87,24 @@ class CartController extends AbstractController
         return $this->render('cart_prods/EditCart.html.twig', [
             'product'=>$productRepository->findAll(),
             'cartprod' =>$CartProdsRepository->findAll(),
-            'pp' => $cartProd,
+            'pp' => $cartprod,
             'form' => $form->createView(),
         ]);
     }
+    /**
+     * @Route("/{id}/delete", name="product_delete_cart", methods={"POST"})
+     */
+    public function delete(Request $request, CartProds $cartprod, EntityManagerInterface $entityManager): Response
+    {
+        $cart = $entityManager->getRepository(cart::class)->find('1');
+        $id = $cart->getId();
+        if ($this->isCsrfTokenValid('delete' . $cartprod->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($cartprod);
+            $entityManager->flush();
+        }
 
+        return $this->redirectToRoute('product_front_cart', ['id' => $id], Response::HTTP_SEE_OTHER);
+    }
     // /**
     //  * @Route("/edit/{id}", name="test_test", methods={"GET", "POST"})
     //  */

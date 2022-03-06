@@ -170,6 +170,34 @@ hr{
  font-weight: 600;
  color: #202020;
 }
+.style-seven {
+       overflow: visible;
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+.itemconfiguration
+{
+		height:440px;
+		width:215px;
+		/* background-color:#CCC; */		
+        overflow-y:auto;
+		float:left;
+		position:relative;
+		margin-left:-5px;
+}
+.left_contentlist{
+width:215px;
+float:left;
+padding:0 0 0 5px;
+position:relative;
+float:left;
+border-right: 1px #f8f7f3 solid;
+/* background-image:url(images/bubble.png); */
+/* background-color: black; */
+}
 </style>
 <div id="divCheckbox" style="display: none;">
 {% set nitems = 0 %}
@@ -182,51 +210,68 @@ hr{
 <body>
     <div class="Cart-Container">
                         <div class="Header">
-                        <h3 class="Heading">Shopping Cart</h3>
-                        <h5 class="Action">Remove all</h5>
+                        <h3 class="Heading"><img src="{{ asset('front-office/assets/images/App logo.png')}}" class="obj-8" alt="image"style="
+    width: 250;
+    margin-top: -50;
+    margin-left: -40;
+"></h3>
+                        
                         </div>
                         
+                        
 {# loop me here boyyy #}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-                     
+         <div class="left_contentlist">
+    
+      <div class="itemconfiguration" style="padding-left: 30px; width: 950;">           
 {% for product in product %}
 {% for cartprods in cartprod %}
 {% if cartprods.idprod == product.__toString %}
 {% if product.__toString == cartprods.idprod %}
  {% set price = product.price * cartprods.qty %}
-
+<hr class="style-seven">
 
 <div class="Cart-Items">
 
+
                     <div class="image-box">
                      {% for image in product.images %}
-                    <img style= "height: 120px;width: 150;"  src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
+                    <img style= "height: 120px;width: 150;border: 5px solid #555;"  src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="icon">
                     {% endfor %}
                     </div>
 
-                    <div class="about">
+                  
+
+                    <div class="about" >
                     <h1 class="title">{{product.name}}</h1>
                     <h3 class="subtitle">{{product.description}}</h3>
                     </div>
-                    <div>
-                    {# {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                        {{ form_row(form.qty,{'attr':{'class':'form-control' , 'placeholder': "Product Quantity"}}) }}
-                        <button type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", class="btn btn-warning d-block mb-2">Edit</button>
-                            {{ form_end(form) }} #}
-                            <a type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", button class="btn btn-warning d-block mb-2">Edit</a>
-                        </div>
+
+                  
+
+                   
+
+                    <div style="margin-top: -60px;">
+                    <div class="amount">Quantity N°:{{cartprods.qty}}</div>
+                    <a type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", button class="btn btn-warning d-block mb-2" style="width: auto;">Edit</a>
+                    </div>
+                    
 
                
             <div class="prices">
             <div class="amount">$ {{price}}</div>
-            <div class="save"><u>Save for later</u></div>
-            <div class="remove"><u>Remove</u></div>
+           
+            <div class="remove"><u>{{ include('cart_prods/_delete_form.html.twig') }}</u></div>
             </div>
            
             {% set total = total + price %}
 </div>
+</hr>
 {% set nitems = nitems + 1 %}
 {% endif %}
 {% endif %}
@@ -245,11 +290,13 @@ hr{
  </div>
  <div class="total-amount">${{total}}</div>
  </div>
- <button class="button">Checkout</button>
+ <button class="button"><a type= "submit" href="{{ path('product_front_index') }}", button class="button" style="width: auto;">Checkout</a></button>
+
  </div>
     </div>
 
-     
+     </div>
+</div>
 
     </body>
 
