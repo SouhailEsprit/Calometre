@@ -502,6 +502,8 @@
     <service id="App\Form\SeachAlimentType" class="App\Form\SeachAlimentType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\SearchRecette1" class="App\Form\SearchRecette1" autowire="true" autoconfigure="true"/>
+    <service id="App\Form\SearchRecette2" class="App\Form\SearchRecette2" autowire="true" autoconfigure="true"/>
     <service id="App\Form\TypeExerciceType" class="App\Form\TypeExerciceType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>

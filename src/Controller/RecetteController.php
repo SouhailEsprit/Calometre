@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Recette;
 use App\Form\RecetteType;
+use App\Form\SearchRecette2Type;
+use App\Form\SearchRecette1Type;
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,12 +19,41 @@ use Symfony\Component\Routing\Annotation\Route;
 class RecetteController extends AbstractController
 {
     /**
-     * @Route("/", name="recette_index", methods={"GET"})
+     * @Route("/", name="recette_index", methods={"GET","POST"})
      */
-    public function index(RecetteRepository $recetteRepository): Response
+
+    public function index(Request $request, RecetteRepository $recetteRepository): Response
     {
+        $data = $request->request->get('search_recette2');
+        $data1 = $request->request->get('search_recette1');
+        if($data && $data['query']) {
+            $recettes = $recetteRepository->createQueryBuilder('a')
+                ->where('a.Name LIKE :term')
+                ->setParameter('term', '%' . $data['query'] . '%')
+
+                ->getQuery()
+                ->getResult();
+        }
+        else if ($data1 && $data1['query'])
+        {
+            $recettes = $recetteRepository->createQueryBuilder('a')
+            ->where('a.categorie = :term')
+            ->setParameter('term',$data1['query'])
+
+            ->getQuery()
+            ->getResult();
+        }
+        else{
+            $recettes = $recetteRepository->findBy(array());
+        }
+
+        $search_form = $this->createForm(SearchRecette1Type::class);
+        $search2_form = $this->createForm(SearchRecette2Type::class);
+
         return $this->render('recette/index.html.twig', [
-            'recettes' => $recetteRepository->findAll(),
+            'recettes' => $recettes,
+            'search_form' => $search_form->createView(),
+            'search2_form' => $search2_form->createView(),
         ]);
     }
 

@@ -4,6 +4,14 @@
 
 {% block mainContent %}
     <h1>Liste des recettes</h1>
+    {{ form_start(search_form) }}
+    {{ form_widget(search_form) }}
+    {{ form_end(search_form) }}
+
+    {{ form_start(search2_form) }}
+    {{ form_widget(search2_form) }}
+    {{ form_end(search2_form) }}
+
 
     <table class="table">
         <thead>
@@ -41,4 +49,5 @@
     </table>
 
     <a href="{{ path('recette_new') }}">Create new</a>
+    <a href="{{ path('recette_index') }}">back to list</a>
 {% endblock %}
