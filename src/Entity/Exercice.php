@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ExerciceRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,61 +20,90 @@ class Exercice
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $exercice;
+    private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=typeexercice::class, mappedBy="exercice")
+     * @ORM\ManyToOne(targetEntity=Typeexercice::class, inversedBy="type")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $type;
+    private $nomtype;
 
-    public function __construct()
-    {
-        $this->type = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $video;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $objectif;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getExercice(): ?string
+    public function getNom(): ?string
     {
-        return $this->exercice;
+        return $this->nom;
     }
 
-    public function setExercice(string $exercice): self
+    public function setNom(string $nom): self
     {
-        $this->exercice = $exercice;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, typeexercice>
-     */
-    public function getType(): Collection
+    public function getNomtype(): ?typeexercice
     {
-        return $this->type;
+        return $this->nomtype;
     }
 
-    public function addType(typeexercice $type): self
+    public function setNomtype(?typeexercice $nomtype): self
     {
-        if (!$this->type->contains($type)) {
-            $this->type[] = $type;
-            $type->setExercice($this);
-        }
+        $this->nomtype = $nomtype;
 
         return $this;
     }
 
-    public function removeType(typeexercice $type): self
+    public function getVideo(): ?string
     {
-        if ($this->type->removeElement($type)) {
-            // set the owning side to null (unless already changed)
-            if ($type->getExercice() === $this) {
-                $type->setExercice(null);
-            }
-        }
+        return $this->video;
+    }
+
+    public function setVideo(string $video): self
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getObjectif(): ?string
+    {
+        return $this->objectif;
+    }
+
+    public function setObjectif(string $objectif): self
+    {
+        $this->objectif = $objectif;
 
         return $this;
     }

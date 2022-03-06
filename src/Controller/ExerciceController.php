@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Exercice;
 use App\Form\ExerciceType;
 use App\Repository\ExerciceRepository;
@@ -25,6 +25,16 @@ class ExerciceController extends AbstractController
             'exercices' => $exerciceRepository->findAll(),
         ]);
     }
+   /**
+     * @Route("/list", name="error")
+     */
+    public function error(ExerciceRepository $ex): Response
+    {
+        return $this->render('exercice/indexfront.html.twig', [
+            'exercices' => $ex->findAll(),
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="exercice_new", methods={"GET", "POST"})
@@ -36,6 +46,22 @@ class ExerciceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $video = $form->get('video')->getData();
+
+
+           
+            foreach($video as $videos){
+                $fichier = md5(uniqid()) . '.' . $videos->guessExtension();
+
+
+                $videos->move(
+                    $this->getParameter('video_directory'),
+                    $fichier
+                );
+                
+                $exercice->setVideo($fichier);
+                
+            }
             $entityManager->persist($exercice);
             $entityManager->flush();
 

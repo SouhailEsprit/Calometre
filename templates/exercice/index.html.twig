@@ -1,15 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Exercice index{% endblock %}
-
-{% block body %}
+{% block mainContent %}
     <h1>Exercice index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Exercice</th>
+                <th>Nom</th>
+                <th>Type </th>
+                <th>description</th>
+                <th>objectif</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,10 +18,14 @@
         {% for exercice in exercices %}
             <tr>
                 <td>{{ exercice.id }}</td>
-                <td>{{ exercice.exercice }}</td>
+                <td>{{ exercice.nom }}</td>
+                <td>{{ exercice.nomtype }}</td>
+                <td>{{ exercice.description }}</td>
+                <td>{{ exercice.objectif }}</td>
+                 
                 <td>
-                    <a href="{{ path('exercice_show', {'id': exercice.id}) }}">show</a>
-                    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}">edit</a>
+                    <a href="{{ path('exercice_show', {'id': exercice.id}) }}", button class="btn btn-light">show</a>
+                    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}", button class="btn btn-warning">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -30,6 +35,19 @@
         {% endfor %}
         </tbody>
     </table>
+   <div>  
 
-    <a href="{{ path('exercice_new') }}">Create new</a>
+    <a href="{{ path('exercice_new') }}"button class="btn btn-secondary">Create new</a>
+    </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
