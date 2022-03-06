@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\{Entity\Post, Form\PostType, Repository\PostRepository};
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,14 +24,15 @@ class PostController extends AbstractController
             'posts' => $postRepository->findAll(),
         ]);
     }
+
    /**
      * @Route("/new", name="post_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $post = new Post();
-        $post->setCreationDate(date('Y-m-d '));
 
+        $post->setCreationDate(date('Y-m-d '));
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
@@ -92,7 +94,6 @@ class PostController extends AbstractController
     }
 
 
-
     /**
      * @Route("/admin/display/searchajax ", name="ajaxsearchpost",methods={"GET"})
      */
@@ -104,4 +105,5 @@ class PostController extends AbstractController
             "posts" => $posts
         ]);
     }
+
 }

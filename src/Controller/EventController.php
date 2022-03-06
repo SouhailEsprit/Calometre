@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\{Entity\Comment,
     Entity\Event,
     Entity\User,
@@ -18,11 +19,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function PHPUnit\Framework\equalTo;
 
+
 /**
  * @Route("/event")
  */
 class EventController extends AbstractController
 {
+
 
 
     /**
@@ -32,7 +35,7 @@ class EventController extends AbstractController
     {
         $idEvent = $request->get('eventId');
         $event = $this->getDoctrine()->getRepository(Event::class)->findOneById($idEvent);
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneById(1);
+        $user = $this->getUser();
         $event->addUser($user);
         $user->addEvent($event);
 
@@ -57,6 +60,7 @@ class EventController extends AbstractController
             'events' => $eventRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/client/display", name="event_client_index", methods={"GET"})
      */
@@ -66,6 +70,7 @@ class EventController extends AbstractController
             'events' => $eventRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/new", name="event_new", methods={"GET", "POST"})
      */
@@ -76,6 +81,7 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
 
             /** @var UploadedFile $image */
             $image = $form->get('image')->getData();
@@ -115,6 +121,7 @@ class EventController extends AbstractController
 
 
 
+
         }
 
         return $this->render('event/new.html.twig', [
@@ -134,12 +141,13 @@ class EventController extends AbstractController
     }
 
 
+
     /**
      * @Route("/client/display/{id}", name="event_front_show", methods={"GET","POST"})
      */
     public function showEventFront(Event $event ,Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneById(1);
+        $user = $this->getUser();
         $comment = new Comment();
         $comment->setUser($user);
         $comment->setCommentdate(new \DateTime('now'));
@@ -166,6 +174,7 @@ class EventController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}/edit", name="event_edit", methods={"GET", "POST"})
      */
@@ -176,6 +185,7 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
 
             /** @var UploadedFile $image */
             $image = $form->get('image')->getData();
@@ -201,6 +211,7 @@ class EventController extends AbstractController
                 // instead of its contents
                 $event->setImage($newFilename);
             }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('event_index', [], Response::HTTP_SEE_OTHER);
@@ -224,6 +235,7 @@ class EventController extends AbstractController
 
         return $this->redirectToRoute('event_index', [], Response::HTTP_SEE_OTHER);
     }
+
 
 
 

@@ -5,6 +5,7 @@
        <meta property="og:description"   content="Your description" />
        <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
        <link rel="stylesheet" href="{{ asset('front-office/assets/css/my.css') }}">
+
    {% endblock %}
 
 
@@ -71,7 +72,7 @@
                         <img src="{{ asset('front-office/assets/images/comments-img-1.png') }}" alt="image">
                     </div>
                     <div class="right-area">
-                        <h5>{{ comment.user.login }}</h5>
+                        <h5>{{ comment.user.firstname }}</h5>
                         <p class="mdr">{{ event.dateDebut ? event.dateDebut|date('Y-m-d H:m') : '' }}</p>
                         <p>{{ comment.commentcontent }}</p>
                     </div>

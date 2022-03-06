@@ -37,7 +37,6 @@ class Post
      */
     private $event;
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -84,7 +83,9 @@ class Post
         return $this->event;
     }
 
+
     public function setEvent(Event $event): self
+
     {
         $this->event = $event;
 
@@ -95,3 +96,4 @@ class Post
 
 
 }
+
