@@ -11,6 +11,7 @@ use App\{Entity\Comment,
     Repository\EventRepository,
     Repository\PostRepository};
 use Doctrine\ORM\EntityManagerInterface;
+use OTIFSolutions\PhpSentimentAnalysis\Sentiment;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -18,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function PHPUnit\Framework\equalTo;
+use Snipe\BanBuilder\CensorWords;
 
 
 /**
@@ -154,10 +156,21 @@ class EventController extends AbstractController
         $comment->setEvent($event) ;
         $comment->setLikecount(0);
 
+
+
+
+
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if  ($form->isSubmitted() && $form->isValid()) {
+            $commentContent =$form->get('commentcontent')->getData();
+            $censor = new CensorWords;
+            $badwords = $censor->setDictionary('fr');
+
+            $string = $censor->censorString($commentContent);
+            $comment->setCommentcontent($string['clean']);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();

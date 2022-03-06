@@ -2,6 +2,9 @@
     "babdev/pagerfanta-bundle": {
         "version": "v3.6.1"
     },
+    "davmixcool/php-sentiment-analyzer": {
+        "version": "1.2.2"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -111,6 +114,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "otifsolutions/php-sentiment-analysis": {
+        "version": "v1.0.2"
     },
     "pagerfanta/core": {
         "version": "v3.5.2"
@@ -239,6 +245,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "snipe/banbuilder": {
+        "version": "dev-master"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.3.0"
@@ -436,9 +445,6 @@
             "./tests/bootstrap.php"
         ]
     },
-    "symfony/polyfill-intl-grapheme": {
-        "version": "v1.25.0"
-    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.24.0"
     },
@@ -518,9 +524,6 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.37"
-    },
-    "symfony/string": {
-        "version": "v5.4.3"
     },
     "symfony/swiftmailer-bundle": {
         "version": "3.5",

@@ -36,6 +36,10 @@ class Comment
      */
     private $commentcontent;
 
+
+
+
+
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="comments")
      */
