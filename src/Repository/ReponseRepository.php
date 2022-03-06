@@ -18,6 +18,23 @@ class ReponseRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Reponse::class);
     }
+    public function getAllAnswers()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT  reclamation.id AS recId, reclamation.date, reclamation.email ,reclamation.message,reclamation.type, reponse.id AS repp  ,reponse.repondre_id, reponse.reponse FROM reclamation 
+        LEFT JOIN reponse ON reponse.repondre_id = reclamation.id 
+        UNION 
+        SELECT  reclamation.id recId, reclamation.date,reclamation.message,reclamation.email , reclamation.type,reponse.id AS repp , reponse.repondre_id, reponse.reponse FROM reclamation 
+        RIGHT JOIN reponse ON reponse.repondre_id = reclamation.id';
+
+        // $query = $this->createQueryBuilder('rec')->addSelect('rep')->join('rec.id')->where('rec.id = rep.')
+
+        $stmt = $conn->prepare($sql);
+        $result =  $stmt->executeQuery();
+
+        return $result->fetchAllAssociative();
+    }
 
     // /**
     //  * @return Reponse[] Returns an array of Reponse objects

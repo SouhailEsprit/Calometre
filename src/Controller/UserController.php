@@ -47,14 +47,17 @@ class UserController extends AbstractController
         ]);
     }
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin_home", name="admin_home")
      */
     public function admin (UserRepository $repo): Response
-    {
+    { $user=$this->getUser();
+        if( $user->getRoles() == ["ROLE_ADMIN"] ){
 
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
+        return $this->render('admin_home/index.html.twig'
+        );}
+        else{
+            return $this->redirectToRoute('error');
+        }
     }
     /**
      * @Route("/error", name="error")
