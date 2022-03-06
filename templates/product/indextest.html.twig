@@ -79,14 +79,13 @@
 	<div class="card-body h-100 p-1">
 	<div class="pos-product">
     
-    {% for image in product.images %}
-	<div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
-			<img src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="...">
-	</div>
+   
+			<img src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="...">
+	
 				{# <div><img src="" alt="Image" width="150">
                 <a href="{{ path('product_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Delete</a>
 				</div> #}
-    {% endfor %}
+  
 	<div class="info">
 	<div class="title text-truncate">{{ product.name }}&reg;</div>
 	<div class="desc text-truncate">Price: {{ product.price }}$</div>
@@ -207,10 +206,8 @@
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
-
 		ga('create', 'UA-53034621-1', 'auto');
 		ga('send', 'pageview');
-
 	</script>
 <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="41c765573dea39367f057ab5-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6db90f416cbaede7","version":"2021.12.0","r":1,"token":"4db8c6ef997743fda032d4f73cfeff63","si":100}' crossorigin="anonymous"></script>
 

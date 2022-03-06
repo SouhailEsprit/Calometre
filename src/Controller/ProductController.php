@@ -89,9 +89,7 @@ class ProductController extends AbstractController
                 );
 
 
-                $img = new Images();
-                $img->setName($fichier);
-                $product->addImage($img);
+                $product->setImage($fichier);
             }
 
             $entityManager->persist($product);
@@ -141,9 +139,7 @@ class ProductController extends AbstractController
                 );
 
 
-                $img = new Images();
-                $img->setName($fichier);
-                $product->addImage($img);
+                $product->setImage($fichier);
             }
 
             $this->getDoctrine()->getManager()->flush();
@@ -173,32 +169,7 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    /**
-     * @Route("/delete/image/{id}", name="product_delete_image", methods={"DELETE"})
-     */
-    public function deleteImage(Images $image, Request $request)
-    {
-
-        $data = json_decode($request->getContent(), true);
-
-
-        if ($this->isCsrfTokenValid('delete' . $image->getId(), $data['_token'])) {
-
-            $nom = $image->getName();
-
-            unlink($this->getParameter('images_directory') . '/' . $nom);
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($image);
-            $em->flush();
-
-
-            return new JsonResponse(['success' => 1]);
-        } else {
-            return new JsonResponse(['error' => 'Token Invalide'], 400);
-        }
-    }
+   
     /**
      * @Route("/front/products", name="product_front_index", methods={"GET"})
      */

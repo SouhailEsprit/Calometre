@@ -23,15 +23,10 @@
 	<div class="card-body h-100 p-1">
 	<div class="pos-product">
 	<div class="carousel-inner">
-            {% for image in product.images %}
-	<div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
-			<img src="{{ asset('/uploads/products/' ~ image.name) }}" class="d-block w-100" alt="...">
-	</div>
-				{# <div><img src="" alt="Image" width="150">
-                <a href="{{ path('product_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Delete</a>
-				</div> #}
+   
+			<img src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="...">
 
-            {% endfor %}
+			
     </div>
 	<div class="info">
 	<div class="title text-truncate">{{ product.name }}&reg;</div>

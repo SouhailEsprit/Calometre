@@ -66,9 +66,9 @@ class Product
     private $quantity;
 
     /**
-     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="productImg", orphanRemoval=true, cascade={"persist"})
+     * @ORM\Column(type="string", length=255)
      */
-    private $images;
+    private $image;
 
     /**
      * @ORM\JoinColumn(name="CartProds", referencedColumnName="idprod", onDelete="CASCADE")
@@ -78,7 +78,7 @@ class Product
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
+        
         $this->idcart = new ArrayCollection();
     }
 
@@ -86,8 +86,6 @@ class Product
     {
         return $this->id;
     }
-
-    
 
     public function getName(): ?string
     {
@@ -149,35 +147,15 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, Images>
-     */
-    public function getImages(): Collection
+    
+    public function getImage(): ?string
     {
-        return $this->images;
+        return $this->image;
     }
 
-    public function getImage(): string{
-        return $this->images[0]->getName();
-    }
-    public function addImage(Images $image): self
+    public function setImage(string $image): self
     {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setProductImg($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getProductImg() === $this) {
-                $image->setProductImg(null);
-            }
-        }
+        $this->image = $image;
 
         return $this;
     }
