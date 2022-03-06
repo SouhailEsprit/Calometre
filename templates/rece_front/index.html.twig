@@ -47,7 +47,7 @@
                                         <div class="last-item">
                                             <h6>nombre total de calories</h6>
                                             <h4>{{ recette.nbrcal() }}</h4>
-                                            <a> Voir  les aliments  composant {{recette.name}}</a>
+
                                             <table class="table">
                                                 <thead>
                                                 <tr>
@@ -73,7 +73,9 @@
                                                     <tr>
                                                         <td colspan="5">no records found</td>
                                                     </tr>
+
                                                 {% endfor %}
+                                                <a href="{{ path('recette_pdf', {'id': recette.id}) }}">Telécharger la recette</a>
                                                 </tbody>
                                             </table>
 

@@ -430,6 +430,13 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RecetteController"/>
       </call>
     </service>
+    <service id="App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RecettePDFController"/>
+      </call>
+    </service>
     <service id="App\Controller\ReclamationController" class="App\Controller\ReclamationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5252,6 +5259,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RecetteController" class="App\Controller\RecetteController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RecetteController" class="App\Controller\RecetteController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RecetteController" class="App\Controller\RecetteController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\RecettePDFController" class="App\Controller\RecettePDFController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5807,7 +5817,7 @@
         <argument key="typeExercice" type="service_closure" id=".errored..service_locator.uwm_ekw.App\Entity\TypeExercice"/>
       </argument>
     </service>
-    <service id=".service_locator..Zzk3cR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.HTZrEhB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlimFrontController::index" type="service_closure" id=".service_locator.aJYiily"/>
@@ -5841,6 +5851,7 @@
         <argument key="App\Controller\ProductController::index" type="service_closure" id=".service_locator.cFGoL72"/>
         <argument key="App\Controller\ProductController::new" type="service_closure" id=".service_locator.x8FmIZ0"/>
         <argument key="App\Controller\ProductController::show" type="service_closure" id=".service_locator.JW5D6Lx"/>
+        <argument key="App\Controller\ReceFrontController::getPDF" type="service_closure" id=".service_locator.iwjnrDI"/>
         <argument key="App\Controller\ReceFrontController::index" type="service_closure" id=".service_locator.V8wdBcZ"/>
         <argument key="App\Controller\RecetteController::delete" type="service_closure" id=".service_locator.a7TOay9"/>
         <argument key="App\Controller\RecetteController::edit" type="service_closure" id=".service_locator.a7TOay9"/>
@@ -5895,6 +5906,7 @@
         <argument key="App\Controller\ProductController:index" type="service_closure" id=".service_locator.cFGoL72"/>
         <argument key="App\Controller\ProductController:new" type="service_closure" id=".service_locator.x8FmIZ0"/>
         <argument key="App\Controller\ProductController:show" type="service_closure" id=".service_locator.JW5D6Lx"/>
+        <argument key="App\Controller\ReceFrontController:getPDF" type="service_closure" id=".service_locator.iwjnrDI"/>
         <argument key="App\Controller\ReceFrontController:index" type="service_closure" id=".service_locator.V8wdBcZ"/>
         <argument key="App\Controller\RecetteController:delete" type="service_closure" id=".service_locator.a7TOay9"/>
         <argument key="App\Controller\RecetteController:edit" type="service_closure" id=".service_locator.a7TOay9"/>
@@ -6305,6 +6317,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\RecettePDFController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\RecettePDFController"/>
+      <argument>App\Controller\RecettePDFController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\ReclamationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ReclamationController"/>
       <argument>App\Controller\ReclamationController</argument>
@@ -6481,12 +6499,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator..Zzk3cR"/>
+      <argument type="service" id=".service_locator.HTZrEhB"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator..Zzk3cR"/>
+      <argument type="service" id=".service_locator.HTZrEhB"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6907,7 +6925,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator..Zzk3cR"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.HTZrEhB"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

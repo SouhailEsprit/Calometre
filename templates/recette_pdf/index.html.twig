@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Recette</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ recette.Name }}</td>
+        </tr>
+        <tr>
+            <th>Categorie</th>
+            <td>{{ recette.categorie }}</td>
+        </tr>
+        <tr>
+            <th>Regime</th>
+            <td>{{ recette.regime }}</td>
+        </tr>
+        <tr>
+            <th>Listaliment</th>
+            {% for aliment in recette.aliments %}
+                <td>{{ aliment.name}}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
