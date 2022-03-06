@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
@@ -36,6 +37,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request,  UserPasswordEncoderInterface $userPasswordEncoder, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -55,7 +57,9 @@ class RegistrationController extends AbstractController
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $user->setProfilePicture($newFilename);
+
             }
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordEncoder->encodePassword(
@@ -88,8 +92,9 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/verify/email", name="app_verify_email")
      */
-    public function verifyUserEmail(Request $request): Response
+    public function verifyUserEmail( EntityManagerInterface $em,Request $request): Response
     {
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         // validate email confirmation link, sets User::isVerified=true and persists
@@ -100,6 +105,13 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_register');
         }
+        $usercart = new Cart();
+        $total=0;
+        $usercart->setTotal($total);
+        $user = $this->getUser();
+        $usercart->setUserCart($user);
+        $em->persist($usercart);
+        $em->flush();
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');

@@ -157,6 +157,7 @@
       <path value="$PROJECT_DIR$/vendor/pagerfanta/twig" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="25w5hflaROscWKfp8U6INcuc5Za" />
@@ -187,7 +188,8 @@
       <option name="presentableId" value="Default" />
       <updated>1646425429956</updated>
       <workItem from="1646425431189" duration="11222000" />
-      <workItem from="1646473806237" duration="26629000" />
+      <workItem from="1646473806237" duration="40391000" />
+      <workItem from="1646576526933" duration="20065000" />
     </task>
     <servers />
   </component>

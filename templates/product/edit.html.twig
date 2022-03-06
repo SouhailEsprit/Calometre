@@ -1,13 +1,59 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Edit Product{% endblock %}
 
-{% block body %}
+{% block mainContent %}
     <h1>Edit Product</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+    <table class="table">
+		<tbody>
+			
+			<tr>
+				{{ form_row(form.name,{'attr':{'class':'form-control', 'placeholder': "Product Name"}}) }}
+			</tr>
+			<tr>
+				{{ form_row(form.price,{'attr':{'class':'form-control', 'placeholder': "Product Price"}}) }}
+			</tr>
+			<tr>
+				{{ form_row(form.description,{'attr':{'class':'form-control', 'placeholder': "About..."}}) }}
+			</tr>
+			<tr>
+				{{ form_row(form.quantity,{'attr':{'class':'form-control', 'placeholder': "Product Quantity"}}) }}
+			</tr>
+             <tr>
+				{{ form_row(form.category,{'attr':{'class':'form-label' ,'class':'form-select'}}) }}
+			</tr>
+            <tr>
+				{{ form_row(form.images,{'attr':{'class':'form-label','class':'form-control' }}) }}
+			</tr>
+			
+
+			{# *********images*********** #}
+		</tbody>
+	</table>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="
+			    width: 300px;
+			    margin-left: auto;
+			    margin-right: auto;">
+		
+		<div class="carousel-inner">
+			
+					<img src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="...">
+				
+
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
 
     {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('product_index') }}">back to list</a>
-
-    {{ include('product/_delete_form.html.twig') }}
+ {{ include('product/_delete_form.html.twig') }}
+     
+<a href="{{ path('product_index') }}",  button class="btn btn-outline-default" >Back to list</a>
+   {{ form_end(form) }}
 {% endblock %}

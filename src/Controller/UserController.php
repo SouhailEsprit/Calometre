@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\User;
 use App\Form\ChangePasswordType;
 use App\Form\AdminRegistrationType;
+use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -40,20 +42,25 @@ class UserController extends AbstractController
     /**
      * @Route("/profile", name="user")
      */
-    public function index(): Response
-    {
+    public function index(EntityManagerInterface $em ): Response
+    { $cart = $em->getRepository(cart::class)->find('1');
         return $this->render('user/user.html.twig', [
             'controller_name' => 'UserController',
+                'cart' => $cart
         ]);
     }
     /**
      * @Route("/admin_home", name="admin_home")
      */
     public function admin (UserRepository $repo): Response
-    {
+    { $user=$this->getUser();
+        if( $user->getRoles() == ["ROLE_ADMIN"] ){
 
         return $this->render('admin_home/index.html.twig'
-        );
+        );}
+        else{
+            return $this->redirectToRoute('error');
+        }
     }
     /**
      * @Route("/error", name="error")
@@ -65,9 +72,14 @@ class UserController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function home(): Response
+    public function home(EntityManagerInterface $em,ProductRepository $productRepository): Response
     {
-        return $this->render('home.html.twig');
+        $user = $this->getUser();
+        $cart = $em->getRepository(cart::class)->find('1');
+
+        return $this->render('home.html.twig', [
+                'cart' => $cart
+        ]);
     }
 
     /**

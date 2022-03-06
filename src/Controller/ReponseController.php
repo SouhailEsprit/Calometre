@@ -21,10 +21,13 @@ class ReponseController extends AbstractController
      * @Route("/", name="reponse_index", methods={"GET"})
      */
     public function index(ReponseRepository $reponseRepository): Response
-    {
+    { $user=$this->getUser();
+        if( $user->getRoles() == ["ROLE_ADMIN"] ){
         return $this->render('reponse/index.html.twig', [
             'reponses' => $reponseRepository->getAllAnswers(),
-        ]);
+        ]);}else{
+            return $this->redirectToRoute('error');
+        }
     }
 
     /**
