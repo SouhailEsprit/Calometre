@@ -1,0 +1,10 @@
+{% extends 'base-back-office.html.twig' %}
+{% block mainContent %}
+    <h1>Modifer la  Recette</h1>
+
+    {{ include('recette/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('recette_index') }}">back to list</a>
+
+    {{ include('recette/_delete_form.html.twig') }}
+{% endblock %}

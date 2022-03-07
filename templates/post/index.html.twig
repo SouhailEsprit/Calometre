@@ -1,0 +1,71 @@
+{% extends 'base-back-office.html.twig' %}
+
+
+
+{% block mainContent %}
+    <h1>Lists of all posts</h1>
+    <input type="text" id="search" class="form-control" placeholder="Search">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CreationDate</th>
+                <th>Description</th>
+                <th>Name of the related event</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="all">
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.name }}</td>
+                <td>{{ post.creationDate }}</td>
+                <td>{{ post.description }}</td>
+                <td>{{ post.event.nom }}</td>
+                <td>
+                    <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
+                    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ asset('front-office/assets/js/jquery.min.js') }}"></script>
+
+    <script>
+
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                var value = $(this).val();
+                if(value =='')
+                {
+                    currentRequest.abort()
+                }
+                else if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                currentRequest = $.ajax({
+                    url : "{{ path('ajaxsearchpost') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+    <a href="{{ path('post_new') }}">Create new</a>
+{% endblock %}

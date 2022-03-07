@@ -1,0 +1,53 @@
+{% extends 'base-back-office.html.twig' %}
+
+{% block title %}Recette index{% endblock %}
+
+{% block mainContent %}
+    <h1>Liste des recettes</h1>
+    {{ form_start(search_form) }}
+    {{ form_widget(search_form) }}
+    {{ form_end(search_form) }}
+
+    {{ form_start(search2_form) }}
+    {{ form_widget(search2_form) }}
+    {{ form_end(search2_form) }}
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>nom</th>
+                <th>Categorie</th>
+                <th>Regime</th>
+                <th>Liste des aliments</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recette in recettes %}
+            <tr>
+                <td>{{ recette.id }}</td>
+                <td>{{ recette.name }}</td>
+                <td>{{ recette.categorie }}</td>
+                <td>{{ recette.regime }}</td>
+                <td> {% for aliment in recette.aliments %}
+                {{ aliment.name}}
+                {% endfor %}</td>
+
+                <td>
+                    <a href="{{ path('recette_show', {'id': recette.id}) }}">show</a>
+                    <a href="{{ path('recette_edit', {'id': recette.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('recette_new') }}">Create new</a>
+    <a href="{{ path('recette_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base-front-office.html.twig' %}
+
+{% block mainContent %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <section class="contact-section">
+        <div class="overlay">
+            <div class="container bg-area">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-header text-center">
+                            <h4 class="title"
+                                style="color:orange">{% trans %} créer votre réclamation {% endtrans %} </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="form-content">
+                            {{ form_start(form) }}
+                            <div class="row justify-content-center">
+                                <div class="col-md-12">
+                                    <div class="single-input">
+                                        <label for="fname" style="color:orange">type</label>
+                                        {{ form_row(form.type) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="single-input">
+                                        <label for="email"></label>
+                                        {{ form_row(form.email) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="single-input">
+                                        <label for="email"></label>
+                                        {{ form_row(form.message) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 col-10">
+                                    <div class="btn-border w-100 mt-40">
+                                        <button class="cmn-btn w-100"
+                                                style="color:orange">{% trans %} envoyer la réclamation{% endtrans %}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+    {# <h1>Create new Reclamation</h1>
+
+    {{ include('reclamation/_form.html.twig') }}
+
+    <a href="{{ path('reclamation_index') }}">back to list</a> #}
+

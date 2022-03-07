@@ -1,0 +1,44 @@
+{% extends 'base-back-office.html.twig' %}
+{% block Styles %}
+    <link href="{{ asset('back-office/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block mainContent %}
+
+
+
+
+
+    <h1>Create new Event</h1>
+    <div class="card">
+    <div class="card-body pb-2">
+    {{ include('event/_form.html.twig') }}
+    </div>
+    </div>
+    <a href="{{ path('event_index') }}">back to list</a>
+
+{% block Scripts %}
+    <script src="{{ asset('back-office/assets/js/jquery-3.6.0.min.js') }}" type="application/javascript"></script>
+    <script src="{{ asset('back-office/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- script -->
+
+
+    <script>
+
+
+
+
+            $('#endDate').datepicker({
+                autoclose: true
+            });
+            $('#startDate').datepicker({
+                autoclose: true
+            });
+
+
+    </script>
+
+
+{% endblock %}
+
+{% endblock %}

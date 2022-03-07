@@ -1,0 +1,306 @@
+
+{% block body %}
+<style>
+
+body{
+ margin: 0;
+ padding: 0;
+ background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+ height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.Cart-Container{
+ width: 70%;
+ height: 85%;
+ background-color: #ffffff;
+ border-radius: 20px;
+ box-shadow: 0px 25px 40px #1687d933;
+}
+.Header{
+ margin: auto;
+ width: 90%;
+ height: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.Heading{
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 700;
+ color: #2F3841;
+}
+.Action{
+ font-size: 14px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+ border-bottom: 1px solid #E44C4C;
+}
+.Cart-Items{
+ margin: auto;
+ width: 90%;
+ height: 30%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.image-box{
+ width: 15%;
+ text-align: center;
+}
+.about{
+ height: 100%;
+}
+.title{
+ padding-top: 5px;
+ line-height: 10px;
+ font-size: 32px;
+ font-family: ‘Open Sans’;
+ font-weight: 800;
+ color: #202020;
+}
+.subtitle{
+ line-height: 10px;
+ font-size: 18px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #909090;
+}
+.counter{
+ width: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.btn{
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ background-color: #d9d9d9;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+ cursor: pointer;
+}
+.count{
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+}
+.prices{
+ height: 100%;
+ text-align: right;
+}
+.amount{
+ padding-top: 20px;
+ font-size: 26px;
+ font-family: ‘Open Sans’;
+ font-weight: 800;
+ color: #202020;
+}
+.save{
+ padding-top: 5px;
+ font-size: 14px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #1687d9;
+ cursor: pointer;
+}
+.remove{
+ padding-top: 5px;
+ font-size: 14px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+}
+hr{
+ width: 66%;
+ float: right;
+ margin-right: 5%;
+}
+.checkout{
+ float: right;
+ margin-right: 5%;
+ width: 28%;
+}
+.total{
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+}
+.Subtotal{
+ font-size: 22px;
+ font-family: ‘Open Sans’;
+ font-weight: 700;
+ color: #202020;
+}
+.items{
+ font-size: 16px;
+ font-family: ‘Open Sans’;
+ font-weight: 500;
+ color: #909090;
+ line-height: 10px;
+}
+.total-amount{
+ font-size: 36px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+}
+.button{
+ margin-top: 5px;
+ width: 100%;
+ height: 40px;
+ border: none;
+ background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+ border-radius: 20px;
+ cursor: pointer;
+ font-size: 16px;
+ font-family: ‘Open Sans’;
+ font-weight: 600;
+ color: #202020;
+}
+.style-seven {
+       overflow: visible;
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+.itemconfiguration
+{
+		height:440px;
+		width:215px;
+		/* background-color:#CCC; */		
+        overflow-y:auto;
+		float:left;
+		position:relative;
+		margin-left:-5px;
+}
+.left_contentlist{
+width:215px;
+float:left;
+padding:0 0 0 5px;
+position:relative;
+float:left;
+border-right: 1px #f8f7f3 solid;
+/* background-image:url(images/bubble.png); */
+/* background-color: black; */
+}
+</style>
+<div id="divCheckbox" style="display: none;">
+{% set nitems = 0 %}
+{{ nitems|number_format }}
+{% set total = 0 %}
+{{ total|number_format }}
+{% set price = 0 %}
+{{ total|number_format }}
+</div>
+<body>
+    <div class="Cart-Container">
+                        <div class="Header">
+                        <h3 class="Heading"><img src="{{ asset('front-office/assets/images/App logo.png')}}" class="obj-8" alt="image"style="
+    width: 250;
+    margin-top: -50;
+    margin-left: -40;
+" ></h3>
+                        
+                        </div>
+                        
+                        
+{# loop me here boyyy #}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+         <div class="left_contentlist">
+    
+      <div class="itemconfiguration" style="padding-left: 30px; width: 950;">           
+{% for product in product %}
+{% for cartprods in cartprod %}
+{% if cartprods.idprod == product.__toString %}
+{% if product.__toString == cartprods.idprod %}
+ {% set price = product.price * cartprods.qty %}
+<hr class="style-seven">
+
+<div class="Cart-Items">
+
+
+                    <div class="image-box">
+                    
+                    <img style= "height: 120px;width: 150;border: 5px solid #555;"  src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
+                 
+                    </div>
+
+                  
+
+                    <div class="about" >
+                    <h1 class="title">{{product.name}}</h1>
+                    <h3 class="subtitle">{{product.description}}</h3>
+                    </div>
+
+                  
+
+                   
+
+                    <div style="margin-top: -60px;">
+                    <div class="amount">Quantity N°:{{cartprods.qty}}</div>
+                    <a type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", button class="btn btn-warning d-block mb-2" style="width: auto;">Edit</a>
+                    </div>
+                    
+
+               
+            <div class="prices">
+            <div class="amount">$ {{price}}</div>
+           
+            <div class="remove"><u>{{ include('cart_prods/_delete_form.html.twig') }}</u></div>
+            </div>
+           
+            {% set total = total + price %}
+</div>
+</hr>
+{% set nitems = nitems + 1 %}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+
+{# loop me here boyyy #}
+<hr> 
+ <div class="checkout">
+ <div class="total">
+ <div>
+ <div class="Subtotal">Sub-Total</div>
+ <div class="items">{{nitems}} items</div>
+ </div>
+ <div class="total-amount">${{total}}</div>
+ </div>
+ <button class="button"><a type= "submit" href="{{ path('product_front_index') }}", button class="button" style="width: auto;">Checkout</a></button>
+
+ </div>
+    </div>
+
+     </div>
+</div>
+
+    </body>
+
+
+
+
+{% endblock %}
