@@ -1,0 +1,118 @@
+{% extends 'base-front-office.html.twig' %}
+
+
+{% block mainContent %}
+    <!-- Banner Section start -->
+    <section class="banner-section inner-banner blog">
+        <div class="overlay">
+            <div class="shape-area">
+                <img src="{{ asset('front-office/assets/images/blog-illus.png')}}" class="blog-illu" alt="image">
+            </div>
+            <div class="banner-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-10">
+                            <div class="main-content">
+                                <h1>Events</h1>
+                                <div class="breadcrumb-area">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb d-flex align-items-center">
+                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Events</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="blog-section ovf-unset">
+    <div class="overlay pt-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-8 col-lg-7">
+    {% for event in events |reverse %}
+
+<div class="single-blog">
+    <div class="blog-img">
+        <img src="{{ asset('uploads/Event_images/' ~ event.image) }}" alt="icon">
+    </div>
+    <div class="blog-content">
+        <div class="mid-content">
+            <a href="blog-details.html">
+                <h4>{{ event.nom }}</h4>
+            </a>
+            <p>{{ event.description }}.</p>
+        </div>
+        <div class="bottom-item d-flex justify-content-between align-items-center">
+            <p>from: {{ event.dateDebut ? event.dateDebut|date('Y-m-d') : '' }}  to: {{ event.dateFin ? event.dateFin|date('Y-m-d') : '' }}</p>
+            <a href="{{ path('event_front_show', {'id': event.id}) }}">
+                Read more
+                <img src="{{ asset('front-office/assets/images/icon/arrow-right.png') }}" alt="icon">
+            </a>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+    <nav aria-label="Page navigation" class="d-flex justify-content-center mt-60">
+        <ul class="pagination justify-content-center align-items-center">
+            <li class="page-item">
+                <a class="page-btn previous" href="javascript:void(0)" aria-label="Previous">
+                    <img src="{{ asset('front-office/assets/images/icon/arrow-left.png') }}" alt="icon">
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">1</a></li>
+            <li class="page-item"><a class="page-link xlr active" href="javascript:void(0)">2</a>
+            </li>
+            <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">3</a></li>
+            <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">4</a></li>
+            <li class="page-item">
+                <a class="page-btn next" href="javascript:void(0)" aria-label="Next">
+                    <img src="{{ asset('front-office/assets/images/icon/arrow-right.png')}}" alt="icon">
+                </a>
+            </li>
+        </ul>
+    </nav>
+    </div>
+    <div class="col-xxl-4 col-lg-5 col-md-7 col-sm-9">
+        <div class="sidebar-blog position-sticky top-0">
+            <div class="sidebar-single">
+                <h5 class="title">Search</h5>
+                <form action="#">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter your Search Content">
+                        <div class="btn-border">
+                            <button class="cmn-btn">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="sidebar-single">
+                <h5 class="title">Latest 3 Events</h5>
+                <div class="sidebar-carousel">
+                    {% for event in events |slice(events|length-3,events|length)|reverse %}
+                    <div class="single-slide">
+                        <img src="{{ asset('uploads/Event_images/' ~ event.image) }}" alt="image">
+                        <a href="{{ path('event_front_show', {'id': event.id}) }}"><h6 class="title">{{ event.nom }}</h6></a>
+                        <div class="slide-bottom d-flex align-items-center">
+                            <div class="icon-area">
+                                <i class="fas fa-calendar"></i>
+                                <span class="mdr">from: {{ event.dateDebut ? event.dateDebut|date('Y-m-d') : '' }}  to: {{ event.dateFin ? event.dateFin|date('Y-m-d') : '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}
