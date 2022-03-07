@@ -79,7 +79,8 @@
                                                 </tbody>
                                             </table>
                                             <a href="{{ path('recette_pdf', {'id': recette.id}) }}">Telécharger la recette</a>
-                                            <a href="#" class="btn btn-link js-like-ling">
+                                            <a href="{{ path('recette_like', {'id': recette.id}) }}" class="btn btn-link js-like">
+
 
                                                     <i class="fas fa-thumbs-up"></i>
 

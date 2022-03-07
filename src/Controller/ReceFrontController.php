@@ -91,7 +91,7 @@ class ReceFrontController extends AbstractController
      */
     public function like(Recette $recette, EntityManagerInterface $entityManager, RecetteLikeRepository $recetteLikeRepository): Response
     { $user=$this->getUser();
-        if (!$user)  return $this->json(['code' => 403, 'message' => 'Unauthorized'], 200);
+        if (!$user)  return $this->json(['code' => 403, 'message' => 'Unauthorized','likes'=>$recetteLikeRepository->count(['recette'=>$recette])], 403);
 
         if($recette.islikedByuser($user)){
             $like=$recetteLikeRepository->findOneBy([
