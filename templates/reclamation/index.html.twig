@@ -13,7 +13,7 @@
 <section class="how-works-tournaments tournaments-section">
     <div class="overlay">
         <div class="container">
-            <a class="btn btn-outline-success" href="{{ path('reclamation_new') }}">{%trans%} Ajouter {% endtrans %}</a>
+
             <div class="row cus-mar">
                 <div class="col-lg-12">
                     <div class="table-responsive mt-60">
@@ -32,6 +32,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <a class="btn btn-outline-success" href="{{ path('reclamation_new') }}">{%trans%} Ajouter {% endtrans %}</a>
                             {% for reclamation in reclamation %}
                             <tr>
                                 <td>{{ reclamation.type }}</td>
@@ -53,16 +54,24 @@
                             </tr>
 
                             {% endfor %}
-                            {{ knp_pagination_render(reclamation) }}
+
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
+
 </section>
+
+    <br>
+<div class="section-header text-center">
+  {{ knp_pagination_render(reclamation) }}
+</div>
 
 
 

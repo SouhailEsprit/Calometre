@@ -7,38 +7,77 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-<h1>Reclamation</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
+
+    <section class="contact-section">
+    <div class="overlay">
+    <div class="container bg-area">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+        </div>
+    </div>
+
+
+    <section class="how-works-tournaments tournaments-section">
+        <div class="overlay">
+            <div class="container">
+
+                <div class="row cus-mar">
+                    <div class="col-lg-12">
+                        <div class="table-responsive mt-60">
+                            <table class="table">
+                                <th scope="ligne">{%trans%} {% endtrans %}</th>
+                                <th scope="ligne">{%trans%} {% endtrans %}</th>
+
+
+                <tr>
+                <th style="color: orange">Id</th>
                 <td>{{ reclamation.id }}</td>
             </tr>
+
             <tr>
-                <th>Date</th>
+                <th style="color: orange">Date</th>
                 <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>views</th>
+                <th style="color: orange">views</th>
                 <td>{{ reclamation.views }}</td>
             </tr>
             <tr>
-                <th>Type</th>
+                <th style="color: orange" >Type</th>
                 <td>{{ reclamation.type }}</td>
             </tr>
             <tr>
-                <th>Message</th>
+                <th style="color: orange">Message</th>
                 <td>{{ reclamation.message }}</td>
             </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('reclamation_index') }}">back to list</a>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">edit</a>
+        </div>
 
-    {{ include('reclamation/_delete_form.html.twig') }}
 
+    </section>
+        <br>
+
+        <a class="btn btn-outline-danger" href="{{ path('reclamation_index') }}">{%trans%} Retour   {% endtrans %}</a>
+        <a class="btn btn-outline-danger" href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">modifier</a>
+
+        <a method="post" action="{{ path('reclamation_delete', {'id': reclamation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');"></a>
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+            <button class="btn btn-outline-danger">{%trans%} supprimer{% endtrans %}</button>
+
+
+    </section>
 {% endblock %}

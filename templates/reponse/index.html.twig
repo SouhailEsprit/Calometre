@@ -3,7 +3,7 @@
 {% block mainContent %}
     <h1 style="color:orange">liste des reponses </h1>
 
-    <table class="table" style="color:noir;">
+    <table class="table" style="color:white;">
         <thead>
 
         <tr>
@@ -26,14 +26,14 @@
                 <td>{{ reponse.reponse }}</td>
                 <td>
                     {% if reponse.reponse == null %}
-                        <a href="{{ path('reponse_new', {'id': reponse.recId}) }}">repondre</a>
+                        <a class="btn btn-outline-warning" href="{{ path('reponse_new', {'id': reponse.recId}) }}">repondre</a>
                     {% else %}
-                        <a href="{{ path('reponse_edit', {'id': reponse.recId}) }}">modifier</a>
+                        <a class="btn btn-outline-warning" href="{{ path('reponse_edit', {'id': reponse.recId}) }}">modifier</a>
                     {% endif %}
                 </td>
                 <td>
                     {% if reponse.repp == null %}
-                        Pas de réponse
+                        <a class="btn btn-outline-danger">pas de réponse</a>
                     {% else %}
                         <form method="post" action="{{ path('reponse_delete', {'id': reponse.repp}) }}"
                               onsubmit="return confirm('Are you sure you want to delete this item?');">
@@ -50,5 +50,6 @@
         {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}
 
