@@ -3,9 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotBlankValidator;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -13,6 +21,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('firstname', new NotBlank());
+        $metadata->addPropertyConstraint('lastname', new NotBlank());
+        $metadata->addPropertyConstraint('phonenumber', new Assert\GreaterThan(8));
+        $metadata->addPropertyConstraint('phonenumber', new NotBlank());
+        $metadata->addPropertyConstraint('phonenumber', new Assert\Positive());
+
+    }
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -37,9 +55,95 @@ class User implements UserInterface
     private $password;
 
     /**
+
+     * @ORM\OneToMany (targetEntity=Comment::class, mappedBy="user")
+     */
+    private $usercomments;
+
+    /**
+     * @ORM\ManyToMany (targetEntity=Event::class, mappedBy="users")
+     */
+    private $events;
+
+    public function __construct()
+    {
+        $this->events = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->addUser($this);
+        }
+        return $this;
+    }
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            $event->removeUser($this);
+        }
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getUsercomments()
+    {
+        return $this->usercomments;
+    }
+
+    /**
+     * @param mixed $usercomments
+     */
+    public function setUsercomments($usercomments): void
+    {
+        $this->usercomments = $usercomments;
+    }
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $phonenumber;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $profile_picture;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isbanned=false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $CountryCode;
 
     public function getId(): ?int
     {
@@ -74,8 +178,6 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -133,4 +235,81 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+
+        return $this;
+    }
+
+    public function getPhonenumber(): ?int
+    {
+        return $this->phonenumber;
+    }
+
+    public function setPhonenumber(int $phonenumber): self
+    {
+        $this->phonenumber = $phonenumber;
+
+        return $this;
+    }
+
+    public function getProfilePicture(): ?string
+    {
+        return $this->profile_picture;
+    }
+
+    public function setProfilePicture(?string $profile_picture): self
+    {
+        $this->profile_picture = $profile_picture;
+
+        return $this;
+    }
+
+    public function getIsbanned(): ?bool
+    {
+        return $this->isbanned;
+    }
+
+    public function setIsbanned(bool $isbanned): self
+    {
+        $this->isbanned = $isbanned;
+
+        return $this;
+    }
+
+    public function getCountryCode(): ?string
+    {
+        return $this->CountryCode;
+    }
+
+    public function setCountryCode(string $CountryCode): self
+    {
+        $this->CountryCode = $CountryCode;
+
+        return $this;
+    }
+
+
+
 }
+

@@ -18,7 +18,7 @@ class ReponseRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Reponse::class);
     }
-        public function getAllAnswers()
+    public function getAllAnswers()
     {
         $conn = $this->getEntityManager()->getConnection();
 

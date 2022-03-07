@@ -52,7 +52,7 @@ class Reponse
         return $this->id;
     }
 
-    
+
 
     public function getDate(): ?\DateTimeInterface
     {

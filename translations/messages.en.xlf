@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="epNW0fY" resname="ajouter avec succe">
         <source>ajouter avec succe</source>
-        <target>add</target>
-      </trans-unit>
-      <trans-unit id="QAZ68z_" resname="ajouter">
-        <source>ajouter</source>
-        <target>add</target>
-      </trans-unit>
-      <trans-unit id="APnFM0V" resname="Ajouter">
-        <source>Ajouter</source>
-        <target>add</target>
+        <target>__ajouter avec succe</target>
       </trans-unit>
       <trans-unit id="EhVukhv" resname="Id">
         <source>Id</source>
         <target>Id</target>
+      </trans-unit>
+      <trans-unit id="vZOMaI9" resname="action">
+        <source>action</source>
+        <target>action</target>
+      </trans-unit>
+      <trans-unit id="k3LEcO6" resname="modele">
+        <source>modele</source>
+        <target>model</target>
+      </trans-unit>
+      <trans-unit id="rbBXlep" resname="envoyer">
+        <source>envoyer</source>
+        <target>send</target>
+      </trans-unit>
+      <trans-unit id="APnFM0V" resname="Ajouter">
+        <source>Ajouter</source>
+        <target>add</target>
       </trans-unit>
       <trans-unit id="EwPAaws" resname="type">
         <source>type</source>
@@ -31,55 +39,27 @@
       </trans-unit>
       <trans-unit id="DodjLNR" resname="date">
         <source>date</source>
-        <target>Date</target>
+        <target>date</target>
+      </trans-unit>
+      <trans-unit id="DVXDi5N" resname="voir">
+        <source>voir</source>
+        <target>show</target>
       </trans-unit>
       <trans-unit id="xwYQJiS" resname="modifier">
         <source>modifier</source>
-        <target>Edit</target>
+        <target>edit</target>
       </trans-unit>
       <trans-unit id="g0KJ6ww" resname="supprimer">
         <source>supprimer</source>
-        <target>Delete</target>
+        <target>delete</target>
       </trans-unit>
-      <trans-unit id="wDlObZa" resname="créer votre réclamation">
-        <source>créer votre réclamation</source>
-        <target>create your clame</target>
+      <trans-unit id="HGMzUJ3" resname="voir">
+        <source>voir</source>
+        <target>show</target>
       </trans-unit>
       <trans-unit id="n_MzBeZ" resname="envoyer la réclamation">
         <source>envoyer la réclamation</source>
-        <target>send the complaint</target>
-      </trans-unit>
-      <trans-unit id="UzFhc1Y" resname="Accueil">
-        <source>Accueil</source>
-        <target>Home</target>
-      </trans-unit>
-      <trans-unit id="Eov7DC0" resname="produits">
-        <source>produits</source>
-        <target>product</target>
-      </trans-unit>
-      <trans-unit id="eo6Guh8" resname="evenements">
-        <source>evenements</source>
-        <target>events</target>
-      </trans-unit>
-      <trans-unit id="pl0X_vI" resname="reclamations">
-        <source>reclamations</source>
-        <target>complaints</target>
-      </trans-unit>
-      <trans-unit id="CT59X9u" resname="contact">
-        <source>contact</source>
-        <target>contact</target>
-      </trans-unit>
-      <trans-unit id="tUKhz_F" resname="connexion">
-        <source>connexion</source>
-        <target>login</target>
-      </trans-unit>
-      <trans-unit id="vZOMaI9" resname="action">
-        <source>action</source>
-        <target>__action</target>
-      </trans-unit>
-      <trans-unit id="k3LEcO6" resname="model">
-        <source>model</source>
-        <target>__model</target>
+        <target>send</target>
       </trans-unit>
     </body>
   </file>

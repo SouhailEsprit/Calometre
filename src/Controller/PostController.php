@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Post;
-use App\Form\PostType;
-use App\Repository\PostRepository;
+
+use App\{Entity\Post, Form\PostType, Repository\PostRepository};
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/post")
+ * @Route ("/post")
  */
 class PostController extends AbstractController
 {
     /**
-     * @Route("/", name="post_index", methods={"GET"})
+     * @Route("/admin/display", name="post_index", methods={"GET"})
      */
     public function index(PostRepository $postRepository): Response
     {
@@ -26,16 +25,19 @@ class PostController extends AbstractController
         ]);
     }
 
-    /**
+   /**
      * @Route("/new", name="post_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $post = new Post();
+
+        $post->setCreationDate(date('Y-m-d '));
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $post = $form->getData();
             $entityManager->persist($post);
             $entityManager->flush();
 
@@ -90,4 +92,18 @@ class PostController extends AbstractController
 
         return $this->redirectToRoute('post_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    /**
+     * @Route("/admin/display/searchajax ", name="ajaxsearchpost",methods={"GET"})
+     */
+    public function search(Request $request,PostRepository $pr)
+    {
+        $requestString = $request->get('searchValue');
+        $posts = $pr->searchPost($requestString);
+        return $this->render('post/postAjax.html.twig', [
+            "posts" => $posts
+        ]);
+    }
+
 }

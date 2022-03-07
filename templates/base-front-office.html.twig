@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bitbetio - HTML Template</title>
+    <title>Calometre- HTML Template</title>
 
     <link rel="shortcut icon" href="{{ asset('front-office/assets/images/fav.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/bootstrap.min.css') }}">
@@ -20,14 +21,13 @@
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/arafat-font.css') }}">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/style.css') }}">
-
     {% block styles %}
     {% endblock %}
 </head>
 
 <body>
 <!-- start preloader -->
-<div class="preloader" id="preloader"></div>
+{#<div class="preloader" id="preloader"></div>#}
 <!-- end preloader -->
 
 <!-- Scroll To Top Start-->
@@ -36,141 +36,139 @@
 
 <!-- header-section start -->
 {% block header %}
-<header class="header-section">
-
-    <div class="overlay">
-
-        <div class="container">
-            <div class="row d-flex header-area">
-
-                <nav class="navbar navbar-expand-lg navbar-light">
-
-                    <a class="navbar-brand" href="index.html">
-                        <img src="{{ asset('front-office/assets/images/logo.png') }}" class="logo" alt="logo">
-                    </a>
-                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbar-content">
-                        <i class="fas fa-bars"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
-                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="index.html">{%trans%} Accueil {% endtrans %}</a>
-                            </li>
-                            <li class="nav-item dropdown main-navbar">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">{%trans%} produits {% endtrans %}</a>
-                                <ul class="dropdown-menu main-menu shadow">
-                                    <li><a class="nav-link" href="dashboard.html">tableau de bord</a></li>
-                                    <li class="dropend sub-navbar">
-                                        <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                           data-bs-auto-close="outside">Setting</a>
-                                        <ul class="dropdown-menu sub-menu shadow">
-                                            <li><a class="nav-link" href="personal-details-setting.html">Personal Details</a></li>
-                                            <li><a class="nav-link" href="modify-login-password.html">Change Password</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown main-navbar">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">{%trans%} evenements {% endtrans %}</a>
-                                <ul class="dropdown-menu main-menu shadow">
-                                    <li><a class="nav-link" href="soccer-bets-2.html">Tennis</a></li>
-                                    <li><a class="nav-link" href="soccer-bets-1.html">Soccer</a></li>
-                                    <li><a class="nav-link" href="soccer-bets-2.html">NBA</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown main-navbar">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">exercices</a>
-                                <ul class="dropdown-menu main-menu shadow">
-                                    <li><a class="nav-link" href="escrow-bets-fee.html">Escrow Bets Fee</a></li>
-                                    <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>
-                                    <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>
-                                    <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown main-navbar">
-                                <a class="nav-link dropdown-toggle active" href="javascript:void(0)"
-                                   data-bs-toggle="dropdown" data-bs-auto-close="outside"> {%trans%} reclamations {% endtrans %} </a>
-                                <ul class="dropdown-menu main-menu shadow">
-                                    <li class="dropend sub-navbar">
-                                        <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                           data-bs-auto-close="outside">aliments</a>
-                                        <ul class="dropdown-menu sub-menu shadow">
-                                            <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>
-                                            <li><a class="nav-link" href="tournaments-details.html">Tournaments Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropend sub-navbar">
-                                        <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                           data-bs-auto-close="outside">Blog</a>
-                                        <ul class="dropdown-menu sub-menu shadow">
-                                            <li><a class="nav-link" href="blog.html">Blog</a></li>
-                                            <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="nav-link" href="affiliate.html">Affiliate</a></li>
-                                    <li><a class="nav-link" href="faqs.html">Faqs</a></li>
-                                    <li><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-                                    <li><a class="nav-link" href="error.html">Error</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">{%trans%} contact {% endtrans %}</a>
-                            </li>
-                        </ul>
-
-                        <div class="right-area header-action d-flex align-items-center max-un">
-                            <button type="button" class="login" data-bs-toggle="modal" data-bs-target="#loginMod">
-                                {%trans%} connexion {% endtrans %}
-                            </button>
-                            <button type="button" class="cmn-btn reg" data-bs-toggle="modal"
-                                    data-bs-target="#loginMod">
-                                Sign Up
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                    <nav>
-                        <ul class="navbar-nav ml-auto">
-                            {% for locale in locales %}
-                                {% if locale!=app.request.locale %}
-                                    <li class="nav-item ">
-                                        <a class="nav-link"href="{{ path('change_locale',{'locale':locale}) }}"><img width="40px" height="40px" src="{{ asset('imgg/'~locale~'.png') }}"
-                                                                         alt="{{ locale }}"></a>
-
-                                    </li>
+    <header class="header-section">
+        <div class="overlay">
+            <div class="container">
+                <div class="row d-flex header-area">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="{{ asset('front-office/assets/images/calometre.png') }}" class="logo" alt="logo">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbar-content">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
+                            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{path('home')}}">Home</a>
+                                </li>
+                                <li class="nav-item dropdown main-navbar">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Dashboard</a>
+                                    <ul class="dropdown-menu main-menu shadow">
+                                        <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                                        <li class="dropend sub-navbar">
+                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
+                                               data-bs-toggle="dropdown"
+                                               data-bs-auto-close="outside">Setting</a>
+                                            <ul class="dropdown-menu sub-menu shadow">
+                                                <li><a class="nav-link" href="personal-details-setting.html">Personal
+                                                        Details</a></li>
+                                                <li><a class="nav-link" href="modify-login-password.html">Change
+                                                        Password</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown main-navbar">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Sports</a>
+                                    <ul class="dropdown-menu main-menu shadow">
+                                        <li><a class="nav-link" href="soccer-bets-2.html">Tennis</a></li>
+                                        <li><a class="nav-link" href="soccer-bets-1.html">Soccer</a></li>
+                                        <li><a class="nav-link" href="soccer-bets-2.html">NBA</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown main-navbar">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Currency</a>
+                                    <ul class="dropdown-menu main-menu shadow">
+                                        <li><a class="nav-link" href="escrow-bets-fee.html">Escrow Bets Fee</a></li>
+                                        <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>
+                                        <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>
+                                        <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown main-navbar">
+                                    <a class="nav-link dropdown-toggle " href="javascript:void(0)"
+                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
+                                    <ul class="dropdown-menu main-menu shadow">
+                                        <li class="dropend sub-navbar">
+                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
+                                               data-bs-toggle="dropdown"
+                                               data-bs-auto-close="outside">Tournaments</a>
+                                            <ul class="dropdown-menu sub-menu shadow">
+                                                <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>
+                                                <li><a class="nav-link" href="tournaments-details.html">Tournaments
+                                                        Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropend sub-navbar">
+                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
+                                               data-bs-toggle="dropdown"
+                                               data-bs-auto-close="outside">Blog</a>
+                                            <ul class="dropdown-menu sub-menu shadow">
+                                                <li><a class="nav-link" href="blog.html">Blog</a></li>
+                                                <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="nav-link" href="affiliate.html">Affiliate</a></li>
+                                        <li><a class="nav-link" href="faqs.html">Faqs</a></li>
+                                        <li><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
+                                        <li><a class="nav-link" href="error.html">Error</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact</a>
+                                </li>
+                                {% if app.user != null %}
+                                    {% if app.user.roles|join(', ') =="ROLE_ADMIN" %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ path('users_list') }}">Admin Dashboard</a>
+                                        </li>
+                                    {% endif %}
                                 {% endif %}
-                            {% endfor %}
-                        </ul>
+                            </ul>
+                            <div class="right-area header-action d-flex align-items-center max-un">
+                                {% if app.user %}
+                                    <a href="{{ path('user') }}" style=color:white type="button">
+                                        {{ app.user.firstname }}
+                                    </a>
+
+                                    <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg">
+                                        Logout
+                                    </a>
+                                {% else %}
+
+
+                                    <button type="button" class="login" data-bs-toggle="modal"
+                                            data-bs-target="#loginMod">
+                                        Login
+                                    </button>
+                                    <a href="{{ path('app_register')}}" type="button" class="cmn-btn reg" >
+                                        Sign Up
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
                     </nav>
-                </nav>
-
-
+                </div>
             </div>
-
-
         </div>
-    </div>
-
-
-</header>
-<!-- header-section end -->
+    </header>
+    <!-- header-section end -->
 {% endblock %}
 
 <!-- Login Registration start -->
+
 <div class="log-reg">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <div class="modal fade" id="loginMod">
+
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header justify-content-center">
@@ -178,13 +176,7 @@
                                         aria-label="Close"></button>
                             </div>
                             <ul class="nav log-reg-btn justify-content-around">
-                                <li class="bottom-area" role="presentation">
-                                    <button class="nav-link" id="regArea-tab" data-bs-toggle="tab"
-                                            data-bs-target="#regArea" type="button" role="tab" aria-controls="regArea"
-                                            aria-selected="false">
-                                        SIGN UP
-                                    </button>
-                                </li>
+
                                 <li class="bottom-area" role="presentation">
                                     <button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab"
                                             data-bs-target="#loginArea" type="button" role="tab"
@@ -210,21 +202,35 @@
                                                                 class="fab fa-instagram"></i></a>
                                                 </div>
                                             </div>
+
                                             <div class="form-area">
-                                                <form action="#">
+                                                <form method="post">
+
                                                     <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="single-input">
-                                                                <label for="logemail">Reclamation</label>
-                                                                <input type="text" id="logemail"
-                                                                       placeholder="reclamation">
+                                                        {% if app.user == null %}
+                                                            <div class="col-12">
+                                                                <div class="single-input">
+
+                                                                    <label for="logemail">Email</label>
+                                                                    <input type="email" value="{{ last_username }}"
+                                                                           name="email" id="inputEmail"
+                                                                           autocomplete="email" required autofocus
+                                                                           placeholder="Email Address">
+                                                                </div>
+                                                                <div class="single-input">
+                                                                    <label for="logpassword">Password</label>
+                                                                    <input type="password" name="password"
+                                                                           id="inputPassword"
+                                                                           autocomplete="current-password" required
+                                                                           placeholder="Email Password">
+                                                                    <input type="hidden" name="_csrf_token"
+                                                                           value="{{ csrf_token('authenticate') }}">
+
+                                                                </div>
                                                             </div>
-                                                            <div class="single-input">
-                                                                <label for="logpassword">Password</label>
-                                                                <input type="text" id="logpassword"
-                                                                       placeholder="Email Password">
-                                                            </div>
-                                                        </div>
+                                                        {% endif %}
+
+
                                                         <div class="col-12">
                                                             <div class="remember-me">
                                                                 <label
@@ -241,7 +247,7 @@
                                                                             </span>
                                                                         </span>
                                                                 </label>
-                                                                <a href="javascript:void(0)">Forgot Password</a>
+                                                                <a href="{{ path ('app_forgot_password_request') }}">Forgot Password</a>
                                                             </div>
                                                         </div>
                                                         <span class="btn-border w-100">
@@ -250,12 +256,16 @@
                                                     </div>
                                                 </form>
                                                 <div class="bottom-area text-center">
-                                                    <p>Not a member ? <a href="javascript:void(0)" class="reg-btn">Register</a></p>
+                                                    <p>Not a member ? <a href="{{ path('app_register') }}"
+                                                                         class="reg-btn">Register</a></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
+
                                 <div class="tab-pane fade" id="regArea" role="tabpanel"
                                      aria-labelledby="regArea-tab">
                                     <div class="login-reg-content regMode">
@@ -272,66 +282,35 @@
                                                                 class="fab fa-instagram"></i></a>
                                                 </div>
                                             </div>
+
                                             <div class="form-area">
-                                                <form action="#">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="single-input">
-                                                                <label for="regemail">Email</label>
-                                                                <input type="text" id="regemail"
-                                                                       placeholder="Email Address">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="regpassword">Password</label>
-                                                                <input type="text" id="regpassword"
-                                                                       placeholder="Email Password">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label>Country</label>
-                                                                <select>
-                                                                    <option value="1">United States</option>
-                                                                    <option value="2">United Kingdom</option>
-                                                                    <option value="3">Canada</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="remember-me">
-                                                                <a href="javascript:void(0)">Have a referral
-                                                                    code?</a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="btn-border w-100">
-                                                                <button class="cmn-btn w-100">SIGN UP</button>
-                                                            </span>
-                                                    </div>
-                                                </form>
+
                                                 <div class="bottom-area text-center">
-                                                    <p>Already have an member ? <a href="javascript:void(0)"
-                                                                                   class="log-btn">Login</a></p>
+                                                    <p>Already a member ? <a href=href="{{ path('app_login') }}"
+                                                                             class="log-btn">Login</a></p>
                                                 </div>
-                                                <div class="counter-area">
-                                                    <div class="single">
-                                                        <div class="icon-area">
-                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}"
-                                                                 alt="icon">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <p>25,179k</p>
-                                                            <p class="mdr">Bets</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single">
-                                                        <div class="icon-area">
-                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}"
-                                                                 alt="icon">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <p>6.65 BTC</p>
-                                                            <p class="mdr">Total Won</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                {#                                                <div class="counter-area"> #}
+                                                {#                                                    <div class="single"> #}
+                                                {#                                                        <div class="icon-area"> #}
+                                                {#                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}" #}
+                                                {#                                                                 alt="icon"> #}
+                                                {#                                                        </div> #}
+                                                {#                                                        <div class="text-area"> #}
+                                                {#                                                            <p>25,179k</p> #}
+                                                {#                                                            <p class="mdr">Bets</p> #}
+                                                {#                                                        </div> #}
+                                                {#                                                    </div> #}
+                                                {#                                                    <div class="single"> #}
+                                                {#                                                        <div class="icon-area"> #}
+                                                {#                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}" #}
+                                                {#                                                                 alt="icon"> #}
+                                                {#                                                        </div> #}
+                                                {#                                                        <div class="text-area"> #}
+                                                {#                                                            <p>6.65 BTC</p> #}
+                                                {#                                                            <p class="mdr">Total Won</p> #}
+                                                {#                                                        </div> #}
+                                                {#                                                    </div> #}
+                                                {#                                                </div> #}
                                             </div>
                                         </div>
                                     </div>
@@ -344,72 +323,77 @@
         </div>
     </div>
 </div>
+
+
 <!-- Login Registration end -->
 
 
 <!-- Main content start -->
 
-        {% block mainContent %}
-        {% endblock %}
+{% block mainContent %}
+{% endblock %}
 
 <!-- Main content end -->
+{% block footer %}
 
-<!-- Footer Area Start -->
-<footer class="footer-section">
-    <div class="container pt-120">
+    <!-- Footer Area Start -->
+    <footer class="footer-section">
+        <div class="container pt-120">
 
-        <div class="footer-bottom-area pt-120">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="menu-item">
-                        <a href="index.html" class="logo">
-                            <img src="{{ asset('front-office/assets/images/logo.png') }}" alt="logo">
-                        </a>
-                        <ul class="footer-link">
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="terms-conditions.html">Terms of Services</a></li>
-                            <li><a href="privacy-policy.html">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="copyright">
-                        <div class="copy-area">
-                            <p> Copyright © <a href="index.html">Bitbetio</a> | Designed by
-                                <a href="https://themeforest.net/user/pixelaxis" class="auth">Pixelaxis</a>
-                            </p>
+            <div class="footer-bottom-area pt-120">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="menu-item">
+                            <a href="index.html" class="logo">
+                                <img src="{{ asset('front-office/assets/images/calometre.png') }}" alt="logo">
+                            </a>
+                            <ul class="footer-link">
+                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="terms-conditions.html">Terms of Services</a></li>
+                                <li><a href="privacy-policy.html">Privacy</a></li>
+                            </ul>
                         </div>
-                        <div class="social-link d-flex align-items-center">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="col-12">
+                        <div class="copyright">
+                            <div class="copy-area">
+                                <p> Copyright © <a href="index.html">Bitbetio</a> | Designed by
+                                    <a href="https://themeforest.net/user/pixelaxis" class="auth">Pixelaxis</a>
+                                </p>
+                            </div>
+                            <div class="social-link d-flex align-items-center">
+                                <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                                <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                                <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
-<!-- Footer Area End -->
+    </footer>
+    <!-- Footer Area End -->
+{% endblock %}
 
 <!--==================================================================-->
 {% block scripts %}
-<script src="{{ asset('front-office/assets/js/jquery.min.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/jquery-ui.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/fontawesome.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/slick.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/jquery.downCount.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/counter.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/waypoint.min.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/wow.min.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/plugin/plugin.js') }}"></script>
-<script src="{{ asset('front-office/assets/js/main.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/fontawesome.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/slick.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/jquery.downCount.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/counter.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/waypoint.min.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/wow.min.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/plugin/plugin.js') }}"></script>
+    <script src="{{ asset('front-office/assets/js/main.js') }}"></script>
 {% endblock %}
 </body>
 
 
-</html>
+
+

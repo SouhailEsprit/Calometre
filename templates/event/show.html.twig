@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Event{% endblock %}
 
-{% block body %}
+{% block mainContent %}
+
     <h1>Event</h1>
 
     <table class="table">
@@ -17,11 +17,11 @@
             </tr>
             <tr>
                 <th>DateDebut</th>
-                <td>{{ event.dateDebut }}</td>
+                <td>{{ event.dateDebut ? event.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>DateFin</th>
-                <td>{{ event.dateFin }}</td>
+                <td>{{ event.dateFin ? event.dateFin|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -34,6 +34,9 @@
             <tr>
                 <th>Lieu</th>
                 <td>{{ event.lieu }}</td>
+                <td>
+                    <img src="{{ asset('uploads/Event_images/' ~ event.image) }}"/>
+                </td>
             </tr>
         </tbody>
     </table>

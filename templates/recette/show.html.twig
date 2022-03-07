@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
 {% block title %}Recette{% endblock %}
 
-{% block body %}
+{% block mainContent %}
     <h1>Recette</h1>
 
     <table class="table">
@@ -21,7 +21,9 @@
             </tr>
             <tr>
                 <th>Listaliment</th>
-                <td>{{ recette.listaliment }}</td>
+                {% for aliment in recette.aliments %}
+                    <td>{{ aliment.name}}</td>
+                {% endfor %}
             </tr>
         </tbody>
     </table>

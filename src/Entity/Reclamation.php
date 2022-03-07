@@ -35,8 +35,6 @@ class Reclamation
 
     /**
      * @ORM\Column(type="string", length=255)
-
-
      * @Assert\Length(
      *      min = 10,
      *      max = 50,

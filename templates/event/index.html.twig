@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Event index{% endblock %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block body %}
-    <h1>Event index</h1>
+
+{% block mainContent %}
+    <h1>List of all the events</h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,8 @@
             <tr>
                 <td>{{ event.id }}</td>
                 <td>{{ event.nom }}</td>
-                <td>{{ event.dateDebut }}</td>
-                <td>{{ event.dateFin }}</td>
+                <td>{{ event.dateDebut ? event.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ event.dateFin ? event.dateFin|date('Y-m-d') : '' }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.nombreParticipants }}</td>
                 <td>{{ event.lieu }}</td>

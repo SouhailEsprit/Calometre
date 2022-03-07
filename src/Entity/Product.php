@@ -3,13 +3,35 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
 class Product
 {
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('name', new NotBlank());
+        $metadata->addPropertyConstraint('price', new NotBlank());
+        $metadata->addPropertyConstraint('price', new Assert\Positive());
+        $metadata->addPropertyConstraint('price', new Assert\GreaterThan(0));
+        $metadata->addPropertyConstraint('quantity', new NotBlank());
+        $metadata->addPropertyConstraint('quantity', new Assert\Positive());
+        $metadata->addPropertyConstraint('quantity', new Assert\GreaterThan(0));
+        $metadata->addPropertyConstraint('description', new NotBlank());
+
+
+     
+
+    }
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -23,24 +45,42 @@ class Product
     private $name;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="float")
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $categorie;
+    private $description;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $quantite;
+    private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="categorie")
+     * @ORM\Column(type="integer")
      */
-    private $categories;
+    private $quantity;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
+     * @ORM\JoinColumn(name="CartProds", referencedColumnName="idprod", onDelete="CASCADE")
+     * @ORM\OneToMany(targetEntity=CartProds::class, mappedBy="idprod",cascade={"remove"})
+     */
+    private $idcart;
+
+    public function __construct()
+    {
+        
+        $this->idcart = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -64,46 +104,97 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(?float $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
 
         return $this;
     }
 
-    public function getCategorie(): ?string
+    public function getDescription(): ?string
     {
-        return $this->categorie;
+        return $this->description;
     }
 
-    public function setCategorie(string $categorie): self
+    public function setDescription(string $description): self
     {
-        $this->categorie = $categorie;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getQuantite(): ?int
+    public function getCategory(): ?Category
     {
-        return $this->quantite;
+        return $this->category;
     }
 
-    public function setQuantite(?int $quantite): self
+    public function setCategory(?Category $category): self
     {
-        $this->quantite = $quantite;
+        $this->category = $category;
 
         return $this;
     }
 
-    public function getCategories(): ?Categories
+    public function getQuantity(): ?int
     {
-        return $this->categories;
+        return $this->quantity;
     }
 
-    public function setCategories(?Categories $categories): self
+    public function setQuantity(int $quantity): self
     {
-        $this->categories = $categories;
+        $this->quantity = $quantity;
 
         return $this;
     }
+
+    
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+    
+    public function __toString()
+{
+    
+    return (string) $this->getId();
+
+}
+
+    /**
+     * @return Collection<int, CartProds>
+     */
+    public function getIdcart(): Collection
+    {
+        return $this->idcart;
+    }
+
+    public function addIdcart(CartProds $idcart): self
+    {
+        if (!$this->idcart->contains($idcart)) {
+            $this->idcart[] = $idcart;
+            $idcart->setIdprod($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdcart(CartProds $idcart): self
+    {
+        if ($this->idcart->removeElement($idcart)) {
+            // set the owning side to null (unless already changed)
+            if ($idcart->getIdprod() === $this) {
+                $idcart->setIdprod(null);
+            }
+        }
+
+        return $this;
+    }
+    
 }

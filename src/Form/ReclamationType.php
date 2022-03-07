@@ -18,7 +18,7 @@ class ReclamationType extends AbstractType
         $builder
             ->add('type',ChoiceType::class, [
                 'choices' => [
-                        'aliment' => 'aliment',
+                    'aliment' => 'aliment',
                     'exercice' => 'exercice',
                     'coach ' => 'coach',
                     'autre' => 'autre',

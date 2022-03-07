@@ -1,16 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Aliment index{% endblock %}
 
-{% block body %}
-    <h1>Aliment index</h1>
+
+{% block mainContent %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <h1>Liste des aliments</h1>
+
+    {{ include('aliment/search.html.twig') }}
+    {{ form_start(search2_form) }}
+    {{ form_widget(search2_form) }}
+    {{ form_end(search2_form) }}
+
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Categorie</th>
+                <th>Name</th>
+                <th>Catégorie</th>
                 <th>Calories</th>
+                <th>Listes des recettes</th>
+                <th>Lien image associée</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,8 +32,13 @@
         {% for aliment in aliments %}
             <tr>
                 <td>{{ aliment.id }}</td>
+                <td>{{ aliment.name}}</td>
                 <td>{{ aliment.categorie }}</td>
                 <td>{{ aliment.calories }}</td>
+                <td> {% for recette in aliment.recettes%}
+                    {{ recette.name}}</td>
+                {% endfor %}
+                <td>{{ aliment.Image }}</td>
                 <td>
                     <a href="{{ path('aliment_show', {'id': aliment.id}) }}">show</a>
                     <a href="{{ path('aliment_edit', {'id': aliment.id}) }}">edit</a>
@@ -34,4 +53,5 @@
     </table>
 
     <a href="{{ path('aliment_new') }}">Create new</a>
+    <a href="{{ path('aliment_index') }}">back to list</a>
 {% endblock %}

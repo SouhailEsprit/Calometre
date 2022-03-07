@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Aliment;
 use App\Form\AlimentType;
+use App\Form\SeachAliment2Type;
+use App\Form\SeachAlimentType;
 use App\Repository\AlimentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,12 +19,39 @@ use Symfony\Component\Routing\Annotation\Route;
 class AlimentController extends AbstractController
 {
     /**
-     * @Route("/", name="aliment_index", methods={"GET"})
+     * @Route("/", name="aliment_index", methods={"GET", "POST"})
      */
-    public function index(AlimentRepository $alimentRepository): Response
+    public function index(Request $request, AlimentRepository $alimentRepository): Response
     {
+        $data = $request->request->get('seach_aliment');
+        $data1 = $request->request->get('seach_aliment2');
+        if($data && $data['query']) {
+            $aliments = $alimentRepository->createQueryBuilder('a')
+                ->where('a.name LIKE :term')
+                ->setParameter('term', '%' . $data['query'] . '%')
+                ->orderBy('a.calories', 'ASC')
+                ->getQuery()
+                ->getResult();
+        }
+        else if ($data1 && $data1['query'])
+            {$aliments = $alimentRepository->createQueryBuilder('a')
+                ->where('a.categorie = :term')
+                ->setParameter('term',$data1['query'])
+                ->orderBy('a.calories', 'ASC')
+                ->getQuery()
+                ->getResult();
+            }
+        else{
+            $aliments = $alimentRepository->findBy(array(),array('calories' => 'ASC'));
+        }
+
+        $search_form = $this->createForm(SeachAlimentType::class);
+        $search2_form = $this->createForm(SeachAliment2Type::class);
+
         return $this->render('aliment/index.html.twig', [
-            'aliments' => $alimentRepository->findAll(),
+            'aliments' => $aliments,
+            'search_form' => $search_form->createView(),
+            'search2_form' => $search2_form->createView(),
         ]);
     }
 
@@ -36,6 +65,29 @@ class AlimentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $brochureFile = $form->get('Image')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($brochureFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $newFilename = uniqid().'.'.$brochureFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $brochureFile->move(
+                        $this->getParameter('aliment_images'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $aliment->setImage($newFilename);
+            }
             $entityManager->persist($aliment);
             $entityManager->flush();
 

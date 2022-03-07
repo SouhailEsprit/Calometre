@@ -6,10 +6,7 @@ use App\Entity\Reclamation;
 use App\Entity\Reponse;
 use App\Form\ReponseType;
 use App\Repository\ReponseRepository;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
-use Swift_Mailer;
-use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,17 +21,19 @@ class ReponseController extends AbstractController
      * @Route("/", name="reponse_index", methods={"GET"})
      */
     public function index(ReponseRepository $reponseRepository): Response
-    {
+    { $user=$this->getUser();
+        if( $user->getRoles() == ["ROLE_ADMIN"] ){
         return $this->render('reponse/index.html.twig', [
             'reponses' => $reponseRepository->getAllAnswers(),
-        ]);
+        ]);}else{
+            return $this->redirectToRoute('error');
+        }
     }
 
     /**
      * @Route("/new/{id}", name="reponse_new", methods={"GET", "POST"})
-
      */
-    public function new(Request $request, Reclamation $rec, EntityManagerInterface $entityManager, Swift_Mailer $mailer): Response
+    public function new(Request $request, Reclamation $rec, EntityManagerInterface $entityManager, \Swift_Mailer $mailer): Response
     {
         $reponse = new Reponse();
         $form = $this->createForm(ReponseType::class, $reponse);
@@ -42,13 +41,13 @@ class ReponseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $reponse->setRepondre($rec);
-            $reponse->setDate(new DateTime);
+            $reponse->setDate(new \DateTime);
             $entityManager->persist($reponse);
             $entityManager->flush();
 
             $answer = $reponse->getReponse();
 
-            $message = (new Swift_Message('Reponse sur Votre réclamation'))
+            $message = (new \Swift_Message('Reponse sur Votre réclamation'))
                 ->setFrom('calometre@gmail.com')
                 ->setTo($rec->getEmail())
                 ->setBody(
@@ -85,7 +84,7 @@ class ReponseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $reponse->setDate(new DateTime);
+            $reponse->setDate(new \DateTime);
             $entityManager->flush();
 
             return $this->redirectToRoute('reponse_index', [], Response::HTTP_SEE_OTHER);
