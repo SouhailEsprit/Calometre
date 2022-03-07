@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\RecetteLike;
+use App\Entity\User;
 use App\Entity\Recette;
 use App\Form\SearchRecette1Type;
 use App\Form\SearchRecette2Type;
+use App\Repository\RecetteLikeRepository;
 use App\Repository\RecetteRepository;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,26 +25,22 @@ class ReceFrontController extends AbstractController
 
     public function index(Request $request, RecetteRepository $recetteRepository): Response
     {
+        $user = $this->getUser();
         $data = $request->request->get('search_recette2');
         $data1 = $request->request->get('search_recette1');
-        if($data && $data['query']) {
+        if ($data && $data['query']) {
             $recettes = $recetteRepository->createQueryBuilder('a')
                 ->where('a.Name LIKE :term')
                 ->setParameter('term', '%' . $data['query'] . '%')
-
                 ->getQuery()
                 ->getResult();
-        }
-        else if ($data1 && $data1['query'])
-        {
+        } else if ($data1 && $data1['query']) {
             $recettes = $recetteRepository->createQueryBuilder('a')
                 ->where('a.categorie = :term')
-                ->setParameter('term',$data1['query'])
-
+                ->setParameter('term', $data1['query'])
                 ->getQuery()
                 ->getResult();
-        }
-        else{
+        } else {
             $recettes = $recetteRepository->findBy(array());
         }
 
@@ -52,10 +53,11 @@ class ReceFrontController extends AbstractController
             'search2_form' => $search2_form->createView(),
         ]);
     }
+
     /**
-     * @Route( name="recette_pdf", methods={"GET"})
+     * @Route( "/{id}/pdf",name="recette_pdf", methods={"GET"})
      */
-    public function getPDF(Recette $recette )
+    public function getPDF(Recette $recette)
     {
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
@@ -84,4 +86,30 @@ class ReceFrontController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/rece/front/{id}/like", name="recette_like")
+     */
+    public function like(Recette $recette, EntityManagerInterface $entityManager, RecetteLikeRepository $recetteLikeRepository): Response
+    { $user=$this->getUser();
+        if (!$user)  return $this->json(['code' => 403, 'message' => 'Unauthorized'], 200);
+
+        if($recette.islikedByuser($user)){
+            $like=$recetteLikeRepository->findOneBy([
+                'recette'=>$recette,
+                'user'=>$user
+            ]);
+            $entityManager->remove($like);
+            $entityManager->flush();
+            return $this->json(['code' => 200, 'message' => 'like supprimé','likes'=>$recetteLikeRepository->count(['recette'=>$recette])],200);
+        }
+        $like=new RecetteLike();
+        $like->setRecette($recette)
+             ->setUser($user);
+        $entityManager->persist($like);
+        $entityManager->flush();
+        return $this->json(['code' => 200, 'message' => 'like ajoutée','likes'=>$recetteLikeRepository->count(['recette'=>$recette])],200);
+
+
+
+    }
 }

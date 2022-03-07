@@ -30,7 +30,6 @@ return [
         '/product' => [[['_route' => 'product_index', '_controller' => 'App\\Controller\\ProductController::index'], null, ['GET' => 0], null, true, false, null]],
         '/product/new' => [[['_route' => 'product_new', '_controller' => 'App\\Controller\\ProductController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/rece/front' => [[['_route' => 'app_rece_front', '_controller' => 'App\\Controller\\ReceFrontController::index'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'recette_pdf', '_controller' => 'App\\Controller\\ReceFrontController::getPDF'], null, ['GET' => 0], null, false, false, null]],
         '/recette' => [[['_route' => 'recette_index', '_controller' => 'App\\Controller\\RecetteController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/recette/new' => [[['_route' => 'recette_new', '_controller' => 'App\\Controller\\RecetteController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/reclamation' => [[['_route' => 'reclamation_index', '_controller' => 'App\\Controller\\ReclamationController::index'], null, ['GET' => 0], null, true, false, null]],
@@ -95,29 +94,33 @@ return [
                         .'|(*:462)'
                     .')'
                 .')'
+                .'|/([^/]++)/pdf(*:485)'
                 .'|/re(?'
                     .'|c(?'
-                        .'|ette/([^/]++)(?'
-                            .'|(*:498)'
-                            .'|/edit(*:511)'
-                            .'|(*:519)'
+                        .'|e(?'
+                            .'|/front/([^/]++)/like(*:527)'
+                            .'|tte/([^/]++)(?'
+                                .'|(*:550)'
+                                .'|/edit(*:563)'
+                                .'|(*:571)'
+                            .')'
                         .')'
                         .'|lamation/([^/]++)(?'
-                            .'|(*:548)'
-                            .'|/edit(*:561)'
-                            .'|(*:569)'
+                            .'|(*:601)'
+                            .'|/edit(*:614)'
+                            .'|(*:622)'
                         .')'
                     .')'
                     .'|ponse/([^/]++)(?'
-                        .'|(*:596)'
-                        .'|/edit(*:609)'
-                        .'|(*:617)'
+                        .'|(*:649)'
+                        .'|/edit(*:662)'
+                        .'|(*:670)'
                     .')'
                 .')'
                 .'|/type/exercice/([^/]++)(?'
-                    .'|(*:653)'
-                    .'|/edit(*:666)'
-                    .'|(*:674)'
+                    .'|(*:706)'
+                    .'|/edit(*:719)'
+                    .'|(*:727)'
                 .')'
             .')/?$}sD',
     ],
@@ -147,18 +150,20 @@ return [
         441 => [[['_route' => 'product_show', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         454 => [[['_route' => 'product_edit', '_controller' => 'App\\Controller\\ProductController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         462 => [[['_route' => 'product_delete', '_controller' => 'App\\Controller\\ProductController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        498 => [[['_route' => 'recette_show', '_controller' => 'App\\Controller\\RecetteController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        511 => [[['_route' => 'recette_edit', '_controller' => 'App\\Controller\\RecetteController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        519 => [[['_route' => 'recette_delete', '_controller' => 'App\\Controller\\RecetteController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        548 => [[['_route' => 'reclamation_show', '_controller' => 'App\\Controller\\ReclamationController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        561 => [[['_route' => 'reclamation_edit', '_controller' => 'App\\Controller\\ReclamationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        569 => [[['_route' => 'reclamation_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        596 => [[['_route' => 'reponse_show', '_controller' => 'App\\Controller\\ReponseController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        609 => [[['_route' => 'reponse_edit', '_controller' => 'App\\Controller\\ReponseController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        617 => [[['_route' => 'reponse_delete', '_controller' => 'App\\Controller\\ReponseController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        653 => [[['_route' => 'type_exercice_show', '_controller' => 'App\\Controller\\TypeExerciceController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        666 => [[['_route' => 'type_exercice_edit', '_controller' => 'App\\Controller\\TypeExerciceController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        674 => [
+        485 => [[['_route' => 'recette_pdf', '_controller' => 'App\\Controller\\ReceFrontController::getPDF'], ['id'], ['GET' => 0], null, false, false, null]],
+        527 => [[['_route' => 'recette_like', '_controller' => 'App\\Controller\\ReceFrontController::like'], ['id'], null, null, false, false, null]],
+        550 => [[['_route' => 'recette_show', '_controller' => 'App\\Controller\\RecetteController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        563 => [[['_route' => 'recette_edit', '_controller' => 'App\\Controller\\RecetteController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        571 => [[['_route' => 'recette_delete', '_controller' => 'App\\Controller\\RecetteController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        601 => [[['_route' => 'reclamation_show', '_controller' => 'App\\Controller\\ReclamationController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        614 => [[['_route' => 'reclamation_edit', '_controller' => 'App\\Controller\\ReclamationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        622 => [[['_route' => 'reclamation_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        649 => [[['_route' => 'reponse_show', '_controller' => 'App\\Controller\\ReponseController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        662 => [[['_route' => 'reponse_edit', '_controller' => 'App\\Controller\\ReponseController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        670 => [[['_route' => 'reponse_delete', '_controller' => 'App\\Controller\\ReponseController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        706 => [[['_route' => 'type_exercice_show', '_controller' => 'App\\Controller\\TypeExerciceController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        719 => [[['_route' => 'type_exercice_edit', '_controller' => 'App\\Controller\\TypeExerciceController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        727 => [
             [['_route' => 'type_exercice_delete', '_controller' => 'App\\Controller\\TypeExerciceController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

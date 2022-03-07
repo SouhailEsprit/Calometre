@@ -531,6 +531,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\RecetteLikeRepository" class="App\Repository\RecetteLikeRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\RecetteRepository" class="App\Repository\RecetteRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -4151,7 +4155,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.60vYzba"/>
+      <argument type="service" id=".service_locator.145JVqf"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5305,6 +5309,8 @@
     <service id=".abstract.instanceof.App\Repository\PostRepository" class="App\Repository\PostRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RecetteLikeRepository" class="App\Repository\RecetteLikeRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\RecetteLikeRepository" class="App\Repository\RecetteLikeRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RecetteRepository" class="App\Repository\RecetteRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\RecetteRepository" class="App\Repository\RecetteRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" abstract="true"/>
@@ -5728,6 +5734,14 @@
         <argument key="recette" type="service_closure" id=".errored..service_locator.iwjnrDI.App\Entity\Recette"/>
       </argument>
     </service>
+    <service id=".service_locator.YlxEE7y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="recette" type="service_closure" id=".errored..service_locator.YlxEE7y.App\Entity\Recette"/>
+        <argument key="recetteLikeRepository" type="service_closure" id="App\Repository\RecetteLikeRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.a7TOay9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5807,7 +5821,7 @@
         <argument key="typeExercice" type="service_closure" id=".errored..service_locator.uwm_ekw.App\Entity\TypeExercice"/>
       </argument>
     </service>
-    <service id=".service_locator.HTZrEhB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.mbUHgSz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AlimFrontController::index" type="service_closure" id=".service_locator.aJYiily"/>
@@ -5843,6 +5857,7 @@
         <argument key="App\Controller\ProductController::show" type="service_closure" id=".service_locator.JW5D6Lx"/>
         <argument key="App\Controller\ReceFrontController::getPDF" type="service_closure" id=".service_locator.iwjnrDI"/>
         <argument key="App\Controller\ReceFrontController::index" type="service_closure" id=".service_locator.V8wdBcZ"/>
+        <argument key="App\Controller\ReceFrontController::like" type="service_closure" id=".service_locator.YlxEE7y"/>
         <argument key="App\Controller\RecetteController::delete" type="service_closure" id=".service_locator.a7TOay9"/>
         <argument key="App\Controller\RecetteController::edit" type="service_closure" id=".service_locator.a7TOay9"/>
         <argument key="App\Controller\RecetteController::index" type="service_closure" id=".service_locator.V8wdBcZ"/>
@@ -5898,6 +5913,7 @@
         <argument key="App\Controller\ProductController:show" type="service_closure" id=".service_locator.JW5D6Lx"/>
         <argument key="App\Controller\ReceFrontController:getPDF" type="service_closure" id=".service_locator.iwjnrDI"/>
         <argument key="App\Controller\ReceFrontController:index" type="service_closure" id=".service_locator.V8wdBcZ"/>
+        <argument key="App\Controller\ReceFrontController:like" type="service_closure" id=".service_locator.YlxEE7y"/>
         <argument key="App\Controller\RecetteController:delete" type="service_closure" id=".service_locator.a7TOay9"/>
         <argument key="App\Controller\RecetteController:edit" type="service_closure" id=".service_locator.a7TOay9"/>
         <argument key="App\Controller\RecetteController:index" type="service_closure" id=".service_locator.V8wdBcZ"/>
@@ -6171,7 +6187,7 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.60vYzba" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.145JVqf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AlimentRepository" type="service_closure" id="App\Repository\AlimentRepository"/>
@@ -6180,6 +6196,7 @@
         <argument key="App\Repository\ExerciceRepository" type="service_closure" id="App\Repository\ExerciceRepository"/>
         <argument key="App\Repository\PostRepository" type="service_closure" id="App\Repository\PostRepository"/>
         <argument key="App\Repository\ProductRepository" type="service_closure" id="App\Repository\ProductRepository"/>
+        <argument key="App\Repository\RecetteLikeRepository" type="service_closure" id="App\Repository\RecetteLikeRepository"/>
         <argument key="App\Repository\RecetteRepository" type="service_closure" id="App\Repository\RecetteRepository"/>
         <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
         <argument key="App\Repository\ReponseRepository" type="service_closure" id="App\Repository\ReponseRepository"/>
@@ -6483,12 +6500,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.HTZrEhB"/>
+      <argument type="service" id=".service_locator.mbUHgSz"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.HTZrEhB"/>
+      <argument type="service" id=".service_locator.mbUHgSz"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6511,6 +6528,7 @@
     <service id=".errored..service_locator.JW5D6Lx.App\Entity\Product" class="App\Entity\Product"/>
     <service id=".errored..service_locator.PxxUmqH.App\Entity\Product" class="App\Entity\Product"/>
     <service id=".errored..service_locator.iwjnrDI.App\Entity\Recette" class="App\Entity\Recette"/>
+    <service id=".errored..service_locator.YlxEE7y.App\Entity\Recette" class="App\Entity\Recette"/>
     <service id=".errored..service_locator.a7TOay9.App\Entity\Recette" class="App\Entity\Recette"/>
     <service id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation" class="App\Entity\Reclamation"/>
     <service id=".errored..service_locator.LT1Dmml.App\Entity\Reclamation" class="App\Entity\Reclamation"/>
@@ -6909,7 +6927,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.HTZrEhB"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.mbUHgSz"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

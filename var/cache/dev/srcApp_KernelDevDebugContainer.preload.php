@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/Container81b6Ixm/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerCXlVVCr/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -78,6 +78,7 @@ $classes[] = 'App\Repository\EventRepository';
 $classes[] = 'App\Repository\ExerciceRepository';
 $classes[] = 'App\Repository\PostRepository';
 $classes[] = 'App\Repository\ProductRepository';
+$classes[] = 'App\Repository\RecetteLikeRepository';
 $classes[] = 'App\Repository\RecetteRepository';
 $classes[] = 'App\Repository\ReclamationRepository';
 $classes[] = 'App\Repository\ReponseRepository';

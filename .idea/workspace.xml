@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="87787207-2f21-484e-8bbb-1311a6a6588d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220306231122.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/RecetteLike.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/RecetteLikeRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReceFrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReceFrontController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RecetteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RecetteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RecettePDFController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/recette_pdf/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recette_pdf/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Recette.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Recette.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base-front-office.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base-front-office.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/rece_front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rece_front/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/-/Y/mObHu54pJWDb6V5ktlHw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/-/Y/mObHu54pJWDb6V5ktlHw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/6/Z/MZdML+fxp-q6LfCMuNuA" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/6/Z/MZdML+fxp-q6LfCMuNuA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/G/Z/yzjO2jCFM8nU2Cy4gSEg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/dOmbjT5+QV/G/Z/yzjO2jCFM8nU2Cy4gSEg" afterDir="false" />
@@ -24,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/f3/f3ccca702ff58cf87e1fce368d717e42e5ac1d3cc462ab6083c8c7e1a834c9f5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/f3/f3ccca702ff58cf87e1fce368d717e42e5ac1d3cc462ab6083c8c7e1a834c9f5.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +243,7 @@
       <workItem from="1646389078451" duration="21413000" />
       <workItem from="1646414814577" duration="11792000" />
       <workItem from="1646485732682" duration="4234000" />
-      <workItem from="1646573178522" duration="16939000" />
+      <workItem from="1646573178522" duration="31789000" />
     </task>
     <servers />
   </component>

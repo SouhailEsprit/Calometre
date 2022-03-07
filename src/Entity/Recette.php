@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\User;
 use App\Repository\RecetteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Float_;
+use PhpParser\Node\Stmt\Foreach_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -49,9 +50,15 @@ class Recette
      */
     private $Image;
 
+    /**
+     * @ORM\OneToMany(targetEntity=RecetteLike::class, mappedBy="recette")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->aliments = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function __toString()
@@ -142,5 +149,50 @@ class Recette
             $a=$a+$cal->getCalories();
         }
         return $a ;
+    }
+
+    /**
+     * @return Collection<int, RecetteLike>
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(RecetteLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setRecette($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(RecetteLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getRecette() === $this) {
+                $like->setRecette(null);
+            }
+        }
+
+        return $this;
+    }
+    /**
+     * @param $user
+     * @return boolean
+     */
+    public function islikedByuser(User $user): bool
+    {
+        Foreach( $this>likes as $like)
+            {
+                if ($like>getUser() === $user) return true;
+
+            }
+        return false;
+
+
     }
 }
