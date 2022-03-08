@@ -49,9 +49,15 @@ class Recette
      */
     private $Image;
 
+    /**
+     * @ORM\OneToMany(targetEntity=RecetteLike::class, mappedBy="Recette")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->aliments = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function __toString()
@@ -143,4 +149,46 @@ class Recette
         }
         return $a ;
     }
+
+    /**
+     * @return Collection<int, RecetteLike>
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(RecetteLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setRecette($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(RecetteLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getRecette() === $this) {
+                $like->setRecette(null);
+            }
+        }
+
+        return $this;
+    }
+    public function isLikedByUser(User $user): bool
+    {
+        Foreach( $this->likes as $like)
+        {
+            if ($like->getUser() === $user) return true;
+
+        }
+        return false;
+
+
+    }
+
 }

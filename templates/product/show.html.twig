@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-       
+
             <tr>
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
@@ -25,17 +25,17 @@
                 <td>{{ product.description }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>
-                    
+
                     <a href="{{ path('product_edit', {'id': product.id}) }}", button class="btn btn-warning">edit</a>
                     <a href="{{ path('product_delete', {'id': product.id}) }}", button class="btn btn-danger">delete</a>
                     <a href="{{ path('product_index') }}",  button class="btn btn-outline-default" >Back to list</a>
                 </td>
             </tr>
-        
-            
-        
+
+
+
 	{# <table class="table">
-    
+
 		<tbody>
 			<tr>
 				<th>Id</th>
@@ -59,7 +59,7 @@
 			</tr>
 			 #}
 
-		
+
 	</table>
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="
 			    width: 300px;
@@ -68,7 +68,7 @@
 		<div class="carousel-indicators">
 		</div>
 		<div class="carousel-inner">
-		
+
 					<img src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="...">
 				</div>
 				{# <div>
@@ -76,7 +76,7 @@
 																			<a href="{{ path('product_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Delete</a>
 																		</div> #}
 
-		
+
 
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -91,10 +91,10 @@
 
 
 
-    
-    
+
+
 {# <button class="btn btn-success">{{ button_label|default('Save') }}</button>
     <a href="{{ path('product_index') }}", button class="btn btn-outline-default" >Back to products</a> #}
 
-	
+
 {% endblock %}

@@ -189,8 +189,9 @@ hr{
 
 {% for product in product %}
 {% for cartprods in cartprod %}
+    {% for cart in cart %}
 {% if cartprods.idprod == product.__toString %}
-{% if product.__toString == cartprods.idprod %}
+
 
 
 
@@ -217,6 +218,8 @@ hr{
             {% set total = total + product.price %}
 </div>
 {% set nitems = nitems + 1 %}
+        {% endif %}
+    {% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}

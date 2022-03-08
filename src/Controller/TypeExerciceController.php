@@ -2,92 +2,93 @@
 
 namespace App\Controller;
 
-use App\Entity\TypeExercice;
-use App\Form\TypeExerciceType;
-use App\Repository\TypeExerciceRepository;
+use App\Entity\Typeexercice;
+use App\Form\TypeexerciceType;
+use App\Repository\TypeexerciceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
- * @Route("/type/exercice")
+ * @Route("/typeexercice")
  */
-class TypeExerciceController extends AbstractController
+class TypeexerciceController extends AbstractController
 {
     /**
-     * @Route("/", name="type_exercice_index", methods={"GET"})
+     * @Route("/", name="typeexercice_index", methods={"GET"})
      */
-    public function index(TypeExerciceRepository $typeExerciceRepository): Response
+    public function index(TypeexerciceRepository $typeexerciceRepository): Response
     {
-        return $this->render('type_exercice/index.html.twig', [
-            'type_exercices' => $typeExerciceRepository->findAll(),
+        return $this->render('typeexercice/index.html.twig', [
+            'typeexercices' => $typeexerciceRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="type_exercice_new", methods={"GET", "POST"})
+     * @Route("/new", name="typeexercice_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $typeExercice = new TypeExercice();
-        $form = $this->createForm(TypeExerciceType::class, $typeExercice);
+        $typeexercice = new Typeexercice();
+        $form = $this->createForm(TypeexerciceType::class, $typeexercice);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($typeExercice);
+            $entityManager->persist($typeexercice);
             $entityManager->flush();
 
-            return $this->redirectToRoute('type_exercice_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('typeexercice_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('type_exercice/new.html.twig', [
-            'type_exercice' => $typeExercice,
+        return $this->render('typeexercice/new.html.twig', [
+            'typeexercice' => $typeexercice,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="type_exercice_show", methods={"GET"})
+     * @Route("/{id}", name="typeexercice_show", methods={"GET"})
      */
-    public function show(TypeExercice $typeExercice): Response
+    public function show(Typeexercice $typeexercice): Response
     {
-        return $this->render('type_exercice/show.html.twig', [
-            'type_exercice' => $typeExercice,
+        return $this->render('typeexercice/show.html.twig', [
+            'typeexercice' => $typeexercice,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="type_exercice_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="typeexercice_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, TypeExercice $typeExercice, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Typeexercice $typeexercice, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(TypeExerciceType::class, $typeExercice);
+        $form = $this->createForm(TypeexerciceType::class, $typeexercice);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('type_exercice_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('typeexercice_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('type_exercice/edit.html.twig', [
-            'type_exercice' => $typeExercice,
+        return $this->render('typeexercice/edit.html.twig', [
+            'typeexercice' => $typeexercice,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="type_exercice_delete", methods={"POST"})
+     * @Route("/{id}", name="typeexercice_delete", methods={"POST"})
      */
-    public function delete(Request $request, TypeExercice $typeExercice, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Typeexercice $typeexercice, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$typeExercice->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($typeExercice);
+        if ($this->isCsrfTokenValid('delete'.$typeexercice->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($typeexercice);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('type_exercice_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('typeexercice_index', [], Response::HTTP_SEE_OTHER);
     }
 }

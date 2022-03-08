@@ -23,6 +23,7 @@ class AlimentController extends AbstractController
      */
     public function index(Request $request, AlimentRepository $alimentRepository): Response
     {
+        $currentCart=1;
         $data = $request->request->get('seach_aliment');
         $data1 = $request->request->get('seach_aliment2');
         if($data && $data['query']) {
@@ -52,6 +53,7 @@ class AlimentController extends AbstractController
             'aliments' => $aliments,
             'search_form' => $search_form->createView(),
             'search2_form' => $search2_form->createView(),
+            'currentCart'=>$currentCart
         ]);
     }
 

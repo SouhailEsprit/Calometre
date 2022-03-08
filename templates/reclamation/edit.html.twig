@@ -14,7 +14,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="section-header text-center">
-                            <h2 class="title">Get in touch with us</h2>
+
                         </div>
                     </div>
                 </div>
@@ -23,21 +23,32 @@
                         <div class="form-content">
                             {{ form_start(form) }}
                             <div class="row justify-content-center">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="single-input">
-                                        <label for="fname">Name</label>
+
                                         {{ form_row(form.type) }}
                                     </div>
+                                    <div class="col-md-10">
+                                        <div class="single-input">
+
+                                            {{ form_row(form.email) }}
+                                        </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-10">
                                     <div class="single-input">
-                                        <label for="email">Your email address</label>
+
                                         {{ form_row(form.message) }}
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6 col-10">
-                                    <div class="btn-border w-100 mt-40">
-                                        <button class="cmn-btn w-100">Send Message</button>
+
+                                    <div class="col-lg-4 col-sm-6 col-10">
+
+                                        <div class="btn-border w-100 mt-40">
+
+                                            <button class="cmn-btn w-100"
+
+                                                    style="color:orange">{% trans %} envoyer{% endtrans %}</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

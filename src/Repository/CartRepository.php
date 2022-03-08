@@ -64,4 +64,13 @@ class CartRepository extends ServiceEntityRepository
 //
 //            )->setParameter('userid', $userid)->getResult(). ' AS integer)';
 //    }
+    public function findusercart($str)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p.id
+            FROM App:Cart p
+        WHERE '
+
+            )->setParameter('str', '%'.$str.'%')->getResult();
+    }
 }

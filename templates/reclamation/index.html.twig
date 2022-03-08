@@ -13,22 +13,22 @@
 <section class="how-works-tournaments tournaments-section">
     <div class="overlay">
         <div class="container">
-            <a class="btn btn-outline-success" href="{{ path('reclamation_new') }}">{%trans%} Ajouter {% endtrans %}</a>
+
             <div class="row cus-mar">
                 <div class="col-lg-12">
                     <div class="table-responsive mt-60">
                         <table class="table">
                             <thead>
 
-
+                            <a class="btn btn-outline-success" href="{{ path('reclamation_new') }}">{%trans%} Ajouter {% endtrans %}</a>
 
                             <tr>
 <th scope="col">{%trans%} type{% endtrans %}</th>
-                                <th scope="col">{%trans%} message{% endtrans %}</th>
-                                <th scope="col">{%trans%} date {% endtrans %}</th>
-                                <th scope="col">{%trans%} modifier{% endtrans %}</th>
-                                <th scope="col">{%trans%} supprimer {% endtrans %}</th>
-                                <th scope="col">{%trans%} lire {% endtrans %}</th>
+                                <th scope="col" >{%trans%} message{% endtrans %}</th>
+                                <th scope="col" >{%trans%} date {% endtrans %}</th>
+                                <th scope="col" style="color: orange">{%trans%} voir{% endtrans %}</th>
+                                <th scope="col" style="color: orange">{%trans%} modifier {% endtrans %}</th>
+                                <th scope="col" style="color: red">{%trans%} supprimer {% endtrans %}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -53,9 +53,13 @@
                             </tr>
 
                             {% endfor %}
-                            {{ knp_pagination_render(reclamation) }}
+
                             </tbody>
                         </table>
+                        <br>
+                        <div class="section-header text-center">
+                        {{ knp_pagination_render(reclamation) }}
+                        </div>
                     </div>
                 </div>
             </div>

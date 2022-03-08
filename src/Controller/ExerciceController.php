@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Exercice;
 use App\Form\ExerciceType;
 use App\Repository\ExerciceRepository;
@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Knp\Component\Pager\PaginatorInterface; 
 /**
  * @Route("/exercice")
  */
@@ -21,10 +21,38 @@ class ExerciceController extends AbstractController
      */
     public function index(ExerciceRepository $exerciceRepository): Response
     {
+        if (isset($_GET["q"])) {
+        return $this->render('exercice/index.html.twig', [
+            'exercices' => $exerciceRepository->findEntitiesByString($_GET["q"]),
+        ]);
+    }
+        else{
         return $this->render('exercice/index.html.twig', [
             'exercices' => $exerciceRepository->findAll(),
         ]);
     }
+    }
+   /**
+     * @Route("/list", name="exercice_front")
+     */
+    
+    public function error(ExerciceRepository $ex,Request $request, PaginatorInterface $paginator): Response
+    {
+    
+        $donnees = $this->getDoctrine()->getRepository(Exercice::class)->findAll();
+
+        $exercices = $paginator->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            6 // Nombre de résultats par page
+        ); 
+        
+        return $this->render('exercice/indexfront.html.twig', [
+            'exercices' => $exercices,
+         
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="exercice_new", methods={"GET", "POST"})
@@ -36,6 +64,22 @@ class ExerciceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $video = $form->get('video')->getData();
+
+
+           
+            foreach($video as $videos){
+                $fichier = md5(uniqid()) . '.' . $videos->guessExtension();
+
+
+                $videos->move(
+                    $this->getParameter('video_directory'),
+                    $fichier
+                );
+                
+                $exercice->setVideo($fichier);
+                
+            }
             $entityManager->persist($exercice);
             $entityManager->flush();
 
@@ -49,7 +93,7 @@ class ExerciceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="exercice_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(Exercice $exercice): Response
     {

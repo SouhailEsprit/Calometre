@@ -1,0 +1,239 @@
+ {% extends 'base-front-office.html.twig' %}
+
+
+
+{% block mainContent %}
+         <style>
+         .countercart{
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+         .countcart{
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+}
+         .btncart{
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ background-color: #d9d9d9;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 900;
+ color: #202020;
+ cursor: pointer;
+}
+         .pad-top-120 {
+  padding-top: 20px;
+}
+.ab-section .overlay {
+  background-color: #1F2340;
+  background-image: src="{{ asset('front-office/assets/images/abcdef.png')}}"
+  background-repeat: no-repeat;
+  background-position: top 260px right 10px, top 200px right 0;
+  position: relative;
+  background-size: auto;
+}
+
+</style>
+<body>
+    <section class="banner-section inner-banner tournaments">
+        <div class="overlay">
+           
+             
+           
+            <div class="ab-content">
+  
+<img src="{{ asset('front-office/assets/images/abcdef.png')}}" class="obj-8" alt="image">
+      
+ 
+  
+            
+        </div>
+    </section>
+
+    <!-- products section start -->
+    <section class="tournaments-section">
+        <div class="overlay pad-top-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="section-header text-center">
+                            
+                            <h2 class="title">Our Exercices</h2>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <ul class="nav" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="cmn-btn active" id="ongoing-tab" data-bs-toggle="tab"
+                                data-bs-target="#ongoing" type="button" role="tab" aria-controls="ongoing"
+                                aria-selected="true">Cardio</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="cmn-btn" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming"
+                                type="button" role="tab" aria-controls="upcoming"
+                                aria-selected="false">Musculation</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="cmn-btn" id="past-tab" data-bs-toggle="tab" data-bs-target="#past"
+                                type="button" role="tab" aria-controls="past" aria-selected="false">étirement</button>
+                        </li>
+                    </ul>
+                </div>
+                
+                 
+                <div class="tab-content">
+     <div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="ongoing-tab">
+                  
+        
+                        <div class="row">
+                            <div class="col-12">
+                            {% for exercice in exercices %} 
+                         {% if exercice.nomtype == "cardio" %}
+                                <div class="single-item">
+                                    <div class="left-item">
+                                        <div class="logo-item"style="
+    height: 411px;
+    width: 500px;
+">
+                                        <div>
+                                      
+                                        {% for video in exercice.video %}
+                                            <div class="carousel-item {{ (loop.first) ? 'active' : '' }}">
+			                            <video style= "border: 5px solid #555;" src="{{ asset('/uploads/exercices/' ~ video) }}" class="d-block w-100" alt="icon" type="video/mp4">
+	                                    </div>
+                                        {% endfor %}
+                                        </div>
+                                        <div class="mid-area">
+                                            <h3>{{ exercice.nom }}</h3>
+                                            
+                                            <p>Description:</p>
+                                            <p><i>{{ exercice.description }}</i></p>
+                                            <p>Objectif:</p>
+                                            <p><i>{{ exercice.objectif }}</i></p>
+                                        </div>
+                                    </div>
+                                    <div class="last-item">
+                                         <video width="100" controls style="width: 536px;">
+                                        <source src="{{ asset('/uploads/exercices/' ~ exercice.video) }}" type="video/mp4">
+  
+                                        </video>
+                                            </div>
+                                       
+                                      
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {{ knp_pagination_render(exercices) }}
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+                    
+                        <div class="row">
+                            <div class="col-12">
+                                 {% for exercice in exercices %} 
+                         {% if exercice.nomtype == "musculation" %}
+                                <div class="single-item">
+                                    <div class="left-item">
+                                        <div class="logo-item" style=" height: 411px; width: 500px;">
+                                       
+                                        <div class="mid-area">
+                                            <h3>{{ exercice.nom }}</h3>
+                                            
+                                            <p>Description:</p>
+                                            <p><i>{{ exercice.description }}</i></p>
+                                            <p>Objectif:</p>
+                                            <p><i>{{ exercice.objectif }}</i></p>
+                                        </div>
+                                    </div>
+                                    <div class="last-item">
+                                         <video width="100" controls style="width: 536px;">
+                                        <source src="{{ asset('/uploads/exercices/' ~ exercice.video) }}" type="video/mp4">
+  
+                                        </video>
+                                            </div>
+                                       
+                                      
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                               {{ knp_pagination_render(exercices) }}
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                {% for exercice in exercices %} 
+                         {% if exercice.nomtype == "etirement" %}
+                                <div class="single-item">
+                                    <div class="left-item">
+                                        <div class="logo-item">
+                                          
+                                        </div>
+                                               <div class="mid-area">
+                                            <h3>{{ exercice.nom }}</h3>
+                                            
+                                            <p><i>{{ exercice.description }}</i></p>
+                                            <p><i>{{ exercice.objectif }}</i></p>
+                                        </div>
+                                    </div>
+                                    <div class="last-item">
+                                         <video width="100" controls style="width: 536px;">
+                                        <source src="{{ asset('/uploads/exercices/' ~ exercice.video) }}" type="video/mp4">
+  
+                                        </video>
+                                            </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                               {{ knp_pagination_render(exercices) }}
+                             
+                                
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- product section end -->
+
+   
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-ui.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/fontawesome.js"></script>
+    <script src="assets/js/plugin/slick.js"></script>
+    <script src="assets/js/plugin/jquery.nice-select.min.js"></script>
+    <script src="assets/js/plugin/jquery.downCount.js"></script>
+    <script src="assets/js/plugin/counter.js"></script>
+    <script src="assets/js/plugin/waypoint.min.js"></script>
+    <script src="assets/js/plugin/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/plugin/wow.min.js"></script>
+    <script src="assets/js/plugin/plugin.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+
+ 
+{% endblock %} 

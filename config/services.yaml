@@ -9,6 +9,7 @@ parameters:
     images_directory: '%kernel.project_dir%/public/uploads/products'
     aliment_images: '%kernel.project_dir%/public/uploads/aliment'
     recette_images: '%kernel.project_dir%/public/uploads/recette'
+    video_directory: '%kernel.project_dir%/public/uploads/exercices'
     app.path.featured_images: /uploads/images/featured
     app.locales: [ fr,en ]
     locale: fr

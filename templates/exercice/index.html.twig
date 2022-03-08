@@ -1,35 +1,734 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Exercice index{% endblock %}
 
-{% block body %}
-    <h1>Exercice index</h1>
+{% block mainContent %}
+3
+	<style>
+	
+		.prod-info-main {
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Exercice</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for exercice in exercices %}
-            <tr>
-                <td>{{ exercice.id }}</td>
-                <td>{{ exercice.exercice }}</td>
-                <td>
-                    <a href="{{ path('exercice_show', {'id': exercice.id}) }}">show</a>
-                    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			border: 1px solid #CEEFFF;
 
-    <a href="{{ path('exercice_new') }}">Create new</a>
-{% endblock %}
+			margin-bottom: 20px;
+
+			margin-top: 10px;
+
+			background: #fff;
+
+			padding: 6px;
+
+			-webkit-box-shadow: 0 1px 4px 0 rgba(21, 180, 255, 0.5);
+
+			box-shadow: 0 1px 1px 0 rgba(21, 180, 255, 0.5);
+
+		}
+
+
+		.prod-info-main  .exercice-video {
+
+			background-color: #EBF8FE;
+
+			display: block;
+
+			min-height: 238px;
+
+			overflow: hidden;
+
+			position: relative;
+
+			border: 1px solid #CEEFFF;
+
+			padding-top: 40px;
+
+		}
+
+
+		.prod-info-main  .exercice-deatil {
+
+			border-bottom: 1px solid #dfe5e9;
+
+			padding-bottom: 17px;
+
+			padding-left: 16px;
+
+			padding-top: 16px;
+
+			position: relative;
+
+			background: #fff
+		}
+
+	
+		 .exercice-content  .exercice-deatil h5 a {
+
+			color: #2f383d;
+
+			font-size: 15px;
+
+			line-height: 19px;
+
+			text-decoration: none;
+
+			padding-left: 0;
+
+			margin-left: 0
+		}
+
+
+		.prod-info-main  .exercice-deatil h5 a span {
+
+			color: #9aa7af;
+
+			display: block;
+
+			font-size: 13px
+		}
+
+
+		.prod-info-main  .exercice-deatil span.tag1 {
+
+			border-radius: 50%;
+
+			color: #fff;
+
+			font-size: 15px;
+
+			height: 50px;
+
+			padding: 13px 0;
+
+			position: absolute;
+
+			right: 10px;
+
+			text-align: center;
+
+			top: 10px;
+
+			width: 50px
+		}
+
+
+		.prod-info-main  .exercice-deatil span.sale {
+
+			background-color: #21c2f8
+		}
+
+
+		.prod-info-main  .exercice-deatil span.discount {
+
+			background-color: #71e134
+		}
+
+
+		.prod-info-main  .exercice-deatil span.hot {
+
+			background-color: #fa9442
+		}
+
+
+		.prod-info-main .description {
+
+			font-size: 12.5px;
+
+			line-height: 20px;
+
+			padding: 10px 14px 16px 19px;
+
+			background: #fff
+		}
+
+
+		.prod-info-main  .exercice-info {
+
+			padding: 11px 19px 10px 20px
+		}
+
+
+		.prod-info-main  .exercice-info a.add-to-cart {
+
+			color: #2f383d;
+
+			font-size: 13px;
+
+			padding-left: 16px
+		}
+
+
+		.prod-info-main .name.a {
+
+			padding: 5px 10px;
+
+			margin-left: 16px
+		}
+
+
+		 exercice-info.smart-form .btn {
+
+			padding: 6px 12px;
+
+			margin-left: 12px;
+
+			margin-top: -10px
+		}
+
+
+		.load-more-btn {
+
+			background-color: #21c2f8;
+
+			border-bottom: 2px solid #037ca5;
+
+			border-radius: 2px;
+
+			border-top: 2px solid #0cf;
+
+			margin-top: 20px;
+
+			padding: 9px 0;
+
+			width: 100%
+		}
+
+
+		 .exercice-block  .exercice-deatil p.price-container span,
+
+		.prod-info-main  .exercice-deatil p.price-container span,
+
+		.shipping table tbody tr td p.price-container span,
+
+		.shopping-items table tbody tr td p.price-container span {
+
+			color: #21c2f8;
+
+			font-family: Lato, sans-serif;
+
+			font-size: 24px;
+
+			line-height: 20px
+		}
+
+
+		 .exercice-info.smart-form .rating label {
+
+			margin-top: 15px;
+
+
+		}
+
+
+		.prod-wrap  .exercice-image span.tag2 {
+
+			position: absolute;
+
+			top: 10px;
+
+			right: 10px;
+
+			width: 36px;
+
+			height: 36px;
+
+			border-radius: 50%;
+
+			padding: 10px 0;
+
+			color: #fff;
+
+			font-size: 11px;
+
+			text-align: center
+		}
+
+
+		.prod-wrap  .exercice-video span.tag3 {
+
+			position: absolute;
+
+			top: 10px;
+
+			right: 20px;
+
+			width: 60px;
+
+			height: 36px;
+
+			border-radius: 50%;
+
+			padding: 10px 0;
+
+			color: #fff;
+
+			font-size: 11px;
+
+			text-align: center
+		}
+
+
+		.prod-wrap  .exercice-image span.sale {
+
+			background-color: #57889c;
+
+		}
+
+
+		.prod-wrap  .exercice-image span.hot {
+
+			background-color: #a90329;
+
+		}
+
+
+		.prod-wrap  .exercice-image span.special {
+
+			background-color: #3B6764;
+
+		}
+
+		.shop-btn {
+
+			position: relative
+		}
+
+
+		.shop-btn > span {
+
+			background: #a90329;
+
+			display: inline-block;
+
+			font-size: 10px;
+
+			box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+
+			font-weight: 700;
+
+			border-radius: 50%;
+
+			padding: 2px 4px 3px !important;
+
+			text-align: center;
+
+			line-height: normal;
+
+			width: 19px;
+
+			top: -7px;
+
+			left: -7px
+		}
+
+
+		 .exercice-deatil hr {
+
+			padding: 0 0 5px !important
+		}
+
+
+		 .exercice-deatil .glyphicon {
+
+			color: #3276b1
+		}
+
+
+		 .exercice-deatil  .exercice-video {
+
+			border-right: 0 solid #fff !important
+		}
+
+
+		 exercice-deatil .name {
+
+			margin-top: 0;
+
+			margin-bottom: 0
+		}
+
+
+		 .exercice-deatil .name small {
+
+			display: block
+		}
+
+
+		 .exercice-deatil .name a {
+
+			margin-left: 0
+		}
+
+
+		 .exercice-deatil .price-container {
+
+			font-size: 24px;
+
+			margin: 0;
+
+			font-weight: 300;
+
+
+		}
+
+
+		 .exercice-deatil .price-container small {
+
+			font-size: 12px;
+
+
+		}
+
+
+		 .exercice-deatil .fa-2x {
+
+			font-size: 16px !important
+		}
+
+
+		 .exercice-deatil .fa-2x > h5 {
+
+			font-size: 12px;
+
+			margin: 0
+		}
+
+
+		 .exercice-deatil .fa-2x+a,
+
+		 .exercice-deatil .fa-2x+a+a {
+
+			font-size: 13px
+		}
+
+
+		 .exercice-deatil .certified {
+
+			margin-top: 10px
+		}
+
+
+		 .exercice-deatil .certified ul {
+
+			padding-left: 0
+		}
+
+
+		 .exercice-deatil .certified ul li:not(first-child) {
+
+			margin-left: -3px
+		}
+
+
+		 .exercice-deatil .certified ul li {
+
+			display: inline-block;
+
+			background-color: #f9f9f9;
+
+			padding: 13px 19px
+		}
+
+
+		 .exercice-deatil .certified ul li:first-child {
+
+			border-right: none
+		}
+
+
+		 .exercice-deatil .certified ul li a {
+
+			text-align: left;
+
+			font-size: 12px;
+
+			color: #6d7a83;
+
+			line-height: 16px;
+
+			text-decoration: none
+		}
+
+
+		 .exercice-deatil .certified ul li a span {
+
+			display: block;
+
+			color: #21c2f8;
+
+			font-size: 13px;
+
+			font-weight: 700;
+
+			text-align: center
+		}
+
+
+		 .exercice-deatil .message-text {
+
+			width: calc(100% - 70px)
+		}
+
+
+		@media only screen and(min-width:1024px) {
+
+			.prod-info-main div[class*=col-md-4] {
+
+				padding-right: 0
+			}
+
+			.prod-info-main div[class*=col-md-8] {
+
+				padding: 0 13px 0 0
+			}
+
+			.prod-wrap div[class*=col-md-5] {
+
+				padding-right: 0
+			}
+
+			.prod-wrap div[class*=col-md-7] {
+
+				padding: 0 13px 0 0
+			}
+
+			.prod-info-main  .exercice-video {
+
+				border-right: 1px solid #dfe5e9
+			}
+
+			.prod-info-main  .exercice-info {
+
+				position: relative
+			}
+
+		}
+	</style>
+    <main id="main" class="main"style="margin: auto;">
+
+	
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+		<meta content="" name="description">
+		<meta
+		content="" name="keywords">
+
+		<!-- Favicons -->
+		<link href="assets/img/favicon.png" rel="icon">
+		<link
+		href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+		<!-- Google Fonts -->
+		<link href="https://fonts.gstatic.com
+" rel="preconnect">
+		<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i
+" rel="stylesheet">
+
+		<!-- Vendor CSS Files -->
+		<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+		<link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+		<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+		<link
+		href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+		<!-- Template Main CSS File -->
+		<link
+		href="assets/css/style.css" rel="stylesheet">
+
+	<!-- =======================================================
+	  * Template Name: NiceAdmin - v2.2.2
+	  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+
+	  * Author: BootstrapMade.com
+	  * License: https://bootstrapmade.com/license/
+
+	  ======================================================== -->
+	</head>
+	<body>
+
+
+		<link href="back-office/assets/css/vendor.min.css" rel="stylesheet"/>
+		<link href="back-office/assets/css/app.min.css" rel="stylesheet"/>
+		<main id="main" class="main">
+
+			<div class="pagetitle">
+				<h1>Exercices</h1>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							
+						</li>
+						<li class="breadcrumb-item active">
+							<a href="{{path('typeexercice_index')}}">typeexercice</a>
+						</li>
+
+					</ol>
+				</nav>
+			</div>
+			<!-- End Page Title -->
+
+			<div>
+				<a href="{{ path('exercice_new') }}" , button class="btn btn-success">
+					<i class="bi bi-plus-square"></i>
+				</a>
+				<a href="{{ path('typeexercice_index') }}" , button class="btn btn-warning">
+					<i class="bi bi-diagram-2"></i>
+				</a>
+				<a href="{{ path('exercice_front') }}" , button class="btn btn-secondary">
+					<i class="bi bi-front"></i>
+				</a>
+				<hr>
+				<form class="w-search" method="get">
+					<div class="sidebar-search">
+
+						<div class="input-group custom-search-form">
+
+							<input type="text" id="search" name="q" class="form-control pl-3" placeholder="Search here">
+
+
+						</div>
+						<!-- /input-group -->
+					</div>
+
+
+				</form>
+				<hr>
+			</a>
+		</div>
+
+
+		
+					{# aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #}
+
+					{# aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa #}
+						<div class="container"> 
+								{% for exercice in exercices %}
+								
+
+<div class="col-xs-12 col-md-6">
+							<div class="prod-info-main prod-wrap clearfix">
+									<!-- First exercice box start here-->
+
+
+									<div class="row">
+
+										<div class="col-md-5 col-sm-12 col-xs-12">
+										
+										 <div class="last-item">
+                                          <video width="100" controls="" style="width: 204px;margin-top: 122px;">
+                                        <source src="{{ asset('/uploads/exercices/' ~ exercice.video) }}" type="video/mp4">
+  
+                                        </video>
+                                            </div>
+
+										</div>
+
+										<div class="col-md-7 col-sm-12 col-xs-12">
+
+											<div class= "exercice-deatil">
+
+												<h5 class="nom">
+
+													<a href="{{ path('show', {'id': exercice.id}) }}">
+
+														{{ exercice.nom }}
+
+													</a>
+                                                    
+													
+                                                    	<a>
+
+														<span>Type:{{ exercice.nomtype }}</span>
+
+													</a>
+                                                    <a>
+														
+														<span>Objectif:{{ exercice.objectif }}</span>
+
+													</a>
+
+												</h5>
+
+
+
+												<span class="tag1"></span>
+
+											</div>
+
+											<div class="description">
+
+												<p>{{ exercice.description }}
+												</p>
+
+											</div>
+
+											<div class= "exercice-info smart-form">
+
+												<div class="row">
+
+													<div class="col-md-12">
+														<a href="{{ path('exercice_edit', {'id': exercice.id}) }}" , button class="btn btn-warning d-block mb-2">edit</a>
+
+
+														<form method="post" action="{{ path('exercice_delete', {'id': exercice.id}) }}" , onsubmit="return confirm('Are you sure you want to delete this item?');">
+															<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ exercice.id) }}">
+															<button class="btn btn-danger d-block mb-2 col-10"style="width: -webkit-fill-available;">Delete</button>
+														</form>
+
+													</div>
+
+													<div class="col-md-12"></div>
+
+												</div>
+
+											</div>
+
+										</div>
+
+								</div>
+								
+
+								<!-- end exercice -->
+
+							</div>
+					</div>
+							
+							{% endfor %}
+
+				</div>
+			
+	</body>
+
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+	<i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/chart.js/chart.min.js"></script>
+<script src="assets/vendor/echarts/echarts.min.js"></script>
+<script src="assets/vendor/quill/quill.min.js"></script>
+<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script></body>{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

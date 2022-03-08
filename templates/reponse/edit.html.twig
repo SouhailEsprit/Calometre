@@ -3,11 +3,20 @@
 {% block title %}Edit Reponse{% endblock %}
 
 {% block mainContent  %}
-    <h1>modifier la reponse</h1>
 
-    {{ include('reponse/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('reponse_index') }}">Retour</a>
+<br>
+    <br>
+    <br>
 
-    {{ include('reponse/_delete_form.html.twig') }}
+
+
+   <{{ include('reponse/_form.html.twig',  {'button_label': 'modifier'}) }}
+    <br>
+
+    <a  class="btn btn-warning" href="{{ path('reponse_index') }}">Retour</a>
+    <br>
+<br>
+
+ <a class="btn btn-warning"  > {{ include('reponse/_delete_form.html.twig') }}</a>
 {% endblock %}

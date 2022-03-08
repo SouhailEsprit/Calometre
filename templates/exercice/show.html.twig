@@ -1,8 +1,28 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block title %}Exercice{% endblock %}
+{% block mainContent %}
+<main id="main" class="main">
 
-{% block body %}
+		<div class="pagetitle">
+			<h1>Exercice</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						{# <a href="{{path('edit_admin')}}">Admin</a> #}
+					</li>
+					<li class="breadcrumb-item active">
+						<a href="{{path('exercice_index')}}">Exercices</a>
+					</li>
+
+				</ol>
+			</nav>
+		</div>
+<div style="
+    height: 300px;
+    width: 400px;
+    margin-left: 402px;
+    margin-top: 94px;
+">
     <h1>Exercice</h1>
 
     <table class="table">
@@ -12,15 +32,43 @@
                 <td>{{ exercice.id }}</td>
             </tr>
             <tr>
-                <th>Exercice</th>
-                <td>{{ exercice.exercice }}</td>
+                <th>Nom</th>
+                <td>{{ exercice.nom }}</td>
             </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ exercice.description }}</td>
+            </tr>
+             <tr>
+                <th>Objectif</th>
+                <td>{{ exercice.objectif }}</td>
+            </tr>
+            
+            
+            
+				
+    
+    
         </tbody>
     </table>
+    
+	<div>
+    <video width="400" controls style="width: 536px;">
+  <source src="{{ asset('/uploads/exercices/' ~ exercice.video) }}" type="video/mp4">
+  
+</video>
+</div>
+		
+	
+    <div>
+    <a href="{{ path('exercice_index') }}"button class="btn btn-secondary ">back to list</a>
 
-    <a href="{{ path('exercice_index') }}">back to list</a>
-
-    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}">edit</a>
-
+    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}"button class="btn btn-warning ">edit</a>
+    </div>
+ 
+ <div>
+ 
     {{ include('exercice/_delete_form.html.twig') }}
+   </div>
+   </div>
 {% endblock %}

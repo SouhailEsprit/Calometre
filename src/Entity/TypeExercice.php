@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeExerciceRepository;
+use App\Repository\TypeexerciceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TypeExerciceRepository::class)
+ * @ORM\Entity(repositoryClass=TypeexerciceRepository::class)
  */
-class TypeExercice
+class Typeexercice
 {
     /**
      * @ORM\Id
@@ -23,9 +25,14 @@ class TypeExercice
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Exercice::class, inversedBy="type")
+     * @ORM\OneToMany(targetEntity=Exercice::class, mappedBy="nomtype")
      */
-    private $exercice;
+    private $type;
+
+    public function __construct()
+    {
+        $this->type = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,14 +51,35 @@ class TypeExercice
         return $this;
     }
 
-    public function getExercice(): ?Exercice
+    /**
+     * @return Collection<int, Exercice>
+     */
+    public function getType(): Collection
     {
-        return $this->exercice;
+        return $this->type;
+    }
+    public function __toString(){
+        return $this->nom;
     }
 
-    public function setExercice(?Exercice $exercice): self
+    public function addType(Exercice $type): self
     {
-        $this->exercice = $exercice;
+        if (!$this->type->contains($type)) {
+            $this->type[] = $type;
+            $type->setNomtype($this);
+        }
+
+        return $this;
+    }
+
+    public function removeType(Exercice $type): self
+    {
+        if ($this->type->removeElement($type)) {
+            // set the owning side to null (unless already changed)
+            if ($type->getNomtype() === $this) {
+                $type->setNomtype(null);
+            }
+        }
 
         return $this;
     }

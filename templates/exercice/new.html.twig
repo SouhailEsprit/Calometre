@@ -1,11 +1,58 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}New Exercice{% endblock %}
+{% extends 'base-back-office.html.twig' %}
 
-{% block body %}
-    <h1>Create new Exercice</h1>
 
-    {{ include('exercice/_form.html.twig') }}
 
-    <a href="{{ path('exercice_index') }}">back to list</a>
+{% block mainContent %}
+<main id="main" class="main">
+
+		<div class="pagetitle">
+			<h1>Exercice</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						{# <a href="{{path('edit_admin')}}">Admin</a> #}
+					</li>
+					<li class="breadcrumb-item active">
+						<a href="{{path('exercice_index')}}">Exercices</a>
+					</li>
+
+				</ol>
+			</nav>
+		</div>
+
+<div style="
+    margin-left: 323px;
+    margin-top: 46px;
+">
+    <h1>Create new exercice</h1>
+
+    
+    <div class="card-body pb-2">
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+<div class="row">
+<div class="col-xl-6" >
+<div class="form-group mb-3">
+
+
+{{ form_row(form.nom,{'attr':{'class':'form-control', 'placeholder': "Nom"}}) }}
+{{ form_row(form.nomtype,{'attr':{'class':'form-widget','class':'form-control'}}) }}
+
+</div>
+
+{{ form_row(form.description,{'attr':{'class':'form-control' , 'placeholder': "descreption"}}) }}
+
+{{ form_row(form.objectif,{'attr':{'class':'form-control' , 'placeholder': "objectif"}}) }}
+
+
+
+<div class="form-group mb-3">
+
+
+
+{{ form_end(form) }}
+</div>
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    <a href="{{ path('exercice_index') }}", button class="btn btn-outline-secondary" >Back to List</a>
+    </div>
 {% endblock %}

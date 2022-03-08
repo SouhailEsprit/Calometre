@@ -2,6 +2,7 @@
 
 
 {% block mainContent %}
+<main id="main" class="main">
 
     <h1>Event</h1>
 
@@ -41,9 +42,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('event_index') }}">back to list</a>
+    <a href="{{ path('event_index') }}" button class="btn btn-dark">back to list</a>
 
-    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+    <a href="{{ path('event_edit', {'id': event.id}) }}" button class="'btn btn-warning">edit</a>
 
     {{ include('event/_delete_form.html.twig') }}
 {% endblock %}

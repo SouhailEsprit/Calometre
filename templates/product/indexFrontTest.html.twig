@@ -1,24 +1,19 @@
 {% extends 'home.html.twig' %}
 
 {% block mainContent %}
-        
-<body>
-                     
-                        
-                        
+    <body>
+
+
     <section class="banner-section inner-banner tournaments">
         <div class="overlay">
-           
-             
-           
+
+
             <div class="ab-content">
-  
-<img src="{{ asset('front-office/assets/images/abcdef.jpg')}}" class="obj-8" alt="image">
-      
- 
-  
-            
-        </div>
+
+                <img src="{{ asset('front-office/assets/images/abcdef.jpg')}}" class="obj-8" alt="image">
+
+
+            </div>
     </section>
 
     <!-- products section start -->
@@ -28,75 +23,86 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
                         <div class="section-header text-center">
-                        <div class="right-area header-action d-flex align-items-center max-un">
-                          
-                         
-                        </div>
+                            <div class="right-area header-action d-flex align-items-center max-un"></div>
 
-                            <h5 class="sub-title"style="margin-block: 100;margin-top: auto;">Shipping Totally Free</h5>
+                            <h5 class="sub-title" style="margin-block: 100;margin-top: auto;">Shipping Totally Free</h5>
                             <h2 class="title">Our Products</h2>
                             <p>Compete with Bitbetio users to find the best bettor and win cash prizes.</p>
                         </div>
                     </div>
                 </div>
+                {# search #}
+                <div class="sidebar-search">
+                    <div class="input-group custom-search-form">
+
+                    </div>
+                    <!-- /input-group -->
+                </div>
+                <ul id="side-menu">
+                    <li>
+                        <input type="text" id="search" class="form-control" placeholder="Suche...">
+                    </li>
+                    <li>
+                        <a href="#"> <span class="fa arrow"></span></a>
+                        <ul id="entitiesNav">
+                        </ul>
+                    </li>
+                </ul>
+                {# search #}
                 <div class="d-flex justify-content-center">
                     <ul class="nav" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="cmn-btn active" id="ongoing-tab" data-bs-toggle="tab"
-                                data-bs-target="#ongoing" type="button" role="tab" aria-controls="ongoing"
-                                aria-selected="true">Food</button>
+                            <button class="cmn-btn active" id="ongoing-tab" data-bs-toggle="tab" data-bs-target="#ongoing" type="button" role="tab" aria-controls="ongoing" aria-selected="true">Food</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="cmn-btn" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming"
-                                type="button" role="tab" aria-controls="upcoming"
-                                aria-selected="false">Sport</button>
+                            <button class="cmn-btn" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="false">Sport</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="cmn-btn" id="past-tab" data-bs-toggle="tab" data-bs-target="#past"
-                                type="button" role="tab" aria-controls="past" aria-selected="false">Brands</button>
+                            <button class="cmn-btn" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Brands</button>
                         </li>
                     </ul>
                 </div>
                 {# food #}
-                 
+
                 <div class="tab-content">
-     <div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="ongoing-tab">
-                  
+                    <div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="ongoing-tab">
+
                         <div class="row">
                             <div class="col-12">
-                            {% for product in products %} 
-                         {% if product.category == "Food" %}
-                                <div class="single-item">
-                                    <div class="left-item">
-                                        <div class="logo-item">
-                                        
-                                            
-			                            <img style= "border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
-	                                    
-                                       
+                                {% for product in products %}
+                                    {% if product.category == "Food" %}
+                                        <div class="single-item">
+                                            <div class="left-item">
+                                                <div class="logo-item">
+
+
+                                                    <img style="border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
+
+
+                                                </div>
+                                                <div class="mid-area">
+                                                    <h3>{{ product.name }}</h3>
+
+                                                    <p>
+                                                        <i>{{ product.description }}</i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="last-item">
+                                                <h6>Price</h6>
+                                                <h4>${{ product.price }}</h4>
+                                                {# zid quantity #}
+                                                {# zid quantity #}
+                                                <span class="btn-border">
+
+															<a href="{{ path('addcart')}}?b={{product.id}}" button class="cmn-btn" name="b">Add To Cart</a>
+
+														</span>
+
+                                            </div>
                                         </div>
-                                        <div class="mid-area">
-                                            <h3>{{ product.name }}</h3>
-                                            
-                                            <p><i>{{ product.description }}</i></p>
-                                        </div>
-                                    </div>
-                                    <div class="last-item">
-                                        <h6>Price</h6>
-                                        <h4>${{ product.price }}</h4>
-                                        {# zid quantity #}
-                                        {# zid quantity #}
-                                        <span class="btn-border">                                                   
-                                             
-                                            <a href="{{ path('addcart')}}?b={{product.id}}" button class="cmn-btn" name="b" >Add To Cart</a>
-                                            
-                                        </span>
-                                      
-                                    </div>
-                                </div>
-                                {% endif %}
+                                    {% endif %}
                                 {% endfor %}
-                                {{ pagerfanta(productss) }}
                             </div>
                         </div>
                         <div class="row mt-60">
@@ -104,18 +110,21 @@
                                 <nav aria-label="Page navigation" class="d-flex justify-content-center">
                                     <ul class="pagination justify-content-center align-items-center">
                                         <li class="page-item">
-                                            <a class="page-btn previous" href="javascript:void(0)"
-                                                aria-label="Previous">
+                                            <a class="page-btn previous" href="javascript:void(0)" aria-label="Previous">
                                                 <img src="{{ asset('front-office/assets/images/icon/arrow-left.png')}}" alt="icon">
                                             </a>
                                         </li>
-                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">1</a>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">1</a>
                                         </li>
-                                        <li class="page-item"><a class="page-link xlr active"
-                                                href="javascript:void(0)">2</a></li>
-                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">3</a>
+                                        <li class="page-item">
+                                            <a class="page-link xlr active" href="javascript:void(0)">2</a>
                                         </li>
-                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">4</a>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">4</a>
                                         </li>
                                         <li class="page-item">
                                             <a class="page-btn next" href="javascript:void(0)" aria-label="Next">
@@ -127,146 +136,205 @@
                             </div>
                         </div>
                     </div>
+
                     {# food #}
                     {# sport #}
                     <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
-                    
+
                         <div class="row">
                             <div class="col-12">
-                                 {% for product in products %}
-                         {% if product.category == "Sport" %}
-                                <div class="single-item">
-                                    <div class="left-item">
-                                        <div class="logo-item">
+                                {% for product in products %}
+                                    {% if product.category == "Sport" %}
+                                        <div class="single-item">
+                                            <div class="left-item">
+                                                <div class="logo-item">
 
-			                            <img style= "border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
+                                                    <img style="border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
 
 
+                                                </div>
+                                                <div class="mid-area">
+                                                    <h3>{{ product.name }}</h3>
+
+                                                    <p>
+                                                        <i>{{ product.description }}</i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="last-item">
+                                                <h6>Price</h6>
+                                                <h4>${{ product.price }}</h4>
+                                                <span class="btn-border">
+
+															<a href="{{ path('addcart')}}?b={{product.id}}" button class="cmn-btn" name="b" id="{{product.id}}">Add To Cart</a>
+														</span>
+                                            </div>
                                         </div>
-                                               <div class="mid-area">
-                                            <h3>{{ product.name }}</h3>
-
-                                            <p><i>{{ product.description }}</i></p>
-                                        </div>
-                                    </div>
-                                    <div class="last-item">
-                                        <h6>Price</h6>
-                                        <h4>${{ product.price }}</h4>
-                                        <span class="btn-border">
-
-                                             <a href="{{ path('addcart')}}?b={{product.id}}" button class="cmn-btn" name="b" id = "{{product.id}}" >Add To Cart</a>
-                                        </span>
-                                    </div>
-                                </div>
-                                {% endif %}
+                                    {% endif %}
                                 {% endfor %}
-                                {{ pagerfanta(productss) }}
-
                             </div>
                         </div>
-{#                        <div class="row mt-60">#}
-{#                            <div class="col-lg-12 d-flex justify-content-center">#}
-{#                                <nav aria-label="Page navigation" class="d-flex justify-content-center">#}
-{#                                    <ul class="pagination justify-content-center align-items-center">#}
-{#                                        <li class="page-item">#}
-{#                                            <a class="page-btn previous" href="javascript:void(0)"#}
-{#                                                aria-label="Previous">#}
-{#                                                <img src="{{ asset('front-office/assets/images/icon/arrow-left.png')}}" alt="icon">#}
-{#                                            </a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">1</a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item"><a class="page-link xlr active"#}
-{#                                                href="javascript:void(0)">2</a></li>#}
-{#                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">3</a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">4</a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item">#}
-{#                                            <a class="page-btn next" href="javascript:void(0)" aria-label="Next">#}
-{#                                                <img src="{{ asset('front-office/assets/images/icon/arrow-right.png')}}" alt="icon">#}
-{#                                            </a>#}
-{#                                        </li>#}
-{#                                    </ul>#}
-{#                                </nav>#}
-{#                            </div>#}
-{#                        </div>#}
+                        <div class="row mt-60">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                                    <ul class="pagination justify-content-center align-items-center">
+                                        <li class="page-item">
+                                            <a class="page-btn previous" href="javascript:void(0)" aria-label="Previous">
+                                                <img src="{{ asset('front-office/assets/images/icon/arrow-left.png')}}" alt="icon">
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr active" href="javascript:void(0)">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">4</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-btn next" href="javascript:void(0)" aria-label="Next">
+                                                <img src="{{ asset('front-office/assets/images/icon/arrow-right.png')}}" alt="icon">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                     {# sport #}
-                    
+
                     {# brands #}
                     <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
                         <div class="row">
                             <div class="col-12">
-                                {% for product in products %} 
-                         {% if product.category == "Brands" %}
-                                <div class="single-item">
-                                    <div class="left-item">
-                                        <div class="logo-item">
-                                            
-                                            
-			                            <img style= "border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
-	                                   
-                                        
-                                        </div>
-                                               <div class="mid-area">
-                                            <h3>{{ product.name }}</h3>
-                                            
-                                            <p><i>{{ product.description }}</i></p>
-                                        </div>
-                                    </div>
-                                    <div class="last-item">
-                                        <h6>Price</h6>
-                                        <h4>${{ product.price }}</h4>
-                                        <span class="btn-border">
-                                             <a href="{{ path('addcart')}}?b={{product.id}}" button class="cmn-btn" name="b" id = "{{product.id}}" >Add To Cart</a>
-                                        </span>
-                                    </div>
-                                </div>
-                                {% endif %}
-                                {% endfor %}
-                                {{ pagerfanta(productss) }}
+                                {% for product in products %}
+                                    {% if product.category == "Brands" %}
+                                        <div class="single-item">
+                                            <div class="left-item">
+                                                <div class="logo-item">
 
-                         
-                                
+
+                                                    <img style="border: 5px solid #555;" src="{{ asset('/uploads/products/' ~ product.image) }}" class="d-block w-100" alt="icon">
+
+
+                                                </div>
+                                                <div class="mid-area">
+                                                    <h3>{{ product.name }}</h3>
+
+                                                    <p>
+                                                        <i>{{ product.description }}</i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="last-item">
+                                                <h6>Price</h6>
+                                                <h4>${{ product.price }}</h4>
+                                                <span class="btn-border">
+															<a href="{{ path('addcart')}}?b={{product.id}}" button class="cmn-btn" name="b" id="{{product.id}}">Add To Cart</a>
+														</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+
+
                             </div>
                         </div>
-{#                        <div class="row mt-60">#}
-{#                            <div class="col-lg-12 d-flex justify-content-center">#}
-{#                                <nav aria-label="Page navigation" class="d-flex justify-content-center">#}
-{#                                    <ul class="pagination justify-content-center align-items-center">#}
-{#                                        <li class="page-item">#}
-{#                                            <a class="page-btn previous" href="javascript:void(0)"#}
-{#                                                aria-label="Previous">#}
-{#                                                <img src="{{ asset('front-office/assets/images/icon/arrow-left.png')}}" alt="icon">#}
-{#                                            </a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">1</a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item"><a class="page-link xlr active"#}
-{#                                                href="javascript:void(0)">2</a></li>#}
-{#                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">3</a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item"><a class="page-link xlr" href="javascript:void(0)">4</a>#}
-{#                                        </li>#}
-{#                                        <li class="page-item">#}
-{#                                            <a class="page-btn next" href="javascript:void(0)" aria-label="Next">#}
-{#                                                <img src="{{ asset('front-office/assets/images/icon/arrow-right.png')}}" alt="icon">#}
-{#                                            </a>#}
-{#                                        </li>#}
-{#                                    </ul>#}
-{#                                </nav>#}
-{#                            </div>#}
-{#                        </div>#}
+                        <div class="row mt-60">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                                    <ul class="pagination justify-content-center align-items-center">
+                                        <li class="page-item">
+                                            <a class="page-btn previous" href="javascript:void(0)" aria-label="Previous">
+                                                <img src="{{ asset('front-office/assets/images/icon/arrow-left.png')}}" alt="icon">
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr active" href="javascript:void(0)">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link xlr" href="javascript:void(0)">4</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-btn next" href="javascript:void(0)" aria-label="Next">
+                                                <img src="{{ asset('front-office/assets/images/icon/arrow-right.png')}}" alt="icon">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- product section end -->
 
-   
+    <!-- product section end -->
+    </script>
+    <script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="41c765573dea39367f057ab5-|49" defer=""></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6db90f416cbaede7","version":"2021.12.0","r":1,"token":"4db8c6ef997743fda032d4f73cfeff63","si":100}' crossorigin="anonymous"></script>
+
+
+    </body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var searchRequest = null;
+            $("#search").keyup(function () {
+                var minlength = 1;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#entitiesNav").html('');
+                if (value.length >= minlength) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajaxsearch') }}",
+                        data: {
+                            'b': value
+                        },
+                        dataType: "text",
+                        success: function (msg) { // we need to check if the value is the same
+
+                            if (value == $(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function (key, arr) {
+                                    $.each(arr, function (id, value) {
+                                        if (key == 'product') {
+                                            if (id != 'error') {
+
+
+                                                console.log(id, value)
+                                                entitySelector.append('<li>' + '<div class="tab-content"><div class="tab-pane fade show active" id="ongoing" role="tabpanel" aria-labelledby="ongoing-tab"><div class="row"><div class="col-12"><div class="single-item" style="max-width: max-content;"><a href="/product/front/products/'+id+'"><div class="left-item"><img src="/uploads/products/' + value[5] + '" height="90" width="90"></div><div class="mid-area"><div class="mid-area"> <h3>' + value[0] + '</h3><i><p>'+ value[2]+'</i></p></div></div><div class="last-item"><h6>Price:</h6><h4>$'+ value[1]+'</h4><span class="btn-border"><a href="/product/front/products/'+id+'" button class="cmn-btn" name="b">Consulter</a></span></ul>' + '  </a></li>');
+
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">' + value + '</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery-ui.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -280,8 +348,4 @@
     <script src="assets/js/plugin/wow.min.js"></script>
     <script src="assets/js/plugin/plugin.js"></script>
     <script src="assets/js/main.js"></script>
-</body>
-
-
-
-{% endblock %}
+    </body>{% endblock %}

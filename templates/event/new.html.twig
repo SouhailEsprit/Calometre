@@ -5,17 +5,19 @@
 
 {% block mainContent %}
 
+<main id="main" class="main">
 
 
 
 
-    <h1>Create new Event</h1>
+
+<h1>Create new Event</h1>
     <div class="card">
     <div class="card-body pb-2">
     {{ include('event/_form.html.twig') }}
     </div>
     </div>
-    <a href="{{ path('event_index') }}">back to list</a>
+    <a href="{{ path('event_index') }}" button class="btn btn-dark">back to list</a>
 
 {% block Scripts %}
     <script src="{{ asset('back-office/assets/js/jquery-3.6.0.min.js') }}" type="application/javascript"></script>

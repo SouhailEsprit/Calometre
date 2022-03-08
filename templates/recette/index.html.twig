@@ -36,8 +36,9 @@
                 {% endfor %}</td>
 
                 <td>
-                    <a href="{{ path('recette_show', {'id': recette.id}) }}">show</a>
-                    <a href="{{ path('recette_edit', {'id': recette.id}) }}">edit</a>
+                    <a href="{{ path('recette_show', {'id': recette.id}) }}">Show</a>
+                    <a href="{{ path('recette_edit', {'id': recette.id}) }}">Edit</a>
+                    <a href="{{ path('recette_delete', {'id': recette.id}) }}">Delete</a>
                 </td>
             </tr>
         {% else %}

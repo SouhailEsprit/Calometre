@@ -206,6 +206,7 @@ border-right: 1px #f8f7f3 solid;
 {{ total|number_format }}
 {% set price = 0 %}
 {{ total|number_format }}
+
 </div>
 <body>
     <div class="Cart-Container">
@@ -228,12 +229,17 @@ border-right: 1px #f8f7f3 solid;
 
          <div class="left_contentlist">
     
-      <div class="itemconfiguration" style="padding-left: 30px; width: 950;">           
+      <div class="itemconfiguration" style="padding-left: 30px; width: 950;">
 {% for product in product %}
 {% for cartprods in cartprod %}
 {% if cartprods.idprod == product.__toString %}
 {% if product.__toString == cartprods.idprod %}
  {% set price = product.price * cartprods.qty %}
+    {% if cartprods.idcart == currentCart   %}
+
+
+
+
 <hr class="style-seven">
 
 <div class="Cart-Items">
@@ -247,7 +253,10 @@ border-right: 1px #f8f7f3 solid;
 
                   
 
-                    <div class="about" >
+                    <div class="about" style="
+    margin-right: 0px;
+    padding-left: 70px;
+" >
                     <h1 class="title">{{product.name}}</h1>
                     <h3 class="subtitle">{{product.description}}</h3>
                     </div>
@@ -257,7 +266,7 @@ border-right: 1px #f8f7f3 solid;
                    
 
                     <div style="margin-top: -60px;">
-                    <div class="amount">Quantity N°:{{cartprods.qty}}</div>
+                    <div >Quantity N°:{{cartprods.qty}}</div>
                     <a type= "submit" href="{{ path('edit_qty', {'id': cartprods.id}) }}", button class="btn btn-warning d-block mb-2" style="width: auto;">Edit</a>
                     </div>
                     
@@ -273,7 +282,10 @@ border-right: 1px #f8f7f3 solid;
 </div>
 </hr>
 {% set nitems = nitems + 1 %}
+
+    {% endif %}
 {% endif %}
+
 {% endif %}
 {% endfor %}
 
@@ -290,7 +302,7 @@ border-right: 1px #f8f7f3 solid;
  </div>
  <div class="total-amount">${{total}}</div>
  </div>
- <button class="button"><a type= "submit" href="{{ path('product_front_index') }}", button class="button" style="width: auto;">Checkout</a></button>
+ <button class="button"><a type= "submit" href="{{ path('addtotal') }}?t={{ total }}", button class="button", name="t" style="width: auto;">Checkout</a></button>
 
  </div>
     </div>

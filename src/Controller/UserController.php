@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\ChangePasswordType;
 use App\Form\AdminRegistrationType;
 use App\Repository\ProductRepository;
+use App\Repository\CartRepository;
 use App\Repository\UserRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -42,11 +43,13 @@ class UserController extends AbstractController
     /**
      * @Route("/profile", name="user")
      */
-    public function index(EntityManagerInterface $em ): Response
-    { $cart = $em->getRepository(cart::class)->find('1');
+    public function index(CartRepository $cart, EntityManagerInterface $em ): Response
+    {
+        $user = $this->getUser();
+        $currentCart = $user->getCart();
         return $this->render('user/user.html.twig', [
             'controller_name' => 'UserController',
-                'cart' => $cart
+                'currentCart' => $currentCart
         ]);
     }
     /**
@@ -56,7 +59,7 @@ class UserController extends AbstractController
     { $user=$this->getUser();
         if( $user->getRoles() == ["ROLE_ADMIN"] ){
 
-        return $this->render('admin_home/index.html.twig'
+        return $this->render('base-back-office.html.twig'
         );}
         else{
             return $this->redirectToRoute('error');
@@ -75,11 +78,20 @@ class UserController extends AbstractController
     public function home(EntityManagerInterface $em,ProductRepository $productRepository): Response
     {
         $user = $this->getUser();
-        $cart = $em->getRepository(cart::class)->find('1');
+
+        if($user != null){
+
+
+        $user = $this->getUser();
+        $currentCart = $user->getCart();
 
         return $this->render('home.html.twig', [
-                'cart' => $cart
+            'currentCart' => $currentCart
         ]);
+        }
+        else{
+            return $this->render('home.html.twig' );
+        }
     }
 
     /**
@@ -88,6 +100,7 @@ class UserController extends AbstractController
     public function editPassword(Request $req, UserPasswordEncoderInterface $encoder): Response
     {
         $user = $this->getUser();
+        $currentCart = $user->getCart();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ChangePasswordType::class, $user)
             ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'old password']])
@@ -117,11 +130,15 @@ class UserController extends AbstractController
                 $password = $encoder->encodePassword($user, $new_password);
                 $user->setPassword($password);
                 $em->flush();
-                return $this->redirectToRoute('app_logout');
+                return $this->redirectToRoute('app_logout', [
+                    'currentCart'=> $currentCart
+                ]);
+
             }
         }
         return $this->render('registration/change_password.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'currentCart'=> $currentCart
         ]);
     }
 

@@ -60,6 +60,7 @@ class EventController extends AbstractController
     {
         return $this->render('event/index.html.twig', [
             'events' => $eventRepository->findAll(),
+
         ]);
     }
 
@@ -67,10 +68,18 @@ class EventController extends AbstractController
      * @Route("/client/display", name="event_client_index", methods={"GET"})
      */
     public function indexClient(EventRepository $eventRepository): Response
-    {
+
+    {    $user = $this->getUser();
+        if($user != null){
+            $currentCart=1;
+
         return $this->render('event_front/index.html.twig', [
             'events' => $eventRepository->findAll(),
-        ]);
+            'currentCart'=>$currentCart
+        ]);} else{
+        return $this->redirectToRoute('app_login');
+
+    }
     }
 
     /**
@@ -150,6 +159,8 @@ class EventController extends AbstractController
     public function showEventFront(Event $event ,Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+        $currentCart = $user->getCart();
+        $user = $this->getUser();
         $comment = new Comment();
         $comment->setUser($user);
         $comment->setCommentdate(new \DateTime('now'));
@@ -183,7 +194,8 @@ class EventController extends AbstractController
             'event' => $event,
             'comments'=>$comments,
             'form'=>$form->createView(),
-            'alreadyApplied'=>$event->getUsers()->contains($user)
+            'alreadyApplied'=>$event->getUsers()->contains($user),
+            'currentCart'=>$currentCart
         ]);
     }
 

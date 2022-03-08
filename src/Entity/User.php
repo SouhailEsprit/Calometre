@@ -92,6 +92,12 @@ class User implements UserInterface
         }
         return $this;
     }
+    public function __toString()
+    {
+
+        return (string) $this->getId();
+
+    }
 
 
     /**
@@ -144,6 +150,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $CountryCode;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Cart::class, mappedBy="userCart", cascade={"persist", "remove"})
+     */
+    private $cart;
 
     public function getId(): ?int
     {
@@ -305,6 +316,23 @@ class User implements UserInterface
     public function setCountryCode(string $CountryCode): self
     {
         $this->CountryCode = $CountryCode;
+
+        return $this;
+    }
+
+    public function getCart(): ?Cart
+    {
+        return $this->cart;
+    }
+
+    public function setCart(Cart $cart): self
+    {
+        // set the owning side of the relation if necessary
+        if ($cart->getUserCart() !== $this) {
+            $cart->setUserCart($this);
+        }
+
+        $this->cart = $cart;
 
         return $this;
     }

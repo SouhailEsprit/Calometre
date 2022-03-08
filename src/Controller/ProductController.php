@@ -15,11 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CartRepository;
-use Pagerfanta\Doctrine\ORM\QueryAdapter;
-use Pagerfanta\Pagerfanta;
-
-
-
+use App\Repository\CategoryRepository;
 
 /**
  * @Route("/product")
@@ -32,10 +28,10 @@ class ProductController extends AbstractController
     public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $requestString = $request->get('q');
+        $requestString = $request->get('b');
         $product = $em->getRepository(Product::class)->findEntitiesByString($requestString);
         if (!$product) {
-            $result['product']['error'] = "product introuvable :( ";
+            $result['product']['error'] = "Product not found! 🙁 ";
         } else {
             $result['product'] = $this->getRealEntities($product);
         }
@@ -53,15 +49,17 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="product_index", methods={"GET"})
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
     {
         if (isset($_GET["q"])) {
             return $this->render('product/indextest.html.twig', [
                 'products' => $productRepository->findEntitiesByString($_GET["q"]),
+                'category'=>$categoryRepository->findAll(),
             ]);
         } else {
             return $this->render('product/indextest.html.twig', [
                 'products' => $productRepository->findAll(),
+                'category'=>$categoryRepository->findAll(),
             ]);
         }
     }
@@ -171,37 +169,38 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
 
-   
-    /**
-     * @Route("/front/products/{page<\d+>}", name="product_front_index", methods={"GET"})
-     */
-    public function indexFront( EntityManagerInterface $em,ProductRepository $productRepository,int $page = 1): Response
-    {
-        $user = $this->getUser();
-        $cart = $em->getRepository(cart::class)->find('1');
-        $qb1 = $productRepository->createQueryBuilder('product')->select('product');
 
-        $pagerfanta = new Pagerfanta(
-            new QueryAdapter($qb1)
-        );
-        $pagerfanta->setMaxPerPage(1);
-        $pagerfanta->setCurrentPage($page);
+    /**
+     * @Route("/front/products", name="product_front_index", methods={"GET"})
+     */
+    public function indexFront(CartRepository $cart, EntityManagerInterface $em,ProductRepository $productRepository): Response
+    {
+
+
+        $user = $this->getUser();
+        if($user != null){
+        $currentCart = $user->getCart();
         return $this->render('product/indexFrontTest.html.twig', [
             'products' => $productRepository->findAll(),
-            'cart' => $cart,
-            "productss" => $pagerfanta,
-        ]);
+            'currentCart' => $currentCart
+        ]);}
+        else{
+            return $this->redirectToRoute('app_login');
+
+        }
     }
 
-     
+
     /**
      * @Route("/front/products/{id}", name="product_front_show", methods={"GET"})
      */
-    public function showFront(Product $product): Response
+    public function showFront(CartRepository $cart, EntityManagerInterface $em, Product $product): Response
     {
+        $user = $this->getUser();
+        $currentCart = $user->getCart();
         return $this->render('product/showFront.html.twig', [
             'product' => $product,
+            'currentCart' => $currentCart
         ]);
     }
-    
 }

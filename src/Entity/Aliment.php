@@ -28,8 +28,8 @@ class Aliment
     /**
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="Veuillez renseinger ce champ")
-     * @Assert\LessThan(900000)
-     * @Assert\GreaterThan(10000)
+     * @Assert\LessThan(10000)
+     * @Assert\GreaterThan(12)
      */
     private $calories;
 

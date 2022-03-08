@@ -54,7 +54,9 @@ class ReclamationController extends AbstractController
      * @Route("/new", name="reclamation_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager ,TranslatorInterface $translator): Response
-    {
+    {  $user = $this->getUser();
+        if($user != null){
+        $curentCart=1;
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
@@ -74,7 +76,11 @@ class ReclamationController extends AbstractController
         return $this->render('reclamation/new.html.twig', [
             'reclamation' => $reclamation,
             'form' => $form->createView(),
-        ]);
+            'currentCart'=>$curentCart
+        ]);}else{
+                return $this->redirectToRoute('app_login');
+
+            }
     }
 
     /**

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 use App\Entity\Recette;
+use App\Entity\RecetteLike;
 use App\Form\SearchRecette1Type;
 use App\Form\SearchRecette2Type;
+use App\Repository\RecetteLikeRepository;
 use App\Repository\RecetteRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -11,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ReceFrontController extends AbstractController
 {
@@ -20,6 +23,9 @@ class ReceFrontController extends AbstractController
 
     public function index(Request $request, RecetteRepository $recetteRepository): Response
     {
+        $user = $this->getUser();
+        $currentCart = $user->getCart();
+
         $data = $request->request->get('search_recette2');
         $data1 = $request->request->get('search_recette1');
         if($data && $data['query']) {
@@ -38,6 +44,7 @@ class ReceFrontController extends AbstractController
 
                 ->getQuery()
                 ->getResult();
+
         }
         else{
             $recettes = $recetteRepository->findBy(array());
@@ -50,6 +57,7 @@ class ReceFrontController extends AbstractController
             'recettes' => $recettes,
             'search_form' => $search_form->createView(),
             'search2_form' => $search2_form->createView(),
+            'currentCart'=>$currentCart
         ]);
     }
     /**
@@ -57,6 +65,8 @@ class ReceFrontController extends AbstractController
      */
     public function getPDF(Recette $recette )
     {
+        $user = $this->getUser();
+        $currentCart = $user->getCart();
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
@@ -67,6 +77,7 @@ class ReceFrontController extends AbstractController
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('recette_pdf/index.html.twig', [
             'recette' => $recette,
+            'currentCart' => $currentCart
         ]);
 
         // Load HTML to Dompdf
@@ -82,6 +93,33 @@ class ReceFrontController extends AbstractController
         $dompdf->stream("$recette.pdf", [
             "Attachment" => true
         ]);
+    }
+    /**
+     * @Route("/rece/front/{id}/like", name="recette_like")
+     */
+    public function like(Recette $recette, EntityManagerInterface $entityManager, RecetteLikeRepository $recetteLikeRepository): Response
+    {
+        $user=$this->getUser();
+        if (!$user)  return $this->json(['code' => 403, 'message' => 'Unauthorized'], 403);
+
+        if($recette->isLikedByUser($user)){
+            $like=$recetteLikeRepository->findOneBy([
+                'Recette'=>$recette,
+                'User'=>$user
+            ]);
+            $entityManager->remove($like);
+            $entityManager->flush();
+            return $this->json(['code' => 200, 'message' => 'like supprimé','likes' => $recetteLikeRepository->count(['Recette'=>$recette])],200);
+        }
+        $like=new RecetteLike();
+        $like->setRecette($recette)
+            ->setUser($user);
+        $entityManager->persist($like);
+        $entityManager->flush();
+        return $this->json(['code' => 200, 'message' => 'like ajoutée','likes'=> $recetteLikeRepository->count(['Recette'=>$recette])],200);
+
+
+
     }
 
 }

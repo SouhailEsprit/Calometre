@@ -31,10 +31,11 @@ class Cart
     private $cartProds;
 
     /**
-     * 
-     * @ORM\OneToOne(targetEntity=User::class)
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="cart", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $userCart;
+
 
     public function __construct()
     {
@@ -42,9 +43,9 @@ class Cart
     }
     public function __toString()
     {
-        
+
         return (string) $this->getId();
-    
+
     }
 
     public function getId(): ?int
@@ -99,10 +100,12 @@ class Cart
         return $this->userCart;
     }
 
-    public function setUserCart(?User $userCart): self
+    public function setUserCart(User $userCart): self
     {
         $this->userCart = $userCart;
 
         return $this;
     }
+
+
 }

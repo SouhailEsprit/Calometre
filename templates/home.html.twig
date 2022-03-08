@@ -52,75 +52,21 @@
                                 <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="{{path('home')}}">Home</a>
                                 </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Dashboard</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
-                                               data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside">Setting</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="personal-details-setting.html">Personal
-                                                        Details</a></li>
-                                                <li><a class="nav-link" href="modify-login-password.html">Change
-                                                        Password</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Sports</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="soccer-bets-2.html">Tennis</a></li>
-                                        <li><a class="nav-link" href="soccer-bets-1.html">Soccer</a></li>
-                                        <li><a class="nav-link" href="soccer-bets-2.html">NBA</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Currency</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="escrow-bets-fee.html">Escrow Bets Fee</a></li>
-                                        <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>
-                                        <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>
-                                        <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle " href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
-                                               data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside">Tournaments</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>
-                                                <li><a class="nav-link" href="tournaments-details.html">Tournaments
-                                                        Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
-                                               data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside">Blog</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                                                <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="nav-link" href="affiliate.html">Affiliate</a></li>
-                                        <li><a class="nav-link" href="faqs.html">Faqs</a></li>
-                                        <li><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-                                        <li><a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-                                        <li><a class="nav-link" href="error.html">Error</a></li>
-                                    </ul>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_alim_front') }}">Food</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('product_front_index') }}">Produits</a>
+                                    <a class="nav-link" href="{{ path('exercice_front') }}">Exercices</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('event_client_index') }}">Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('product_front_index') }}">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('reclamation_new') }}">Complaint</a>
                                 </li>
                                 {% if app.user != null %}
 
@@ -137,16 +83,23 @@
                                     <a href="{{ path('user') }}" style=color:white type="button">
                                         {{ app.user.firstname }}
                                     </a>
-                                    {% set test = 0 %}
-                                    <a href="{{ path('product_front_index')}}/cart/{{cart}}" button class="btn btn-outline-danger" >
+
+
+
+
+
+
+
+                                    <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg">
+                                        Logout
+                                    </a>
+                                    <a href="{{ path('product_front_index')}}/cart/{{currentCart}}" button class="btn btn-outline-danger" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>
                                         Cart
                                     </a>
 
-                                    <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg">
-                                        Logout
-                                    </a>
+
                                 {% else %}
 
 
@@ -355,6 +308,7 @@
 {% endblock %}
 
 <!-- Main content end -->
+{% block footer %}
 
 <!-- Footer Area Start -->
 <footer class="footer-section">
@@ -365,7 +319,7 @@
                 <div class="col-xl-12">
                     <div class="menu-item">
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('front-office/assets/images/logo.png') }}" alt="logo">
+{#                            <img src="{{ asset('front-office/assets/images/app logo.png') }}" alt="logo">#}
                         </a>
                         <ul class="footer-link">
                             <li><a href="contact.html">Contact</a></li>
@@ -377,7 +331,7 @@
                 <div class="col-12">
                     <div class="copyright">
                         <div class="copy-area">
-                            <p> Copyright © <a href="index.html">Bitbetio</a> | Designed by
+                            <p> Copyright © <a href="index.html">Calometre</a> | Designed by
                                 <a href="https://themeforest.net/user/pixelaxis" class="auth">Pixelaxis</a>
                             </p>
                         </div>
@@ -394,6 +348,7 @@
     </div>
 </footer>
 <!-- Footer Area End -->
+{% endblock %}
 
 <!--==================================================================-->
 {% block scripts %}

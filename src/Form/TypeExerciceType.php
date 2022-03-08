@@ -2,25 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\TypeExercice;
+use App\Entity\Typeexercice;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TypeExerciceType extends AbstractType
+class TypeexerciceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nom')
-            ->add('exercice')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => TypeExercice::class,
+            'data_class' => Typeexercice::class,
         ]);
     }
 }

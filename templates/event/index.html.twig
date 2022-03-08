@@ -3,6 +3,7 @@
 
 
 {% block mainContent %}
+<main id="main" class="main">
     <h1>List of all the events</h1>
 
     <table class="table">
@@ -29,8 +30,8 @@
                 <td>{{ event.nombreParticipants }}</td>
                 <td>{{ event.lieu }}</td>
                 <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                    <a href="{{ path('event_show', {'id': event.id}) }}"button class="btn btn-dark">show</a>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}" button class="btn btn-warning">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('event_new') }}">Create new</a>
+    <a href="{{ path('event_new') }}"button class="btn btn-success">Create new</a>
 {% endblock %}
