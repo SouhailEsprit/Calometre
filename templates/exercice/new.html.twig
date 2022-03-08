@@ -4,24 +4,42 @@
 
 
 {% block mainContent %}
+<main id="main" class="main">
+
+		<div class="pagetitle">
+			<h1>Exercice</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						{# <a href="{{path('edit_admin')}}">Admin</a> #}
+					</li>
+					<li class="breadcrumb-item active">
+						<a href="{{path('exercice_index')}}">Exercices</a>
+					</li>
+
+				</ol>
+			</nav>
+		</div>
+
+<div style="
+    margin-left: 323px;
+    margin-top: 46px;
+">
     <h1>Create new exercice</h1>
 
     
     <div class="card-body pb-2">
 {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
 <div class="row">
-<div class="col-xl-6">
+<div class="col-xl-6" >
 <div class="form-group mb-3">
 
 
 {{ form_row(form.nom,{'attr':{'class':'form-control', 'placeholder': "Nom"}}) }}
 {{ form_row(form.nomtype,{'attr':{'class':'form-widget','class':'form-control'}}) }}
 
-{# <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" /> #}
 </div>
 
-{# <label class="form-label" for="exampleFormControlTextarea1" >Textarea</label>
-<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> #}
 {{ form_row(form.description,{'attr':{'class':'form-control' , 'placeholder': "descreption"}}) }}
 
 {{ form_row(form.objectif,{'attr':{'class':'form-control' , 'placeholder': "objectif"}}) }}
@@ -30,50 +48,11 @@
 
 <div class="form-group mb-3">
 
-{# <div class="pos-task-product-action">
-<a href="#" class="btn btn-success">Complete</a>
-<a href="#" class="btn btn-outline-default">Cancel</a>
-</div> #}
- 
- 
-{# 
-<label class="form-label" for="exampleFormControlFile1">File input</label>
 
-<input type="file" class="form-control" id="exampleFormControlFile1" /> 
-</div>
-</div>
-<div class="col-xl-6">
-<div class="form-group mb-3"> #}
-
-{# <label class="form-label" for="exampleFormControlSelect1">Select dropdown</label>
- <select class="form-select" id="exampleFormControlSelect1">
-
-
-
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select>
-
-
-
-<div class="form-group mb-3">
-<label class="form-label" for="exampleFormControlSelect2">Multiple select</label>
-<select multiple class="form-select" id="exampleFormControlSelect2">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select>
-</div>
-</div>
-</div> #}
 
 {{ form_end(form) }}
 </div>
     <button class="btn btn-success">{{ button_label|default('Save') }}</button>
-    <a href="{{ path('exercice_index') }}", button class="btn btn-outline-default" >Back to List</a>
+    <a href="{{ path('exercice_index') }}", button class="btn btn-outline-secondary" >Back to List</a>
+    </div>
 {% endblock %}

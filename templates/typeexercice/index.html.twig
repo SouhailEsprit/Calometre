@@ -1,8 +1,23 @@
 {% extends 'base-back-office.html.twig' %}
 
 {% block mainContent %}
-    <h1>Typeexercice index</h1>
+<main id="main" class="main">
 
+		<div class="pagetitle">
+			<h1>Type exercice</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						{# <a href="{{path('edit_admin')}}">Admin</a> #}
+					</li>
+					<li class="breadcrumb-item active">
+						<a href="{{path('exercice_index')}}">Exercices</a>
+					</li>
+
+				</ol>
+			</nav>
+		</div>
+    
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +32,7 @@
                 <td>{{ typeexercice.id }}</td>
                 <td>{{ typeexercice.nom }}</td>
                 <td>
-                    <a href="{{ path('typeexercice_show', {'id': typeexercice.id}) }}"button class="btn btn-light">show</a>
+                    <a href="{{ path('typeexercice_show', {'id': typeexercice.id}) }}"button class="btn btn-secondary">show</a>
                     <a href="{{ path('typeexercice_edit', {'id': typeexercice.id}) }}"button class="btn btn-warning">edit</a>
                 </td>
             </tr>
@@ -29,6 +44,6 @@
         </tbody>
     </table>
 <div>
-    <a href="{{ path('typeexercice_new') }}"button class="btn btn-light">Create new</a>
+    <a href="{{ path('typeexercice_new') }}"button class="btn btn-primary">Create new</a>
     </div>
 {% endblock %}

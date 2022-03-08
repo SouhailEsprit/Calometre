@@ -47,4 +47,13 @@ class ExerciceRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findEntitiesByString($str)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p
+            FROM App:Exercice p
+        WHERE p.nom LIKE :str or p.description LIKE :str or p.objectif LIKE :str'
+
+            )->setParameter('str', '%'.$str.'%')->getResult();
+    }
 }

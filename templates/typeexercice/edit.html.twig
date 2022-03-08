@@ -7,6 +7,22 @@
 
 
 {% block mainContent %}
+<main id="main" class="main">
+
+		<div class="pagetitle">
+			<h1>Type exercice</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						{# <a href="{{path('edit_admin')}}">Admin</a> #}
+					</li>
+					<li class="breadcrumb-item active">
+						<a href="{{path('typeexercice_index')}}">TypeExercices</a>
+					</li>
+
+				</ol>
+			</nav>
+		</div>
     <h1>Edit type exercice</h1>
 
     
@@ -35,7 +51,7 @@
 </div>
 <div>
     <button class="btn btn-success">{{ button_label|default('Update') }}</button>
-    <a href="{{ path('typeexercice_index') }}", button class="btn btn-outline-default" >Back to list</a>
+    <a href="{{ path('typeexercice_index') }}", button class="btn btn-outline-secondary" >Back to list</a>
       {{ include('typeexercice/_delete_form.html.twig') }}
     </div>
 {% endblock %}
