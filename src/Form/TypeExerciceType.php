@@ -2,12 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Typeexercice;
+use App\Entity\TypeExercice;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TypeexerciceType extends AbstractType
+class TypeExerciceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

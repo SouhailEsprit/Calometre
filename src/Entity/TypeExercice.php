@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeexerciceRepository;
+use App\Repository\TypeExerciceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=TypeexerciceRepository::class)
  */
-class Typeexercice
+class TypeExercice
 {
     /**
      * @ORM\Id

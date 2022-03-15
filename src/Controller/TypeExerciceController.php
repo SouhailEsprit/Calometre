@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Typeexercice;
-use App\Form\TypeexerciceType;
-use App\Repository\TypeexerciceRepository;
+use App\Entity\TypeExercice;
+use App\Form\TypeExerciceType;
+use App\Repository\TypeExerciceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/typeexercice")
  */
-class TypeexerciceController extends AbstractController
+class TypeExerciceController extends AbstractController
 {
     /**
      * @Route("/", name="typeexercice_index", methods={"GET"})

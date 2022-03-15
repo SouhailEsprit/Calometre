@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Typeexercice;
+use App\Entity\TypeExercice;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Typeexercice[]    findAll()
  * @method Typeexercice[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TypeexerciceRepository extends ServiceEntityRepository
+class TypeExerciceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

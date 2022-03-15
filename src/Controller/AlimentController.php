@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/aliment")
@@ -103,6 +105,67 @@ class AlimentController extends AbstractController
     }
 
     /**
+     * @Route("/allAliments", name="allAliments")
+     */
+    public function AllAliments(NormalizerInterface $normalizer) : Response
+    {   $user=$this->getUser();
+        $currentCart = $user->getCart();
+        $repository=$this->getDoctrine()->getRepository(Aliment::class);
+        $aliments=$repository->findAll();
+        $jsonContent=$normalizer->normalize($aliments,'json',['groups'=>'post:read']);
+        return $this->render('aliment/allAlimentsJSON.html.twig',['data'=>$jsonContent,]);
+    }
+    /**
+     * @Route("/addAlimentJSON", name="addAlimentJSON")
+     */
+    public function AddAlimentJson(Request $request,NormalizerInterface $normalizer) : Response
+    {   $user=$this->getUser();
+        $currentCart = $user->getCart();
+        $em=$this->getDoctrine()->getManager();
+        $aliment= new Aliment();
+        $aliment->setName($request->get('Name'));
+        $aliment->setImage($request->get('Image'));
+        $aliment->setCalories($request->get('Calories'));
+        $aliment->setCategorie($request->get('Categorie'));
+        $em->persist($aliment);
+        $em->flush();
+
+        $jsonContent=$normalizer->normalize($aliment,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+    /**
+     * @Route("/UpdateAlimentJSON/{id}", name="UpdateAlimentJSON")
+     */
+    public function UpdateAlimentJson(Request $request,NormalizerInterface $normalizer,$id) : Response
+    {   $user=$this->getUser();
+        $currentCart = $user->getCart();
+        $em=$this->getDoctrine()->getManager();
+        $aliment= $em->getRepository(Aliment::class)->find($id);
+        $aliment->setName($request->get('Name'));
+        $aliment->setImage($request->get('Image'));
+        $aliment->setCalories($request->get('Calories'));
+        $aliment->setCategorie($request->get('Categorie'));
+        $em->flush();
+
+        $jsonContent=$normalizer->normalize($aliment,'json',['groups'=>'post:read']);
+        return new Response("Information updated".json_encode($jsonContent));
+    }
+    /**
+     * @Route("/DeleatAlimentJSON/{id}", name="UpdateAlimentJSON")
+     */
+    public function DeleatAlimentJson(Request $request,NormalizerInterface $normalizer,$id) : Response
+    {   $user=$this->getUser();
+        $currentCart = $user->getCart();
+        $em=$this->getDoctrine()->getManager();
+        $aliment= $em->getRepository(Aliment::class)->find($id);
+        $em->remove($aliment);
+        $em->flush();
+
+        $jsonContent=$normalizer->normalize($aliment,'json',['groups'=>'post:read']);
+        return new Response("Aliment deleated successfully".json_encode($jsonContent));
+    }
+
+    /**
      * @Route("/{id}", name="aliment_show", methods={"GET"})
      */
     public function show(Aliment $aliment): Response
@@ -144,4 +207,5 @@ class AlimentController extends AbstractController
 
         return $this->redirectToRoute('aliment_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }
