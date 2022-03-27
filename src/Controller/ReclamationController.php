@@ -9,10 +9,19 @@ use App\Repository\ReclamationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
+
+
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/reclamation")
@@ -34,6 +43,21 @@ class ReclamationController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route ("/liste", name="liste", methods={"GET"})
+     * @param ReclamationRepository $repository
+     * @param SerializerInterface $serializer
+     * @param $serializerInterface
+     */
+    public function Reclamation(ReclamationRepository $repository, SerializerInterface $serializer)
+    {
+        $reclamation = $repository->findAll();
+        $json=$serializer->serialize($reclamation,'json',['groups'=>'post:read']);
+        dump($reclamation);
+        die;
+    }
+
+
 
 
     /**
@@ -53,7 +77,7 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/new", name="reclamation_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager ,TranslatorInterface $translator): Response
+    public function new(Request $request, EntityManagerInterface $entityManager ,TranslatorInterface $translator,SerializerInterface $serializer): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
@@ -75,7 +99,10 @@ class ReclamationController extends AbstractController
             'reclamation' => $reclamation,
             'form' => $form->createView(),
         ]);
+
     }
+
+
 
     /**
      * @Route("/{id}", name="reclamation_show", methods={"GET"})
@@ -119,6 +146,7 @@ class ReclamationController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}", name="reclamation_delete", methods={"POST"})
      */
@@ -137,4 +165,95 @@ class ReclamationController extends AbstractController
 
         return $this->redirectToRoute('reclamation_index', [], Response::HTTP_SEE_OTHER);
     }
+    /*CODENAME ONE*/
+
+    /**
+     * @Route("/mobile/addReclamation", name="addReclamationMobile")
+     */
+    public function addReclamationMobile(Request $request)
+    {
+        $type = $request->query->get('type');
+        $email = $request->query->get('email');
+        $message = $request->query->get('message');
+
+
+        $reclamation = new Reclamation();
+        $reclamation->setType($type);
+        $reclamation->setEmail($email);
+        $reclamation->setMessage($message);
+
+
+
+        $reclamation->setDate(new \DateTimeImmutable());
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($reclamation);
+            $em->flush();
+            return new JsonResponse("reclamation added successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e);
+        }
+    }
+
+    /**
+     * @Route("/mobile/deleteReclamation", name="deleteReclamationMobile")
+     */
+    public function deleteReclamationMobile(Request $request)
+    {
+        $id = $request->query->get('id');
+        $reclamation = $this->getDoctrine()->getRepository(Reclamation::class)->findOneBy(['id' => $id]);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($reclamation);
+            $em->flush();
+            return new JsonResponse("reclamation removed successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e->getMessage());
+        }
+    }
+
+    /**
+     * @Route("/mobile/editReclamation", name="editReclamationMobile")
+     */
+    public function editReclamationMobile(Request $request)
+    {
+        $id = $request->query->get('id');
+        $reclamation = $this->getDoctrine()->getRepository(Reclamation::class)->findOneBy(['id' => $id]);
+
+        $message = $request->query->get('message');
+
+
+        
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return new JsonResponse("reclamation edited successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e->getMessage());
+        }
+    }
+
+    /**
+     * @Route("/mobile/showReclamation", name="showReclamationMobile")
+     */
+    public function showProductMobile(ReclamationRepository $rep): Response
+    {
+        $reclamations = $rep->findAll();
+
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+        $json = $serializer->serialize($reclamations, 'json', ['circular_reference_handler' => function ($object) {
+            return $object->getId();
+        }
+        ]);
+
+        $response = new Response($json);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
 }
