@@ -14,6 +14,8 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -40,17 +42,20 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("user")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("user")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups("user")
      */
     private $password;
 
@@ -133,21 +138,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer")
+     *  @Groups("user")
      */
     private $phonenumber;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups("user")
      */
     private $profile_picture;
 
     /**
      * @ORM\Column(type="boolean")
+     *  @Groups("user")
      */
     private $isbanned=false;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("user")
      */
     private $CountryCode;
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cart;
 use App\Entity\CartProds;
+use App\Entity\Category;
 use App\Entity\Images;
 use App\Entity\Product;
 use App\Form\Product1Type;
@@ -16,6 +17,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CartRepository;
 use App\Repository\CategoryRepository;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Validator\Exception\ExceptionInterface;
 
 /**
  * @Route("/product")
@@ -44,7 +49,6 @@ class ProductController extends AbstractController
         }
         return $realEntities;
     }
-
 
     /**
      * @Route("/", name="product_index", methods={"GET"})
@@ -154,8 +158,6 @@ class ProductController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/{id}", name="product_delete", methods={"POST"})
      */
@@ -168,7 +170,6 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
-
 
     /**
      * @Route("/front/products", name="product_front_index", methods={"GET"})
@@ -190,7 +191,6 @@ class ProductController extends AbstractController
         }
     }
 
-
     /**
      * @Route("/front/products/{id}", name="product_front_show", methods={"GET"})
      */
@@ -202,5 +202,185 @@ class ProductController extends AbstractController
             'product' => $product,
             'currentCart' => $currentCart
         ]);
+    }
+
+    /*CODENAME ONE*/
+
+    /**
+     * @Route("/mobile/addProduct", name="addProductMobile")
+     */
+    public function addProdMobile(Request $request)
+    {
+        $name = $request->query->get('name');
+        $description = $request->query->get('description');
+        $image = $request->query->get('image');
+        $price = $request->query->get('price');
+        $quantity = $request->query->get('quantity');
+        $catId = $request->query->get('catId');
+
+        $categroy = $this->getDoctrine()->getManager()->getRepository(Category::class)->find($catId);
+
+        $product = new Product();
+        $product->setName($name);
+        $product->setDescription($description);
+        $product->setImage($image);
+        $product->setPrice($price);
+        $product->setQuantity($quantity);
+        $product->setCategory($categroy);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+            return new JsonResponse("Product added successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e);
+        }
+    }
+
+    /**
+     * @Route("/mobile/addCategory", name="addProductCatMobile")
+     */
+    public function addProdCatMobile(Request $request)
+    {
+        $name = $request->query->get('name');
+
+        $product = new Category();
+        $product->setName($name);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+            return new JsonResponse("Category added successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e);
+        }
+    }
+
+    /**
+     * @Route("/mobile/deleteProduct", name="deleteProductMobile")
+     */
+    public function deleteProdMobile(Request $request)
+    {
+        $id = $request->query->get('id');
+        $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['id' => $id]);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($product);
+            $em->flush();
+            return new JsonResponse("product removed successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e->getMessage());
+        }
+    }
+
+    /**
+     * @Route("/mobile/deleteCategory", name="deleteCategoryMobile")
+     */
+    public function deleteCategoryMobile(Request $request)
+    {
+        $id = $request->query->get('id');
+        $category = $this->getDoctrine()->getRepository(Category::class)->findOneBy(['id' => $id]);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($category);
+            $em->flush();
+            return new JsonResponse("Category removed successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e->getMessage());
+        }
+    }
+
+    /**
+     * @Route("/mobile/editProduct", name="editProductMobile")
+     */
+    public function editProductMobile(Request $request)
+    {
+        $id = $request->query->get('id');
+        $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['id' => $id]);
+
+        $name = $request->query->get('name');
+        $description = $request->query->get('description');
+        $image = $request->query->get('image');
+        $price = $request->query->get('price');
+        $quantity = $request->query->get('quantity');
+
+        $product->setName($name);
+        $product->setDescription($description);
+        $product->setImage($image);
+        $product->setPrice($price);
+        $product->setQuantity($quantity);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return new JsonResponse("product edited successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e->getMessage());
+        }
+    }
+
+    /**
+     * @Route("/mobile/editCategory", name="editCategoryMobile")
+     */
+    public function editCategoryMobile(Request $request)
+    {
+        $id = $request->query->get('id');
+        $type = $this->getDoctrine()->getRepository(Category::class)->findOneBy(['id' => $id]);
+
+        $name = $request->query->get('name');
+
+        $type->setName($name);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            return new JsonResponse("type edited successfully");
+        } catch (\Exception $e) {
+            return new JsonResponse("error on " . $e->getMessage());
+        }
+    }
+
+    /**
+     * @Route("/mobile/showProduct", name="showProductMobile")
+     */
+    public function showProductMobile(ProductRepository $rep): Response
+    {
+        $products = $rep->findAll();
+
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+        $json = $serializer->serialize($products, 'json', ['circular_reference_handler' => function ($object) {
+            return $object->getId();
+        }
+        ]);
+
+        $response = new Response($json);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/mobile/showCategory", name="showCategoryMobile")
+     */
+    public function showCategoryMobile(CategoryRepository $rep): Response
+    {
+        $category = $rep->findAll();
+
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+        $json = $serializer->serialize($category, 'json', ['circular_reference_handler' => function ($object) {
+            return $object->getId();
+        }
+        ]);
+
+        $response = new Response($json);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 }
