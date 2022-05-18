@@ -13,52 +13,7 @@
     <div class="overlay">
     <div class="dashboard-heading">
         <div class="container">
-            <div class="row justify-content-lg-end justify-content-between">
-                <div class="col-xl-9 col-lg-12">
-                    <ul class="nav" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="dashboard-tab" data-bs-toggle="tab"
-                                    data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
-                                    aria-selected="true">dashboard</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="my-bets-tab" data-bs-toggle="tab"
-                                    data-bs-target="#my-bets" type="button" role="tab" aria-controls="my-bets"
-                                    aria-selected="false">my bets</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="deposit-tab" data-bs-toggle="tab"
-                                    data-bs-target="#deposit" type="button" role="tab" aria-controls="deposit"
-                                    aria-selected="false">deposit</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
-                                    data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
-                                    aria-selected="false">withdraw</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="buy-crypto-tab" data-bs-toggle="tab"
-                                    data-bs-target="#buy-crypto" type="button" role="tab" aria-controls="buy-crypto"
-                                    aria-selected="false">buy crypto</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
-                                    data-bs-target="#affiliate" type="button" role="tab" aria-controls="affiliate"
-                                    aria-selected="false">affiliate</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="transactions-tab" data-bs-toggle="tab"
-                                    data-bs-target="#transactions" type="button" role="tab"
-                                    aria-controls="transactions" aria-selected="false">transactions</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="setting-tab" data-bs-toggle="tab"
-                                    data-bs-target="#setting" type="button" role="tab" aria-controls="setting"
-                                    aria-selected="false">setting</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="container">
@@ -118,11 +73,13 @@
                 </div>
             </div>
             <div class="comments-area mt-60 mb-60">
-                <h3 class="title">{{ comments|length }} Comments</h3>
+                <h3 class="title">{{ comments|length }} Commentaire</h3>
                 {% for comment in comments %}
                 <div class="single-comments">
                     <div class="left-area">
-                        <img src="{{ asset('front-office/assets/images/comments-img-1.png') }}" alt="image">
+<img src="{{ asset('uploads/profilePicture/' ~ app.user.ProfilePicture) }}" width="50" height="50" alt="image">
+
+
                     </div>
                     <div class="right-area">
                         <h5>{{ comment.user.firstname }}</h5>
@@ -137,7 +94,8 @@
 
 
             <div class="leave-comments">
-                <h3 class="title">Leave a Comment</h3>
+<h3 class="title">Laissez un commentaire</h3>
+
                 {{ form_start(form) }}
                     <div class="row">
 
@@ -151,7 +109,7 @@
                         </div>
                         <div class="col-xl-4 col-lg-5 col-6">
                             <div class="btn-border w-100">
-                                <button class="cmn-btn w-100">Submit Now</button>
+                                <button class="cmn-btn w-100">Commenter</button>
                             </div>
                         </div>
                     </div>
@@ -161,7 +119,7 @@
         <div class="col-xxl-4 col-lg-5 col-md-7 col-sm-9">
             <div class="sidebar-blog position-sticky top-0">
                 <div class="sidebar-single">
-                    <h5 class="title">Search</h5>
+                    <h5 class="title">Rechercher</h5>
                     <form action="#">
                         <div class="form-group">
                             <input type="text" placeholder="Enter your Search Content">
@@ -175,7 +133,7 @@
 
                 </div>
                 <div class="sidebar-single">
-                    <h5 class="title">Follow Us</h5>
+                    <h5 class="title">Suivez nous</h5>
                     <form action="#">
                         <div class="form-group">
                             <div class="social-link d-flex align-items-center">
@@ -237,3 +195,55 @@
     </script>
 
 {% endblock %}
+{% block footer %}<!-- Footer Area Start --><footer class="footer-section">
+		<div class="container pt-120">
+
+			<div class="footer-bottom-area pt-120">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="menu-item">
+							<a
+								href="index.html" class="logo">{#                            <img src="{{ asset('front-office/assets/images/app logo.png') }}" alt="logo">#}
+							</a>
+							<ul class="footer-link">
+								<li>
+									<a href="contact.html">Contact</a>
+								</li>
+								<li>
+									<a href="terms-conditions.html">Termes et conditions</a>
+
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="copyright">
+							<div class="copy-area">
+								<p>
+									Tout droit réservé  ©
+
+									<a href="{{path('home')}}">Calometre</a>
+
+								</p>
+							</div>
+							<div class="social-link d-flex align-items-center">
+								<a href="javascript:void(0)">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+								<a href="javascript:void(0)">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a href="javascript:void(0)">
+									<i class="fab fa-linkedin-in"></i>
+								</a>
+								<a href="javascript:void(0)">
+									<i class="fab fa-instagram"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer><!-- Footer Area End -->{% endblock %}

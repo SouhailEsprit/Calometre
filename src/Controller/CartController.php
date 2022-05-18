@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\CartProds;
 use App\Entity\Cart;
 use App\Entity\Product;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Request;
+
 /**
  * @Route("/product/front/products")
  */
@@ -24,30 +26,62 @@ class CartController extends AbstractController
     /**
      * @Route("/add", name="addcart", methods={"GET", "POST"})
      */
-    public function AddToProdCart(Request $request, EntityManagerInterface $em, ProductRepository $productRepository ): Response
-    {   $cart = new Cart();
-        $cartprod = new CartProds();
-        $user = $this->getUser();
-        $currentCart = $user->getCart();;
-        $idprod =$request->get("b");
-        $prod = $em->getRepository(Product::class)->find($idprod);
+    public function AddToProdCart(Request $request, EntityManagerInterface $em, ProductRepository $productRepository, CartRepository $cartrepository): Response
+    {
+
+        $carts = $cartrepository->findAll();
+
+        foreach ($carts as $cart) {
+            if ($cart->getUserCart()->getId() == $this->getUser()->getId()) {
+
+                $cartprod = new CartProds();
+                $user = $this->getUser();
+                $currentCart = $user->getCart();;
+                $idprod = $request->get("b");
+                $prod = $em->getRepository(Product::class)->find($idprod);
 
 
 
 
-        $cartprod->setQty(1);
-        $cartprod->setIdcart($currentCart);
-        $cartprod->setIdprod($prod);
+                $cartprod->setQty(1);
+                $cartprod->setIdcart($currentCart);
+                $cartprod->setIdprod($prod);
 
-        $em->persist($cartprod);
-        $em->flush();
-        return $this->redirectToRoute('product_front_index', [], Response::HTTP_SEE_OTHER);
+                $em->persist($cartprod);
+                $em->flush();
+                break;
+            } else {
+
+                $cart = new Cart();
+                $total = 0;
+                $cart->setTotal($total);
+                $user = $this->getUser();
+                $cart->setUserCart($user);
+                $cartprod = new CartProds();
+                $user = $this->getUser();
+                $currentCart = $user->getCart();;
+                $idprod = $request->get("b");
+                $prod = $em->getRepository(Product::class)->find($idprod);
+
+
+
+
+                $cartprod->setQty(1);
+                $cartprod->setIdcart($currentCart);
+                $cartprod->setIdprod($prod);
+
+                $em->persist($cartprod, $cart);
+                $em->flush();
+            }
+            break;
+        }
+
+
 
         return $this->render('product/indexFrontTest.html.twig', [
             'products' => $productRepository->findAll(),
             'currentCart' => $currentCart
         ]);
-
     }
 
 
@@ -55,17 +89,17 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/{id}", name="product_front_cart", methods={"GET", "POST"})
      */
-    public function showFrontCart(  request $request,ProductRepository $productRepository, CartProdsRepository $CartProdsRepository ,CartRepository $cart,$id): Response
+    public function showFrontCart(request $request, ProductRepository $productRepository, CartProdsRepository $CartProdsRepository, CartRepository $cart, $id): Response
     {
         $user = $this->getUser();
         $currentCart = $user->getCart();
-        $qty= new Cartprods();
+        $qty = new Cartprods();
         $form = $this->createForm(CartProdsType::class, $qty);
         $form->handleRequest($request);
         return $this->render('cart_prods/index.html.twig', [
-            'product'=>$productRepository->findAll(),
+            'product' => $productRepository->findAll(),
             'currentCart' => $currentCart,
-            'cartprod' =>$CartProdsRepository->findAll(),
+            'cartprod' => $CartProdsRepository->findAll(),
             'form' => $form->createView(),
 
         ]);
@@ -74,13 +108,16 @@ class CartController extends AbstractController
     /**
      * @Route("/{id}/edit/", name="edit_qty", methods={"GET", "POST"})
      */
-    public function editCart( Request $request, CartProds $cartprod,ProductRepository $productRepository , CartProdsRepository $CartProdsRepository ,EntityManagerInterface $entityManager): Response
+    public function editCart(Request $request, CartProds $cartprod, ProductRepository $productRepository, CartProdsRepository $CartProdsRepository, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+
         $form = $this->createForm(CartProdsType::class, $cartprod);
         $form->handleRequest($request);
-        // id user cart
-        $cart = $entityManager->getRepository(cart::class)->find('1');
-        $id = $cart->getId();
+        $currentCart = $user->getCart();
+
+
+        $id = $currentCart->getId();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
@@ -88,8 +125,8 @@ class CartController extends AbstractController
         }
 
         return $this->render('cart_prods/EditCart.html.twig', [
-            'product'=>$productRepository->findAll(),
-            'cartprod' =>$CartProdsRepository->findAll(),
+            'product' => $productRepository->findAll(),
+            'cartprod' => $CartProdsRepository->findAll(),
             'pp' => $cartprod,
             'form' => $form->createView(),
         ]);
@@ -123,7 +160,6 @@ class CartController extends AbstractController
             'products' => $productRepository->findAll(),
             'currentCart' => $currentCart
         ]);
-
     }
 
     // /**

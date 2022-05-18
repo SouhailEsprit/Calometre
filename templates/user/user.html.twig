@@ -1,121 +1,5 @@
 {% extends 'home.html.twig' %}
-{#{% block header %}#}
-{#<header class="header-section">#}
-{#    <div class="overlay">#}
-{#        <div class="container">#}
-{#            <div class="row d-flex header-area">#}
-{#                <nav class="navbar navbar-expand-lg navbar-light">#}
-{#                    <a class="navbar-brand" href="index.html">#}
-{#                        <img src="{{ asset('front-office/assets/images/logo.png') }}" class="logo" alt="logo">#}
-{#                    </a>#}
-{#                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"#}
-{#                            data-bs-target="#navbar-content">#}
-{#                        <i class="fas fa-bars"></i>#}
-{#                    </button>#}
-{#                    <div class="collapse navbar-collapse justify-content-end" id="navbar-content">#}
-{#                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">#}
-{#                            <li class="nav-item">#}
-{#                                <a class="nav-link " aria-current="page" href="{{path('home')}}">Home</a>#}
-{#                            </li>#}
-{#                            <li class="nav-item dropdown main-navbar">#}
-{#                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"#}
-{#                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">Dashboard</a>#}
-{#                                <ul class="dropdown-menu main-menu shadow">#}
-{#                                    <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>#}
-{#                                    <li class="dropend sub-navbar">#}
-{#                                        <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"#}
-{#                                           data-bs-auto-close="outside">Setting</a>#}
-{#                                        <ul class="dropdown-menu sub-menu shadow">#}
-{#                                            <li><a class="nav-link" href="personal-details-setting.html">Personal Details</a></li>#}
-{#                                            <li><a class="nav-link" href="modify-login-password.html">Change Password</a></li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                            </li>#}
-{#                            <li class="nav-item dropdown main-navbar">#}
-{#                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"#}
-{#                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">Sports</a>#}
-{#                                <ul class="dropdown-menu main-menu shadow">#}
-{#                                    <li><a class="nav-link" href="soccer-bets-2.html">Tennis</a></li>#}
-{#                                    <li><a class="nav-link" href="soccer-bets-1.html">Soccer</a></li>#}
-{#                                    <li><a class="nav-link" href="soccer-bets-2.html">NBA</a></li>#}
-{#                                </ul>#}
-{#                            </li>#}
-{#                            <li class="nav-item dropdown main-navbar">#}
-{#                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"#}
-{#                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">Currency</a>#}
-{#                                <ul class="dropdown-menu main-menu shadow">#}
-{#                                    <li><a class="nav-link" href="escrow-bets-fee.html">Escrow Bets Fee</a></li>#}
-{#                                    <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>#}
-{#                                    <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>#}
-{#                                    <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>#}
-{#                                </ul>#}
-{#                            </li>#}
-{#                            <li class="nav-item dropdown main-navbar">#}
-{#                                <a class="nav-link dropdown-toggle " href="javascript:void(0)"#}
-{#                                   data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>#}
-{#                                <ul class="dropdown-menu main-menu shadow">#}
-{#                                    <li class="dropend sub-navbar">#}
-{#                                        <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"#}
-{#                                           data-bs-auto-close="outside">Tournaments</a>#}
-{#                                        <ul class="dropdown-menu sub-menu shadow">#}
-{#                                            <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>#}
-{#                                            <li><a class="nav-link" href="tournaments-details.html">Tournaments Details</a></li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                    <li class="dropend sub-navbar">#}
-{#                                        <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"#}
-{#                                           data-bs-auto-close="outside">Blog</a>#}
-{#                                        <ul class="dropdown-menu sub-menu shadow">#}
-{#                                            <li><a class="nav-link" href="blog.html">Blog</a></li>#}
-{#                                            <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                    <li><a class="nav-link" href="affiliate.html">Affiliate</a></li>#}
-{#                                    <li><a class="nav-link" href="faqs.html">Faqs</a></li>#}
-{#                                    <li><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>#}
-{#                                    <li><a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>#}
-{#                                    <li><a class="nav-link" href="error.html">Error</a></li>#}
-{#                                </ul>#}
-{#                            </li>#}
-{#                            <li class="nav-item">#}
-{#                                <a class="nav-link " href="contact.html">Contact</a>#}
-{#                            </li>#}
-{#                            {% if app.user != null %}#}
-{#                                {% if app.user.roles|join(', ') =="ROLE_ADMIN" %}#}
-{#                                    <li class="nav-item">#}
-{#                                        <a class="nav-link" href="{{ path('users_list') }}">Admin Dashboard</a>#}
-{#                                    </li>#}
-{#                                {% endif %}#}
-{#                            {% endif %}#}
-{#                        </ul>#}
-{#                        <div class="right-area header-action d-flex align-items-center max-un">#}
-{#                            {% if app.user %}#}
-{#                                <a href="{{path('user')}}" style=color:#fe8f9c type="button" >#}
-{#                                    {{app.user.firstname}}#}
-{#                                </a>#}
-{#                                <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg" >#}
-{#                                    Logout#}
-{#                                </a>#}
-{#                            {% else %}#}
 
-
-{#                                <button  type="button" class="login" data-bs-toggle="modal" data-bs-target="#loginMod">#}
-{#                                    Login#}
-{#                                </button>#}
-{#                                <button type="button" class="cmn-btn reg" data-bs-toggle="modal"#}
-{#                                        data-bs-target="#loginMod">#}
-{#                                    Sign Up#}
-{#                                </button>#}
-{#                            {% endif %}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </nav>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#</header>#}
-{#{% endblock %}#}
     {% block mainContent %}
 <!-- Main content start -->
 
@@ -127,46 +11,7 @@
                     <div class="row justify-content-lg-end justify-content-between">
                         <div class="col-xl-9 col-lg-12">
                             <ul class="nav" role="tablist">
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="dashboard-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"#}
-{#                                        aria-selected="true">dashboard</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="my-bets-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#my-bets" type="button" role="tab" aria-controls="my-bets"#}
-{#                                        aria-selected="false">my bets</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="deposit-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#deposit" type="button" role="tab" aria-controls="deposit"#}
-{#                                        aria-selected="false">deposit</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"#}
-{#                                        aria-selected="false">withdraw</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="buy-crypto-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#buy-crypto" type="button" role="tab" aria-controls="buy-crypto"#}
-{#                                        aria-selected="false">buy crypto</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#affiliate" type="button" role="tab" aria-controls="affiliate"#}
-{#                                        aria-selected="false">affiliate</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link" id="transactions-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#transactions" type="button" role="tab"#}
-{#                                        aria-controls="transactions" aria-selected="false">transactions</button>#}
-{#                                </li>#}
-{#                                <li class="nav-item" role="presentation">#}
-{#                                    <button class="nav-link active" id="setting-tab" data-bs-toggle="tab"#}
-{#                                        data-bs-target="#setting" type="button" role="tab" aria-controls="setting"#}
-{#                                        aria-selected="false">setting</button>#}
-{#                                </li>#}
+
                             </ul>
                         </div>
                     </div>
@@ -181,25 +26,7 @@
                                 <h5> {{ app.user.firstname }} {{ app.user.lastname }}</h5>
                                 
                             </div>
-                            {# <div class="balance">
-                                <div class="single-item">
-                                    <img src="{{ asset('front-office/assets/images/icon/dashboard-sidebar-icon-1.png')}}" alt="images">
-                                    <h5>$5135.00</h5>
-                                    <p>Available Balance</p>
-                                </div>
-                                <div class="bottom-area d-flex align-items-center justify-content-between">
-                                    <a href="javascript:void(0)" class="mdr withdraw-btn">Withdraw</a>
-                                    <a href="javascript:void(0)" class="mdr deposit-btn">Deposit</a>
-                                </div>
-                            </div> #}
-                            {# <div class="single-item">
-                                <img src="{{ asset('front-office/assets/images/icon/dashboard-sidebar-icon-2.png')}}" alt="images">
-                                <h5>Need Help?</h5>
-                                <p class="mdr">Have questions? Our experts are here to help!.</p>
-                                <span class="btn-border">
-                                    <a href="contact.html" class="cmn-btn">Get Start Now</a>
-                                </span>
-                            </div> #}
+                            
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-8">
@@ -929,13 +756,14 @@
                                                         <img src= "{{ asset('uploads/profilePicture/' ~ app.user.ProfilePicture) }}" alt="icon">
                                                     </div>
                                                     <div class="right-area" >
-                                                        <p class="title">Upload profile photo via:</p>
+<p class="title">Publier la photo de profil via :</p>
+
                                                         <label class="file">
                                                             <input type="file">
                                                             <span class="file-custom"></span>
                                                         </label>
-                                                        <p class="mdr">Choose a personal photo. 3MB
-                                                            max.
+<p class="mdr">Choisissez une photo personnelle. 3 MB max.</p>
+
                                                         </p>
                                                     </div>
                                                 </div>
@@ -945,10 +773,11 @@
                                                     <img src="{{ asset('front-office/assets/images/icon/message-icon.png')}}" alt="icon">
                                                 </div>
                                                 <p class="mdr"></p>
-                                                 <p>Email : {{ app.user.email }} {% if app.user.isVerified == '0' %}
-                                                <p style="color:red;">Unverfied.</p>
+                                                 <p>E-mail : {{ app.user.email }} {% if app.user.isVerified == '0' %}
+<p style="color:red;">   Non vérifié(e).</p>
+
                                                 {% else %}
-                                               <p style="color:green;">Verfied.</p>
+                                               <p style="color:green;">   Verifié(e).</p>
                                                 {% endif %}</a> <p>
                                                 
                                             </div>
@@ -957,20 +786,23 @@
                                             <div class="icon-area">
                                                 <img src="{{ asset('front-office/assets/images/icon/phone-icon.png')}}" alt="icon">
                                                 </div>
-                                                <p>Phone number : {{ app.user.phonenumber }} <p>
+<p>Numéro de téléphone :{{ app.user.phonenumber }}
+</p>
+<p></p>
+
                                                 </div>
                                             <div class="single-area">
                                                 <div class="icon-area">
                                                     <img src="{{ asset('front-office/assets/images/icon/security-icon.png')}}" alt="icon">
                                                 </div>
-                                                <a href="{{ path('edit_user') }}" class="cmn-btn">Change Password</a>
+                                                <a href="{{ path('edit_user') }}" class="cmn-btn">Changer votre mot de passe</a>
                                                 
                                         </div>
                                          <div class="single-area">
                                                 <div class="icon-area">
                                                     <img src="{{ asset('front-office/assets/images/icon/security-icon.png')}}" alt="icon">
                                                 </div>
-                                                <a href="{{ path('delete_account') }}" class="cmn-btn">Delete Account</a>
+                                                <a href="{{ path('delete_account') }}" class="cmn-btn">Supprimer votre compte</a>
                                                 
                                         </div>
                                     </div>

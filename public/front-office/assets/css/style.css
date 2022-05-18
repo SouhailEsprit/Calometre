@@ -3760,7 +3760,7 @@ p {
 }
 
 .dashboard-content .tab-content .file-upload .file .file-custom::after {
-  content: "Upload Profile Photo";
+  content: "Photo de profile";
   position: absolute;
   right: 20px;
 }

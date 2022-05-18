@@ -8,6 +8,8 @@ use App\Form\ChangePasswordType;
 use App\Form\AdminRegistrationType;
 use App\Repository\ProductRepository;
 use App\Repository\CartRepository;
+use App\Repository\EventRepository;
+use App\Repository\RecetteRepository;
 use App\Repository\UserRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -60,12 +62,24 @@ class UserController extends AbstractController
     /**
      * @Route("/admin_home", name="admin_home")
      */
-    public function admin(UserRepository $repo): Response
+    public function admin(UserRepository $repo, ProductRepository $productRepository, UserRepository $ur, EventRepository $er, ProductRepository $pr, RecetteRepository $rr): Response
     {
+        $recettes = $rr->findAll();
         $user = $this->getUser();
+        $listUsers = $ur->findAll();
+        $user = $this->getUser();
+        $events = $er->findAll();
+        $products = $pr->findAll();
         if ($user->getRoles() == ["ROLE_ADMIN"]) {
 
-            return $this->render('base-back-office.html.twig'
+            return $this->render(
+                'admin_home/index.html.twig',
+                [
+                    "listusers" => $listUsers,
+                    'events' => $events,
+                    'products' => $products,
+                    'recettes' => $recettes
+                ]
             );
         } else {
             return $this->redirectToRoute('error');
@@ -83,9 +97,12 @@ class UserController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function home(EntityManagerInterface $em, ProductRepository $productRepository): Response
+    public function home(EntityManagerInterface $em, ProductRepository $productRepository, UserRepository $ur, EventRepository $er, ProductRepository $pr): Response
     {
+        $listUsers = $ur->findAll();
         $user = $this->getUser();
+        $events = $er->findAll();
+        $products = $pr->findAll();
 
         if ($user != null) {
 
@@ -94,10 +111,13 @@ class UserController extends AbstractController
             $currentCart = $user->getCart();
 
             return $this->render('home.html.twig', [
-                'currentCart' => $currentCart
+                'currentCart' => $currentCart,
+                "listusers" => $listUsers,
+                'events' => $events,
+                'products' => $products
             ]);
         } else {
-            return $this->render('home.html.twig');
+            return $this->render('home.html.twig', ["listusers" => $listUsers, 'events' => $events, 'products' => $products]);
         }
     }
 
@@ -110,19 +130,19 @@ class UserController extends AbstractController
         $currentCart = $user->getCart();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ChangePasswordType::class, $user)
-            ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'old password']])
+            ->add('old_password', PasswordType::class, ['mapped' => false, 'label' => 'Ancien mot de passe', 'attr' => ['placeholder' => '...']])
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'required' => true,
                 'first_options' => [
-                    'label' => 'New password',
+                    'label' => 'Nouveau  mot de passe',
                     'attr' => [
                         'placeholder' => '...',
                     ]
                 ],
                 'second_options' => [
-                    'label' => 'Confirm password',
+                    'label' => 'Confimer mot de passe',
                     'attr' => [
                         'placeholder' => '...',
                     ]
@@ -140,7 +160,6 @@ class UserController extends AbstractController
                 return $this->redirectToRoute('app_logout', [
                     'currentCart' => $currentCart
                 ]);
-
             }
         }
         return $this->render('registration/change_password.html.twig', [
@@ -251,7 +270,6 @@ class UserController extends AbstractController
         return $this->render('registration/adminregister.html.twig', [
             'AdminRegistration' => $form->createView(),
         ]);
-
     }
 
     /**
@@ -265,7 +283,7 @@ class UserController extends AbstractController
             ->add('old_password', PasswordType::class, [
                 'mapped' => false,
                 'label' => false,
-                'attr' => ['placeholder' => 'Old password']
+                'attr' => ['placeholder' => 'Ancien mot de passe']
             ])
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -333,18 +351,16 @@ class UserController extends AbstractController
             $pagerfanta = new Pagerfanta(
                 new QueryAdapter($qb)
             );
-            $pagerfanta->setMaxPerPage(1);
+            $pagerfanta->setMaxPerPage(4);
             $pagerfanta->setCurrentPage($page);
 
             return $this->render('user/listusers.html.twig', [
                 "users" => $pagerfanta,
             ]);
-
         } else {
             //TODO: generte a 404 page.
             return $this->redirectToRoute('error');
         }
-
     }
 
     /**
@@ -370,7 +386,6 @@ class UserController extends AbstractController
             //TODO: generte a 404 page.
             return $this->redirectToRoute('error');
         }
-
     }
 
     /**
@@ -382,7 +397,7 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ChangePasswordType::class, $user)
             ->add('email', EmailType::class)
-            ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'old password']])
+            ->add('old_password', PasswordType::class, ['mapped' => false, 'attr' => ['placeholder' => 'Ancien mot de passe']])
             ->add('change', SubmitType::class);
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -501,9 +516,10 @@ class UserController extends AbstractController
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
-        $json = $serializer->serialize($user, 'json', ['circular_reference_handler' => function ($object) {
-            return $object->getId();
-        }
+        $json = $serializer->serialize($user, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
 
         $response = new Response($json);
@@ -554,5 +570,4 @@ class UserController extends AbstractController
             return new JsonResponse("error on " . $e->getMessage());
         }
     }
-
 }

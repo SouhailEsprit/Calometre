@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bitbetio - HTML Template</title>
+    <title>Calometre</title>
 
     <link rel="shortcut icon" href="{{ asset('front-office/assets/images/fav.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('front-office/assets/css/bootstrap.min.css') }}">
@@ -41,7 +41,7 @@
                 <div class="row d-flex header-area">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img src="{{ asset('front-office/assets/images/logo.png') }}" class="logo" alt="logo">
+                            <img src="{{ asset('front-office/assets/images/calometre.png') }}" class="logo" alt="logo">
                         </a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbar-content">
@@ -49,73 +49,27 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{path('home')}}">Home</a>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Dashboard</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside">Setting</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="personal-details-setting.html">Personal Details</a></li>
-                                                <li><a class="nav-link" href="modify-login-password.html">Change Password</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Sports</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="soccer-bets-2.html">Tennis</a></li>
-                                        <li><a class="nav-link" href="soccer-bets-1.html">Soccer</a></li>
-                                        <li><a class="nav-link" href="soccer-bets-2.html">NBA</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Currency</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="escrow-bets-fee.html">Escrow Bets Fee</a></li>
-                                        <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>
-                                        <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>
-                                        <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle " href="javascript:void(0)"
-                                       data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside">Tournaments</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>
-                                                <li><a class="nav-link" href="tournaments-details.html">Tournaments Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                               data-bs-auto-close="outside">Blog</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                                                <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="nav-link" href="affiliate.html">Affiliate</a></li>
-                                        <li><a class="nav-link" href="faqs.html">Faqs</a></li>
-                                        <li><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-                                        <li><a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-                                        <li><a class="nav-link" href="error.html">Error</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
+<li class="nav-item">
+	<a class="nav-link " aria-current="page" href="{{path('home')}}">Accueil</a>
+
+</li>
+
+<li class="nav-item">
+	<a class="nav-link" href="{{ path('app_alim_front') }}">Aliments</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="{{ path('exercice_front') }}">Exercices</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="{{ path('event_client_index') }}">Evenements</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="{{ path('product_front_index') }}">Produits</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="{{ path('reclamation_new') }}">Réclamations</a>
+</li>
+
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
                                 {% if app.user %}
@@ -129,11 +83,11 @@
 
 
                                     <a href="{{ path('app_login')}}" type="button" class="login" >
-                                        Login
+                                        Se connecter
                                     </a>
                                     <button type="button" class="cmn-btn reg" data-bs-toggle="modal"
                                             data-bs-target="#loginMod">
-                                        Sign Up
+                                        S'inscrire
                                     </button>
                                 {% endif %}
                             </div>
@@ -165,16 +119,10 @@
                                     <button class="nav-link" id="regArea-tab" data-bs-toggle="tab"
                                             data-bs-target="#regArea" type="button" role="tab" aria-controls="regArea"
                                             aria-selected="false">
-                                        SIGN UP
+                                         S'inscrire
                                     </button>
                                 </li>
-                                {#                                <li class="bottom-area" role="presentation">#}
-                                {#                                    <button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab"#}
-                                {#                                            data-bs-target="#loginArea" type="button" role="tab"#}
-                                {#                                            aria-controls="loginArea" aria-selected="true">#}
-                                {#                                        LOGIN#}
-                                {#                                    </button>#}
-                                {#                                </li>#}
+                                         
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="loginArea" role="tabpanel"
@@ -195,7 +143,7 @@
                                             </div>
                                             <div class="form-area">
                                                 <div class="bottom-area text-center">
-                                                    <p>Not a member ? <a href="javascript:void(0)" class="reg-btn">Register</a></p>
+                                                    <p>Déja membre ? <a href="javascript:void(0)" class="reg-btn">S'inscrire</a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -210,7 +158,7 @@
                                     <div class="login-reg-content regMode">
                                         <div class="modal-body">
                                             <div class="head-area">
-                                                <h6 class="title">Register On Bitbetio</h6>
+                                                <h6 class="title">S'inscrire sur calometre</h6>
                                                 <div class="social-link d-flex align-items-center">
                                                     <a href="javascript:void(0)" class="active"><i
                                                                 class="fab fa-facebook-f"></i></a>
@@ -228,31 +176,30 @@
                                                     <div class="col-12">
                                                         <div class="single-input">
 
-                                                            {{ form_row(registrationForm.firstname,{'attr':{'placeholder':'First name'}}, {label: 'First name'} ) }}
+{{ form_row(registrationForm.firstname,{'attr':{'placeholder':'Nom'}}, {label: 'Nom'} ) }}
+
                                                         </div>
                                                         <div class="single-input">
 
-                                                            {{ form_row(registrationForm.lastname,{'attr':{'placeholder':'Last name'}}, {label: 'Last name'} ) }}
+                                                            {{ form_row(registrationForm.lastname,{'attr':{'placeholder':'Prénom'}}, {label: 'Prénom'} ) }}
                                                         </div>
                                                         <div class="single-input">
 
-                                                            {{ form_row(registrationForm.email,{'attr':{'placeholder':'Email'}}, {label: 'Email'} ) }}
+                                                            {{ form_row(registrationForm.email,{'attr':{'placeholder':'E-mail'}}, {label: 'E-mail'} ) }}
                                                         </div>
                                                         <div class="single-input">
 
-                                                            {{ form_row(registrationForm.plainPassword,{'attr':{'placeholder':'Password'}}, {label: 'Password'} ) }}
+                                                            {{ form_row(registrationForm.plainPassword,{'attr':{'placeholder':'Mot de passe'}}, {label: 'Mot de passe'} ) }}
                                                         </div>
-                                                        {#                                                            <div class="single-input">#}
-                                                        {#                                                                <label for="regpassword">Confirm Password</label>#}
-                                                        {#                                                                <input type="text"#}
-                                                        {#                                                                       placeholder="Confirm Password">#}
-                                                        {#                                                            </div>#}
+                                                                                                                   
                                                         <div class="single-input">
-                                                            {{ form_row(registrationForm.phonenumber,{'attr':{'placeholder':'Phone number'}}, {label: 'Phone number'} ) }}
+{{ form_row(registrationForm.phonenumber,{'attr':{'placeholder':'Numéro de téléphone'}}, {label: 'Numéro de téléphone'} ) }}
+
                                                         </div>
                                                         <div class="single-input">
 
-                                                            {{ form_row(registrationForm.countryCode,{'attr':{'placeholder':'Country code'}}, {label: 'Country Code'} ) }}
+{{ form_row(registrationForm.countryCode,{'attr':{'placeholder':'Code pays'}}, {label: 'Code pays'} ) }}
+
                                                         </div>
                                                         <div class="file-custom">
 
@@ -264,7 +211,8 @@
                                                         </div>
                                                         <div class="single-input">
 
-                                                            {{ form_row(registrationForm.captcha,{'attr':{'placeholder':'Please enter the code above!'}}) }}
+{{ form_row(registrationForm.captcha,{'attr':{'placeholder':'Veuillez taper le code ci-dessus !'}}) }}
+
 
                                                         </div>
                                                         <div class="single-input">
@@ -273,45 +221,21 @@
                                                         </div>
 
                                                     </div>
-                                                    {#                                                        <div class="col-12">#}
-                                                    {#                                                            <div class="remember-me">#}
-                                                    {#                                                                <a href="javascript:void(0)">Have a referral#}
-                                                    {#                                                                    code?</a>#}
-                                                    {#                                                            </div>#}
-                                                    {#                                                        </div>#}
+                                                                                                
                                                     <span class="btn-border w-100">
-                                                                <button type="submit" class="cmn-btn w-100">SIGN UP</button>
+                                                                <button type="submit" class="cmn-btn w-100"> S'inscrire </button>
                                                             </span>
                                                 </div>
                                                 {{ form_end(registrationForm) }}
 
 
                                                 <div class="bottom-area text-center">
-                                                    <p>Already a member ? <a href="{{ path('app_login') }}"
-                                                                             class="log-btn">Login</a></p>
+<p>Déjà membre ?
+	<a href="{{ path('app_login') }}"
+
+                                                                             class="log-btn">Se connecter</a></p>
                                                 </div>
-                                                {#                                                <div class="counter-area">#}
-                                                {#                                                    <div class="single">#}
-                                                {#                                                        <div class="icon-area">#}
-                                                {#                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}"#}
-                                                {#                                                                 alt="icon">#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <div class="text-area">#}
-                                                {#                                                            <p>25,179k</p>#}
-                                                {#                                                            <p class="mdr">Bets</p>#}
-                                                {#                                                        </div>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="single">#}
-                                                {#                                                        <div class="icon-area">#}
-                                                {#                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}"#}
-                                                {#                                                                 alt="icon">#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <div class="text-area">#}
-                                                {#                                                            <p>6.65 BTC</p>#}
-                                                {#                                                            <p class="mdr">Total Won</p>#}
-                                                {#                                                        </div>#}
-                                                {#                                                    </div>#}
-                                                {#                                                </div>#}
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -338,42 +262,59 @@
 {% block footer %}
 
     <!-- Footer Area Start -->
-    <footer class="footer-section">
-        <div class="container pt-120">
+<footer class="footer-section">
+	<div class="container pt-120">
 
-            <div class="footer-bottom-area pt-120">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="menu-item">
-                            <a href="index.html" class="logo">
-                                <img src="{{ asset('front-office/assets/images/logo.png') }}" alt="logo">
-                            </a>
-                            <ul class="footer-link">
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="terms-conditions.html">Terms of Services</a></li>
-                                <li><a href="privacy-policy.html">Privacy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="copyright">
-                            <div class="copy-area">
-                                <p> Copyright © <a href="index.html">Bitbetio</a> | Designed by
-                                    <a href="https://themeforest.net/user/pixelaxis" class="auth">Pixelaxis</a>
-                                </p>
-                            </div>
-                            <div class="social-link d-flex align-items-center">
-                                <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                                <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                                <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+		<div class="footer-bottom-area pt-120">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="menu-item">
+						<a
+							href="index.html" class="logo">{#                            <img src="{{ asset('front-office/assets/images/app logo.png') }}" alt="logo">#}
+						</a>
+						<ul class="footer-link">
+							<li>
+								<a href="contact.html">Contact</a>
+							</li>
+							<li>
+								<a href="terms-conditions.html">Termes et conditions</a>
+
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="copyright">
+						<div class="copy-area">
+							<p>
+								Tout droit réservé  ©
+
+								<a href="{{path('home')}}">Calometre</a>
+
+							</p>
+						</div>
+						<div class="social-link d-flex align-items-center">
+							<a href="javascript:void(0)">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+							<a href="javascript:void(0)">
+								<i class="fab fa-twitter"></i>
+							</a>
+							<a href="javascript:void(0)">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+							<a href="javascript:void(0)">
+								<i class="fab fa-instagram"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer
+
     <!-- Footer Area End -->
 {% endblock %}
 

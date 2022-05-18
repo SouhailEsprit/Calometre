@@ -45,9 +45,8 @@ class Cart
     {
 
         return (string) $this->getId();
-
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +105,4 @@ class Cart
 
         return $this;
     }
-
-
 }

@@ -1,372 +1,698 @@
 <!doctype html>
-<html lang="en">
+<html
+	lang="en">
 
 
-<!-- Mirrored from pixner.net/bitbetio/main/blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 21:37:05 GMT -->
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bitbetio - HTML Template</title>
+	<!-- Mirrored from pixner.net/bitbetio/main/blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Feb 2022 21:37:05 GMT -->
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Calometre</title>
 
-    <link rel="shortcut icon" href="{{ asset('front-office/assets/images/fav.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/arafat-font.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('front-office/assets/css/style.css') }}">
-    {% block styles %}
-    {% endblock %}
-</head>
+		<link rel="shortcut icon" href="{{ asset('front-office/assets/images/fav.png') }}" type="image/x-icon">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/fontawesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/jquery-ui.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/nice-select.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/magnific-popup.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/slick.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/arafat-font.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/plugin/animate.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-office/assets/css/style.css') }}"> {% block styles %}{% endblock %}
+		</head>
 
-<body>
-<!-- start preloader -->
+		<body>
+			<!-- start preloader -->
 
-<!-- end preloader -->
+			<!-- end preloader -->
 
-<!-- Scroll To Top Start-->
-<a href="javascript:void(0)" class="scrollToTop"><i class="fas fa-angle-double-up"></i></a>
-<!-- Scroll To Top End -->
+			<!-- Scroll To Top Start-->
+				<a href="javascript:void(0)" class="scrollToTop"> <i class="fas fa-angle-double-up"></i>
+			</a>
+			<!-- Scroll To Top End -->
 
-<!-- header-section start -->
-{% block header %}
-    <header class="header-section">
-        <div class="overlay">
-            <div class="container">
-                <div class="row d-flex header-area">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="{{path('home')}}">
-                            <img src="{{ asset('front-office/assets/images/calometre.png') }}" class="logo" alt="logo">
-                        </a>
-                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbar-content">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
-                            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="{{path('home')}}">Home</a>
-                                </li>
+			<!-- header-section start -->
+			{% block header %}
+				<header class="header-section">
+					<div class="overlay">
+						<div class="container">
+							<div class="row d-flex header-area">
+								<nav class="navbar navbar-expand-lg navbar-light">
+									<a class="navbar-brand" href="{{path('home')}}">
+										<img src="{{ asset('front-office/assets/images/calometre.png') }}" class="logo" alt="logo">
+									</a>
+									<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+										<i class="fas fa-bars"></i>
+									</button>
+									<div class="collapse navbar-collapse justify-content-end" id="navbar-content">
+										<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+											<li class="nav-item">
+												<a class="nav-link " aria-current="page" href="{{path('home')}}">Accueil</a>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_alim_front') }}">Food</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('exercice_front') }}">Exercices</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('event_client_index') }}">Events</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('product_front_index') }}">Products</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('reclamation_new') }}">Complaint</a>
-                                </li>
-                                {% if app.user != null %}
+											</li>
 
-                                    {% if app.user.roles|join(', ') =="ROLE_ADMIN" %}
+											<li class="nav-item">
+												<a class="nav-link" href="{{ path('app_alim_front') }}">Aliments</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="{{ path('exercice_front') }}">Exercices</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="{{ path('event_client_index') }}">Evenements</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="{{ path('product_front_index') }}">Produits</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="{{ path('reclamation_new') }}">Réclamations</a>
+											</li>
+											{% if app.user != null %}
 
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ path('users_list') }}">Admin Dashboard</a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
-                            </ul>
-                            <div class="right-area header-action d-flex align-items-center max-un">
-                                {% if app.user %}
-                                    <a href="{{ path('user') }}" style=color:white type="button">
-                                        {{ app.user.firstname }}
-                                    </a>
+												{% if app.user.roles|join(', ') =="ROLE_ADMIN" %}
 
+													<li class="nav-item">
+														<a class="nav-link" href="{{ path('users_list') }}">Administrateur</a>
 
+													</li>
+												{% endif %}
+											{% endif %}
+										</ul>
+										<div class="right-area header-action d-flex align-items-center max-un">
+											{% if app.user %}
+												<a href="{{ path('user') }}" style="color:white" type="button">
+													{{ app.user.firstname }}
+												</a>
 
 
+												<a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg">
+													Logout
+												</a>
+												<a href="{{ path('product_front_index')}}/cart/{{currentCart}}" button class="btn btn-outline-danger">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewbox="0 0 16 16">
+														<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+													</svg>
+													Cart
+												</a>
+
+
+											{% else %}
+
+
+												<a href="{{ path('app_login')}}" type="button" class="login">
+													Login
+												</a>
+												<a href="{{ path('app_register')}}" type="button" class="cmn-btn reg">
+													Sign Up
+												</a>
+											{% endif %}
+										</div>
+									</div>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</header>
+				<!-- header-section end -->
+			{% endblock %}
+
+			<!-- Login Registration start -->
+			<div class="log-reg">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="modal fade" id="loginMod">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-header justify-content-center">
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<ul class="nav log-reg-btn justify-content-around">
+											<li class="bottom-area" role="presentation">
+												<button class="nav-link" id="regArea-tab" data-bs-toggle="tab" data-bs-target="#regArea" type="button" role="tab" aria-controls="regArea" aria-selected="false">
+													SIGN UP
+												</button>
+											</li>
+											<li class="bottom-area" role="presentation">
+												<button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab" data-bs-target="#loginArea" type="button" role="tab" aria-controls="loginArea" aria-selected="true">
+													LOGIN
+												</button>
+											</li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane fade show active" id="loginArea" role="tabpanel" aria-labelledby="loginArea-tab">
+												<div class="login-reg-content">
+													<div class="modal-body">
+														<div class="head-area">
+															<h6 class="title">Login Direetly With</h6>
+															<div class="social-link d-flex align-items-center">
+																<a href="javascript:void(0)" class="active">
+																	<i class="fab fa-facebook-f"></i>
+																</a>
+																<a href="javascript:void(0)">
+																	<i class="fab fa-twitter"></i>
+																</a>
+																<a href="javascript:void(0)">
+																	<i class="fab fa-linkedin-in"></i>
+																</a>
+																<a href="javascript:void(0)">
+																	<i class="fab fa-instagram"></i>
+																</a>
+															</div>
+														</div>
+														<div class="form-area">
+															<form action="#">
+																<div class="row">
+																	<div class="col-12">
+																		<div class="single-input">
+																			<label for="logemail">Email</label>
+																			<input type="text" id="logemail" placeholder="Email Address">
+																		</div>
+																		<div class="single-input">
+																			<label for="logpassword">Password</label>
+																			<input type="text" id="logpassword" placeholder="Email Password">
+																		</div>
+																	</div>
+																	<div class="col-12">
+																		<div class="remember-me">
+																			<label class="checkbox-single d-flex align-items-center">
+																				<span class="left-area">
+																					<span class="checkbox-area d-flex">
+																						<input type="checkbox" checked="checked">
+																						<span class="checkmark"></span>
+																					</span>
+																					<span class="item-title d-flex align-items-center">
+																						<span>Remember Me</span>
+																					</span>
+																				</span>
+																			</label>
+																			<a href="javascript:void(0)">Forgot Password</a>
+																		</div>
+																	</div>
+																	<span class="btn-border w-100">
+																		<button class="cmn-btn w-100">LOGIN</button>
+																	</span>
+																</div>
+															</form>
+															<div class="bottom-area text-center">
+																<p>Not a member ?
+																	<a href="javascript:void(0)" class="reg-btn">Register</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane fade" id="regArea" role="tabpanel" aria-labelledby="regArea-tab">
+												<div class="login-reg-content regMode">
+													<div class="modal-body">
+														<div class="head-area">
+															<h6 class="title">Register On Bitbetio</h6>
+															<div class="social-link d-flex align-items-center">
+																<a href="javascript:void(0)" class="active">
+																	<i class="fab fa-facebook-f"></i>
+																</a>
+																<a href="javascript:void(0)">
+																	<i class="fab fa-twitter"></i>
+																</a>
+																<a href="javascript:void(0)">
+																	<i class="fab fa-linkedin-in"></i>
+																</a>
+																<a href="javascript:void(0)">
+																	<i class="fab fa-instagram"></i>
+																</a>
+															</div>
+														</div>
+														<div class="form-area">
+															<form action="#">
+																<div class="row">
+																	<div class="col-12">
+																		<div class="single-input">
+																			<label for="regemail">Email</label>
+																			<input type="text" id="regemail" placeholder="Email Address">
+																		</div>
+																		<div class="single-input">
+																			<label for="regpassword">Password</label>
+																			<input type="text" id="regpassword" placeholder="Email Password">
+																		</div>
+																		<div class="single-input">
+																			<label>Country</label>
+																			<select>
+																				<option value="1">United States</option>
+																				<option value="2">United Kingdom</option>
+																				<option value="3">Canada</option>
+																			</select>
+																		</div>
+																	</div>
+																	<div class="col-12">
+																		<div class="remember-me">
+																			<a href="javascript:void(0)">Have a referral
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								                                                                    code?</a>
+																		</div>
+																	</div>
+																	<span class="btn-border w-100">
+																		<button class="cmn-btn w-100">SIGN UP</button>
+																	</span>
+																</div>
+															</form>
+															<div class="bottom-area text-center">
+																<p>Already have an member ?
+																	<a href="javascript:void(0)" class="log-btn">Login</a>
+																</p>
+															</div>
+															<div class="counter-area">
+																<div class="single">
+																	<div class="icon-area">
+																		<img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}" alt="icon">
+																	</div>
+																	<div class="text-area">
+																		<p>25,179k</p>
+																		<p class="mdr">Bets</p>
+																	</div>
+																</div>
+																<div class="single">
+																	<div class="icon-area">
+																		<img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}" alt="icon">
+																	</div>
+																	<div class="text-area">
+																		<p>6.65 BTC</p>
+																		<p class="mdr">Total Won</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Login Registration end -->
+
+
+			<!-- Main content start -->
+
+			{% block mainContent %}
+				<!-- Banner Section start -->
+				<section class="banner-section">
+					<div class="overlay">
+						<div class="shape-area">
+							
+						</div>
+						<div class="banner-content">
+							<div class="container">
+
+								<div class="row">
+									<div class="col-lg-6 col-md-10">
+										<div class="main-content">
+											<div class="top-area section-text">
+<h4 class="sub-title">Atteignez la meilleure forme de votre vie</h4>
 
 
 
-                                    <a href="{{ path('app_logout') }}" type="button" class="cmn-btn reg">
-                                        Logout
-                                    </a>
-                                    <a href="{{ path('product_front_index')}}/cart/{{currentCart}}" button class="btn btn-outline-danger" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>
-                                        Cart
-                                    </a>
+
+												<h1 class="title">Calometre</h1>
+												<p class="xlr">Le suivi de vos progrès n'a jamais été aussi facile</p>
+
+												
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="counter-section">
+					<div class="container">
+						<div class="row cus-mar">
+							<div class="col-xl-4 col-md-6">
+								<div class="single-area d-flex align-items-center">
+									<div class="img-area">
+										<img src="{{ asset('front-office/assets/images/icon/counter-icon-1.png')}}" alt="image">
+									</div>
+									<div class="text-area">
+										<h3 class="m-none">
+											<span class="counter">{{products|length}}</span>
+
+										</h3>
+										<p>Produits</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-md-6">
+								<div class="single-area d-flex align-items-center">
+									<div class="img-area">
+										<img src="{{ asset('front-office/assets/images/icon/counter-icon-2.png')}}" alt="image">
+									</div>
+									<div class="text-area">
+										<h3 class="m-none">
+											<span class="counter">{{events|length}}</span>
+										</h3>
+										<p>Evénements</p>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-md-6">
+								<div class="single-area d-flex align-items-center">
+									<div class="img-area">
+										<img src="{{ asset('front-office/assets/images/icon/counter-icon-3.png')}}" alt="image">
+									</div>
+									<div class="text-area">
+										<h3 class="m-none">
+											<span class="counter">{{listusers|length }}</span>
+										</h3>
+										<p>Utilisateurs enregistrés</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</body>
+		</html>
+	</section>
+	<!-- Banner Section end -->
+
+	<!-- About bitbetio start -->
+	<section class="about-bitbetio">
+		<div class="overlay pt-120 pb-120">
+			<div class="shape-area"></div>
+			<div class="container">
+				<div class="row d-flex align-items-end">
+					<div class="col-lg-6">
+						<div class="image-area d-rtl left-side">
+							<img src="{{ asset('front-office/assets/images/about-bitbetio-image.png')}}" alt="images" class="max-un">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="section-text">
+							<h5 class="sub-title">Derniers évènements
+							</h5>
+
+							<p>Consultez nos derniers événements sportifs</p>
+
+						</div>
+						<div class="row cus-mar">
+							{% for event in events |slice(events|length-4,events|length)|reverse %}
 
 
-                                {% else %}
+								<div class="col-sm-6 col-6">
+									<div class="single-item">
+										<img src="{{ asset('uploads/Event_images/' ~ event.image) }}" alt="images">
+										<h5>{{ event.nom }}</h5>
+									</div>
+								</div>
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- About bitbetio end -->
+
+	<!-- How it Works start -->
+	<section class="how-it-works">
+		<div class="overlay pt-120">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="section-header text-center">
+							<h5 class="sub-title">Faire connaissance</h5>
+
+							<h2 class="title">Comment fonctionne Calomètre ?</h2>
+
+							<p>Notre plateforme a été conçue pour vous accompagner dans toutes les phases de votre transformation corporelle en vous apportant les bonnes aides et conseils pour le faire dans les bonnes conditions</p>
 
 
-                                    <a href="{{ path('app_login')}}" type="button" class="login" >
-                                        Login
-                                    </a>
-                                    <a href="{{ path('app_register')}}" type="button" class="cmn-btn reg" >
-                                        Sign Up
-                                    </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- header-section end -->
-{% endblock %}
+						</div>
+					</div>
+				</div>
+				<div class="main-content">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-lg-5">
+							<ul class="nav" role="tablist">
+								<li class="nav-item" role="presentation">
+									<h5 class="nav-link active" id="sport-tab" data-bs-toggle="tab" data-bs-target="#sport" role="tab" aria-controls="sport" aria-selected="true">
+										<span class="image-area"></span>
+										choisir un aliment
 
-<!-- Login Registration start -->
-<div class="log-reg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="modal fade" id="loginMod">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header justify-content-center">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <ul class="nav log-reg-btn justify-content-around">
-                                <li class="bottom-area" role="presentation">
-                                    <button class="nav-link" id="regArea-tab" data-bs-toggle="tab"
-                                            data-bs-target="#regArea" type="button" role="tab" aria-controls="regArea"
-                                            aria-selected="false">
-                                        SIGN UP
-                                    </button>
-                                </li>
-                                <li class="bottom-area" role="presentation">
-                                    <button class="nav-link active" id="loginArea-tab" data-bs-toggle="tab"
-                                            data-bs-target="#loginArea" type="button" role="tab"
-                                            aria-controls="loginArea" aria-selected="true">
-                                        LOGIN
-                                    </button>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="loginArea" role="tabpanel"
-                                     aria-labelledby="loginArea-tab">
-                                    <div class="login-reg-content">
-                                        <div class="modal-body">
-                                            <div class="head-area">
-                                                <h6 class="title">Login Direetly With</h6>
-                                                <div class="social-link d-flex align-items-center">
-                                                    <a href="javascript:void(0)" class="active"><i
-                                                                class="fab fa-facebook-f"></i></a>
-                                                    <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                                                    <a href="javascript:void(0)"><i
-                                                                class="fab fa-linkedin-in"></i></a>
-                                                    <a href="javascript:void(0)"><i
-                                                                class="fab fa-instagram"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="form-area">
-                                                <form action="#">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="single-input">
-                                                                <label for="logemail">Email</label>
-                                                                <input type="text" id="logemail"
-                                                                       placeholder="Email Address">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="logpassword">Password</label>
-                                                                <input type="text" id="logpassword"
-                                                                       placeholder="Email Password">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="remember-me">
-                                                                <label
-                                                                        class="checkbox-single d-flex align-items-center">
-                                                                        <span class="left-area">
-                                                                            <span class="checkbox-area d-flex">
-                                                                                <input type="checkbox"
-                                                                                       checked="checked">
-                                                                                <span class="checkmark"></span>
-                                                                            </span>
-                                                                            <span
-                                                                                    class="item-title d-flex align-items-center">
-                                                                                <span>Remember Me</span>
-                                                                            </span>
-                                                                        </span>
-                                                                </label>
-                                                                <a href="javascript:void(0)">Forgot Password</a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="btn-border w-100">
-                                                                <button class="cmn-btn w-100">LOGIN</button>
-                                                            </span>
-                                                    </div>
-                                                </form>
-                                                <div class="bottom-area text-center">
-                                                    <p>Not a member ? <a href="javascript:void(0)" class="reg-btn">Register</a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="regArea" role="tabpanel"
-                                     aria-labelledby="regArea-tab">
-                                    <div class="login-reg-content regMode">
-                                        <div class="modal-body">
-                                            <div class="head-area">
-                                                <h6 class="title">Register On Bitbetio</h6>
-                                                <div class="social-link d-flex align-items-center">
-                                                    <a href="javascript:void(0)" class="active"><i
-                                                                class="fab fa-facebook-f"></i></a>
-                                                    <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                                                    <a href="javascript:void(0)"><i
-                                                                class="fab fa-linkedin-in"></i></a>
-                                                    <a href="javascript:void(0)"><i
-                                                                class="fab fa-instagram"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="form-area">
-                                                <form action="#">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="single-input">
-                                                                <label for="regemail">Email</label>
-                                                                <input type="text" id="regemail"
-                                                                       placeholder="Email Address">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label for="regpassword">Password</label>
-                                                                <input type="text" id="regpassword"
-                                                                       placeholder="Email Password">
-                                                            </div>
-                                                            <div class="single-input">
-                                                                <label>Country</label>
-                                                                <select>
-                                                                    <option value="1">United States</option>
-                                                                    <option value="2">United Kingdom</option>
-                                                                    <option value="3">Canada</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="remember-me">
-                                                                <a href="javascript:void(0)">Have a referral
-                                                                    code?</a>
-                                                            </div>
-                                                        </div>
-                                                        <span class="btn-border w-100">
-                                                                <button class="cmn-btn w-100">SIGN UP</button>
-                                                            </span>
-                                                    </div>
-                                                </form>
-                                                <div class="bottom-area text-center">
-                                                    <p>Already have an member ? <a href="javascript:void(0)"
-                                                                                   class="log-btn">Login</a></p>
-                                                </div>
-                                                <div class="counter-area">
-                                                    <div class="single">
-                                                        <div class="icon-area">
-                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-1.png') }}"
-                                                                 alt="icon">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <p>25,179k</p>
-                                                            <p class="mdr">Bets</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single">
-                                                        <div class="icon-area">
-                                                            <img src="{{ asset('front-office/assets/images/icon/signup-counter-icon-2.png') }}"
-                                                                 alt="icon">
-                                                        </div>
-                                                        <div class="text-area">
-                                                            <p>6.65 BTC</p>
-                                                            <p class="mdr">Total Won</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Login Registration end -->
+									</h5>
+								</li>
+								<li class="nav-item" role="presentation">
+									<h5 class="nav-link" id="match-tab" data-bs-toggle="tab" data-bs-target="#match" role="tab" aria-controls="match" aria-selected="false">
+										<span class="image-area"></span>
+										choisir un exercice
+
+									</h5>
+								</li>
+								<li class="nav-item" role="presentation">
+									<h5 class="nav-link" id="team-tab" data-bs-toggle="tab" data-bs-target="#team" role="tab" aria-controls="team" aria-selected="false">
+										<span class="image-area"></span>
+										Choisir un événement</h5>
+
+								</li>
+								<li class="nav-item" role="presentation">
+									<h5 class="nav-link" id="odds-tab" data-bs-toggle="tab" data-bs-target="#odds" role="tab" aria-controls="odds" aria-selected="false">
+										<span class="image-area"></span>
+										Choisir un produit
+									</h5>
+								</li>
+
+							</ul>
+						</div>
+						<div class="col-lg-6">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="sport" role="tabpanel" aria-labelledby="sport-tab">
+
+									<div class="img-area">
+										<img src="{{ asset('images/Aliment.png') }}" alt="image">
 
 
-<!-- Main content start -->
+									</div>
+								</div>
+								<div class="tab-pane fade" id="match" role="tabpanel" aria-labelledby="match-tab">
 
-{% block mainContent %}
-{% endblock %}
+									<div class="img-area">
+										<img src="{{ asset('images/Exercice.png') }}" alt="image">
 
-<!-- Main content end -->
-{% block footer %}
+									</div>
+								</div>
+								<div class="tab-pane fade" id="team" role="tabpanel" aria-labelledby="team-tab">
 
-<!-- Footer Area Start -->
-<footer class="footer-section">
-    <div class="container pt-120">
+									<div class="img-area">
+										<img src="{{ asset('images/Events.png') }}" image.png alt="image">
 
-        <div class="footer-bottom-area pt-120">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="menu-item">
-                        <a href="index.html" class="logo">
-{#                            <img src="{{ asset('front-office/assets/images/app logo.png') }}" alt="logo">#}
-                        </a>
-                        <ul class="footer-link">
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="terms-conditions.html">Terms of Services</a></li>
-                            <li><a href="privacy-policy.html">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="copyright">
-                        <div class="copy-area">
-                            <p> Copyright © <a href="index.html">Calometre</a> | Designed by
-                                <a href="https://themeforest.net/user/pixelaxis" class="auth">Pixelaxis</a>
-                            </p>
-                        </div>
-                        <div class="social-link d-flex align-items-center">
-                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Footer Area End -->
-{% endblock %}
+									</div>
+								</div>
+								<div class="tab-pane fade" id="odds" role="tabpanel" aria-labelledby="odds-tab">
 
-<!--==================================================================-->
-{% block scripts %}
-    <script src="{{ asset('front-office/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/fontawesome.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/slick.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/jquery.downCount.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/counter.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/waypoint.min.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/wow.min.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/plugin/plugin.js') }}"></script>
-    <script src="{{ asset('front-office/assets/js/main.js') }}"></script>
-{% endblock %}
-</body>
+									<div class="img-area">
+										<img src="{{ asset('images/Products.png') }}" alt=" image">
+
+									</div>
+								</div>
+								<div class="tab-pane fade" id="amount" role="tabpanel" aria-labelledby="amount-tab">
+									<h4>Select Bet Amount
+									</h4>
+									<div class="img-area">
+										<img src="assets/images/process-img-5.png" alt="image">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</body></html></section><!-- How it Works end --><!-- Betpop Up Modal start --><div class="betpopmodal"><div class="modal fade" id="betpop-up" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xxl-8 col-xl-9 col-lg-11">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="top-item">
+							<a href="javascript:void(0)" class="cmn-btn firstTeam">Eagle will win</a>
+							<a href="javascript:void(0)" class="cmn-btn active draw">Draw</a>
+							<a href="javascript:void(0)" class="cmn-btn lastTeam">Paeek will win</a>
+						</div>
+						<div class="select-odds d-flex align-items-center">
+							<h6>Select Odds</h6>
+							<div class="d-flex in-dec-val">
+								<input type="text" value="1.5" class="InDeVal2">
+								<div class="btn-area">
+									<button class="plus2">
+										<img src="assets/images/icon/up-arrow.png" alt="icon">
+									</button>
+									<button class="minus2">
+										<img src="assets/images/icon/down-arrow.png" alt="icon">
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="mid-area">
+							<div class="single-area">
+								<div class="item-title d-flex align-items-center justify-content-between">
+									<span>Bet Value :</span>
+									<select>
+										<option value="eth">ETH</option>
+										<option value="eth">ETH</option>
+										<option value="eth">ETH</option>
+									</select>
+								</div>
+								<div class="d-flex in-dec-val">
+									<input type="text" value="0.1" class="InDeVal1">
+									<div class="btn-area">
+										<button class="plus">
+											<img src="assets/images/icon/up-arrow.png" alt="icon">
+										</button>
+										<button class="minus">
+											<img src="assets/images/icon/down-arrow.png" alt="icon">
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="single-area quick-amounts">
+								<div class="item-title d-flex align-items-center">
+									<p>Quick Amounts</p>
+								</div>
+								<div class="input-item">
+									<button class="quickIn">0.005</button>
+									<button class="quickIn">0.025</button>
+									<button class="quickIn">0.1</button>
+									<button class="quickIn">0.5</button>
+									<button class="quickIn">2.5</button>
+								</div>
+							</div>
+							<div class="single-area smart-value">
+								<div class="item-title d-flex align-items-center">
+									<p class="mdr">Smart Contact Value</p>
+								</div>
+								<div class="contact-val d-flex align-items-center">
+									<h4>0.1103</h4>
+									<h5>ETH</h5>
+								</div>
+							</div>
+						</div>
+						<div class="bottom-area">
+							<div class="fee-area">
+								<p>Winner will get:
+									<span class="amount">0.179</span>
+									ETH</p>
+								<p class="fee">Escrow Fee:
+									<span>5%</span>
+								</p>
+							</div>
+							<div class="btn-area">
+								<button>Make (0.1 ETH) Bet</button>
+							</div>
+							<div class="bottom-right">
+								<p>Game Closes:</p>
+								<p class="date-area">Mar
+									<span>21,2021-1:00</span>
+									Am</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></div></div><!-- Betpop Up Modal end --><!-- Amazing Features start --><section class="amazing-features"><div class="overlay pt-120">
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-6">
+			<div class="section-header text-center">
+				<h2 class="title">Une liste exhaustive de produits étonnants</h2>
+
+				<p>
+					Consultez notre dernière liste de produits
+
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="features-carousel">
+		{% for product in products |slice(products|length-4,products|length)|reverse %}
 
 
-</html>
+			<div class="single-slide">
+				<div class="slide-content">
+					<div class="icon-area">
+						<img src="{{ asset('uploads/products/' ~ product.image) }}" alt="icon">
+
+					</div>
+					<h5>{{product.name}}</h5>
+					<span>
+						{{product.price}}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div></section><!-- Amazing Features end -->{% endblock %}<!-- Main content end -->{% block footer %}<!-- Footer Area Start --><footer class="footer-section">
+<div class="container pt-120">
+
+	<div class="footer-bottom-area pt-120">
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="menu-item">
+					<a
+						href="index.html" class="logo">{#                            <img src="{{ asset('front-office/assets/images/app logo.png') }}" alt="logo">#}
+					</a>
+					<ul class="footer-link">
+						<li>
+							<a href="contact.html">Contact</a>
+						</li>
+						<li>
+							<a href="terms-conditions.html">Termes et conditions</a>
+
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="copyright">
+					<div class="copy-area">
+						<p>
+							Tout droit réservé  ©
+
+							<a href="{{path('home')}}">Calometre</a>
+
+						</p>
+					</div>
+					<div class="social-link d-flex align-items-center">
+						<a href="javascript:void(0)">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="javascript:void(0)">
+							<i class="fab fa-twitter"></i>
+						</a>
+						<a href="javascript:void(0)">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="javascript:void(0)">
+							<i class="fab fa-instagram"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></footer><!-- Footer Area End -->{% endblock %}<!--==================================================================-->{% block scripts %}<script src="{{ asset('front-office/assets/js/jquery.min.js') }}"></script><script src="{{ asset('front-office/assets/js/jquery-ui.js') }}"></script><script src="{{ asset('front-office/assets/js/bootstrap.min.js') }}"></script><script src="{{ asset('front-office/assets/js/fontawesome.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/slick.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/jquery.nice-select.min.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/jquery.downCount.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/counter.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/waypoint.min.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/jquery.magnific-popup.min.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/wow.min.js') }}"></script><script src="{{ asset('front-office/assets/js/plugin/plugin.js') }}"></script><script src="{{ asset('front-office/assets/js/main.js') }}"></script>{% endblock %}</body></html>

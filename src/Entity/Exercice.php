@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotBlankValidator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use PhpParser\Node\Expr\Cast\Double;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -63,6 +64,12 @@ class Exercice
      * @ORM\Column(type="string", length=255)
      */
     private $objectif;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $rating;
+   
 
     public function getId(): ?int
     {
@@ -128,4 +135,20 @@ class Exercice
 
         return $this;
     }
+
+    public function getRating(): ?float
+    {
+        return $this->rating;
+    }
+
+    public function setRating(float $rating): self
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+    
+
+   
+   
 }

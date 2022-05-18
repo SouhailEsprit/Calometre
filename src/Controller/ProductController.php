@@ -58,12 +58,12 @@ class ProductController extends AbstractController
         if (isset($_GET["q"])) {
             return $this->render('product/indextest.html.twig', [
                 'products' => $productRepository->findEntitiesByString($_GET["q"]),
-                'category'=>$categoryRepository->findAll(),
+                'category' => $categoryRepository->findAll(),
             ]);
         } else {
             return $this->render('product/indextest.html.twig', [
                 'products' => $productRepository->findAll(),
-                'category'=>$categoryRepository->findAll(),
+                'category' => $categoryRepository->findAll(),
             ]);
         }
     }
@@ -174,20 +174,19 @@ class ProductController extends AbstractController
     /**
      * @Route("/front/products", name="product_front_index", methods={"GET"})
      */
-    public function indexFront(CartRepository $cart, EntityManagerInterface $em,ProductRepository $productRepository): Response
+    public function indexFront(CartRepository $cart, EntityManagerInterface $em, ProductRepository $productRepository): Response
     {
 
 
         $user = $this->getUser();
-        if($user != null){
-        $currentCart = $user->getCart();
-        return $this->render('product/indexFrontTest.html.twig', [
-            'products' => $productRepository->findAll(),
-            'currentCart' => $currentCart
-        ]);}
-        else{
+        if ($user != null) {
+            $currentCart = $user->getCart();
+            return $this->render('product/indexFrontTest.html.twig', [
+                'products' => $productRepository->findAll(),
+                'currentCart' => $currentCart
+            ]);
+        } else {
             return $this->redirectToRoute('app_login');
-
         }
     }
 
@@ -354,9 +353,10 @@ class ProductController extends AbstractController
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
-        $json = $serializer->serialize($products, 'json', ['circular_reference_handler' => function ($object) {
-            return $object->getId();
-        }
+        $json = $serializer->serialize($products, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
 
         $response = new Response($json);
@@ -374,9 +374,10 @@ class ProductController extends AbstractController
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
-        $json = $serializer->serialize($category, 'json', ['circular_reference_handler' => function ($object) {
-            return $object->getId();
-        }
+        $json = $serializer->serialize($category, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
 
         $response = new Response($json);

@@ -57,7 +57,6 @@ class RegistrationController extends AbstractController
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $user->setProfilePicture($newFilename);
-
             }
 
             // encode the plain password
@@ -70,7 +69,9 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('crinnxx@gmail.com', 'calometreBot'))
                     ->to($user->getEmail())
@@ -92,7 +93,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/verify/email", name="app_verify_email")
      */
-    public function verifyUserEmail( EntityManagerInterface $em,Request $request): Response
+    public function verifyUserEmail(EntityManagerInterface $em, Request $request): Response
     {
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -105,13 +106,6 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_register');
         }
-        $usercart = new Cart();
-        $total=0;
-        $usercart->setTotal($total);
-        $user = $this->getUser();
-        $usercart->setUserCart($user);
-        $em->persist($usercart);
-        $em->flush();
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');

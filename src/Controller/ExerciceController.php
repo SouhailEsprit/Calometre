@@ -81,11 +81,10 @@ class ExerciceController extends AbstractController
 
                 $videos->move(
                     $this->getParameter('video_directory'),
-                    $fichier
+                    $form->get('video')->getData()[0]->getClientOriginalName()
                 );
 
-                $exercice->setVideo($fichier);
-
+                $exercice->setVideo($form->get('video')->getData()[0]->getClientOriginalName());
             }
             $entityManager->persist($exercice);
             $entityManager->flush();
@@ -213,16 +212,17 @@ class ExerciceController extends AbstractController
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
-        $json = $serializer->serialize($type, 'json', ['circular_reference_handler' => function ($object) {
-            return $object->getId();
-        }
+        $json = $serializer->serialize($type, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
 
         $response = new Response($json);
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
-/*************************/
+    /*************************/
 
     /**
      * @Route("/mobile/addExercice", name="addExerciceMobile")
@@ -309,15 +309,14 @@ class ExerciceController extends AbstractController
         $encoders = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $serializer = new Serializer($normalizers, $encoders);
-        $json = $serializer->serialize($products, 'json', ['circular_reference_handler' => function ($object) {
-            return $object->getId();
-        }
+        $json = $serializer->serialize($products, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
         ]);
 
         $response = new Response($json);
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
-
-
 }
